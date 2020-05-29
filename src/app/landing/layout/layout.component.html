@@ -1,0 +1,34 @@
+<section class="w-100 vh-100 d-flex align-items-center bg-light bg-img">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-6 mx-auto">
+        <div class="card border-0 shadow-sm">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-4 fire d-flex align-items-center justify-content-center border-right py-5 bg-success text-white shadow-sm position-relative">
+                <img src="../../../assets/DOMINIE LOGO.svg" alt="logo">
+              </div>
+
+              <div class="col-8 d-flex flex-column align-items-center ">
+                <div class="col  d-flex flex-column align-items-center py-2 animate__animated animate__slideInLeft" *ngIf="!login">
+                  <button class="btn w-100 btn-success btn-sm my-2" (click)="login = !login; tile = 2"><i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp; Teachers</button>
+                  <button class="btn w-100  btn-success btn-sm my-2" (click)="login = !login; tile = 1"><i class="fas fa-user-graduate"></i>&nbsp;&nbsp; student</button>
+                  <button class="btn w-100 btn-success btn-sm my-2" (click)="login = !login; tile = 3"> <i class="fas fa-users"></i>&nbsp;&nbsp; parent</button>
+                </div>
+                <div class="col p-2 animate__animated animate__slideInRight d-flex flex-column" *ngIf="login">
+                  <div class="col px-0"><i class="fas fa-arrow-left bg-light py-2 px-2 rounded-circle shadow-sm" (click)="login = !login"></i></div>
+                  <input type="text" name="username" id="username" class="form-control my-2" placeholder="Username">
+                  <input type="text" name="password" id="password" class="form-control my-2" placeholder="Password">
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 1" [routerLink]="['/student']">Student Login</button>
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 2" [routerLink]="['/teacher']">Teacher Login</button>
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 3">Parents Login</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

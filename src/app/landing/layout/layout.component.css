@@ -1,0 +1,20 @@
+.btn-custom{
+  min-width: 100px !important;
+  border-radius: 2px !important;
+  font-weight: 800;
+}
+.btn-custom:hover{
+  background-color: white;
+  color: black;
+  border:2px solid green;
+}
+.card{
+  overflow: hidden !important;
+}
+.fire {
+  z-index: 1000 !important;
+}
+.bg-img {
+  background-image: url('../../../assets/img/auditorium-benches-chairs-class-207691.jpg');
+  background-size: cover;
+}
