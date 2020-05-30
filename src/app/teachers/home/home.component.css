@@ -4,6 +4,6 @@ mat-sidenav-container {
   box-sizing: border-box;
 }
 mat-sidenav{
-  width: 120px;
+  width: 200px;
   background-color: #4a4963;
 }

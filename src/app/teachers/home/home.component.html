@@ -1,5 +1,20 @@
 <mat-sidenav-container>
-  <mat-sidenav  #sidenav mode="side">sample</mat-sidenav>
+  <mat-sidenav  #sidenav mode="side">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 text-white mb-1 d-flex align-items-center justify-content-center">
+            <object data="../../../assets/DOMINIE LOGO.svg" type="image/svg+xml" class="logo"></object>
+        </div>
+        <div class="col-12 py-2 side-menu mt-1  text-white d-flex align-items-center">
+          <i class="fas fa-id-card mr-3 sub-title"></i> <span>My Profile</span>
+        </div>
+        <div class="col-12 py-2 side-menu mt-1 text-white d-flex align-items-center">
+          <i class="fas fa-podcast mr-3 sub-title"></i> <span>Live class</span>
+        </div>
+
+      </div>
+    </div>
+  </mat-sidenav>
   <mat-sidenav-container>
     <mat-toolbar color="primary">
       <i class="fas fa-align-center pointer" (click)="sidenav.toggle()"></i>

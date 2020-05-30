@@ -16,6 +16,15 @@ export class ClassComponent implements OnInit {
   public localVideo: HTMLVideoElement;
   public remoteVideo: HTMLVideoElement;
 
+  public classList = [
+    {class: 's4', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'active', order: 1,},
+    {class: 's6', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'upcomming', order: 2},
+    {class: 's1', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 5},
+    {class: 's3', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 3},
+    {class: 's7', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 6},
+    {class: 's8', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 4}
+  ]
+
 
 
   constructor() { }

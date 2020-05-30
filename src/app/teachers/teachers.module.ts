@@ -6,10 +6,11 @@ import { MaterialModule } from '../material/material.module';
 import { TeachersRoutingModule } from './teachers-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ClassComponent } from './class/class.component';
+import { LiveclassComponent } from './liveclass/liveclass.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ClassComponent],
+  declarations: [HomeComponent, ClassComponent, LiveclassComponent],
   imports: [
     CommonModule,
     MaterialModule,
