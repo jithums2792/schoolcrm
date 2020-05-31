@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import * as io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-liveclass',
@@ -8,6 +9,8 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./liveclass.component.css']
 })
 export class LiveclassComponent implements OnInit {
+  public playFlag = true;
+  public stopFlag = false;
   public socket = io(environment.socket, {query: {
     usertype: 'teacher',
     displayname: 'tempteacher'
@@ -27,7 +30,7 @@ export class LiveclassComponent implements OnInit {
   public remoteVideo: HTMLVideoElement;
 
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   async ngOnInit() {
     this.socket.on('connection', (data) => console.log(data));
@@ -111,9 +114,22 @@ export class LiveclassComponent implements OnInit {
     const localHost = document.getElementById('hostvideo');
     this.localVideo = document.createElement('video');
     this.localVideo.setAttribute('autoplay', 'true');
+    this.localVideo.setAttribute('id', 'localstream');
     this.localStream = await navigator.mediaDevices.getUserMedia(this.constrains);
     this.localVideo.srcObject = this.localStream;
     localHost.appendChild(this.localVideo);
+  }
+
+  async stopStream() {
+    console.log('working');
+    this.localStream = await navigator.mediaDevices.getUserMedia(this.constrains);
+    await this.localStream.getTracks().forEach(track => {
+      track.stop();
+    });
+    const peerConnection = new RTCPeerConnection(this.configuration);
+    document.getElementById('localstream').remove();
+    location.reload();
+
   }
 
 }
