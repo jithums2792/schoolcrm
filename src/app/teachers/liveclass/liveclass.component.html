@@ -3,14 +3,23 @@
     <div class="col-12">
      <div class="hostvideo position-relative d-flex justify-content-center" id="hostvideo">
 
-      <div class="video-controls d-flex flex-column position-absolute">
-        <i class="fas fa-play text-white my-2" (click)="activateLiveStream(); playFlag = ! playFlag; stopFlag = ! stopFlag" *ngIf="playFlag"></i>
-        <i class="fas fa-stop-circle text-danger" (click)="stopStream(); playFlag = ! playFlag; stopFlag = ! stopFlag" *ngIf="stopFlag"></i>
+      <div class="video-controls d-flex flex-column position-absolute align-items-center justify-content-center px-2">
+        <i class="fas fa-play text-white my-2" (click)="startStream()" *ngIf="playFlag"></i>
+        <i class="fas fa-stop-circle text-danger" (click)="stopStream()" *ngIf="! playFlag"></i>
+        <i class="fas fa-microphone my-2 text-white" *ngIf="audiobuttonFlag" (click)="audioControl(false)"></i>
+        <i class="fas fa-microphone-slash my-2 text-white" *ngIf="! audiobuttonFlag" (click)="audioControl(true)"></i>
+        <i class="fas fa-video my-2 text-white"  *ngIf="VideobuttonFlag" (click)="videoControl(false)"></i>
+        <i class="fas fa-video-slash my-2 text-white"  *ngIf="! VideobuttonFlag" (click)="videoControl(true)"></i>
+        <i class="fas fa-retweet text-white my-2" (click)="screenShare()"></i>
 
       </div>
-     </div>
-     <div class="remote d-flex justify-content-between" id="remote">
 
+      <video src=""></video>
+     </div>
+     <div class="remote d-flex justify-content-between py-2">
+      <div class="remote-container d-flex align-items-center" id="remote">
+
+      </div>
     </div>
     </div>
   </div>

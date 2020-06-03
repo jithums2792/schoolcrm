@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { SocketioService } from './services/socketio.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { SocketioService } from './services/socketio.service';
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [SocketioService],
   bootstrap: [AppComponent]

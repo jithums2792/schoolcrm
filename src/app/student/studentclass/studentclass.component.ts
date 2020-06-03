@@ -1,119 +1,72 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import * as io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router, NavigationExtras } from '@angular/router';
 
+declare var gapi: any;
 @Component({
   selector: 'app-studentclass',
   templateUrl: './studentclass.component.html',
   styleUrls: ['./studentclass.component.css']
 })
 export class StudentclassComponent implements OnInit {
-  localVideo: HTMLVideoElement;
-  remoteVideo: HTMLVideoElement;
-  public socket;
-  public offer;
-  public configuration = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
-  public peerConnection = new RTCPeerConnection(this.configuration);
+  public apikey = 'AIzaSyCgvnKQ-ekScmDrSTpPkdneNmX77m4-en4';
+  public clientId = '291458128144-h3g9751gllmctvv5av2ev4to34k9q07q.apps.googleusercontent.com';
+  public videoId;
+  public playListId = '';
+  public url;
+  public trustedUrl;
+  
 
-  studentid = 'tempstudent' + Date.now();
-  constructor() { }
+  
+  constructor(private sanitizer: DomSanitizer, private router: Router) { }
 
 
 
   async ngOnInit() {
-    console.log('asdasdasdsa')
-
-    const localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-    const localhost = document.getElementById('host');
-    this.localVideo = document.createElement('video');
-    this.localVideo.setAttribute('autoplay', 'true');
-    this.localVideo.srcObject = localStream;
-    localhost.appendChild(this.localVideo);
-
-    localStream.getTracks().forEach(track => {
-      this.peerConnection.addTrack(track, localStream);
-
-    });
-
-    this.socket = io(environment.socket, {
-      query: {
-        usertype: 'student',
-        studentid: this.studentid
-      }
-    });
-
-
-
-    this.socket.on('newoffer', async (offerObject) => {
-      // console.log(msg.data)
-
-      console.log("offerObject")
-      console.log(offerObject)
-
-      if (offerObject.studentid == this.studentid) {
-        if (this.offer == null) {
-          this.offer = offerObject.offer;
-
-          this.peerConnection.setRemoteDescription(new RTCSessionDescription(offerObject.offer));
-          const answer = await this.peerConnection.createAnswer();
-          this.peerConnection.setLocalDescription(answer);
-
-          var answerObject = {
-            studentid: this.studentid,
-            answer: answer
-          }
-
-          this.socket.emit('answer', answerObject);
-
-
-
-
-
-        }
-      }
-
-
-
-    });
-
-    this.peerConnection.onicecandidate = (msg) => {
-      console.log('onicecandidatestudent triggered in student side' + msg)
-
-      if (msg.candidate) {
-        var iceCandidateobject = {
-          studentid: this.studentid,
-          candidate: msg.candidate
-        }
-        this.socket.emit('onicecandidatestudent', iceCandidateobject);
-      }
-    };
-
-    this.peerConnection.ontrack = (event) => {
-      const remotestream = new MediaStream();
-      remotestream.addTrack(event.track);
-      console.log('got mediastream', event.streams);
-      const remotehost = document.getElementById('remote');
-      this.remoteVideo = document.createElement('video');
-      this.remoteVideo.setAttribute('autoplay', 'true');
-      this.remoteVideo.srcObject = remotestream;
-      remotehost.appendChild(this.remoteVideo);
-
-    };
-
-    this.socket.on('onicecandidateteacher', async (iceCandidateobject) => {
-      console.log('onicecandidateteacher recieved in student side')
-
-      if (iceCandidateobject.studentid === this.studentid) {
-        // console.log(msg.data)
-        this.peerConnection.addIceCandidate(new RTCIceCandidate(iceCandidateobject.candidate));
-
-      }
-
-
-
-    });
-
-
-
+    
+    
   }
+
+  authenticate() {
+    return gapi.auth2.getAuthInstance().signIn({scope: "https://www.googleapis.com/auth/youtube.readonly"}).
+    then(function() { console.log("Sign-in successful"); },
+              function(err) { console.error("Error signing in", err); });
+  }
+  async load() {
+    await gapi.client.setApiKey("AIzaSyCgvnKQ-ekScmDrSTpPkdneNmX77m4-en4");
+    return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+        .then(function() { console.log("GAPI client loaded for API");},
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+
+  
+  
+async navigate() {
+ await this.authenticate().then(this.load());
+ await gapi.client.youtube.playlistItems.list({
+  "part": [
+    "snippet,contentDetails"
+  ],
+  "playlistId": "PLNigsc54Y10S1GCv46if9UjOFooAoDJFd",
+  "maxResults": 25
+}).then(async data => {
+  const videoList = await  data.result.items;
+  videoList.forEach(async item => {
+    this.playListId = await item.snippet.playlistId;
+    this.videoId = await item.contentDetails.videoId;
+    this.url = `https://www.youtube.com/embed/${this.videoId}?list=${this.playListId}`;
+    this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
+  });
+}, err => console.log(err))
+  
+  const options: NavigationExtras = {
+    state: {data: this.trustedUrl}
+  };
+  this.router.navigate(['/student/home/liveclass'], options);
 }
+   
+}
+
+

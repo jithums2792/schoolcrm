@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import * as io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+
+declare var MediaStreamRecorder: any;
 
 @Component({
   selector: 'app-liveclass',
@@ -9,17 +12,49 @@ import { Router } from '@angular/router';
   styleUrls: ['./liveclass.component.css']
 })
 export class LiveclassComponent implements OnInit {
+  
   public playFlag = true;
-  public stopFlag = false;
+  public VideobuttonFlag = true;
+  public audiobuttonFlag = true;
   public socket = io(environment.socket, {query: {
     usertype: 'teacher',
-    displayname: 'tempteacher'
+    displayname: 'tempteacher',
+    transports: ['websocket']
  }  });
 
  public localStream;
-  public configuration = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+ public configuration = { iceServers: [
+    { urls: 'stun:stun.l.google.com:19302'},
+    {
+      urls: 'turn:numb.viagenie.ca',
+      credential: 'muazkh',
+      username: 'webrtc@live.com'
+  },
+  {
+      urls: 'turn:192.158.29.39:3478?transport=udp',
+      credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+      username: '28224511:1379330808'
+  },
+  {
+      urls: 'turn:192.158.29.39:3478?transport=tcp',
+      credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+      username: '28224511:1379330808'
+  },
+  {
+      urls: 'turn:turn.bistri.com:80',
+      credential: 'homeo',
+      username: 'homeo'
+   },
+   {
+      urls: 'turn:turn.anyfirewall.com:443?transport=tcp',
+      credential: 'webrtc',
+      username: 'webrtc'
+  }
+  ] };
+
+
   public peerConnection = [];
-  public constrains = { audio: true, video: {
+  public constrains = { audio: {echoCancellation: true}, video: {
     width: {
       min: 640, max: 1024
     }, height: {
@@ -30,9 +65,11 @@ export class LiveclassComponent implements OnInit {
   public remoteVideo: HTMLVideoElement;
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private toastservice: ToastrService) { }
 
   async ngOnInit() {
+    console.log(this.VideobuttonFlag);
+    console.log(environment.socket);
     this.socket.on('connection', (data) => console.log(data));
 
 
@@ -86,10 +123,12 @@ export class LiveclassComponent implements OnInit {
     const remotestream = new MediaStream();
     const remotehost = document.getElementById('remote');
     this.remoteVideo = document.createElement('video');
-    this.remoteVideo.setAttribute('autoplay', 'true');
+    this.remoteVideo.setAttribute('autoplay', 'true'); 
     this.remoteVideo.srcObject = remotestream;
-    console.log('got video element');
+    this.remoteVideo.width = 200;
+    this.remoteVideo.height = 250;
     remotehost.appendChild(this.remoteVideo);
+
     this.peerConnection[studentid].onicecandidate = (msg) => {
         console.log('onicecandidateteacher triggered teacher side');
         if (msg.candidate) {
@@ -102,10 +141,10 @@ export class LiveclassComponent implements OnInit {
     };
 
 
-    this.peerConnection[studentid].ontrack = (event) => {
+    this.peerConnection[studentid].ontrack = async (event) => {
       console.log('ontrack triggered teacher side');
-      remotestream.addTrack(event.track);
-      console.log('got mediastream', event.streams);
+      await remotestream.addTrack(event.track);
+      console.log('got mediastream', event.track);
 
     };
   }
@@ -114,22 +153,65 @@ export class LiveclassComponent implements OnInit {
     const localHost = document.getElementById('hostvideo');
     this.localVideo = document.createElement('video');
     this.localVideo.setAttribute('autoplay', 'true');
+    this.localVideo.volume = 0;
     this.localVideo.setAttribute('id', 'localstream');
-    this.localStream = await navigator.mediaDevices.getUserMedia(this.constrains);
-    this.localVideo.srcObject = this.localStream;
-    localHost.appendChild(this.localVideo);
+    await navigator.mediaDevices.getUserMedia(this.constrains).then( async stream  => {
+      stream.getAudioTracks()[0].enabled = this.audiobuttonFlag;
+      stream.getVideoTracks()[0].enabled = this.VideobuttonFlag;
+      this.localVideo.srcObject = stream;
+      this.localStream = stream;
+      localHost.replaceChild(this.localVideo, localHost.childNodes[1]);
+    }).catch (err => {
+      this.toastservice.error('cant get media', 'error');
+    })
+
+    
   }
 
+  async startStream() {
+    this.playFlag = false;
+    this.VideobuttonFlag = true;
+    this.audiobuttonFlag = true;
+    this.activateLiveStream();
+  }
   async stopStream() {
-    console.log('working');
-    this.localStream = await navigator.mediaDevices.getUserMedia(this.constrains);
-    await this.localStream.getTracks().forEach(track => {
-      track.stop();
-    });
-    const peerConnection = new RTCPeerConnection(this.configuration);
-    document.getElementById('localstream').remove();
+    this.playFlag = true;
+    this.VideobuttonFlag = false;
+    this.audiobuttonFlag = false;
+    this.activateLiveStream();
     location.reload();
+  }
 
+  async videoControl(value){
+    this.VideobuttonFlag = value;
+    this.activateLiveStream();
+    console.log(this.localStream);
+  }
+
+  async audioControl(value){
+    this.audiobuttonFlag = value;
+    this.activateLiveStream();
+  }
+  async screenShare() {
+    const localHost = document.getElementById('hostvideo');
+    this.localVideo = document.createElement('video');
+    this.localVideo.setAttribute('autoplay', 'true');
+    this.localVideo.setAttribute('id', 'localstream');
+    const screeniaDevice = navigator.mediaDevices as any;
+    await screeniaDevice.getDisplayMedia({video: true}).then(stream => {
+    this.localVideo.srcObject = stream;
+    this.localStream = stream;
+    let recorder = new MediaStreamRecorder(stream, {
+      audioBitsPerSecond : 128000,
+      videoBitsPerSecond : 2500000,
+      mimeType : 'video/mp4'
+    });
+    recorder.start();
+    console.log(recorder);
+    localHost.replaceChild(this.localVideo, localHost.childNodes[1]);
+    }).catch(err => {
+      this.toastservice.error('your device not support sharinf now..!', 'error');
+    });
   }
 
 }

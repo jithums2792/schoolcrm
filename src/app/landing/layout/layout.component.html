@@ -1,15 +1,15 @@
 <section class="w-100 vh-100 d-flex align-items-center bg-light bg-img">
   <div class="container-fluid">
     <div class="row">
-      <div class="col-6 mx-auto">
+      <div class="col-lg-6 col-12 mx-auto">
         <div class="card border-0 shadow-sm">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-4 fire d-flex align-items-center justify-content-center border-right py-5 bg-success text-white shadow-sm position-relative">
+              <div class="col-lg-4 col-12 fire d-flex align-items-center justify-content-center border-right py-5 bg-success text-white shadow-sm position-relative">
                 <img src="../../../assets/DOMINIE LOGO.svg" alt="logo">
               </div>
 
-              <div class="col-8 d-flex flex-column align-items-center ">
+              <div class="col-lg-8 col-12 d-flex flex-column align-items-center ">
                 <div class="col  d-flex flex-column align-items-center py-2 animate__animated animate__slideInLeft" *ngIf="!login">
                   <button class="btn w-100 btn-success btn-sm my-2" (click)="login = !login; tile = 2"><i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp; Teachers</button>
                   <button class="btn w-100  btn-success btn-sm my-2" (click)="login = !login; tile = 1"><i class="fas fa-user-graduate"></i>&nbsp;&nbsp; student</button>

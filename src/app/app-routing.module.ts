@@ -6,9 +6,9 @@ import { LandingModule } from './landing/landing.module';
 
 
 const routes: Routes = [
-  {path: 'home', loadChildren: () => import('./landing/landing.module').then(m => LandingModule)},
-  {path: 'teacher', loadChildren: () => import('./teachers/teachers.module').then(m => TeachersModule)},
-  {path: 'student', loadChildren: () => import('./student/student.module').then(m => StudentModule)},
+  {path: 'home', loadChildren: () => import('./landing/landing.module').then(m => m.LandingModule)},
+  {path: 'teacher', loadChildren: () => import('./teachers/teachers.module').then(m => m.TeachersModule)},
+  {path: 'student', loadChildren: () => import('./student/student.module').then(m => m.StudentModule)},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

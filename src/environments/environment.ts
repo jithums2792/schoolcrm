@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   // socket: 'http://localhost:3000'
-  socket: 'http://13.233.25.34:3000/api/'
+  socket: 'https://eduschool.live/'
 };
 
 /*
