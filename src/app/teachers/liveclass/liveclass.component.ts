@@ -16,6 +16,7 @@ export class LiveclassComponent implements OnInit {
   public playFlag = true;
   public VideobuttonFlag = true;
   public audiobuttonFlag = true;
+  public studentId;
   public socket = io(environment.socket, {query: {
     usertype: 'teacher',
     displayname: 'tempteacher',
@@ -73,7 +74,7 @@ export class LiveclassComponent implements OnInit {
     this.socket.on('connection', (data) => console.log(data));
 
 
-    this.socket.on('newestudentjoined', async (studentid) => {
+    this.socket.on('newestudentjoined', async (studentid, socketId) => {
 
       if (this.localStream != null) {
         this.peerConnection[studentid] = new RTCPeerConnection(this.configuration);
@@ -93,7 +94,7 @@ export class LiveclassComponent implements OnInit {
         };
         this.socket.emit('newoffer', offerObject);
 
-        this.setupPeerconnection(studentid);
+        this.setupPeerconnection(studentid, socketId);
       }
 
 
@@ -107,23 +108,28 @@ export class LiveclassComponent implements OnInit {
     this.socket.on('answer', async (answerObject) => {
       this.peerConnection[answerObject.studentid].setRemoteDescription(new RTCSessionDescription(answerObject.answer));
     });
-
+    this.socket.on('studentLeave', async (data) => {
+      const target = await document.getElementById(data);
+      target.remove();
+    })
     this.socket.on('onicecandidatestudent', async (iceCandidateobject) => {
       console.log('onicecandidatestudent received on teacher side');
       console.log(iceCandidateobject);
+      this.studentId = iceCandidateobject.studentid;
       // console.log(msg.data)
       this.peerConnection[iceCandidateobject.studentid].addIceCandidate(new RTCIceCandidate(iceCandidateobject.candidate));
-
+      console.log(this.peerConnection);
     });
 
   }
 
 
-  setupPeerconnection(studentid) {
+  setupPeerconnection(studentid, socketId) {
     const remotestream = new MediaStream();
     const remotehost = document.getElementById('remote');
     this.remoteVideo = document.createElement('video');
     this.remoteVideo.setAttribute('autoplay', 'true'); 
+    this.remoteVideo.setAttribute('id', socketId); 
     this.remoteVideo.srcObject = remotestream;
     this.remoteVideo.width = 200;
     this.remoteVideo.height = 250;
@@ -210,7 +216,7 @@ export class LiveclassComponent implements OnInit {
     console.log(recorder);
     localHost.replaceChild(this.localVideo, localHost.childNodes[1]);
     }).catch(err => {
-      this.toastservice.error('your device not support sharinf now..!', 'error');
+      this.toastservice.error('your device not support sharing now..!', 'error');
     });
   }
 
