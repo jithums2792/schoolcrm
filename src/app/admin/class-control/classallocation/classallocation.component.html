@@ -1,0 +1,19 @@
+<div class="container-fluid">
+    <div class="row py-1" *ngFor="let class of classList">
+        <div class="col-3" *ngFor="let section of class.section">
+            <div class="card shadow-sm">
+                <div class="col py-3 text-center">
+                    <span>Class {{class.name}} {{section}}</span>
+                </div>
+                <select class="form-control form-control-sm">
+                    <option value="{{staff.firstname}}" *ngFor="let staff of staffList">{{staff.firstname}}</option>
+                </select> 
+            </div>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-12 d-flex align-items-center justify-content-end">
+            <button class="btn btn-sm custom-btn">Save</button>
+        </div>
+    </div>
+</div>

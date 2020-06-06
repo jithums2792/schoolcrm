@@ -12,10 +12,16 @@ import { TeachermangementComponent } from './teachermangement/teachermangement.c
 import { FacultycreateComponent } from './facultycreate/facultycreate.component';
 import { DepartmentcontrolComponent } from './departmentcontrol/departmentcontrol.component';
 import { DesignationcontrolComponent } from './designationcontrol/designationcontrol.component';
+import { ClasslistComponent } from './class-control/classlist/classlist.component';
+import { StudentlistComponent } from './student-controls/studentlist/studentlist.component';
+import { StudentadmisionComponent } from './student-controls/studentadmision/studentadmision.component';
+import { ClasstimetableComponent } from './class-control/classtimetable/classtimetable.component';
+import { SubjectallocationComponent } from './faculty-control/subjectallocation/subjectallocation.component';
+import { ClassallocationComponent } from './class-control/classallocation/classallocation.component';
 
 
 @NgModule({
-  declarations: [LayoutComponent, TeachermangementComponent, FacultycreateComponent, DepartmentcontrolComponent, DesignationcontrolComponent],
+  declarations: [LayoutComponent, TeachermangementComponent, FacultycreateComponent, DepartmentcontrolComponent, DesignationcontrolComponent, ClasslistComponent, StudentlistComponent, StudentadmisionComponent, ClasstimetableComponent, SubjectallocationComponent, ClassallocationComponent],
   imports: [
     CommonModule,
     FormsModule,

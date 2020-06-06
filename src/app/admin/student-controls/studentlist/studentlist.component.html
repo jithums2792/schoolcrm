@@ -1,0 +1,66 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-5 col-12 my-md-1">
+            <select [(ngModel)]="selectedClass" class="form-control form-control-sm" (change)="classSelect()">
+                <option value="{{class.name}}" *ngFor="let class of classList">{{class.name}}</option>
+            </select>
+        </div>
+        <div class="col-lg-5 col-12  my-md-1">
+            <select [(ngModel)]="selectedSection" class="form-control form-control-sm">
+                <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+            </select>
+        </div>
+        <div class="col-lg-2 col-12 d-flex align-items-center justify-content-end  my-md-1">
+            <button class="btn btn-sm custom-btn shadow-sm" (click)="search()">Search Students</button>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-12 my-1" *ngFor="let student of studentList">
+           <div class="card">
+               <div class="container-fluid">
+                   <div class="row">
+                       <div class="col-3 p-2 d-flex flex-column justify-content-center">
+                           <img src="{{student.photo}}" width="100px" height="100px" class="rounded-lg" alt="">
+                       </div>
+                       <div class="col p-2 d-flex flex-column justify-content-center">
+                           <span><strong>{{student.name}}</strong></span>
+                           <span>Class: {{student.class}} {{student.dection}}</span>
+                           <span>Admission number: {{student.admissionnumber}}</span>
+                           <span>Date of Birth: {{student.dob}}</span>
+                           <span>Gender: {{student.gender}}</span>
+                       </div>
+                       <div class="col p-2 d-flex flex-column justify-content-center">
+                           <span>Guardian Name: {{student.fathername}}</span>
+                           <span>Guardian Phone: {{student.fathercontact}}</span>
+                           <span>Current Address: {{student.presentaddress}} </span>
+                       </div>
+                       <div class="col p-2 d-flex justify-content-end align-items-center">
+                           <i class="fas fa-eye mx-2"></i>
+                           <i class="fas fa-edit mx-2" (click)="edit(student)"></i>
+                           <i class="fas fa-trash" type="button" data-toggle="modal" data-target="#exampleModal" (click)="studentId = student._id"></i>
+                       </div>
+                   </div>
+               </div>
+           </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Delete</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Do you want to delete this student permenently?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

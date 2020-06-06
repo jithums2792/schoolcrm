@@ -1,29 +1,29 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col-8">
+        <div class="col-6">
             <select [(ngModel)]="designation" (change)="designationfilter()" class="form-control form-control-sm border-0 shadow-sm">
-                <option value="{{designation.title}}" *ngFor="let designation of designationList">{{designation.title}}</option>
+                <option value="All">All</option>
+                <option value="{{designation.name}}" *ngFor="let designation of designationList">{{designation.name}}</option>
               </select>
         </div>
-        <div class="col-4 d-flex align-items-center justify-content-end">
+        <div class="col-6 d-flex align-items-center justify-content-end">
             <button class="btn btn-sm custom-btn shadow-sm" [routerLink]="['/sadmin/createfaculty']" routerLinkActive="router-link-active" >Create Teacher</button>
         </div>
-        <div class="col-lg-6 col-12 my-2">
+        <div class="col-lg-6 col-12 my-2" *ngFor="let faculty of facultyList">
             <div class="card border-0 shadow-sm">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-3 d-flex align-items-center justify-content-center border-right">
-                            <img src="../../../assets/img/adult-attractive-beautiful-beauty-415829.jpg" width="100px" height="100px" class="rounded-circle" alt="">
+                        <div class="col-3 d-flex align-items-center justify-content-center border-right p-2">
+                            <img src="{{faculty.photo}}" width="100px" height="100px" class="rounded-circle" alt="">
                         </div>
-                        <div class="col-9 d-flex flex-column">
-                            <span>Prof: Liya Maria</span>
-                            <span>Puthanpurayil (H)</span>
-                            <span>Angamaly p.o Angamaly</span>
-                            <span>Ernakulam</span>
-                            <span>Kerala</span>
+                        <div class="col-9 d-flex flex-column p-2">
+                            <span>{{faculty.firstname}} {{faculty.lastname}}</span>
+                            <span>{{faculty.currentaddress}}</span>
+                            <span>{{faculty.designation}}</span>
+                            <span>{{faculty.department}}</span>
                         </div>
                         <div class="col-12 bg-light d-flex align-items-center justify-content-end py-2">
-                            <i class="fas fa-edit mx-1 text-info"></i>
+                            <i class="fas fa-edit mx-1 text-info" (click)="edit(faculty)"></i>
                             <i class="fas fa-trash mx-1 text-danger"></i>
                         </div>
                     </div>

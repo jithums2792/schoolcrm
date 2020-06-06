@@ -17,10 +17,10 @@
                 </div>
                 <div class="col p-2 animate__animated animate__slideInRight d-flex flex-column" *ngIf="login">
                   <div class="col px-0"><i class="fas fa-arrow-left bg-light py-2 px-2 rounded-circle shadow-sm" (click)="login = !login"></i></div>
-                  <input type="text" name="username" id="username" class="form-control my-2" placeholder="Username">
-                  <input type="text" name="password" id="password" class="form-control my-2" placeholder="Password">
-                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 1" [routerLink]="['/student']">Student Login</button>
-                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 2" [routerLink]="['/teacher']">Teacher Login</button>
+                  <input [(ngModel)]="username" type="text" name="username" id="username" class="form-control my-2" placeholder="Username">
+                  <input [(ngModel)]="password" type="text" name="password" id="password" class="form-control my-2" placeholder="Password">
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 1" (click)="studentlogin()">Student Login</button>
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 2" (click)="teacherlogin()">Teacher Login</button>
                   <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 3">Parents Login</button>
                 </div>
               </div>

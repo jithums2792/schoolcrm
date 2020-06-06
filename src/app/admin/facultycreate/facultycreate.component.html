@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="designation">Designation<span class="text-danger">*</span></label>
                 <select [(ngModel)]="faculty.designation" class="form-control form-control-sm" id="designation">
-                    <option value="{{designation.title}}" *ngFor="let designation of designationList">{{designation.title}}</option>
+                    <option value="{{designation.name}}" *ngFor="let designation of designationList">{{designation.name}}</option>
                   </select>
             </div>
         </div>
@@ -34,8 +34,8 @@
         <div class="col-lg-6 col-12">
             <div class="form-group">
                 <label for="department">Department<span class="text-danger">*</span></label>
-                <select [(ngModel)]="faculty.designation" class="form-control form-control-sm" id="department">
-                    <option value="{{designation.title}}" *ngFor="let designation of designationList">{{designation.title}}</option>
+                <select [(ngModel)]="faculty.Department" class="form-control form-control-sm" id="department">
+                    <option value="{{department.name}}" *ngFor="let department of departmentList">{{department.name}}</option>
                 </select>
             </div>
         </div>
@@ -82,13 +82,13 @@
         <div class="col-lg-3 col-12">
             <div class="form-group">
                 <label for="phone">Phone<span class="text-danger">*</span></label>
-                <input type="text" [(ngModel)]="faculty.phone" class="form-control form-control-sm" id="phone">
+                <input type="number" [(ngModel)]="faculty.phone" class="form-control form-control-sm" id="phone">
             </div>
         </div>
         <div class="col-lg-3 col-12">
             <div class="form-group">
                 <label for="phone2">Emergency Contact Number</label>
-                <input type="text" [(ngModel)]="faculty.phone2" class="form-control form-control-sm" id="phone2">
+                <input type="number" [(ngModel)]="faculty.phone2" class="form-control form-control-sm" id="phone2">
             </div>
         </div>
         <div class="col-lg-3 col-12">
@@ -107,7 +107,7 @@
         <div class="col-lg-3 col-12">
             <div class="form-group">
                 <label for="maritialstatus">Photo</label>
-                <input type="file" [(ngModel)]="faculty.photo" class="form-control form-control-sm" id="phone2">
+                <input (change)="uploader($event)" type="file" [(ngModel)]="faculty.photo" class="form-control form-control-sm" id="phone2">
             </div>
         </div>
         <div class="col-lg-6 col-12">
@@ -140,8 +140,21 @@
                 <textarea [(ngModel)]="faculty.note" name="note" id="note" cols="" rows="4" class="form-control form-control-sm"></textarea>
             </div>
         </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="username">username</label>
+                <input type="text" [(ngModel)]="faculty.username" class="form-control form-control-sm" id="username">
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" [(ngModel)]="faculty.password" class="form-control form-control-sm" id="password">
+            </div>
+        </div>
         <div class="col-12 d-flex align-items-center justify-content-end">
-            <button class="btn  btn-sm shadow-sm custom-btn" (click)="save()">Save</button>
+            <button class="btn  btn-sm shadow-sm custom-btn mx-2" (click)="update()" *ngIf="! saveFlag">Update</button>
+            <button class="btn  btn-sm shadow-sm custom-btn" (click)="save()" *ngIf="saveFlag">Save</button>
         </div>
     </div>
 </div>
