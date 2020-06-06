@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-   socket: 'http://localhost:3000'
+   socket: 'http://localhost:3000',
   // socket: 'https://eduschool.live/'
+  api: 'http://localhost:3000/api/'
 };
 
 /*

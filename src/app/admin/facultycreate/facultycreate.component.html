@@ -1,0 +1,147 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <span><i class=" pointer fas fa-arrow-left bg-white p-2 rounded-circle shadow-sm mr-2 text-info" [routerLink]="['/sadmin/faculty']" ></i>Basic Details</span>
+        </div>
+    </div>
+    <div class="row py-2 mx-1 my-2 shadow-sm bg-white">
+        <div class="col-lg-3" col-12>
+            <div class="form-group">
+                <label for="staffid">Staff ID <span class="text-danger">*</span></label>
+                <input type="text" [(ngModel)]="faculty.id" class="form-control form-control-sm" id="staffid">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="designation">Designation<span class="text-danger">*</span></label>
+                <select [(ngModel)]="faculty.designation" class="form-control form-control-sm" id="designation">
+                    <option value="{{designation.title}}" *ngFor="let designation of designationList">{{designation.title}}</option>
+                  </select>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="staffid">First Name<span class="text-danger">*</span></label>
+                <input type="text" [(ngModel)]="faculty.firstname" class="form-control form-control-sm" id="staffid">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="staffid">Last Name<span class="text-danger">*</span></label>
+                <input type="text" [(ngModel)]="faculty.lastname" class="form-control form-control-sm" id="staffid">
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="form-group">
+                <label for="department">Department<span class="text-danger">*</span></label>
+                <select [(ngModel)]="faculty.designation" class="form-control form-control-sm" id="department">
+                    <option value="{{designation.title}}" *ngFor="let designation of designationList">{{designation.title}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="fathername">Father name</label>
+                <input type="text" [(ngModel)]="faculty.fathername" class="form-control form-control-sm" id="fathername">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="mothername">Mother name</label>
+                <input type="text" [(ngModel)]="faculty.mothername" class="form-control form-control-sm" id="mothername">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" [(ngModel)]="faculty.email" class="form-control form-control-sm" id="email">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select [(ngModel)]="faculty.gender" class="form-control form-control-sm" id="gender">
+                    <option value="Select" >Select</option>
+                    <option value="Male" >Male</option>
+                    <option value="Female" >Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="dob">Date of Birth<span class="text-danger">*</span></label>
+                <input type="date" [(ngModel)]="faculty.dob" class="form-control form-control-sm" id="dob">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="doj">Date of Joining<span class="text-danger">*</span></label>
+                <input type="date" [(ngModel)]="faculty.doj" class="form-control form-control-sm" id="doj">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="phone">Phone<span class="text-danger">*</span></label>
+                <input type="text" [(ngModel)]="faculty.phone" class="form-control form-control-sm" id="phone">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="phone2">Emergency Contact Number</label>
+                <input type="text" [(ngModel)]="faculty.phone2" class="form-control form-control-sm" id="phone2">
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="maritialstatus">Marital Status</label>
+                <select [(ngModel)]="faculty.maritialstatus" class="form-control form-control-sm" id="maritialstatus">
+                    <option value="Select">Select</option>
+                    <option value="Single">Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Not specified">Not specified</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-3 col-12">
+            <div class="form-group">
+                <label for="maritialstatus">Photo</label>
+                <input type="file" [(ngModel)]="faculty.photo" class="form-control form-control-sm" id="phone2">
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="form-group">
+                <label for="currentaddress">Current Address</label>
+                <textarea [(ngModel)]="faculty.currentaddress" name="currentaddress" id="currentaddress" cols="" rows="3" class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="form-group">
+                <label for="permenentaddress">Permanent Address</label>
+                <textarea [(ngModel)]="faculty.permenentaddress" name="permenentaddress" id="permenentaddress" cols="" rows="3" class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="form-group">
+                <label for="qualification">Qualification</label>
+                <textarea [(ngModel)]="faculty.qualification" name="qualification" id="qualification" cols="" rows="2" class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="form-group">
+                <label for="workexperiance">Work Experience</label>
+                <textarea [(ngModel)]="faculty.workexperiance" name="workexperiance" id="workexperiance" cols="" rows="2" class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-12 col-12">
+            <div class="form-group">
+                <label for="note">Note</label>
+                <textarea [(ngModel)]="faculty.note" name="note" id="note" cols="" rows="4" class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="col-12 d-flex align-items-center justify-content-end">
+            <button class="btn  btn-sm shadow-sm custom-btn" (click)="save()">Save</button>
+        </div>
+    </div>
+</div>

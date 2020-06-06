@@ -1,0 +1,67 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-2 p-0 sidebar">
+        <div class="side-header text-white text-center p-1">
+          Mini school crm
+        </div>
+        <div class="col custom-link" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+         <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Faculty Controls</span></span>
+          <i class="fas fa-chevron-right text-white"></i>
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="col sub-menu" [routerLink]="['/sadmin/faculty']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Staff Directory</div>
+            <div class="col sub-menu" [routerLink]="['/sadmin/department']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Department</div>
+            <div class="col sub-menu" [routerLink]="['/sadmin/designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
+        </div>
+        <!-- <mat-nav-list>
+          <div class="side-header text-white text-center p-1">
+            Mini school crm
+          </div>
+          <a mat-list-item id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-address-card text-white" aria-hidden="true"></i>
+              <span class="menuLabel">Faculty</span>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div></a>
+              
+          <a mat-list-item [routerLink]="['/student/home/class']" routerLinkActive="router-link-active" ><i class="fa fa-video-camera text-white" aria-hidden="true"></i>
+              <span class="menuLabel">Students</span></a>
+          <a mat-list-item><i class="fas fa-book-reader text-white" text-white></i>
+              <span class="menuLabel">Classes</span></a>
+          <a mat-list-item><i class="fas fa-pen-alt text-white"></i>
+              <span class="menuLabel">Live class</span></a>
+          <a mat-list-item><i class="fa fa-file-text text-white" aria-hidden="true"></i>
+              <span class="menuLabel">Exam</span></a>
+          <a mat-list-item><i class="fa fa-address-book text-white" aria-hidden="true"></i>
+              <span class="menuLabel">Assignments</span></a>
+          <a mat-list-item><i class="fas fa-user-clock text-white"></i>
+              <span class="menuLabel">My Performance</span></a>
+          <a mat-list-item><i class="fas fa-user-check text-white"></i>
+              <span class="menuLabel">Attendance</span></a>
+          <a mat-list-item><i class="fas fa-person-booth text-white"></i>
+              <span class="menuLabel">Apply Leave</span></a>
+          <a mat-list-item><i class="fa fa-calendar text-white" aria-hidden="true"></i>
+              <span class="menuLabel">Notice Board</span></a>
+          <a mat-list-item><i class="fas fa-edit text-white"></i>
+              <span class="menuLabel">Teacher's Review</span></a>
+          <a mat-list-item><i class="fa fa-comments text-white" aria-hidden="true"></i>
+              <span class="menuLabel">Chat</span></a>
+          <a mat-list-item><i class="fa fa-life-ring text-white" aria-hidden="true"></i>
+              <span class="menuLabel">Help Center</span></a>
+      </mat-nav-list> -->
+      </div>
+      <div class="col-10 px-0">
+  
+        <div class="container-fluid">
+          <div class="row appbar">
+            <div class="col-12 p-2">appbar</div>
+          </div>
+        </div>
+  
+        <div class="col px-0 bg-light py-2 form-wraper">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>

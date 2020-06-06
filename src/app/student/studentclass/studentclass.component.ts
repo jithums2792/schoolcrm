@@ -66,6 +66,10 @@ async navigate() {
   };
   this.router.navigate(['/student/home/liveclass2'], options);
 }
+
+navigate2() {
+  this.router.navigate(['/student/home/liveclass2']);
+}
    
 }
 

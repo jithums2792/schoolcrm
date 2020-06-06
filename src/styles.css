@@ -7,6 +7,9 @@ body { margin: 0; font-family: 'Ubuntu', sans-serif; }
 .pointer {
   cursor: pointer;
 }
+.fa-chevron-right {
+  font-size: 10px;
+}
 .pr-3 {
   padding-right: 12px;
 }
@@ -42,4 +45,67 @@ body { margin: 0; font-family: 'Ubuntu', sans-serif; }
   background-color: white;
   color: black;
   border:2px solid green;
+}
+.menuLabel {
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 10px;
+}
+
+.custom-link {
+  background-color: #434258;
+  margin-top: 5px;
+  padding: 5px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+
+.sidebar {
+  height: 100vh;
+  background-color: #4a4963;
+  overflow-y: scroll;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.appbar {
+  height: 50px;
+}
+.side-header {
+  height: 50px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #434258;
+}
+.router-link-active {
+background-color: #27263e !important;
+}
+.router-link-active  .fa{
+  color: #b091fb !important;
+}
+.custom-btn {
+  min-width: 100px !important;
+  background-color: #434258;
+  color: white;
+}
+.custom-btn:hover {
+  background-color: white;
+  border: 1px solid #434258;
+  color:#434258;
+}
+i:focus {
+  outline: none !important;
+}
+.sub-menu {
+  font-size: 12px;
+  color: white;
+  background-color: #37364a;
+  padding: 5px 5px;
 }

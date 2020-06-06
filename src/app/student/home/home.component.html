@@ -1,5 +1,36 @@
-<mat-sidenav-container>
-  <mat-sidenav  #sidenav mode="side">sample</mat-sidenav>
+<!-- <mat-sidenav-container>
+  <mat-sidenav  #sidenav mode="side">
+    <div class="container-fluid">
+      <mat-nav-list>
+        <a mat-list-item [routerLink]="['/student/myProfile']"><i class="fa fa-address-card text-white" aria-hidden="true"></i>
+            <span class="menuLabel">My Profile</span></a>
+        <a mat-list-item><i class="fa fa-video-camera text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Live Classes</span></a>
+        <a mat-list-item><i class="fas fa-book-reader text-white" text-white></i>
+            <span class="menuLabel">Classes</span></a>
+        <a mat-list-item><i class="fas fa-pen-alt text-white"></i>
+            <span class="menuLabel">HomeWorks</span></a>
+        <a mat-list-item><i class="fa fa-file-text text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Exam</span></a>
+        <a mat-list-item><i class="fa fa-address-book text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Assignments</span></a>
+        <a mat-list-item><i class="fas fa-user-clock text-white"></i>
+            <span class="menuLabel">My Performance</span></a>
+        <a mat-list-item><i class="fas fa-user-check text-white"></i>
+            <span class="menuLabel">Attendance</span></a>
+        <a mat-list-item><i class="fas fa-person-booth text-white"></i>
+            <span class="menuLabel">Apply Leave</span></a>
+        <a mat-list-item><i class="fa fa-calendar text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Notice Board</span></a>
+        <a mat-list-item><i class="fas fa-edit text-white"></i>
+            <span class="menuLabel">Teacher's Review</span></a>
+        <a mat-list-item><i class="fa fa-comments text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Chat</span></a>
+        <a mat-list-item><i class="fa fa-life-ring text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Help Center</span></a>
+    </mat-nav-list>
+    </div>
+  </mat-sidenav>
   <mat-sidenav-container>
     <mat-toolbar color="primary">
       <i class="fas fa-align-center pointer" (click)="sidenav.toggle()"></i>
@@ -7,4 +38,53 @@
     <router-outlet></router-outlet>
   </mat-sidenav-container>
 </mat-sidenav-container>
+ -->
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 p-0 sidebar">
+      <mat-nav-list>
+        <div class="side-header text-white text-center p-1">
+          Mini school crm
+        </div>
+        <a mat-list-item [routerLink]="['/student/myProfile']" routerLinkActive="router-link-active"><i class="fa fa-address-card text-white" aria-hidden="true"></i>
+            <span class="menuLabel">My Profile</span></a>
+        <a mat-list-item [routerLink]="['/student/home/class']" routerLinkActive="router-link-active" ><i class="fa fa-video-camera text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Live Classes</span></a>
+        <a mat-list-item><i class="fas fa-book-reader text-white" text-white></i>
+            <span class="menuLabel">Classes</span></a>
+        <a mat-list-item><i class="fas fa-pen-alt text-white"></i>
+            <span class="menuLabel">HomeWorks</span></a>
+        <a mat-list-item><i class="fa fa-file-text text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Exam</span></a>
+        <a mat-list-item><i class="fa fa-address-book text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Assignments</span></a>
+        <a mat-list-item><i class="fas fa-user-clock text-white"></i>
+            <span class="menuLabel">My Performance</span></a>
+        <a mat-list-item><i class="fas fa-user-check text-white"></i>
+            <span class="menuLabel">Attendance</span></a>
+        <a mat-list-item><i class="fas fa-person-booth text-white"></i>
+            <span class="menuLabel">Apply Leave</span></a>
+        <a mat-list-item><i class="fa fa-calendar text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Notice Board</span></a>
+        <a mat-list-item><i class="fas fa-edit text-white"></i>
+            <span class="menuLabel">Teacher's Review</span></a>
+        <a mat-list-item><i class="fa fa-comments text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Chat</span></a>
+        <a mat-list-item><i class="fa fa-life-ring text-white" aria-hidden="true"></i>
+            <span class="menuLabel">Help Center</span></a>
+    </mat-nav-list>
+    </div>
+    <div class="col-10 px-0">
 
+      <div class="container-fluid">
+        <div class="row appbar">
+          <div class="col-12 p-2">appbar</div>
+        </div>
+      </div>
+
+      <div class="col px-0 bg-light py-2">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

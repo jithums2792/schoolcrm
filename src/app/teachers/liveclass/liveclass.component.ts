@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
-declare var MediaStreamRecorder: any;
+declare var MediaRecorder: any;
 
 @Component({
   selector: 'app-liveclass',
@@ -64,7 +64,8 @@ export class LiveclassComponent implements OnInit {
   } };
   public localVideo: HTMLVideoElement;
   public remoteVideo: HTMLVideoElement;
-
+  public mediaRecoder;
+  public  recordedBlobs = [];
 
   constructor(private router: Router, private toastservice: ToastrService) { }
 
@@ -156,6 +157,7 @@ export class LiveclassComponent implements OnInit {
   }
 
   async activateLiveStream() {
+    let options = {mimeType: 'video/webm;codecs=vp9,opus'};
     const localHost = document.getElementById('hostvideo');
     this.localVideo = document.createElement('video');
     this.localVideo.setAttribute('autoplay', 'true');
@@ -167,6 +169,28 @@ export class LiveclassComponent implements OnInit {
       this.localVideo.srcObject = stream;
       this.localStream = stream;
       localHost.replaceChild(this.localVideo, localHost.childNodes[1]);
+      if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+        console.error(`${options.mimeType} is not supported`);
+        options = {mimeType: 'video/webm;codecs=vp8,opus'};
+        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+          console.error(`${options.mimeType} is not supported`);
+          options = {mimeType: 'video/webm'};
+          if (!MediaRecorder.isTypeSupported(options.mimeType)) {
+            console.error(`${options.mimeType} is not supported`);
+            options = {mimeType: ''};
+          }
+        }
+      }
+      this.mediaRecoder = await new MediaRecorder(this.localStream, {mimeType: 'video/x-matroska;codecs=avc1,opus'});
+      this.mediaRecoder.onstop = (event) => {
+        console.log('Recorder stopped: ', event);
+        console.log('Recorded Blobs: ', this.recordedBlobs);
+      };
+      this.mediaRecoder.ondataavailable = (event) => {
+        console.log('data available');
+        this.recordedBlobs.push(event.data)
+      }
+      this.mediaRecoder.start();
     }).catch (err => {
       this.toastservice.error('cant get media', 'error');
     })
@@ -181,11 +205,17 @@ export class LiveclassComponent implements OnInit {
     this.activateLiveStream();
   }
   async stopStream() {
+    const recordList = document.getElementById('recordedVideo');
+    this.mediaRecoder.stop();
     this.playFlag = true;
     this.VideobuttonFlag = false;
     this.audiobuttonFlag = false;
+    const blob = new Blob(this.recordedBlobs, {type: 'video/x-matroska;codecs=avc1,opus'});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    recordList.appendChild(a);
     this.activateLiveStream();
-    location.reload();
   }
 
   async videoControl(value){
@@ -207,13 +237,7 @@ export class LiveclassComponent implements OnInit {
     await screeniaDevice.getDisplayMedia({video: true}).then(stream => {
     this.localVideo.srcObject = stream;
     this.localStream = stream;
-    let recorder = new MediaStreamRecorder(stream, {
-      audioBitsPerSecond : 128000,
-      videoBitsPerSecond : 2500000,
-      mimeType : 'video/mp4'
-    });
-    recorder.start();
-    console.log(recorder);
+   
     localHost.replaceChild(this.localVideo, localHost.childNodes[1]);
     }).catch(err => {
       this.toastservice.error('your device not support sharing now..!', 'error');

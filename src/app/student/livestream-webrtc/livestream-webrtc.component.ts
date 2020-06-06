@@ -56,7 +56,11 @@ studentid = 'tempstudent' + Date.now();
     const localhost = document.getElementById('host');
     this.localVideo = document.createElement('video');
     this.localVideo.setAttribute('autoplay', 'true');
+    this.localVideo.classList.add('ssss');
     this.localVideo.srcObject = localStream;
+    this.localVideo.width = 200;
+    this.localVideo.height = 250;
+    this.localVideo.volume = 0;
     localhost.appendChild(this.localVideo);
 
     localStream.getTracks().forEach(track => {
@@ -118,15 +122,18 @@ studentid = 'tempstudent' + Date.now();
     };
 
     this.peerConnection.ontrack = (event) => {
+      let i = 0;
       const remotestream = new MediaStream();
       remotestream.addTrack(event.track);
       console.log('got mediastream', event.streams);
       const remotehost = document.getElementById('remote');
       this.remoteVideo = document.createElement('video');
       this.remoteVideo.setAttribute('autoplay', 'true');
+      this.remoteVideo.style.position = 'absolute';
       this.remoteVideo.srcObject = remotestream;
+      this.remoteVideo.height = 600;
       remotehost.appendChild(this.remoteVideo);
-
+      i++;
     };
 
     this.socket.on('onicecandidateteacher', async (iceCandidateobject) => {
