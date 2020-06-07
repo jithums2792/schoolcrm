@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
-import { Ng2SmartTableModule } from 'ngx-smart-table';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { LayoutComponent } from './layout/layout.component';
@@ -27,7 +26,6 @@ import { ClassallocationComponent } from './class-control/classallocation/classa
     FormsModule,
     MaterialModule,
     SharedModule,
-    Ng2SmartTableModule,
     AdminRoutingModule
   ]
 })
