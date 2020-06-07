@@ -234,7 +234,7 @@ export class LiveclassComponent implements OnInit {
     this.localVideo.setAttribute('autoplay', 'true');
     this.localVideo.setAttribute('id', 'localstream');
     const screeniaDevice = navigator.mediaDevices as any;
-    await screeniaDevice.getDisplayMedia({video: true}).then(stream => {
+    await screeniaDevice.getDisplayMedia({video: true, audio: true}).then(stream => {
     this.localVideo.srcObject = stream;
     this.localStream = stream;
    
