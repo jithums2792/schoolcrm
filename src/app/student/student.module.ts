@@ -8,10 +8,11 @@ import { HomeComponent } from './home/home.component';
 import { StudentclassComponent } from './studentclass/studentclass.component';
 import { LiveclassComponent } from './liveclass/liveclass.component';
 import { LivestreamWebrtcComponent } from './livestream-webrtc/livestream-webrtc.component';
+import { StudymaterialComponent } from './studymaterial/studymaterial.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent],
+  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent],
   imports: [
     CommonModule,
     MaterialModule,

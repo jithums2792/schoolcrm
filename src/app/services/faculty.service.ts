@@ -15,6 +15,9 @@ export class FacultyService {
   getAllstaff(): Observable<any> {
     return this.http.get(this.api + 'teacher/all');
   }
+  getFacultyinfoByid(id):Observable<any> {
+    return this.http.get(this.api + 'teacher/teacher/'+ id);
+  }
   addFaculty(faculty): Observable<any> {
     return this.http.post(this.api + 'teacher/create', faculty);
   }

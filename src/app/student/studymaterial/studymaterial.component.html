@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <div class="row my-2">
+        <div class="col-12">
+
+            <div class="card">
+                <div class="col bg-card-head text-white py-2 border-bottom pointer" data-toggle="collapse" href="#photogallery" role="button" aria-expanded="false" aria-controls="photogallery">
+                    <span><strong>Photo Gallery</strong></span>
+                </div>
+                <div class="collapse" id="photogallery">
+                    <div class="col d-flex flex-wrap py-1">
+                        <div class="img-item position-relative pointer mx-1" *ngFor="let file of photoList">
+                            <img src="{{file.content}}" width="120px" height="150px" alt="" class="">
+                            <div class="position-absolute caption text-white p-1">
+                                {{file.name}}
+                                <a href="{{file.content}}" download="{{file.name}}"><i class="fas fa-download float-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 border-bottom pointer" data-toggle="collapse" href="#pdfgallery" role="button" aria-expanded="false" aria-controls="pdfgallery">
+                    <span><strong>Pdf Gallery</strong></span>
+                </div>
+                <div class="collapse" id="pdfgallery">
+                    <div class="card card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 border-bottom pointer" data-toggle="collapse" href="#documentgallery" role="button" aria-expanded="false" aria-controls="documentgallery">
+                    <span><strong>Document Gallery</strong></span>
+                </div>
+                <div class="collapse" id="documentgallery">
+                    <div class="card card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 border-bottom pointer" data-toggle="collapse" href="#linkgallery" role="button" aria-expanded="false" aria-controls="linkgallery">
+                    <span><strong>Link Gallery</strong></span>
+                </div>
+                <div class="collapse" id="linkgallery">
+                    <div class="card card-body">
+                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

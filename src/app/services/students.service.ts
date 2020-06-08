@@ -15,6 +15,10 @@ export class StudentsService {
     return this.http.get(this.api + 'student/all');
   }
 
+  getStudentbyid(id): Observable<any> {
+    return this.http.get(this.api + 'student/student/'+ id);
+  }
+
   getStudentsListByClass(classname, section): Observable<any> {
     return this.http.get(this.api + 'student/class/' + classname + '/' + section);
   }

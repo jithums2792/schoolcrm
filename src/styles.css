@@ -115,3 +115,6 @@ i:focus {
 .bg-light {
   background-color: #ecedef !important;
 }
+.bg-card-head {
+  background-color: #4A4963;
+}

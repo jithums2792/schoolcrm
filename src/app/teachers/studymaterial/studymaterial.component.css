@@ -1,0 +1,46 @@
+.caption{
+    bottom: 0;
+    left: 0;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: none;
+    font-size: 10px;
+}
+.img-item:hover  .caption {
+    display: block;
+}
+
+a{
+    color: white;
+    font-size: 12px;
+}
+.fa-download:hover{
+    color: white;
+    font-size: 12px;
+}
+.pdf{
+    width: 100px;
+    height: auto;
+}
+.fa-file-pdf {
+    font-size: 32px;
+}
+.pdf-title {
+   overflow: hidden;
+}
+.edit {
+    width: 100%;
+    top: 0;
+    right: 0;
+    display: none;
+}
+.img-item:hover  .edit {
+    display: block;
+}
+.fa-trash-alt:hover {
+    color: red;
+}
+.fa-edit:hover {
+    color: white;
+}

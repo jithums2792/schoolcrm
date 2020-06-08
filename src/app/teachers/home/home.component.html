@@ -8,9 +8,13 @@
         <div class="col-12 py-2 side-menu mt-1  text-white d-flex align-items-center">
           <i class="fas fa-id-card mr-3 sub-title"></i> <span>My Profile</span>
         </div>
-        <div class="col-12 py-2 side-menu mt-1 text-white d-flex align-items-center">
+        <div class="col-12 py-2 side-menu mt-1 text-white d-flex align-items-center pointer" [routerLink]="['/teacher/home/class']">
           <i class="fas fa-podcast mr-3 sub-title"></i> <span>Live class</span>
         </div>
+        <div class="col-12 py-2 side-menu mt-1 text-white d-flex align-items-center pointer" [routerLink]="['/teacher/home/studymaterial']">
+          <i class="fas fa-atlas mr-3 sub-title"></i> <span>Study Materials</span>
+        </div>
+
 
       </div>
     </div>
