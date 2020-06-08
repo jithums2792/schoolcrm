@@ -21,8 +21,18 @@
                     <span><strong>Pdf Gallery</strong></span>
                 </div>
                 <div class="collapse" id="pdfgallery">
-                    <div class="card card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                    <div class="col bg-white py-2 d-flex flex-wrap">
+                        <div class="card" *ngFor="let item of pdfList">
+                            <div class="col bg-card-head text-white py-2">{{item.name}}</div>
+                            <div class="col d-flex flex-column justify-content-center align-items-center py-2">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Subject: {{item.subject}}</span>
+                            </div>
+                            <div class="col bg-card-head py-2">
+                                <a [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.pdf"><i class="fas fa-download float-right"></i></a>
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col bg-card-head text-white py-2 border-bottom pointer" data-toggle="collapse" href="#documentgallery" role="button" aria-expanded="false" aria-controls="documentgallery">
@@ -30,7 +40,7 @@
                 </div>
                 <div class="collapse" id="documentgallery">
                     <div class="card card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      updated shortly
                     </div>
                 </div>
                 <div class="col bg-card-head text-white py-2 border-bottom pointer" data-toggle="collapse" href="#linkgallery" role="button" aria-expanded="false" aria-controls="linkgallery">
@@ -38,7 +48,7 @@
                 </div>
                 <div class="collapse" id="linkgallery">
                     <div class="card card-body">
-                      Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                      updated shortly
                     </div>
                 </div>
             </div>

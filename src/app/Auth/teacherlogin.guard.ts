@@ -5,19 +5,17 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginGuard implements CanActivate {
-  constructor(private router: Router){}
+export class TeacherloginGuard implements CanActivate {
+  constructor(private router: Router) {}
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(localStorage.getItem('student') === null && localStorage.getItem('student') === undefined || localStorage.getItem('student') === '') {
+      if(localStorage.getItem('teacher') === null || localStorage.getItem('teacher') === undefined || localStorage.getItem('teacher') === ''){
         this.router.navigate(['/home']);
         return false;
       } else {
         return true;
       }
-      
-
   }
   
 }

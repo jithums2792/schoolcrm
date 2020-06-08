@@ -26,9 +26,9 @@ export class LayoutComponent implements OnInit {
     }
     this.studentservice.login(data).subscribe(data => {
       if (data.data.length >= 1) {
-        localStorage.setItem('student', data.data[0]._id)
+        localStorage.setItem('student', data.data[0]._id);
+        this.router.navigate(['/student']);
       }
-      this.router.navigate(['/student'])
     });
   }
   teacherlogin() {
@@ -38,9 +38,10 @@ export class LayoutComponent implements OnInit {
     };
     this.facultyservice.login(data).subscribe(data => {
       if (data.data.length >= 1) {
-        localStorage.setItem('teacher', data.data[0]._id)
+        localStorage.setItem('teacher', data.data[0]._id);
+        this.router.navigate(['/teacher']);
       }
-      this.router.navigate(['/teacher'])
+      
     })
   }
 
