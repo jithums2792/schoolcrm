@@ -66,13 +66,22 @@ export class LiveclassComponent implements OnInit {
   public remoteVideo: HTMLVideoElement;
   public mediaRecoder;
   public  recordedBlobs = [];
+  public room = 'English';
 
-  constructor(private router: Router, private toastservice: ToastrService) { }
+  constructor(private router: Router, private toastservice: ToastrService) {
+    try {
+      this.room = router.getCurrentNavigation().extras.state.data;
+    } catch (error) {
+      router.navigate(['/teacher/home/class'])
+    }
+   }
 
   async ngOnInit() {
-    console.log(this.VideobuttonFlag);
-    console.log(environment.socket);
-    this.socket.on('connection', (data) => console.log(data));
+    this.socket.on('connection', (data) =>{
+    })
+    this.socket.emit('join', this.room);
+    this.socket.on('join', (data) => {
+    })
 
 
     this.socket.on('newestudentjoined', async (studentid, socketId) => {
@@ -84,14 +93,13 @@ export class LiveclassComponent implements OnInit {
           this.peerConnection[studentid].addTrack(track, this.localStream);
         });
 
-        console.log('newestudentjoined ');
         const offer = await this.peerConnection[studentid].createOffer();
         this.peerConnection[studentid].setLocalDescription(offer);
-        console.log('offer created on teacher side', offer);
 
         const offerObject = {
           studentid:studentid,
-          offer:offer
+          offer:offer,
+          room: this.room
         };
         this.socket.emit('newoffer', offerObject);
 
@@ -114,12 +122,8 @@ export class LiveclassComponent implements OnInit {
       target.remove();
     })
     this.socket.on('onicecandidatestudent', async (iceCandidateobject) => {
-      console.log('onicecandidatestudent received on teacher side');
-      console.log(iceCandidateobject);
       this.studentId = iceCandidateobject.studentid;
-      // console.log(msg.data)
       this.peerConnection[iceCandidateobject.studentid].addIceCandidate(new RTCIceCandidate(iceCandidateobject.candidate));
-      console.log(this.peerConnection);
     });
 
   }
@@ -137,11 +141,11 @@ export class LiveclassComponent implements OnInit {
     remotehost.appendChild(this.remoteVideo);
 
     this.peerConnection[studentid].onicecandidate = (msg) => {
-        console.log('onicecandidateteacher triggered teacher side');
         if (msg.candidate) {
         const iceCandidateobject = {
           studentid:studentid,
-          candidate: msg.candidate
+          candidate: msg.candidate,
+          room: this.room
         };
         this.socket.emit('onicecandidateteacher', iceCandidateobject );
       }
@@ -149,17 +153,16 @@ export class LiveclassComponent implements OnInit {
 
 
     this.peerConnection[studentid].ontrack = async (event) => {
-      console.log('ontrack triggered teacher side');
       await remotestream.addTrack(event.track);
-      console.log('got mediastream', event.track);
 
     };
   }
 
   async activateLiveStream() {
-    let options = {mimeType: 'video/webm;codecs=vp9,opus'};
+    const recvideoList = document.getElementById('recordedVideo');
     const localHost = document.getElementById('hostvideo');
     this.localVideo = document.createElement('video');
+    const link = document.createElement('a');
     this.localVideo.setAttribute('autoplay', 'true');
     this.localVideo.volume = 0;
     this.localVideo.setAttribute('id', 'localstream');
@@ -169,26 +172,23 @@ export class LiveclassComponent implements OnInit {
       this.localVideo.srcObject = stream;
       this.localStream = stream;
       localHost.replaceChild(this.localVideo, localHost.childNodes[1]);
-      if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-        console.error(`${options.mimeType} is not supported`);
-        options = {mimeType: 'video/webm;codecs=vp8,opus'};
-        if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-          console.error(`${options.mimeType} is not supported`);
-          options = {mimeType: 'video/webm'};
-          if (!MediaRecorder.isTypeSupported(options.mimeType)) {
-            console.error(`${options.mimeType} is not supported`);
-            options = {mimeType: ''};
-          }
-        }
-      }
-      this.mediaRecoder = await new MediaRecorder(this.localStream, {mimeType: 'video/x-matroska;codecs=avc1,opus'});
+      
+      this.mediaRecoder = await new MediaRecorder(this.localStream);
       this.mediaRecoder.onstop = (event) => {
-        console.log('Recorder stopped: ', event);
-        console.log('Recorded Blobs: ', this.recordedBlobs);
+        const reader = new FileReader();
+        let blob = new Blob(this.recordedBlobs, {type: 'video/webm'})
+        link.href =  URL.createObjectURL(blob);
+        link.download = 'sample.webm';
+        link.innerText = 'download';
+        recvideoList.appendChild(link);
+        // reader.onload = () => {
+        //   link.setAttribute('download', 'sample.webm');
+          
+        // };
+        // reader.readAsDataURL(blob)
       };
       this.mediaRecoder.ondataavailable = (event) => {
-        console.log('data available');
-        this.recordedBlobs.push(event.data)
+        this.recordedBlobs.push(event.data);
       }
       this.mediaRecoder.start();
     }).catch (err => {
@@ -205,23 +205,18 @@ export class LiveclassComponent implements OnInit {
     this.activateLiveStream();
   }
   async stopStream() {
-    const recordList = document.getElementById('recordedVideo');
+    this.localStream.getTracks().forEach(track => {
+      track.stop()
+    });
     this.mediaRecoder.stop();
     this.playFlag = true;
     this.VideobuttonFlag = false;
     this.audiobuttonFlag = false;
-    const blob = new Blob(this.recordedBlobs, {type: 'video/x-matroska;codecs=avc1,opus'});
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    recordList.appendChild(a);
-    this.activateLiveStream();
   }
 
   async videoControl(value){
     this.VideobuttonFlag = value;
     this.activateLiveStream();
-    console.log(this.localStream);
   }
 
   async audioControl(value){

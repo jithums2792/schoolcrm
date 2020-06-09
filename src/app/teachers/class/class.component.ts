@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
+import { ClassesService } from 'src/app/services/classes.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 
 @Component({
@@ -16,75 +18,25 @@ export class ClassComponent implements OnInit {
   public localVideo: HTMLVideoElement;
   public remoteVideo: HTMLVideoElement;
 
-  public classList = [
-    {class: 's4', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'active', order: 1,},
-    {class: 's6', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'upcomming', order: 2},
-    {class: 's1', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 5},
-    {class: 's3', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 3},
-    {class: 's7', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 6},
-    {class: 's8', subject: 'Electronics', module: 'Module 1: Basic electronics', startus: 'inactive', order: 4}
-  ]
+  public classList = [];
 
 
 
-  constructor() { }
+  constructor(private classservice: ClassesService,private router: Router) { }
 
    async ngOnInit() {
-    this.socket.on('connection', (data) => console.log(data));
-    this.socket.on('message', async  (msg) => {
-      if (msg.type === 'answer') {
-        console.log('got answer', msg);
-        this.peerConnection.setRemoteDescription(new RTCSessionDescription(msg));
-
-
-
-        console.log('remote added');
-      } else if (msg.type === 'offer') {
-        console.log('got offer', msg);
-
-      } else {
-        console.log('got candidate', msg);
-        this.peerConnection.addIceCandidate(new RTCIceCandidate(msg));
-
-        this.peerConnection.ontrack = (event) => {
-          console.log('media from student', event);
-          const remotrstream = new MediaStream();
-          remotrstream.addTrack(event.track);
-          const remotehost = document.getElementById('remote');
-          this.remoteVideo = document.createElement('video');
-          this.remoteVideo.setAttribute('autoplay', 'true');
-          this.remoteVideo.srcObject = remotrstream;
-          remotehost.appendChild(this.remoteVideo);
-
-        }
-      }
-    });
-
+     this.getAllclass();
    }
-  async activateLiveStream() {
-     const localHost = document.getElementById('host');
-     this.localVideo = document.createElement('video');
-     this.localVideo.setAttribute('autoplay', 'true');
-     const localStream = await navigator.mediaDevices.getUserMedia(this.constrains);
-     this.localVideo.srcObject = localStream;
-     localHost.appendChild(this.localVideo);
-     localStream.getTracks().forEach(track => {
-      this.peerConnection.addTrack(track, localStream);
-    });
 
-     this.peerConnection.onicecandidate = (msg) => {
-      if (msg.candidate) {
-        console.log('class icecandidate', msg);
-        this.socket.emit('message', msg.candidate);
-        }
-    };
+   async getAllclass() {
+     this.classservice.getAllclass().subscribe(data => this.classList = data.data);
+   }
 
-     const offer = await this.peerConnection.createOffer();
-     this.peerConnection.setLocalDescription(offer);
-     console.log('offer created', offer);
-     this.socket.emit('message', offer);
-
-
+   async navigate(value, section) {
+     const option: NavigationExtras = {
+       state: {data: value + section}
+     };
+     this.router.navigate(['/teacher/home/liveclass'], option)
    }
 
 }

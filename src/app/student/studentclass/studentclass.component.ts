@@ -3,6 +3,7 @@ import * as io from 'socket.io-client';
 import { environment } from 'src/environments/environment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, NavigationExtras } from '@angular/router';
+import { StudentsService } from 'src/app/services/students.service';
 
 declare var gapi: any;
 @Component({
@@ -17,16 +18,20 @@ export class StudentclassComponent implements OnInit {
   public playListId = '';
   public url;
   public trustedUrl;
+  public studentInfo;
   
 
   
-  constructor(private sanitizer: DomSanitizer, private router: Router) { }
+  constructor(private sanitizer: DomSanitizer, private router: Router, private studentservice: StudentsService) { }
 
 
 
   async ngOnInit() {
-    
-    
+    this.getstudentinfo();
+  }
+
+  async getstudentinfo() {
+    this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => this.studentInfo = data.data);
   }
 
   authenticate() {

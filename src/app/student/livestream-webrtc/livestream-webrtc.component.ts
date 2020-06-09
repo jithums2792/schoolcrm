@@ -41,16 +41,19 @@ export class LivestreamWebrtcComponent implements OnInit {
   }
   ] };
   public peerConnection = new RTCPeerConnection(this.configuration);
+  public room = 'English';
 
 
 
 
 studentid = 'tempstudent' + Date.now();
 
-  constructor() { }
+  constructor() {
+    this.room = localStorage.getItem('studentclass') + localStorage.getItem('studentsection');
+   }
 
   async ngOnInit() {
-    console.log('asdasdasdsa')
+    console.log(this.room)
 
     const localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
     const localhost = document.getElementById('host');
@@ -76,7 +79,10 @@ studentid = 'tempstudent' + Date.now();
     });
 
 
-
+    this.socket.emit('join', this.room);
+    this.socket.on('join', data => {
+      console.log(data)
+    })
     this.socket.on('newoffer', async (offerObject) => {
       // console.log(msg.data)
 
@@ -93,7 +99,8 @@ studentid = 'tempstudent' + Date.now();
 
           var answerObject = {
             studentid: this.studentid,
-            answer: answer
+            answer: answer,
+            room: this.room
           }
 
           this.socket.emit('answer', answerObject);
@@ -115,7 +122,8 @@ studentid = 'tempstudent' + Date.now();
       if (msg.candidate) {
         var iceCandidateobject = {
           studentid: this.studentid,
-          candidate: msg.candidate
+          candidate: msg.candidate,
+          room: this.room
         }
         this.socket.emit('onicecandidatestudent', iceCandidateobject);
       }
