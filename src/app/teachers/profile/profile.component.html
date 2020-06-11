@@ -1,0 +1,66 @@
+<mat-card class="card" *ngIf="studentInfo">
+
+    <!-- card for my details -->
+    <mat-card class="boxArrange">
+      <mat-card-header>
+        <mat-card-title class="iconAlign">My Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="d-flex">
+          <div>
+            <div><img src="{{studentInfo.photo}}" class="imageAlign" /></div>
+            <div class="name">
+              <mat-label>Name: {{studentInfo.firstname}}</mat-label>
+            </div>
+          </div>
+          <div class="col">
+            <div>Staff Id: {{studentInfo.staffid}}</div>
+            <div>Date of Birth: {{studentInfo.dob}}</div>
+            <div>Date of Joining: {{studentInfo.doj}}</div>
+            <div>Mobile Number:  {{studentInfo.phone}}</div>
+            <div>Caste</div>
+            <div>Religion</div>
+            <div>Email: {{studentInfo.email}}</div>
+            <div>Blood Group</div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- card for my details -->
+    <mat-card class="boxArrange">
+      <mat-card-header>
+        <mat-card-title class="iconAlign">Address Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="colArrange">
+          <div>Current Address</div>
+          <div>Permanent Address</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+    <!-- card for my details -->
+    <mat-card class="boxArrange">
+      <mat-card-header>
+        <mat-card-title class="iconAlign">Parent/ Guardian Details</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="colArrange">
+          <div>Father Name</div>
+          <div>Father Phone</div>
+          <div>Father Occupation</div>
+          <div>Mother Name</div>
+          <div>Mother Phone</div>
+          <div>Mother Occupation</div>
+          <div>Guardian Name</div>
+          <div>Guardian Email</div>
+          <div>Guardian Relation</div>
+          <div>Guardian Phone</div>
+          <div>Guardian Occupation</div>
+          <div>Guardian Address</div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+  </mat-card>
