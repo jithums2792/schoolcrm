@@ -9,10 +9,11 @@ import { HomeComponent } from './home/home.component';
 import { ClassComponent } from './class/class.component';
 import { LiveclassComponent } from './liveclass/liveclass.component';
 import { StudymaterialComponent } from './studymaterial/studymaterial.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent],
+  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent],
   imports: [
     CommonModule,
     FormsModule,

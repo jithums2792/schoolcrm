@@ -5,6 +5,7 @@ import { StudentclassComponent } from './studentclass/studentclass.component';
 import { LiveclassComponent } from './liveclass/liveclass.component';
 import { LivestreamWebrtcComponent } from './livestream-webrtc/livestream-webrtc.component';
 import { StudymaterialComponent } from './studymaterial/studymaterial.component';
+import { ExamsComponent } from './exams/exams.component';
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
     {path: 'liveclass', component: LiveclassComponent},
     {path: 'liveclass2', component: LivestreamWebrtcComponent},
     {path: 'studymaterial', component: StudymaterialComponent},
+    {path: 'exams', component: ExamsComponent},
     {path: '', redirectTo: 'class', pathMatch: 'full'}
   ]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}

@@ -26,14 +26,15 @@ export class StudymaterialComponent implements OnInit {
   public linkList = [];
   public saveFlag = true;
   public fileId;
+  public uploadFlag = false;
 
   public studymaterial = {
     name: '',
-    room: '',
-    section: '',
-    subject: '',
+    room: 'null',
+    section: 'null',
+    subject: 'null',
     teacher: '',
-    type: '',
+    type: 'null',
     note: '',
     content: null
   }
@@ -87,25 +88,33 @@ export class StudymaterialComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = async () => {
       this.studymaterial.content = await reader.result;
+      this.uploadFlag = true;
     }
   }
 
   async upload() {
-    this.fileuploaderservice.addFile(this.studymaterial).subscribe(data => {
-      if (data.data !== []) {
-        this.toastservice.success('media added', 'Success');
-        this.studymaterial.content = null;
-        this.studymaterial.name = '';
-        this.studymaterial.note = '';
-        this.studymaterial.room = '';
-        this.studymaterial.section ='';
-        this.studymaterial.subject = '';
-        this.studymaterial.teacher = '';
-        this.studymaterial.type = '';
-      } else {
-        this.toastservice.success('something went wrong', 'Error')
-      }
-    })
+    if (this.studymaterial.name !== '' && this.studymaterial.content !== null &&
+        this.studymaterial.room !== 'null' && this.studymaterial.section !== 'null' &&
+        this.studymaterial.subject !== 'null' && this.studymaterial.type !== 'null') {
+          this.fileuploaderservice.addFile(this.studymaterial).subscribe(data => {
+            if (data.data !== []) {
+              this.toastservice.success('media added', 'Success');
+              this.studymaterial.content = null;
+              this.studymaterial.name = '';
+              this.studymaterial.note = '';
+              this.studymaterial.room = '';
+              this.studymaterial.section ='';
+              this.studymaterial.subject = '';
+              this.studymaterial.teacher = '';
+              this.studymaterial.type = '';
+            } else {
+              this.toastservice.success('something went wrong', 'Error')
+            }
+          })
+        } else {
+          this.toastservice.warning('Some field missing', 'Warning')
+        }
+    
   }
 
   async search() {
@@ -135,8 +144,19 @@ export class StudymaterialComponent implements OnInit {
   async delete(data, index) {
     this.fileuploaderservice.deleteFilebyId(data._id).subscribe(data => {
       if (data.data !== []) {
+        if (data.type === 'image'){
+          this.photoList.splice(index, 1);
+        }
+        if (data.type === 'pdf'){
+          this.pdfList.splice(index, 1);
+        }
+        if (data.type === 'doc'){
+          this.docList.splice(index, 1);
+        }
+        if (data.type === 'link'){
+          this.linkList.splice(index, 1);
+        }
         this.toastservice.success('media deleted', 'Success');
-        this.photoList.splice(index, 1);
       } else {
         this.toastservice.success('something went wrong', 'Error')
       }

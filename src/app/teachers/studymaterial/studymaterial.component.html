@@ -37,15 +37,19 @@
                         <div class="form-group mb-0 py-1">
                             <label for="roomselection">Select Class room & section</label>
                             <select [(ngModel)]="studymaterial.room" class="form-control form-control-sm mb-1" id="roomselection" (change)="uploadClassSelection()">
+                                <option value="null">Select class</option>
                                 <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
                             </select>
                             <select [(ngModel)]="studymaterial.section" class="form-control form-control-sm mb-1" id="roomselection">
+                                <option value="null">Select section</option>
                                 <option value="{{section}}" *ngFor="let section of sectionListUpload">{{section}}</option>
                             </select>
                             <select [(ngModel)]="studymaterial.subject" class="form-control form-control-sm mb-1" id="roomselection">
+                                <option value="null">Select Subject</option>
                                 <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
                             </select>
                             <select [(ngModel)]="studymaterial.type" class="form-control form-control-sm" id="roomselection">
+                                <option value="null">Select type</option>
                                 <option value="image">Image</option>
                                 <option value="pdf">Pdf</option>
                                 <option value="doc">Doc</option>
@@ -63,7 +67,7 @@
                 <div class="col bg-card-head shadow-sm text-white py-2 rounded-bottom d-flex align-items-center justify-content-end">
                     <button class="btn btn-sm custom-btn border-white mx-1" (click)="cancel()" *ngIf="! saveFlag">Cancel</button>
                     <button class="btn btn-sm custom-btn border-white" (click)="update()" *ngIf="! saveFlag">Update</button>
-                    <button class="btn btn-sm custom-btn border-white" (click)="upload()" *ngIf="saveFlag">Upload</button>
+                    <button class="btn btn-sm custom-btn border-white" (click)="upload()" *ngIf="saveFlag && uploadFlag">Upload</button>
                  </div>
             </div>
         </div>
@@ -98,8 +102,8 @@
                 </div>
                 <div class="col">
                     <div class="col bg-white py-2 d-flex flex-wrap">
-                        <div class="card" *ngFor="let item of pdfList">
-                            <div class="col bg-card-head text-white py-2">{{item.name}}</div>
+                        <div class="card" *ngFor="let item of pdfList;let i = index;">
+                            <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between"><span>{{item.name}}</span><span><i class="fas fa-edit mx-1 pointer" (click)="edit(item)"></i><i class="fas fa-trash pointer" (click)="delete(item)"></i></span></div>
                             <div class="col d-flex flex-column justify-content-center align-items-center py-2">
                                 <i class="fas fa-file-pdf"></i>
                                 <span>Subject: {{item.subject}}</span>
@@ -127,7 +131,7 @@
                                 <span>Subject: {{item.subject}}</span>
                             </div>
                             <div class="col bg-card-head py-2">
-                                <a [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.pdf"><i class="fas fa-download float-right"></i></a>
+                                <a [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.doc"><i class="fas fa-download float-right"></i></a>
                             </div>
                         </div>
                         

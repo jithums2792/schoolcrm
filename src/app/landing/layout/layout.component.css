@@ -37,3 +37,11 @@
 .bg-default{
   background-color: transparent !important;
 }
+.btn-success{
+  background-color: #0f033c !important;
+  border-color: transparent !important;
+  
+}
+.btn-success.focus, .btn-success:focus {
+  box-shadow: none !important;
+}

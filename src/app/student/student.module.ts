@@ -9,10 +9,11 @@ import { StudentclassComponent } from './studentclass/studentclass.component';
 import { LiveclassComponent } from './liveclass/liveclass.component';
 import { LivestreamWebrtcComponent } from './livestream-webrtc/livestream-webrtc.component';
 import { StudymaterialComponent } from './studymaterial/studymaterial.component';
+import { ExamsComponent } from './exams/exams.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent],
+  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent, ExamsComponent],
   imports: [
     CommonModule,
     MaterialModule,

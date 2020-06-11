@@ -1,15 +1,21 @@
 <div class="container-fluid py-2">
+  <div class="row">
+    <div class="col-12 py-2">
+      <i class="fas fa-arrow-left p-2 rounded-circle shadow-sm mx-2"></i>
+      <span><strong>Active live class</strong></span>
+    </div>
+  </div>
 <div class="row">
  <div class="col-lg-3 col-12 py-1" *ngFor="let class of classList">
-  <div class="card">
+  <div class="card border-0 shadow-sm">
     <div class="container-fluid">
 
       <div class="row border-bottom py-2">
         <div class="col-8">
-          
+          <i class="fas fa-circle text-success mx-2"></i><span>Active</span>
         </div>
         <div class="col-4 d-flex justify-content-end align-items-center">
-          <i class="fas fa-ellipsis-v"></i>
+          <i class="fas fa-ellipsis-v pointer"></i>
         </div>
       </div>
       <div class="row">

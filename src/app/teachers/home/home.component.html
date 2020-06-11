@@ -1,11 +1,11 @@
 <mat-sidenav-container>
-  <mat-sidenav  #sidenav mode="side">
+  <mat-sidenav  #sidenav mode="side" opened>
     <div class="container-fluid">
       <div class="row">
         <div class="col-12 text-white mb-1 d-flex align-items-center justify-content-center">
             <object data="../../../assets/DOMINIE LOGO.svg" type="image/svg+xml" class="logo"></object>
         </div>
-        <div class="col-12 py-2 side-menu mt-1  text-white d-flex align-items-center">
+        <div class="col-12 py-2 side-menu mt-1  text-white d-flex align-items-center pointer" [routerLink]="['/teacher/home/myprofile']">
           <i class="fas fa-id-card mr-3 sub-title"></i> <span>My Profile</span>
         </div>
         <div class="col-12 py-2 side-menu mt-1 text-white d-flex align-items-center pointer" [routerLink]="['/teacher/home/class']">
