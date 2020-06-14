@@ -1,0 +1,10 @@
+<div class="container-fluid">
+    <div class="row bg-white" id="exam">
+        <div class="col-6 mx-auto" *ngFor="let question of exam.questionlist">
+            <span>{{question.que}}</span>
+            <div class="my-1" *ngFor="let option of question.options">
+                <span>{{option.key}}</span> <input type="radio" name="a" id="a"><span>{{option.value}}</span>
+            </div>
+        </div>
+    </div>
+</div>

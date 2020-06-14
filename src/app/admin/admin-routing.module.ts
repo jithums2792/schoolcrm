@@ -10,7 +10,7 @@ import { StudentlistComponent } from './student-controls/studentlist/studentlist
 import { StudentadmisionComponent } from './student-controls/studentadmision/studentadmision.component';
 import { ClasstimetableComponent } from './class-control/classtimetable/classtimetable.component';
 import { SubjectallocationComponent } from './faculty-control/subjectallocation/subjectallocation.component';
-import { ClassallocationComponent } from './class-control/classallocation/classallocation.component';
+import { ClassallocationComponent } from './faculty-control/classallocation/classallocation.component'
 
 
 const routes: Routes = [

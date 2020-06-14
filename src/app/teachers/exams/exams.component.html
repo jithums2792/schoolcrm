@@ -1,0 +1,60 @@
+<div class="container-fluid">
+    <div class="row py-2 bg-light">
+        <div class="col-8 d-flex align-items-center ">
+            <i class="fas fa-grip-vertical mx-2"></i>
+            <span><strong>Exam Control Board</strong></span>
+        </div>
+        <div class="col-4 d-flex align-items-center justify-content-end">
+            <button class="btn btn-sm custom-btn" [routerLink]="['/teacher/home/createexam']" >create exam</button>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-12 d-flex">
+            <select #classSelect class="form-control form-control-sm col-lg-2 col-4 mr-1" (change)="classSelection(classSelect)">
+                <option value="null">Select Class</option>
+                <option value="{{room.room}}" *ngFor="let room of classList">{{room.room}}</option>
+            </select>  
+            <select #sectionSelect class="form-control form-control-sm col-lg-2 col-4 mr-1" (change)="sectionSelection(sectionSelect)">
+                <option value="null">Select Section</option>
+                <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+            </select>
+            <select #subjectSelect class="form-control form-control-sm col-lg-2 col-4 mr-1" (change)="subjectSelection(subjectSelect)">
+                <option value="null">Select Subject</option>
+                <option value="{{subject}}" *ngFor="let subject of subjectList">{{subject}}</option>
+            </select>
+            <button class="btn btn-sm custom-btn" (click)="search()">Search</button>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-12 bg-light py-2 mb-2 d-flex align-items-center ">
+            <i class="fas fa-grip-vertical mx-2"></i>
+            <span><strong>Available Exam List</strong></span>
+        </div>
+        <div class="col-12" *ngFor="let exam of examList">
+            <div class="d-flex p-2 shadow-sm rounded">
+                <div class="col-2 d-flex align-items-center justify-content-center">
+                    <i class="fas fa-award fa-4x text-danger"></i>
+                </div>
+                <div class="col-4  d-flex flex-column">
+                   <span class="my-1"><strong>Name: </strong>{{exam.name}}</span>
+                   <span class="my-1"><strong>class: </strong>{{exam.class}}</span> 
+                   <span class="my-1"><strong>section: </strong>{{exam.section}}</span>
+                   <span class="my-1"><strong>subject: </strong>{{exam.subject}}</span> 
+                   <span class="my-1"><strong>No.of Questions: </strong>{{exam.questionlist.length}}</span>  
+                </div>
+                <div class="col-4  d-flex flex-column ">
+                    <span class="my-1"><strong>Start Time: </strong>{{exam.startdate}}</span>
+                    <span class="my-1"><strong>End date: </strong>{{exam.enddate}}</span> 
+                    <span class="my-1"><strong>Total Marks: </strong>{{exam.totalmarks}}</span>
+                    <span class="my-1"><strong>Teacher: </strong>{{exam.teacher}}</span> 
+                 </div>
+                <div class="col-2 d-flex align-items-center justify-content-end">
+                    <i class="fas fa-edit pointer mx-2"></i>
+                    <i class="fas fa-trash-alt pointer"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  

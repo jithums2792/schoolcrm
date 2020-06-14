@@ -1,5 +1,6 @@
 .remote {
     height: 600px;
+    overflow: hidden;
 }
 .local {
     width: 200px;

@@ -69,7 +69,7 @@ async navigate() {
   const options: NavigationExtras = {
     state: {data: this.trustedUrl}
   };
-  this.router.navigate(['/student/home/liveclass2'], options);
+  this.router.navigate(['/student/home/liveclass'], options);
 }
 
 navigate2() {
