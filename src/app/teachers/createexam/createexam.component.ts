@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FacultyService } from 'src/app/services/faculty.service';
-import { DepartmentsService } from 'src/app/services/departments.service';
-import { ClassesService } from 'src/app/services/classes.service';
 import { ToastrService } from 'ngx-toastr';
 import { ExamService } from 'src/app/services/exam.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-createexam',
@@ -32,10 +31,30 @@ export class CreateexamComponent implements OnInit {
   public staffinfo
   public classList
   public sectionList
+  public editExam
 
   constructor(private staffservice: FacultyService,
+              private router: Router,
               private toastservice: ToastrService,
-              private examservice: ExamService) { }
+              private examservice: ExamService) { 
+                try {
+                  this.editExam = router.getCurrentNavigation().extras.state.data
+                  if(this.editExam !== undefined){
+                    console.log(this.editExam)
+                    this.mainSaveFlag = false
+                    this.selectedClass = this.editExam.class
+                    this.selectedSection = this.editExam.section
+                    this.selectedSubject = this.editExam.subject
+                    this.examName = this.editExam.name
+                    this.totalmark = this.editExam.totalmarks
+                    this.sheduledDate = this.editExam.startdate
+                    this.endTime = this.editExam.enddate
+                    this.questionList = this.editExam.questionlist
+                  }
+                } catch (error) {
+                  console.log(this.editExam)
+                }
+               }
 
   ngOnInit() {
     this.getStaffinfo()

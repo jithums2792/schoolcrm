@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 import { FacultyService } from 'src/app/services/faculty.service';
 import { ToastrService } from 'ngx-toastr';
 import { ExamService } from 'src/app/services/exam.service';
@@ -73,6 +73,14 @@ export class ExamsComponent implements OnInit {
 
   async search() {
     this.examservice.getExambyCategory(this.query).subscribe(data => (data.status === 'success')? this.examList = data.data: this.toastservice.error(data.data,data.status))
+  }
+
+  async edit(exam) {
+    console.log('exam', exam)
+    const options : NavigationExtras = {
+      state: {data: exam}
+    }
+    this.router.navigate(['/teacher/home/createexam'], options)
   }
 
 }
