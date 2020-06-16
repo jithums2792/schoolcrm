@@ -1,4 +1,4 @@
-<mat-sidenav-container>
+<!-- <mat-sidenav-container>
   <mat-sidenav  #sidenav mode="over">
     <div class="container-fluid">
       <div class="row">
@@ -24,6 +24,7 @@
 
       </div>
     </div>
+  
   </mat-sidenav>
   <mat-sidenav-container>
     <mat-toolbar color="primary">
@@ -31,5 +32,67 @@
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-container>
-</mat-sidenav-container>
+</mat-sidenav-container> -->
 
+
+<div class="container-fluid p-0 bg-main full-screen" >
+  
+   <!-- Top Nav -->
+    <nav class="top-nav bg-white">
+      <img class="brand-logo" src="../../../assets/img/logo.png" alt="logo" srcset="">
+      <div class="header-section">
+          <a class="smart-menu"><i class="fa fa-th" aria-hidden="true"></i></a>
+          <div class="profile">
+              <label class="pr-2" for="">Hi Arun</label>
+              <img src="../../../assets/avatar.png" alt="avatar" srcset="">
+          </div>
+          <a class="smart-search"><i class="fa fa-search" aria-hidden="true"></i></a>
+          <a class="smart-notification"><i class="fa fa-bell-o" aria-hidden="true"></i></a>
+          <a class="smart-settings"><i class="fa fa-cog" aria-hidden="true"></i></a>
+      </div>
+    </nav>
+    <!-- Top Nav Ends-->
+
+  <div id="side-nav" class="row m-0">
+    <div class="col-1 pl-0 side-navbar">
+      <!-- side Nav -->
+      <nav class="side-nav">
+        <ul class="list-group list-group-flush text-light">
+            <li class="list-group-item">
+                <a [routerLink]="['/teacher/home/myprofile']" data-toggle="popover" data-placement="right" title="My Profile">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </a>
+                <label for="">Profile</label>
+            </li>
+            <li class="list-group-item">
+                <a [routerLink]="['/teacher/home/class']" data-toggle="tooltip" data-placement="right" title="Live class">
+                  <i class="fas fa-podcast"></i>  
+                  <label for="">Class</label>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a [routerLink]="['/teacher/home/studymaterial']" data-toggle="tooltip" data-placement="right" title="Study Materials">
+                  <i class="fas fa-atlas"></i>
+                  <label for="">Materials</label>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a [routerLink]="['/teacher/home/exams']" data-toggle="tooltip" data-placement="right" title="Exams">
+                  <i class="fa fa-file-text" ></i>
+                  <label for="">Exams</label>
+                </a>
+            </li>
+            <li class="list-group-item">
+                <a (click)="logout()" data-toggle="tooltip" data-placement="right" title="Log out">
+                  <i class="fas fa-power-off"></i>
+                  <label for="">Log Out</label>
+                </a>
+            </li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
