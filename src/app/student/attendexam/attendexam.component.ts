@@ -27,6 +27,7 @@ export class AttendexamComponent implements OnInit {
     exam.onfullscreenchange = () => {
       if (counter !== false) {
         this.toastservice.warning('you cant continue this exam', 'Warning')
+        $('#myModal').modal('toggle')
         this.router.navigate(['/student/home/exams'])
       }
       else {

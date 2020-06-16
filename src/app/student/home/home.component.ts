@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentsService } from 'src/app/services/students.service';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
+import { ExamService } from 'src/app/services/exam.service';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private studentservice: StudentsService, private router: Router) { }
+  constructor(private studentservice: StudentsService, private router: Router, private examservice: ExamService) { }
 
   ngOnInit() {
     this.getstudentinfo();
@@ -29,6 +30,14 @@ export class HomeComponent implements OnInit {
     localStorage.removeItem('studentclass');
     localStorage.removeItem('studentsection');
     this.router.navigate(['/home']);
+  }
+
+  async navigate(){
+    const exam = await this.examservice.getexam();
+    const option: NavigationExtras = {
+      state: {data: exam}
+    };
+    this.router.navigate(['/student/home/attendexam'],option)
   }
 
 }

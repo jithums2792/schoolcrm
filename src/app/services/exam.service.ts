@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 export class ExamService {
   public api = environment.api
   public time = 'http://worldtimeapi.org/api/timezone/Asia/Kolkata'
+  public exam;
 
 
   constructor(private http: HttpClient) { }
@@ -24,5 +25,12 @@ export class ExamService {
   }
   getCurrentTime():Observable<any> {
     return this.http.get(this.time);
+  }
+
+  setexam(exam) {
+    this.exam = exam
+  }
+  getexam() {
+    return this.exam
   }
 }

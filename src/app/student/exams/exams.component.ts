@@ -46,10 +46,11 @@ export class ExamsComponent implements OnInit {
   }
 
   async navigate(exam) {
-    const option: NavigationExtras = {
-      state: {data: exam}
-    };
-    this.router.navigate(['/student/home/attendexam'],option)
+    // const option: NavigationExtras = {
+    //   state: {data: exam}
+    // };
+    // this.router.navigate(['/student/home/attendexam'],option)
+    this.examservice.setexam(exam);
   }
 
   
