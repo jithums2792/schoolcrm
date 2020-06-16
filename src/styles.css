@@ -93,13 +93,13 @@ background-color: #27263e !important;
 }
 .custom-btn {
   min-width: 100px !important;
-  background-color: #434258;
+  background-color: #057AC5;
   color: white;
 }
 .custom-btn:hover {
   background-color: white;
-  border: 1px solid #434258;
-  color:#434258;
+  border: 1px solid #057AC5;
+  color:#057AC5;
 }
 i:focus {
   outline: none !important;

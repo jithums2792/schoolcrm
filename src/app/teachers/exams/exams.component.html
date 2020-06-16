@@ -9,19 +9,25 @@
         </div>
     </div>
     <div class="row my-2">
-        <div class="col-12 d-flex">
-            <select #classSelect class="form-control form-control-sm col-lg-2 col-4 mr-1" (change)="classSelection(classSelect)">
+        <div class="col-lg-3 col-6 my-1">
+            <select #classSelect class="form-control form-control-sm" (change)="classSelection(classSelect)">
                 <option value="null">Select Class</option>
                 <option value="{{room.room}}" *ngFor="let room of classList">{{room.room}}</option>
             </select>  
-            <select #sectionSelect class="form-control form-control-sm col-lg-2 col-4 mr-1" (change)="sectionSelection(sectionSelect)">
+        </div>
+        <div class="col-lg-3 col-6 my-1">
+            <select #sectionSelect class="form-control form-control-sm" (change)="sectionSelection(sectionSelect)">
                 <option value="null">Select Section</option>
                 <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
             </select>
-            <select #subjectSelect class="form-control form-control-sm col-lg-2 col-4 mr-1" (change)="subjectSelection(subjectSelect)">
+        </div>
+        <div class="col-lg-3 col-6 my-1">
+            <select #subjectSelect class="form-control form-control-sm" (change)="subjectSelection(subjectSelect)">
                 <option value="null">Select Subject</option>
                 <option value="{{subject}}" *ngFor="let subject of subjectList">{{subject}}</option>
             </select>
+        </div>
+        <div class="col-lg-3 col-6 my-1">
             <button class="btn btn-sm custom-btn" (click)="search()">Search</button>
         </div>
     </div>
