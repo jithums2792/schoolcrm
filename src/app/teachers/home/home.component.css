@@ -197,3 +197,45 @@ mat-sidenav{
   font-size: 10px;
   margin: 0;
 }
+
+
+.content-container{
+  height: calc(100vh - 76px);
+  overflow-y: scroll;
+}
+
+@media(max-width:768px){
+  #side-nav{
+    height: 100%;
+    width: 0;
+    min-width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #057ac5;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 99;
+    padding: 0;
+    flex:inherit;
+  }
+  #side-nav .closebtn {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 36px;
+    margin-left: 50px;
+    background: no-repeat;
+    box-shadow: none;
+    border: none;
+    color: #fff;
+  }   
+}
+@media(min-width:768px){
+  #side-nav .closebtn{
+    display: none;
+  }
+}
