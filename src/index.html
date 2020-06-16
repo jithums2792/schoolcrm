@@ -27,17 +27,17 @@
       gapi.auth2.init({client_id: "291458128144-h3g9751gllmctvv5av2ev4to34k9q07q.apps.googleusercontent.com" });
     });
     // sidebar at mobile device
-    $('.smart-menu').click(function(){
-      if (elm == '0px'){
-        $('#side-nav').width = "100px";
-      }else{
-        $('#side-nav').width = "0px";
-      }
-    })
+    
+      
+  
 
-    // function openNav() {
-    //   document.getElementById("side-nav").style.width = "100px";
-    // }
+    function openNav() {
+      if(document.getElementById("side-nav").style.width == "0px"){
+        document.getElementById("side-nav").style.width = "100px";
+      }else{
+        document.getElementById("side-nav").style.width = "0";
+      }
+    }
     
     // function closeNav() {
     //   document.getElementById("side-nav").style.width = "0";
