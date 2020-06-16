@@ -24,7 +24,7 @@ const routes: Routes = [
     {path: 'admision', component: StudentadmisionComponent},
     {path: 'classtimetable', component: ClasstimetableComponent},
     {path: 'subjectallocation', component: SubjectallocationComponent},
-    {path: 'classallocation', component: ClassallocationComponent}
+    {path: 'classsetup', component: ClassallocationComponent}
   ]}
 ];
 
