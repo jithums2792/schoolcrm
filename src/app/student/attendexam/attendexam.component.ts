@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-attendexam',
   templateUrl: './attendexam.component.html',
@@ -27,7 +28,6 @@ export class AttendexamComponent implements OnInit {
     exam.onfullscreenchange = () => {
       if (counter !== false) {
         this.toastservice.warning('you cant continue this exam', 'Warning')
-        $('#myModal').modal('toggle')
         this.router.navigate(['/student/home/exams'])
       }
       else {
