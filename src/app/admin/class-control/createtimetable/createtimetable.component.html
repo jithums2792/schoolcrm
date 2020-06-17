@@ -1,0 +1,55 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-4 col-4">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Select Class<span class="text-danger">*</span></label>
+                <select [(ngModel)]="timetable.room" class="form-control form-control-sm" (change)="sectionSelection()">
+                    <option value="null">Select</option>
+                    <option value="{{item.name}}" *ngFor="let item of classList">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-4">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Select Section<span class="text-danger">*</span></label>
+                <select [(ngModel)]="timetable.section" class="form-control form-control-sm">
+                    <option value="null">select</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-4">
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Select working days<span class="text-danger">*</span></label>
+                <select #selectedDay class="form-control form-control-sm" (change)="daySelection(selectedDay)">
+                    <option value="null">Select</option>
+                    <option value="{{day}}" *ngFor="let day of days">{{day}}</option>
+                </select>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row">
+        <div class="col-12 my-1" *ngFor="let dayx of dayList; let i = index">
+            <div class="card">
+                <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between">
+                   <span>{{dayx.day}} <span class="pointer" (click)="delete(i)"><i class="fas fa-times px-2 border rounded-lg mx-2"></i></span></span>
+                   <button class="btn btn-sm custom-btn border-white" (click)="addPeriod(i)">Add period</button>
+                </div>
+                <div class="col bg-white py-2">
+                    <div class="d-flex align-items-center mb-1" *ngFor="let period of dayx.subjects; let subi = index">
+                        <span class="col-2">{{period.name}}: </span>
+                        <select #selectedsubject class="form-control form-control-sm" (change)="periodSubject(selectedsubject,i,subi)">
+                            <option value="null">Select</option>
+                            <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
+                        </select>
+                    </div>
+                </div>              
+            </div>
+        </div>
+        <div class="col-12 my-2">
+            <button class="btn btn-sm custom-btn float-right" (click)="update()">Update</button>
+        </div>
+    </div>
+</div>
