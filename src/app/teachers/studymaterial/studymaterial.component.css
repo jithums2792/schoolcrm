@@ -73,13 +73,16 @@ figure.img-item{
         background: #057ac5;
         width: 150px;
         height: 150px;
+        text-align: center;
     }
     .pdf-card{
         position: relative;
         background: #e74545;
         width: 150px;
         height: 150px;
+        text-align: center;
     }
+    
     .delete-icon,.edit-icon,.download-icon,.pdf-icon,.file-name{
         color: #fff;
     }
@@ -110,6 +113,7 @@ figure.img-item{
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
+        font-size: 30px;
     }
 
     .link-container{
