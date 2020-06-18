@@ -1,14 +1,12 @@
 .caption{
     bottom: 0;
-    left: 0;
-    width: 120px;
-    background-color: rgba(0, 0, 0, 0.5);
+    width: calc(100% - 30px);
+    background-color: #057ac5;
     overflow: hidden;
-    display: none;
-    font-size: 10px;
-}
-.img-item:hover  .caption {
-    display: block;
+    font-size: 15px;
+    height: 35px;
+    transform: translateX(-50%);
+    left: 50%;
 }
 
 a{
@@ -16,31 +14,117 @@ a{
     font-size: 12px;
 }
 .fa-download:hover{
-    color: white;
+    color: #17a2b8;
     font-size: 12px;
+    cursor: pointer;
 }
 .pdf{
     width: 100px;
-    height: auto;
-}
-.fa-file-pdf {
-    font-size: 32px;
-}
-.pdf-title {
-   overflow: hidden;
-}
-.edit {
-    width: 100%;
-    top: 0;
-    right: 0;
-    display: none;
-}
-.img-item:hover  .edit {
-    display: block;
 }
 .fa-trash-alt:hover {
     color: red;
+    cursor: pointer;
 }
 .fa-edit:hover {
-    color: white;
+    color: #28a745;
+    cursor: pointer;
 }
+
+figure.img-item{
+    height: 200px;
+    overflow: hidden;
+}
+
+.gallery {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 33%; }
+    .gallery .pics {
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
+    .gallery .animation {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+    @media (max-width: 450px) {
+    .gallery {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+    }
+    }
+
+    @media (max-width: 400px) {
+    .btn.filter {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    }
+    }
+
+    .doc-card{
+        position: relative;
+        background: #057ac5;
+        width: 150px;
+        height: 150px;
+    }
+    .pdf-card{
+        position: relative;
+        background: #e74545;
+        width: 150px;
+        height: 150px;
+    }
+    .delete-icon,.edit-icon,.download-icon,.pdf-icon,.file-name{
+        color: #fff;
+    }
+    .file-name{
+        position: absolute;
+        bottom: 35px;
+        width: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .delete-icon{
+        position: absolute;
+        left: 5px;
+        top:5px;
+    }
+    .edit-icon{
+        position: absolute;
+        right: 5px;
+        top:5px;
+    }
+    .download-icon{
+        position: absolute;
+        right: 5px;
+        bottom:5px;
+    }
+    .pdf-icon{
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .link-container{
+        padding: 10px;
+        border: 1px solid #057ac596;
+        border-radius: 5px;
+        background: #057ac526;
+        color: #057ac5;
+    }
+    .link-container a{
+        color: #057ac5;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+.fa-edit:hover {
+    color: white;
+} 
