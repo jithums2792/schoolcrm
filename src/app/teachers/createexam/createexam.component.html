@@ -5,8 +5,8 @@
         <div class="d-flex align-items-center mb-5">
             <h4 class="m-0">Create new exam</h4>
             <button class="btn custom-btn ml-auto mx-1" (click)="save()" *ngIf="mainSaveFlag">Save</button>
-            <button class="btn custom-btn ml-auto mx-1"  *ngIf="!mainSaveFlag">Update</button>
-            <button class="btn custom-btn mx-1" *ngIf="!mainSaveFlag">Cancel</button>
+            <button class="btn custom-btn ml-auto mx-1" (click)="mainUpdate()" *ngIf="!mainSaveFlag">Update</button>
+            <button class="btn custom-btn mx-1" (click)="cancel()" *ngIf="!mainSaveFlag">Cancel</button>
         </div>
         <div class="row m-0">
 
