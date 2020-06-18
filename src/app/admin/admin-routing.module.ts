@@ -11,10 +11,7 @@ import { StudentadmisionComponent } from './student-controls/studentadmision/stu
 import { ClasstimetableComponent } from './class-control/classtimetable/classtimetable.component';
 import { SubjectallocationComponent } from './faculty-control/subjectallocation/subjectallocation.component';
 import { ClassallocationComponent } from './faculty-control/classallocation/classallocation.component'
-<<<<<<< HEAD
-=======
 import { CreatetimetableComponent } from './class-control/createtimetable/createtimetable.component';
->>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
 
 
 const routes: Routes = [
@@ -27,10 +24,7 @@ const routes: Routes = [
     {path: 'studentlist', component: StudentlistComponent},
     {path: 'admision', component: StudentadmisionComponent},
     {path: 'classtimetable', component: ClasstimetableComponent},
-<<<<<<< HEAD
-=======
     {path: 'createtimetable', component: CreatetimetableComponent},
->>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
     {path: 'subjectallocation', component: SubjectallocationComponent},
     {path: 'classsetup', component: ClassallocationComponent}
   ]}
