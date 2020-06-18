@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<!-- <div class="container-fluid py-2">
+=======
 <div class="container-fluid py-2">
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
   <div class="row">
     <div class="col-12 py-2">
       <i class="fas fa-arrow-left p-2 rounded-circle shadow-sm mx-2"></i>
@@ -36,4 +40,24 @@
  </div>
 
 </div>
+<<<<<<< HEAD
+</div> -->
+
+<div class="container-fluid w-100 p-0">
+  <div class="row m-0">
+    <div class="col-lg-3 col-md-4 col-sm-6 p-3" *ngFor="let class of classList">
+      <div class="card">
+        <i class="fas fa-circle text-success m-2 "></i>
+        <h2 class="pt-2 text-center">Class {{class.name}}</h2>
+        <div id="button-placeholder" class="button-placeholder" onclick="displayFlex()">
+          <h6 class="text-light text-center">GET IN TO LIVE</h6>
+        </div>
+        <div id="button-container" class="collapse button-container justify-content-around">
+          <button class="btn btn-primary mr-1" (click)="navigate(class.name, section)" *ngFor="let section of class.section">{{section}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+=======
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
 </div>

@@ -99,3 +99,108 @@
     </div>
     
 </div>
+
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-3 shadow rounded">
+        <div class="d-flex align-items-center mb-5">
+            <h4 class="m-0">Create new exam</h4>
+            <button class="btn custom-btn ml-auto" [routerLink]="['/teacher/home/createexam']" >Save</button>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-3 pl-0 mb-3 ">
+                <select #classSelect class="form-control form-control" (change)="classSelection(classSelect)">
+                    <option value="null">Select class</option>
+                    <option value="{{room.room}}" *ngFor="let room of classList">{{room.room}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3">
+                <select #sectionSelect class="form-control form-control"  (change)="sectionSelection(sectionSelect)">
+                    <option value="null">Select section</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3">
+                <select #subjectSelect class="form-control form-control" (change)="subjectSelection(subjectSelect)">
+                    <option value="null">Select section</option>
+                    <option value="{{subject}}" *ngFor="let subject of subjectList">{{subject}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 px-0 mb-3">
+                <input type="text" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-md-3 pl-0 mb-3 ">
+                <input type="text" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3 ">
+                <input type="datetime-local" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-md-3 pl-0 mb-3 pl-md-3">
+                <input type="datetime-local" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-12 px-0 mb-3 mb-md-0 mx-0 row">
+                <h6 class="mb-3 col-12 p-0">Exam question</h6>
+                <div class="col-md-3 pl-0 mb-3">
+                    <input type="text" class="form-control" placeholder="Enter exam name">
+                </div>
+                <div class="col-md-9 px-0 pl-md-3 mb-3">
+                    <textarea class="form-control" placeholder="Question"></textarea>
+                </div>
+                <div class="col-md-3 pl-0 mb-3">
+                    <input type="number" class="form-control" placeholder="Enter no of option">
+                </div>
+                <div class="col-md-3 pl-0 pl-md-3 mb-3">
+                    <input type="number" class="form-control" placeholder="Enter no of option">
+                </div>
+                <div class="col-md-3 pl-0 pl-md-3 mb-3 pt-2">
+                    <input type="file" placeholder="Enter no of option">
+                </div>
+                <div class="col-md-3 pl-0 pl-md-3 mb-3 pt-2">
+                    <button class="btn custom-btn ml-auto" [routerLink]="['/teacher/home/createexam']" >Add</button>
+                </div>
+            </div>
+            <div class="col-12 px-0 mb-3 mb-md-0 mx-0 row">
+                <h6 class="mb-3 col-12 p-0">Question list</h6>
+                <div class="col-12 mb-5">
+                    <p class=" d-flex ml-3">
+                        <label class="w-10 mr-3">1)</label>
+                        <label class="w-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Aenean in lacus ac ante semper sollicitudin. Mauris quis faucibus leo. 
+                            Praesent tincidunt vel felis eget condimentumPraesent tincidunt vel felis eget condimentum?
+                        </label>
+                        <label class="ml-auto font-weight-bold" for="">Mark.10</label>
+                    </p>
+                    
+                    <p class="pl-4 row m-0">
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">a)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">b)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">c)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">d)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                    </p>
+                    <div class="col-12 d-flex align-items-end justify-content-end">
+                        <i class="fas fa-edit mx-2" (click)="edit(question, i)"></i>
+                        <i class="fas fa-trash-alt" (click)="delete(i)"></i>
+                    </div>
+
+                </div>
+                <div class="col-12">
+                    <p class=" d-flex ml-3">
+                        <label class="w-10 mr-3">1)</label>
+                        <label class="w-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Aenean in lacus ac ante semper sollicitudin. Mauris quis faucibus leo. 
+                            Praesent tincidunt vel felis eget condimentumPraesent tincidunt vel felis eget condimentum?
+                        </label>
+                        <label class="ml-auto font-weight-bold" for="">Mark.10</label>
+                    </p>
+                    
+                    <p class="pl-4 row m-0">
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">a)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">b)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">c)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">d)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

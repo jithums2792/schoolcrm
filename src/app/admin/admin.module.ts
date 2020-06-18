@@ -17,7 +17,10 @@ import { StudentadmisionComponent } from './student-controls/studentadmision/stu
 import { ClasstimetableComponent } from './class-control/classtimetable/classtimetable.component';
 import { SubjectallocationComponent } from './faculty-control/subjectallocation/subjectallocation.component';
 import { ClassallocationComponent } from './faculty-control/classallocation/classallocation.component';
+<<<<<<< HEAD
+=======
 import { CreatetimetableComponent } from './class-control/createtimetable/createtimetable.component';
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
 
 
 @NgModule({
@@ -31,8 +34,12 @@ import { CreatetimetableComponent } from './class-control/createtimetable/create
     StudentadmisionComponent, 
     ClasstimetableComponent, 
     SubjectallocationComponent,
+<<<<<<< HEAD
+    ClassallocationComponent],
+=======
     ClassallocationComponent,
     CreatetimetableComponent],
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
   imports: [
     CommonModule,
     FormsModule,

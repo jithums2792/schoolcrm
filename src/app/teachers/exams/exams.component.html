@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+<!-- <div class="container-fluid">
+=======
 <div class="container-fluid">
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
     <div class="row py-2 bg-light">
         <div class="col-8 d-flex align-items-center ">
             <i class="fas fa-grip-vertical mx-2"></i>
@@ -61,6 +65,98 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
+</div> -->
+
+  
+
+
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-3 shadow rounded">
+        <div class="d-flex align-items-center mb-5">
+            <h4 class="m-0">Exam Control Board</h4>
+            <button class="btn custom-btn ml-auto" [routerLink]="['/teacher/home/createexam']" >create exam</button>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-3 pl-0 mb-3 mb-md-0">
+                <select #classSelect class="form-control form-control" (change)="classSelection(classSelect)">
+                    <option value="null">Select class</option>
+                    <option value="{{room.room}}" *ngFor="let room of classList">{{room.room}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3 mb-md-0">
+                <select #sectionSelect class="form-control form-control"  (change)="sectionSelection(sectionSelect)">
+                    <option value="null">Select section</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3 mb-md-0">
+                <select #subjectSelect class="form-control form-control" (change)="subjectSelection(subjectSelect)">
+                    <option value="null">Select section</option>
+                    <option value="{{subject}}" *ngFor="let subject of subjectList">{{subject}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3">
+                <button class="btn btn custom-btn" (click)="search()">Search</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid p-3" *ngIf="examList.length !== 0">
+    <div class="container-fluid p-3 shadow rounded">
+        <div class="d-flex align-items-center mb-5">
+            <h4 class="m-0">Available Exam List</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-2" *ngFor="let exam of examList">
+                <div class="exam-info-card border rounded">
+                    <div class="exam-info-header d-flex p-3 border-bottom align-items-center">
+                        <h6 class="m-0">{{exam.name}}</h6>
+                        <button class="btn btn-outline-success ml-auto alert-success" (click)="edit(exam)">Edit</button>
+                    </div>
+                    <div class="exam-info-body p-3">
+                        <div class="row">
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Class :</label>
+                                <label class="float-right w-50" for="">{{exam.class}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Section :</label>
+                                <label class="float-right w-50" for="">{{exam.section}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Subject :</label>
+                                <label class="float-right w-50" for="">{{exam.subject}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">No of qustions :</label>
+                                <label class="float-right w-50" for="">{{exam.questionlist.length}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Start date :</label>
+                                <label class="float-right w-50" for="">{{exam.startdate}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">End date :</label>
+                                <label class="float-right w-50" for="">{{exam.enddate}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Total score :</label>
+                                <label class="float-right w-50" for="">{{exam.totalmarks}}</label>
+                            </div>
+                            <div class="col-12 my-2">
+                                <button type="button" class="btn btn-outline-danger w-100 alert-danger">Cancel Exam</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+=======
 </div>
 
   
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
