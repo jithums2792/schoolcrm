@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import * as io from 'socket.io-client';
-import { environment } from 'src/environments/environment';
-import { ClassesService } from 'src/app/services/classes.service';
 import { Router, NavigationExtras } from '@angular/router';
+import { FacultyService } from 'src/app/services/faculty.service';
 
 
 @Component({
@@ -11,25 +9,23 @@ import { Router, NavigationExtras } from '@angular/router';
   styleUrls: ['./class.component.css']
 })
 export class ClassComponent implements OnInit {
-  public socket = io.connect(environment.socket);
-  public configuration = {iceServers: [{urls: 'stun:stun.l.google.com:19302'}]};
-  public peerConnection = new RTCPeerConnection(this.configuration);
-  public constrains = {audio: true, video: true};
-  public localVideo: HTMLVideoElement;
-  public remoteVideo: HTMLVideoElement;
 
   public classList = [];
 
 
 
-  constructor(private classservice: ClassesService,private router: Router) { }
+  constructor(private staffservice: FacultyService,
+              private router: Router) { }
 
    async ngOnInit() {
-     this.getAllclass();
+     this.getstaffinfo()
    }
 
-   async getAllclass() {
-     this.classservice.getAllclass().subscribe(data => this.classList = data.data);
+   async getstaffinfo() {
+     this.staffservice.getFacultyinfoByid(localStorage.getItem('teacher')).subscribe(data => {
+       this.classList = data.data.assignedClass
+     })
+
    }
 
    async navigate(value, section) {
@@ -38,5 +34,7 @@ export class ClassComponent implements OnInit {
      };
      this.router.navigate(['/teacher/home/liveclass'], option)
    }
+
+
 
 }

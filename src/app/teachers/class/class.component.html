@@ -4,11 +4,11 @@
     <div class="col-lg-3 col-md-4 col-sm-6 p-3" *ngFor="let class of classList">
       <div class="card">
         <i class="fas fa-circle text-success m-2 "></i>
-        <h2 class="pt-2 text-center">Class {{class.name}}</h2>
-        <div id="button-placeholder" class="button-placeholder" onclick="displayFlex()">
+        <h2 class="pt-2 text-center">Class {{class.room}}</h2>
+        <div id="button-placeholder" class="button-placeholder">
           <h6 class="text-light text-center">GET IN TO LIVE</h6>
         </div>
-        <div id="button-container" class="collapse button-container justify-content-around">
+        <div id="button-container" class="button-container justify-content-around">
           <button class="btn btn-primary mr-1" (click)="navigate(class.name, section)" *ngFor="let section of class.section">{{section}}</button>
         </div>
       </div>

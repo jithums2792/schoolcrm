@@ -17,7 +17,7 @@ const routes: Routes = [
     {path: 'myprofile', component: ProfileComponent},
     {path: 'exams', component: ExamsComponent},
     {path: 'createexam', component: CreateexamComponent},
-    {path: '', redirectTo: 'class', pathMatch: 'full'}
+    {path: '', redirectTo: 'myprofile', pathMatch: 'full'}
   ]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];

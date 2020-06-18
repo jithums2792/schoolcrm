@@ -43,7 +43,7 @@
       <div class="header-section">
           <a onclick="openNav()" class="smart-menu"><i class="fa fa-th" aria-hidden="true"></i></a>
           <div class="profile">
-              <label class="pr-2" for="">Hi Arun</label>
+              <label class="pr-2" for="">Hi {{username}}</label>
               <img src="../../../assets/avatar.png" alt="avatar" srcset="">
           </div>
           <!-- <a class="smart-search"><i class="fa fa-search" aria-hidden="true"></i></a> -->
@@ -61,31 +61,31 @@
       <nav class="side-nav">
         <ul class="list-group list-group-flush text-light">
             <li class="list-group-item">
-                <a [routerLink]="['/teacher/home/myprofile']" data-toggle="popover" data-placement="right" title="My Profile">
+                <a [routerLink]="['/teacher/home/myprofile']">
                   <i class="fa fa-user" aria-hidden="true"></i>
                 </a>
-                <label class="d-block" for="">Profile</label>
+                <label class="d-block pointer" for="" [routerLink]="['/teacher/home/myprofile']">Profile</label>
             </li>
             <li class="list-group-item">
-                <a [routerLink]="['/teacher/home/class']" data-toggle="tooltip" data-placement="right" title="Live class">
+                <a [routerLink]="['/teacher/home/class']">
                   <i class="fas fa-podcast"></i>  
-                  <label class="d-block" for="">Class</label>
+                  <label class="d-block pointer" for="" [routerLink]="['/teacher/home/class']">Class</label>
                 </a>
             </li>
             <li class="list-group-item">
-                <a [routerLink]="['/teacher/home/studymaterial']" data-toggle="tooltip" data-placement="right" title="Study Materials">
+                <a [routerLink]="['/teacher/home/studymaterial']">
                   <i class="fas fa-atlas"></i>
-                  <label class="d-block" for="">Materials</label>
+                  <label class="d-block pointer" for="" [routerLink]="['/teacher/home/studymaterial']">Materials</label>
                 </a>
             </li>
             <li class="list-group-item">
-                <a [routerLink]="['/teacher/home/exams']" data-toggle="tooltip" data-placement="right" title="Exams">
+                <a [routerLink]="['/teacher/home/exams']">
                   <i class="fa fa-file-text" ></i>
-                  <label class="d-block" for="">Exams</label>
+                  <label class="d-block pointer" for="" [routerLink]="['/teacher/home/exams']">Exams</label>
                 </a>
             </li>
             <li class="list-group-item">
-                <a (click)="logout()" data-toggle="tooltip" data-placement="right" title="Log out">
+                <a (click)="logout()">
                   <i class="fas fa-power-off"></i>
                   <label class="d-block" for="">Log Out</label>
                 </a>
