@@ -40,8 +40,7 @@
                 <div class="col bg-white py-2">
                     <div class="d-flex align-items-center mb-1" *ngFor="let period of dayx.subjects; let subi = index">
                         <span class="col-2">{{period.name}}: </span>
-                        <select #selectedsubject class="form-control form-control-sm" (change)="periodSubject(selectedsubject,i,subi)">
-                            <option value="null">Select</option>
+                        <select [(ngModel)]="period.subname" class="form-control form-control-sm">
                             <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
                         </select>
                     </div>
@@ -49,7 +48,9 @@
             </div>
         </div>
         <div class="col-12 my-2">
-            <button class="btn btn-sm custom-btn float-right" (click)="update()">Update</button>
+            <button class="btn btn-sm custom-btn float-right mx-1" (click)="save()" *ngIf="saveFlag">Save</button>
+            <button class="btn btn-sm custom-btn float-right" (click)="update()" *ngIf="!saveFlag">Update</button>
+            <button class="btn btn-sm custom-btn float-right mx-1" [routerLink]="['/sadmin/classtimetable']" *ngIf="!saveFlag">Cancel</button>
         </div>
     </div>
 </div>
