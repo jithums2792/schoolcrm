@@ -113,6 +113,27 @@ export class CreateexamComponent implements OnInit {
        }
   }
 
+  async mainUpdate() {
+    if (this.selectedClass !== undefined && this.selectedClass !== 'null' &&
+        this.selectedSection !== undefined && this.selectedSection !== 'null' 
+        ) {
+         const exam = Object ({
+           name: this.examName,
+           room: this.selectedClass,
+           section: this.selectedSection,
+           subject: this.selectedSubject,
+           teacher: this.staffinfo.firstname,
+           totalmark: this.totalmark,
+           starttime: this.sheduledDate,
+           endtime: this.endTime,
+           questionlist: this.questionList
+         })
+         this.examservice.updateExam(this.editExam._id,exam).subscribe(data => (data.status === 'success')? this.toastservice.success('updated', 'success'): this.toastservice.error('something wrong', 'Error'))
+        } else {
+          this.toastservice.warning('some fields are missing', 'Warning')
+        }
+   }
+
   async optionCreater() {
     if(this.numberofOptions > 0) {
       let alpha = 97
