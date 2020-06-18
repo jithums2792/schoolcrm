@@ -36,7 +36,7 @@
                 <div class="col-md-4 pb-3 pl-0">
                     <select [(ngModel)]="studymaterial.room" id="roomselection" (change)="uploadClassSelection()" class="form-control form-control">
                         <option value="null">Select class</option>
-                        <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                        <option value="{{x.name}}" *ngFor="let x of classList">{{x.name}}</option>
                     </select>
                 </div>
                 <div class="col-md-4 pb-3 pl-0 pl-md-3">
@@ -48,7 +48,7 @@
                 <div class="col-md-4 pb-3 pl-0 pl-md-3">
                     <select [(ngModel)]="studymaterial.subject" id="roomselection" class="form-control form-control">
                         <option value="null">Select subject</option>
-                        <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
+                        <option value="{{subject}}" *ngFor="let subject of subjectList">{{subject}}</option>
                     </select>
                 </div>
                 <div class="col-md-4 pb-3 pl-md-0 pl-0">

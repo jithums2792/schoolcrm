@@ -41,30 +41,30 @@ export class StudymaterialComponent implements OnInit {
   constructor(private classservice: ClassesService,
     public sanitizer: DomSanitizer, 
     private fileuploaderservice: FileuploadService, 
-    private subjectservice: DepartmentsService, 
     private facultyservice: FacultyService,
     private toastservice: ToastrService) { }
 
   ngOnInit() {
-    this.getAllClass();
-    this.getAllSubject();
     this.getstaffinfo();
+    this.getallClass()
   }
 
 
   async getstaffinfo() {
     this.facultyservice.getFacultyinfoByid(localStorage.getItem('teacher')).subscribe(data => {
       this.studymaterial.teacher = data.data.firstname;
+      this.subjectList = data.data.assignedSubject
+      console.log(this.subjectList)
     });
   }
 
-  async getAllSubject() {
-    this.subjectservice.getDepartmentList().subscribe(data => this.subjectList = data.data)
+  async getallClass() {
+    this.classservice.getAllclass().subscribe(data => this.classList = data.data)
   }
+  // async getAllSubject() {
+  //   this.subjectservice.getDepartmentList().subscribe(data => this.subjectList = data.data)
+  // }
 
-  async getAllClass() {
-    this.classservice.getAllclass().subscribe(data => this.classList = data.data);
-  }
 
   async classSelection(data) {
     this.selectedRoom = data;
