@@ -1,0 +1,73 @@
+<!-- <section class="w-100 vh-100 d-flex align-items-center  bg-img">
+  <div class="layer-inner w-100 vh-100"></div>
+  <div class="layer-outer w-100 vh-100"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6 col-12 mx-auto">
+        <div class="card bg-default border-0 shadow-sm index-5">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-12 col-12 fire d-flex align-items-center justify-content-center py-5 bg-img text-white shadow-sm position-relative">
+                <i class="fas fa-book-reader fa-3x mx-2"></i> <span><strong>Read | Write | Learn</strong></span>
+              </div>
+
+              <div class="col-lg-12 col-12 d-flex flex-column align-items-center ">
+                <div class="col  d-flex flex-column align-items-center py-2 animate__animated animate__slideInLeft" *ngIf="!login">
+                  <button class="btn w-100 btn-success btn-sm my-2" (click)="login = !login; tile = 2"><i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp; Teachers</button>
+                  <button class="btn w-100  btn-success btn-sm my-2" (click)="login = !login; tile = 1"><i class="fas fa-user-graduate"></i>&nbsp;&nbsp; student</button>
+                  <button class="btn w-100 btn-success btn-sm my-2" (click)="login = !login; tile = 3"> <i class="fas fa-users"></i>&nbsp;&nbsp; parent</button>
+                </div>
+                <div class="col p-2 animate__animated animate__slideInRight d-flex flex-column" *ngIf="login">
+                  <div class="col px-0"><i class="fas fa-arrow-left bg-light py-2 px-2 rounded-circle shadow-sm" (click)="login = !login"></i></div>
+                  <input [(ngModel)]="username" type="text" name="username" id="username" class="form-control my-2" placeholder="Username">
+                  <input [(ngModel)]="password" type="text" name="password" id="password" class="form-control my-2" placeholder="Password">
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 1" (click)="studentlogin()">Student Login</button>
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 2" (click)="teacherlogin()">Teacher Login</button>
+                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 3">Parents Login</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<div class="container-fluid p-0">
+  <div class="row m-0">
+    <div class="col-md-5 pattern-2">
+      <div class="logo-container text-center">
+        <img class="mb-3" src="../../../assets/img/logo.png" alt="">
+        <h1>M.G.M International</h1>
+      </div>
+    </div>
+    <div class="col-md-7 pattern-1">
+      <div class="access-control" *ngIf="!login">
+        <button class="btn btn-main d-block mb-3" (click)="login = !login; tile = 2"><i class="fas fa-chalkboard-teacher"></i>Teacher Login</button>
+        <button class="btn btn-main d-block mb-3" (click)="login = !login; tile = 1"><i class="fas fa-user-graduate"></i>Student Login</button>
+      </div>
+      <div class="login-form" *ngIf="login">
+        <div class="col px-0 text-primary mb-3"><i class="fas fa-arrow-left bg-light py-2 px-2 rounded-circle shadow-sm" (click)="login = !login"></i></div>
+        <div class="form-group">
+          <label for="">Username</label>
+          <input [(ngModel)]="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Username">
+        </div>
+        <div class="form-group">
+          <label for="">Password</label>
+          <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="d-block text-right mt-1 mb-3">
+          <a class="text-light" href="">Forget password?</a>
+        </div>
+        <div class="d-block text-center" *ngIf="tile === 1">
+          <button class="btn btn-primary" (click)="studentlogin()">Login</button>
+        </div>
+        <div class="d-block text-center" *ngIf="tile === 2"> 
+          <button class="btn btn-primary" (click)="teacherlogin()">Login</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

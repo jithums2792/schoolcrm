@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 bg-light py-2 d-flex align-items-center ">
+            <i class="fas fa-grip-vertical mx-2"></i>
+            <span><strong>Available Exam List</strong></span>
+        </div>
+        <div class="col-12 my-2" *ngFor="let exam of examList">
+            <div class="card  shadow-sm">
+                <div class="col bg-card-head py-2 rounded-top text-white d-flex align-items-center justify-content-between">
+                    <span><strong>{{exam.name}}</strong></span>
+                    <span><i class="fas fa-circle text-success">Active</i></span>
+                </div>
+                <div class="col py-3 d-flex flex-column">
+                    <span class="mb-1"><strong>{{exam.subject}}</strong></span>
+                    <span>Marks: {{exam.totalmarks}}</span>
+                    <span class="mb-1"><strong>Start At: {{exam.startdate}}</strong></span>
+                    <span class="mb-1"><strong>End At: {{exam.enddate}}</strong></span>
+                </div>
+                <div class="col py-2 border-top">
+                    <button class="btn btn-sm custom-btn float-right" data-toggle="modal" data-target="#exampleModal" (click)="navigate(exam)" *ngIf="currentTime !== exam.startdate">Attand</button>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

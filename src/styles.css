@@ -1,0 +1,121 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,700&display=swap');
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Poppins', sans-serif; font-size: 14px; }
+
+.pointer {
+  cursor: pointer;
+}
+.fa-chevron-right {
+  font-size: 10px;
+}
+.pr-3 {
+  padding-right: 12px;
+}
+.text-white {
+  color: white;
+}
+.f-700 {
+  font-weight: 700;
+}
+.border-bottom{
+  border-bottom: 1px solid white;
+}
+.title {
+  font-weight: 900;
+}
+.sub-title {
+  font-size: 12px;
+  font-weight: 4000;
+}
+.side-menu {
+  background-color: rgb(95, 94, 121);
+}
+.logo {
+  filter: invert(100%);
+  width: 50px;
+}
+.btn-custom{
+  min-width: 100px !important;
+  border-radius: 2px !important;
+  font-weight: 800;
+}
+.btn-custom:hover{
+  background-color: white;
+  color: black;
+  border:2px solid green;
+}
+.menuLabel {
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Ubuntu', sans-serif;
+  margin-left: 10px;
+}
+
+.custom-link {
+  background-color: #434258;
+  margin-top: 5px;
+  padding: 5px 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+
+.sidebar {
+  height: 100vh;
+  background-color: #4a4963;
+  overflow-y: scroll;
+}
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
+.appbar {
+  height: 50px;
+}
+.side-header {
+  height: 50px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #434258;
+}
+.router-link-active {
+background-color: #27263e !important;
+}
+.router-link-active  .fa{
+  color: #b091fb !important;
+}
+.custom-btn {
+  min-width: 100px !important;
+  background-color: #057AC5;
+  color: white;
+}
+.custom-btn:hover {
+  background-color: white;
+  border: 1px solid #057AC5;
+  color:#057AC5;
+}
+i:focus {
+  outline: none !important;
+}
+.sub-menu {
+  font-size: 12px;
+  color: white;
+  background-color: #37364a;
+  padding: 5px 5px;
+}
+.bg-default {
+  background: transparent !important;
+}
+.bg-light {
+  background-color: #ecedef !important;
+}
+.bg-card-head {
+  background-color: #4A4963;
+}

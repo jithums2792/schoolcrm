@@ -1,0 +1,252 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <span><i class="fas fa-arrow-left bg-white p-2 rounded-circle shadow-sm"></i> &nbsp;&nbsp;<strong class="mr-2">Student Admission Panel</strong></span>
+        </div>
+    </div>
+    <div class="row my-2 bg-white mx-1 py-2 shadow-sm rounded">
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="admissionnumber">Admission Number<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.admissionnumber" type="text" class="form-control form-control-sm" id="admissionnumber">
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="admissiondate">Admission Date<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.admissiondate" type="date" class="form-control form-control-sm" id="admissiondate">
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="name">Name<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.name" type="text" class="form-control form-control-sm" id="name">
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="dob">Date of Birth<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.dob" type="date" class="form-control form-control-sm" id="dob">
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="class">Class<span class="text-danger">*</span></label>
+                <select [(ngModel)]="student.class" (change)="sectionFilter()" class="form-control form-control-sm">
+                    <option value="{{class.name}}" *ngFor="let class of classList">{{class.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="section">Section<span class="text-danger">*</span></label>
+                <select [(ngModel)]="student.section" class="form-control form-control-sm">
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="class">Gender<span class="text-danger">*</span></label>
+                <select [(ngModel)]="student.gender" class="form-control form-control-sm">
+                    <option value="{{gender}}" *ngFor="let gender of genderList">{{gender}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="class">Category<span class="text-danger">*</span></label>
+                <select [(ngModel)]="student.category" class="form-control form-control-sm">
+                    <option value="{{category}}" *ngFor="let category of categoryList">{{category}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="class">Religion<span class="text-danger">*</span></label>
+                <select [(ngModel)]="student.relegion" class="form-control form-control-sm">
+                    <option value="{{religion}}" *ngFor="let religion of religionList">{{religion}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="cast">Cast<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.cast" type="text" class="form-control form-control-sm" id="cast">
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="number">Phone<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.phone" type="number" class="form-control form-control-sm" id="number">
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="emergancynumber">Emergency Number<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.emergencynumber" type="number" class="form-control form-control-sm" id="emergancynumber">
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="form-group">
+                <label for="presentaddress">Present Address<span class="text-danger">*</span></label>
+                <textarea [(ngModel)]="student.presentaddress" name="presentaddress" id="" cols="" rows="3" class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-6 col-12">
+            <div class="form-group">
+                <label for="permanentaddress">Permanent Address<span class="text-danger">*</span></label>
+                <textarea [(ngModel)]="student.permanentaddress" name="permanentaddress" id="" cols="" rows="3" class="form-control form-control-sm"></textarea>
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="email">Email<span class="text-danger">*</span></label>
+                <input [(ngModel)]="student.email" type="email" class="form-control form-control-sm" id="email">
+            </div>
+        </div>
+        <div class="col-lg-4 col-6">
+            <div class="form-group">
+                <label for="adhaarnumber">Adhaar Number</label>
+                <input [(ngModel)]="student.adhaar" type="number" class="form-control form-control-sm" id="adhaarnumber">
+            </div>
+        </div>
+        <div class="col-lg-4 col-12">
+            <div class="form-group">
+                <label for="bloodgroup">Blood Group</label>
+                <select [(ngModel)]="student.bloodgroup" class="form-control form-control-sm">
+                    <option value="{{blood}}" *ngFor="let blood of bloodList">{{blood}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="input-group"> 
+                <div class="custom-file">
+                  <input (change)="uploder($event)" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose profile pic (100px X 100px) max.</label>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <span class="px-1"><strong>Parents Details</strong></span>
+        </div>
+    </div>
+    <div class="row my-2 bg-white mx-1 py-2 shadow-sm rounded">
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="fathername">Father Name<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.fathername" type="text" class="form-control form-control-sm" id="fathername">
+        </div>
+       </div>
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="mothername">Mother Name<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.mothername" type="text" class="form-control form-control-sm" id="mothername">
+        </div>
+       </div> 
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="guardianname">Guardian Name<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.guardianname" type="text" class="form-control form-control-sm" id="guardianname">
+        </div>
+       </div>  
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="fathersoccupation">Father's Occupation<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.fathersoccupation" type="text" class="form-control form-control-sm" id="fathersoccupation">
+        </div>
+       </div>
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="mothersoccupation">Mother's Occupation<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.mothersoccupation" type="text" class="form-control form-control-sm" id="mothersoccupation">
+        </div>
+       </div> 
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="guardiansoccupation">Guardian's Occupation<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.guardiansoccupation" type="text" class="form-control form-control-sm" id="guardiansoccupation">
+        </div>
+       </div> 
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="fathercontact">Father Phone number<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.fathercontact" type="number" class="form-control form-control-sm" id="fathercontact">
+        </div>
+       </div>
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="mothercontact">Mother Phone number<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.mothercontact" type="number" class="form-control form-control-sm" id="mothercontact">
+        </div>
+       </div> 
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="guardiancontact">Guardian Phone number<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.guardiancontact" type="text" class="form-control form-control-sm" id="guardiancontact">
+        </div>
+       </div> 
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="fathersemail">Father's Email<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.fathersmail" type="email" class="form-control form-control-sm" id="fathersemail">
+        </div>
+       </div>
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="mothersemail">Mother's Email<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.mothersmail" type="email" class="form-control form-control-sm" id="mothersemail">
+        </div>
+       </div> 
+       <div class="col-lg-4 col-6">
+        <div class="form-group">
+            <label for="guardiansmail">Guardian's Email<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.guardiansmail" type="email" class="form-control form-control-sm" id="guardiansmail">
+        </div>
+       </div>
+       
+       <div class="col-lg-6 col-12">
+        <div class="form-group">
+            <label for="perantaddress">Parent Address<span class="text-danger">*</span></label>
+            <textarea [(ngModel)]="student.parentaddress" name="perantaddress" id="perantaddress" cols="" rows="3" class="form-control form-control-sm"></textarea>
+        </div>
+       </div>
+       <div class="col-lg-6 col-12">
+        <div class="form-group">
+            <label for="guardianaddress">Guardian Address<span class="text-danger">*</span></label>
+            <textarea [(ngModel)]="student.guardianaddress" name="guardianaddress" id="guardianaddress" cols="" rows="3" class="form-control form-control-sm"></textarea>
+        </div>
+       </div>
+       <div class="col-lg-6 col-12">
+        <div class="form-group">
+            <label for="previousinstitution">Previous Institution<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.previousinstitution" type="text" class="form-control form-control-sm" id="previousinstitution">
+        </div>
+       </div>
+       <div class="col-lg-6 col-12">
+        <div class="form-group">
+            <label for="busboardingpoint">Bus Boarding Point<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.busboardingpoint" type="text" class="form-control form-control-sm" id="busboardingpoint">
+        </div>
+       </div>
+       <div class="col-lg-6 col-12">
+        <div class="form-group">
+            <label for="username">Username<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.username" type="text" class="form-control form-control-sm" id="username">
+        </div>
+       </div>
+       <div class="col-lg-6 col-12">
+        <div class="form-group">
+            <label for="password">Password<span class="text-danger">*</span></label>
+            <input [(ngModel)]="student.password" type="text" class="form-control form-control-sm" id="password">
+        </div>
+       </div>
+       <div class="col-12 d-flex align-items-center justify-content-end">
+           <button class="btn btn-sm custom-btn shadow-sm ml-2" (click)="save()" *ngIf="saveFlag">Save</button>
+           <button class="btn btn-sm custom-btn shadow-sm ml-2" (click)="update()" *ngIf="! saveFlag">Update</button>
+       </div>
+
+    </div>
+</div>

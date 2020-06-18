@@ -1,0 +1,206 @@
+<div class="container-fluid">
+    <div class="row py-2 bg-light">
+        <div class="col-lg-8 col-12 d-flex align-items-center ">
+            <i class="fas fa-grip-vertical mx-2"></i>
+            <span><strong>Create new exam</strong></span>
+        </div>
+        <div class="col-lg-4 col-12 d-flex align-items-center justify-content-end">
+            <button class="btn btn-sm custom-btn mx-1" (click)="save()" *ngIf="mainSaveFlag">Save</button>
+            <button class="btn btn-sm custom-btn mx-1"  *ngIf="!mainSaveFlag">Updare</button>
+            <button class="btn btn-sm custom-btn mx-1" *ngIf="!mainSaveFlag">Cancel</button>
+        </div>
+    </div>
+    <div class="row my-2">
+        <div class="col-lg-3 col-6">
+            <select [(ngModel)]="selectedClass" class="form-control form-control-sm my-1" (change)="classSelection()">
+                <option value="null">Select Class</option>
+                <option value="{{item.room}}" *ngFor="let item of classList">{{item.room}}</option>
+            </select>
+        </div>
+        <div class="col-lg-3 col-6">
+            <select [(ngModel)]="selectedSection"  class="form-control form-control-sm my-1">
+                <option value="null">Select Section</option>
+                <option value="{{x}}" *ngFor="let x of sectionList">{{x}}</option>
+            </select>
+        </div>
+        <div class="col-lg-3 col-6">
+            <select [(ngModel)]="selectedSubject" class="form-control form-control-sm my-1" *ngIf="assignedSubject">
+                <option value="null">Select Subject</option>
+                <option value="{{subject}}" *ngFor="let subject of assignedSubject">{{subject}}</option>
+            </select>
+        </div>
+        <div class="col-lg-3 col-6">
+            <input [(ngModel)]="examName" type="text" name="name" id="name" class="form-control form-control-sm" placeholder="Enter exam name">
+        </div>
+        <div class="col-lg-3 col-6">
+            <input [(ngModel)]="totalmark" type="text" name="mark" id="mark" class="form-control form-control-sm" placeholder="Total Marks">
+        </div>
+        <div class="col-lg-3 col-6">
+            <input [(ngModel)]="sheduledDate" type="datetime-local" name="date" id="date" class="form-control form-control-sm" placeholder="Sheduled date and Time">
+        </div>
+        <div class="col-lg-3 col-6">
+            <input [(ngModel)]="endTime" type="datetime-local" name="enddate" id="enddate" class="form-control form-control-sm" placeholder="Sheduled date and Time">
+        </div>
+        <div class="col-lg-12 py-2 bg-light col-12 d-flex align-items-center my-2">
+            <i class="fas fa-grip-vertical mx-2"></i>
+            <span><strong>Exam Questions</strong></span>
+        </div>
+        <div class="col-6 my-1">
+            <div class="col px-0">
+                <textarea [(ngModel)]="question" name="" id="" cols="" rows="3" class="form-control form-control-sm"></textarea>
+            </div>
+            <div class="col my-1 px-0">
+                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+            </div>
+            <div class="col px-0">
+                <input [(ngModel)]="questionMark" type="number" name="mark" id="mark" placeholder="mark" class="form-control form-control-sm">
+            </div>
+        </div>
+        <div class="col-6 my-1">
+            <input [(ngModel)]="numberofOptions" type="number" name="name" id="name" class="form-control form-control-sm" placeholder="Number of Options">
+            <div class="col d-flex my-1 align-items-center" *ngFor="let option of optionList;let a = index;">
+                <span class="mx-1">Option <strong>{{option.key}}</strong></span>
+                <input [(ngModel)]="optionList[a].value" type="text" name="{{option.key}}" id="{{option.key}}" class="form-control form-control-sm col-10" placeholder="value">
+            </div>
+            <div class="col px-0 my-1 d-flex align-items-center justify-content-end">
+                <button class="btn btn-sm custom-btn mx-1" (click)="optionCreater()" *ngIf="addFlag">Add</button>
+                <button class="btn btn-sm custom-btn mx-1" (click)="insert()" *ngIf="!addFlag && !updateFlag">Insert</button>
+                <button class="btn btn-sm custom-btn mx-1" (click)="update()" *ngIf="!addFlag && updateFlag">Update</button>
+                <button class="btn btn-sm custom-btn mx-1" (click)="cancel()" *ngIf="!addFlag">Cancel</button>
+            </div>
+        </div>
+
+        
+    </div>
+    <div class="row" *ngIf="questionList.length > 0">
+        <div class="col-lg-12 py-2 bg-light col-12 d-flex align-items-center">
+            <i class="fas fa-grip-vertical mx-2"></i>
+            <span><strong>Questions List</strong></span>
+        </div>
+        <div class="col-12 py-2" >
+          <div class="d-flex shadow-sm rounded-lg p-2" *ngFor="let question of questionList; let i = index">
+           <div class="col-1 text-center"><span><strong>{{i + 1}})</strong></span></div>
+           <div class="col-11">
+               <span> <strong>Que. </strong>{{question.que}}</span>
+               <!-- <div class="col-12 my-1" *ngIf="question.image !== null">
+                   <img src="{{question.image}}" width="100%" height="300px" alt="">
+               </div> -->
+               <div class="col-12 d-flex flex-wrap my-2">
+                   <span mathjax class="mx-2" *ngFor="let option of question.options">{{option.key}})  {{option.value}}</span>
+               </div>
+               <span>Marks: {{question.mark}}</span>
+               <div class="col-12 d-flex align-items-center justify-content-end">
+                   <i class="fas fa-edit mx-2" (click)="edit(question, i)"></i>
+                   <i class="fas fa-trash-alt" (click)="delete(i)"></i>
+               </div>
+           </div>
+          </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-3 shadow rounded">
+        <div class="d-flex align-items-center mb-5">
+            <h4 class="m-0">Create new exam</h4>
+            <button class="btn custom-btn ml-auto" [routerLink]="['/teacher/home/createexam']" >Save</button>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-3 pl-0 mb-3 ">
+                <select #classSelect class="form-control form-control" (change)="classSelection(classSelect)">
+                    <option value="null">Select class</option>
+                    <option value="{{room.room}}" *ngFor="let room of classList">{{room.room}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3">
+                <select #sectionSelect class="form-control form-control"  (change)="sectionSelection(sectionSelect)">
+                    <option value="null">Select section</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3">
+                <select #subjectSelect class="form-control form-control" (change)="subjectSelection(subjectSelect)">
+                    <option value="null">Select section</option>
+                    <option value="{{subject}}" *ngFor="let subject of subjectList">{{subject}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 px-0 mb-3">
+                <input type="text" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-md-3 pl-0 mb-3 ">
+                <input type="text" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3 ">
+                <input type="datetime-local" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-md-3 pl-0 mb-3 pl-md-3">
+                <input type="datetime-local" class="form-control" placeholder="Enter exam name">
+            </div>
+            <div class="col-12 px-0 mb-3 mb-md-0 mx-0 row">
+                <h6 class="mb-3 col-12 p-0">Exam question</h6>
+                <div class="col-md-3 pl-0 mb-3">
+                    <input type="text" class="form-control" placeholder="Enter exam name">
+                </div>
+                <div class="col-md-9 px-0 pl-md-3 mb-3">
+                    <textarea class="form-control" placeholder="Question"></textarea>
+                </div>
+                <div class="col-md-3 pl-0 mb-3">
+                    <input type="number" class="form-control" placeholder="Enter no of option">
+                </div>
+                <div class="col-md-3 pl-0 pl-md-3 mb-3">
+                    <input type="number" class="form-control" placeholder="Enter no of option">
+                </div>
+                <div class="col-md-3 pl-0 pl-md-3 mb-3 pt-2">
+                    <input type="file" placeholder="Enter no of option">
+                </div>
+                <div class="col-md-3 pl-0 pl-md-3 mb-3 pt-2">
+                    <button class="btn custom-btn ml-auto" [routerLink]="['/teacher/home/createexam']" >Add</button>
+                </div>
+            </div>
+            <div class="col-12 px-0 mb-3 mb-md-0 mx-0 row">
+                <h6 class="mb-3 col-12 p-0">Question list</h6>
+                <div class="col-12 mb-5">
+                    <p class=" d-flex ml-3">
+                        <label class="w-10 mr-3">1)</label>
+                        <label class="w-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Aenean in lacus ac ante semper sollicitudin. Mauris quis faucibus leo. 
+                            Praesent tincidunt vel felis eget condimentumPraesent tincidunt vel felis eget condimentum?
+                        </label>
+                        <label class="ml-auto font-weight-bold" for="">Mark.10</label>
+                    </p>
+                    
+                    <p class="pl-4 row m-0">
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">a)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">b)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">c)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">d)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                    </p>
+                    <div class="col-12 d-flex align-items-end justify-content-end">
+                        <i class="fas fa-edit mx-2" (click)="edit(question, i)"></i>
+                        <i class="fas fa-trash-alt" (click)="delete(i)"></i>
+                    </div>
+
+                </div>
+                <div class="col-12">
+                    <p class=" d-flex ml-3">
+                        <label class="w-10 mr-3">1)</label>
+                        <label class="w-75">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Aenean in lacus ac ante semper sollicitudin. Mauris quis faucibus leo. 
+                            Praesent tincidunt vel felis eget condimentumPraesent tincidunt vel felis eget condimentum?
+                        </label>
+                        <label class="ml-auto font-weight-bold" for="">Mark.10</label>
+                    </p>
+                    
+                    <p class="pl-4 row m-0">
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">a)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">b)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">c)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                        <label class="col-md-6 d-flex"  for=""><label class="w-10 mr-3">d)</label> Lorem ipsum dolor sit amet consectetur adipisicing elit</label>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

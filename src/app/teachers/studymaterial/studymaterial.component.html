@@ -1,0 +1,342 @@
+<!-- <div class="container-fluid">
+    <div class="row bg-light py-2">
+        <div class="col-12 py-2">
+            <i class="fas fa-arrow-left p-2 rounded-circle bg-white shadow-sm"></i>
+        </div>
+        <div class="col-lg-4 col-12">
+
+            <div class="my-1">
+                <div class="col bg-card-head text-white py-2 rounded-top">
+                   <span><strong> Studymaterial Search</strong></span>
+                </div>
+                <div class="col">
+                    <div class="col bg-white">
+                        <div class="form-group mb-0 py-1">
+                            <label for="roomselection">Select Class room & section</label>
+                            <select #classSelect class="form-control form-control-sm mb-1" (change)="classSelection(classSelect.value)" id="roomselection">
+                                <option value="null">Select Class</option>
+                                <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                            </select>
+                            <select #sectionSelect class="form-control form-control-sm" id="roomselection" (change)="sectionSelection(sectionSelect.value)">
+                                <option value="null">Select Section</option>
+                                <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 rounded-bottom d-flex align-items-center justify-content-end">
+                    <button class="btn btn-sm custom-btn border-white" (click)="search()">Search</button>
+                 </div>
+            </div>
+            <div class="my-1">
+                <div class="col bg-card-head text-white py-2 rounded-top">
+                   <span><strong> Studymaterial Upload</strong></span>
+                </div>
+                <div class="col">
+                    <div class="col bg-white">
+                        <div class="form-group mb-0 py-1">
+                            <label for="roomselection">Select Class room & section</label>
+                            <select [(ngModel)]="studymaterial.room" class="form-control form-control-sm mb-1" id="roomselection" (change)="uploadClassSelection()">
+                                <option value="null">Select class</option>
+                                <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                            </select>
+                            <select [(ngModel)]="studymaterial.section" class="form-control form-control-sm mb-1" id="roomselection">
+                                <option value="null">Select section</option>
+                                <option value="{{section}}" *ngFor="let section of sectionListUpload">{{section}}</option>
+                            </select>
+                            <select [(ngModel)]="studymaterial.subject" class="form-control form-control-sm mb-1" id="roomselection">
+                                <option value="null">Select Subject</option>
+                                <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
+                            </select>
+                            <select [(ngModel)]="studymaterial.type" class="form-control form-control-sm" id="roomselection">
+                                <option value="null">Select type</option>
+                                <option value="image">Image</option>
+                                <option value="pdf">Pdf</option>
+                                <option value="doc">Doc</option>
+                                <option value="link">Link</option>
+                            </select>
+                            <div class="form-group mt-1">
+                                <label for="exampleFormControlFile1">Material upload</label>
+                                <input (change)="uploader($event)" type="file" class="form-control-file" id="exampleFormControlFile1">
+                            </div>
+                            <input [(ngModel)]="studymaterial.name" type="text" name="contentname" id="contentname" class="form-control form-control-sm mb-1" placeholder="Enter name of content">
+                            <textarea [(ngModel)]="studymaterial.note" name="note" id="note" cols="" rows="3" placeholder="Enter notes" class="form-control form-control-sm"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <div class="col bg-card-head shadow-sm text-white py-2 rounded-bottom d-flex align-items-center justify-content-end">
+                    <button class="btn btn-sm custom-btn border-white mx-1" (click)="cancel()" *ngIf="! saveFlag">Cancel</button>
+                    <button class="btn btn-sm custom-btn border-white" (click)="update()" *ngIf="! saveFlag">Update</button>
+                    <button class="btn btn-sm custom-btn border-white" (click)="upload()" *ngIf="saveFlag && uploadFlag">Upload</button>
+                 </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8 col-12">
+            <div class="my-1">
+                <div class="col bg-card-head text-white py-2 rounded-top">
+                    <span><strong>Studymaterial Photo Gallery</strong></span>
+                </div>
+                <div class="col">
+                    <div class="col bg-white py-2 d-flex flex-wrap">
+                        <div class="img-item position-relative pointer mx-1" *ngFor="let file of photoList; let i = index;">
+                            <img src="{{file.content}}" width="120px" height="150px" alt="" class="">
+                            <div class="position-absolute caption text-white p-1">
+                                {{file.name}}
+                                <a href="{{file.content}}" download="{{file.name}}"><i class="fas fa-download float-right"></i></a>
+                            </div>
+                            <div class="position-absolute edit">
+                                <i class="far fa-trash-alt float-left m-1" (click)="delete(file, i)"></i>
+                                <i class="far fa-edit float-right m-1" (click)="edit(file)"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 rounded-bottom">
+                    <span><strong>Studymaterial Gallery</strong></span>
+                </div>
+            </div>
+            <div class="my-1" *ngIf="pdfList.length !== 0">
+                <div class="col bg-card-head text-white py-2 rounded-top">
+                    <span><strong>Studymaterial Pdf Gallery</strong></span>
+                </div>
+                <div class="col">
+                    <div class="col bg-white py-2 d-flex flex-wrap">
+                        <div class="card" *ngFor="let item of pdfList;let i = index;">
+                            <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between"><span>{{item.name}}</span><span><i class="fas fa-edit mx-1 pointer" (click)="edit(item)"></i><i class="fas fa-trash pointer" (click)="delete(item,i)"></i></span></div>
+                            <div class="col d-flex flex-column justify-content-center align-items-center py-2">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Subject: {{item.subject}}</span>
+                            </div>
+                            <div class="col bg-card-head py-2">
+                                <a [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.pdf"><i class="fas fa-download float-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 rounded-bottom">
+                    <span><strong>Studymaterial Gallery</strong></span>
+                </div>
+            </div>
+            <div class="my-1" *ngIf="docList.length !== 0">
+                <div class="col bg-card-head text-white py-2 rounded-top">
+                    <span><strong>Studymaterial Document Gallery</strong></span>
+                </div>
+                <div class="col">
+                    <div class="col bg-white py-2 d-flex flex-wrap">
+                        <div class="card" *ngFor="let item of docList">
+                            <div class="col bg-card-head text-white py-2">{{item.name}}</div>
+                            <div class="col d-flex flex-column justify-content-center align-items-center py-2">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Subject: {{item.subject}}</span>
+                            </div>
+                            <div class="col bg-card-head py-2">
+                                <a [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.doc"><i class="fas fa-download float-right"></i></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 rounded-bottom">
+                    <span><strong>Studymaterial Gallery</strong></span>
+                </div>
+            </div>
+            <div class="my-1" *ngIf="linkList.length !== 0">
+                <div class="col bg-card-head text-white py-2 rounded-top">
+                    <span><strong>Studymaterial Link Gallery</strong></span>
+                </div>
+                <div class="col">
+                    <div class="col bg-white py-2 d-flex flex-wrap">
+                        <div class="card" *ngFor="let item of docList">
+                            <div class="col bg-card-head text-white py-2">{{item.name}}</div>
+                            <div class="col d-flex flex-column justify-content-center align-items-center py-2">
+                                <i class="fas fa-file-pdf"></i>
+                                <span>Subject: {{item.subject}}</span>
+                            </div>
+                            <div class="col bg-card-head py-2">
+                                <a [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.pdf"><i class="fas fa-download float-right"></i></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div class="col bg-card-head text-white py-2 rounded-bottom">
+                    <span><strong>Studymaterial Gallery</strong></span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+
+<div class="container-fluid p-3">
+     <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4">Study Material Search</h4>
+            <div class="row m-0">
+                <div class="col-md-4 pl-0 mb-3 mb-md-0">
+                    <select #classSelect class="form-control form-control" (change)="classSelection(classSelect.value)" id="roomselection">
+                        <option value="null">Select class</option>
+                        <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 pl-0 pl-md-3 mb-3 mb-md-0">
+                    <select #sectionSelect class="form-control form-control" id="roomselection" (change)="sectionSelection(sectionSelect.value)">
+                        <option value="null">Select section</option>
+                        <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 pl-0 pl-md-3">
+                    <button class="btn btn custom-btn" (click)="search()">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid py-3">
+            <h4 class="mb-4">Study Material</h4>
+            <div class="row m-0">
+                <div class="col-12 row m-0 p-0">
+                    <div class="col-md-4 pl-0 mb-3">
+                        <input [(ngModel)]="studymaterial.name" type="text" name="contentname" id="contentname" class="form-control" placeholder="Name of content">
+                    </div>
+                    <div class="col-md-4 pl-md-3 pl-0 mb-3">
+                        <textarea [(ngModel)]="studymaterial.note" name="note" id="note" class="form-control" placeholder="Enter notes"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-4 pb-3 pl-0">
+                    <select [(ngModel)]="studymaterial.room" id="roomselection" (change)="uploadClassSelection()" class="form-control form-control">
+                        <option value="null">Select class</option>
+                        <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 pb-3 pl-0 pl-md-3">
+                    <select  [(ngModel)]="studymaterial.section" id="roomselection" class="form-control form-control">
+                        <option value="null">Select section</option>
+                        <option value="{{section}}" *ngFor="let section of sectionListUpload">{{section}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 pb-3 pl-0 pl-md-3">
+                    <select [(ngModel)]="studymaterial.subject" id="roomselection" class="form-control form-control">
+                        <option value="null">Select subject</option>
+                        <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
+                    </select>
+                </div>
+                <div class="col-md-4 pb-3 pl-md-0 pl-0">
+                    <select [(ngModel)]="studymaterial.type" id="roomselection" class="form-control form-control">
+                        <option value="null">Select type of file</option>
+                        <option value="image">Image</option>
+                        <option value="pdf">Pdf</option>
+                        <option value="doc">Doc</option>
+                        <option value="link">Link</option>
+                    </select>
+                </div>
+                <div class="col-md-8 pt-1 pl-0 pl-md-3 mb-3">
+                    <label class="mr-3" for="">Upload material</label>
+                    <input (change)="uploader($event)" type="file" name="" id="exampleFormControlFile1">
+                </div>
+                <div class="col-12 text-md-right pl-0 pl-md-3">
+                    <button class="btn btn custom-btn mx-1" (click)="cancel()" *ngIf="! saveFlag">Cancel</button>
+                    <button class="btn btn custom-btn" (click)="update()" *ngIf="! saveFlag">Update</button>
+                    <button class="btn btn custom-btn" (click)="upload()" *ngIf="saveFlag && uploadFlag">Upload</button>
+                </div>
+            </div>
+        </div>
+     </div>
+ </div>
+
+
+ <div class="container-fluid p-3"  *ngIf="photoList.length !== 0">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4>Material Photo Gallery</h4>
+            <div class="row">
+                <div class="col-md-12 row m-0 p-0">
+              
+                  <div id="mdb-lightbox-ui"></div>
+              
+                  <div class="mdb-lightbox no-margin m-0 row">
+              
+                    <figure class="col-md-3 img-item position-relative pointer mt-3" *ngFor="let file of photoList; let i = index;">
+                      <a href="#" data-size="1600x1067">
+                        <img alt="picture" src="{{file.content}}" class="img-fluid">
+                      </a>
+                        <div class="position-absolute caption text-white p-1 text-right">
+                            <label class="float-left pl-3" for="">{{file.name}}</label>
+                            <a href="{{file.content}}" download="{{file.name}}">
+                                <i class="mr-2 fas fa-download"></i>
+                            </a>
+                            <i class="mr-2 far fa-trash-alt m-1" (click)="delete(file, i)"></i>
+                            <i class="mr-2 far fa-edit m-1" (click)="edit(file)"></i>
+                        </div>
+                    </figure>
+              
+                  </div>
+              
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>    
+
+
+<div class="container-fluid p-3" *ngIf="pdfList.length !== 0">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4">Material PDF Gallery</h4>
+            <div class="d-flex">
+                <div class="pdf-card mr-3 text-center" *ngFor="let item of pdfList;let i = index;">
+                    <i class="delete-icon mr-2 far fa-trash-alt m-1" (click)="delete(item, i)"></i>
+                    <i class="edit-icon mr-2 far fa-edit m-1" (click)="edit(item)"></i>
+                    <i class="pdf-icon fas fa-file-pdf"></i>
+
+                    <label class="file-name" for="">{{item.name}}</label>
+                    <a class="download-icon" [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.pdf">
+                        <i class="mr-2 fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+<div class="container-fluid p-3" *ngIf="docList.length !== 0">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4">Material DOC Gallery</h4>
+            <div class="d-flex">
+                <div class="doc-card mr-3" *ngFor="let item of docList;let i = index;">
+                    <i class="delete-icon mr-2 far fa-trash-alt m-1" (click)="delete(item, i)"></i>
+                    <i class="edit-icon mr-2 far fa-edit m-1" (click)="edit(item)"></i>
+                    <i class="pdf-icon fas fa-file-pdf"></i>
+
+                    <label class="file-name" for="">{{item.name}}</label>
+                    <a class="download-icon" [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{file.name}}.doc">
+                        <i class="mr-2 fas fa-download"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    
+
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4">Shared Links</h4>
+            <div class="d-flex">
+                <div class="link-container mr-3">
+                    <a href=""><label class="mx-2 m-0" for="">Maths chapter 2 link</label></a>
+                    <i class="mr-2 far fa-trash-alt m-1" (click)="delete(file, i)"></i>
+                    <i class="mr-2 far fa-edit m-1" (click)="edit(file)"></i>
+                </div>
+                <div class="link-container mr-3">
+                    <a class="text-primary" href=""><label class="mx-2 m-0" for="">Maths chapter 3 link</label></a>
+                    <i class="mr-2 far fa-trash-alt m-1" (click)="delete(file, i)"></i>
+                    <i class="mr-2 far fa-edit m-1" (click)="edit(file)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>   

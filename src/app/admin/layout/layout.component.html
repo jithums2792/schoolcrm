@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-2 p-0 sidebar">
+        <div class="side-header text-white text-center p-1">
+          Mini school crm
+        </div>
+        <div class="col custom-link" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+         <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Faculty Controls</span></span>
+          <i class="fas fa-chevron-right text-white"></i>
+        </div>
+        <div class="collapse" id="collapseExample">
+            <div class="col sub-menu" [routerLink]="['/sadmin/faculty']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Staff Directory</div>
+            <div class="col sub-menu" [routerLink]="['/sadmin/department']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Department</div>
+            <div class="col sub-menu" [routerLink]="['/sadmin/designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
+            <div class="col sub-menu" [routerLink]="['/sadmin/subjectallocation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Subject Allocation</div>
+            <div class="col sub-menu" [routerLink]="['/sadmin/classsetup']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Allocation</div>
+        </div>
+        <div class="col custom-link" data-toggle="collapse" data-target="#calsscontrol" aria-expanded="false" aria-controls="collapseExample">
+          <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Class Controls</span></span>
+           <i class="fas fa-chevron-right text-white"></i>
+         </div>
+         <div class="collapse" id="calsscontrol">
+          <div class="col sub-menu" [routerLink]="['/sadmin/classlist']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class List</div>
+          <div class="col sub-menu" [routerLink]="['/sadmin/classtimetable']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Timetable</div>
+          <div class="col sub-menu" [routerLink]="['/sadmin/classallocation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Allocation</div>
+        </div>
+        <div class="col custom-link" data-toggle="collapse" data-target="#stusentcontrol" aria-expanded="false" aria-controls="collapseExample">
+          <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Student Controls</span></span>
+           <i class="fas fa-chevron-right text-white"></i>
+         </div>
+         <div class="collapse" id="stusentcontrol">
+          <div class="col sub-menu" [routerLink]="['/sadmin/studentlist']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>student List</div>
+          <div class="col sub-menu" [routerLink]="['/sadmin/admision']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Student Admision</div>
+          <div class="col sub-menu" [routerLink]="['/sadmin/designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
+        </div>
+      </div>
+      <div class="col-10 px-0">
+  
+        <div class="container-fluid">
+          <div class="row appbar">
+            <div class="col-12 p-2">appbar</div>
+          </div>
+        </div>
+  
+        <div class="col px-0 bg-light py-2 form-wraper">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>

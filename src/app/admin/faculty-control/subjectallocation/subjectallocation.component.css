@@ -1,0 +1,9 @@
+.bg-delete{
+    background-color: #ff000040;
+    cursor: pointer;
+    text-shadow: 1px 2px 2px solid black;
+}
+.bg-delete:hover .fa-times{
+    transform: rotate(90deg);
+    transition: 0.5s;
+}

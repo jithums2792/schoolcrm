@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-12 my-1" *ngFor="let staff of staffList; let i = index;">
+            <div class="card">
+                <div class="col bg-card-head py-2 rounded-top shadow-sm text-white d-flex align-items-center justify-content-between">
+                    <span><strong>{{staff.firstname}} {{staff.lastname}} ( {{staff.designation}} )</strong></span>
+                    <button class="btn btn-sm custom-btn border-white" (click)="update(staff)">Update</button>
+                </div>
+                <div class="col d-flex flex-wrap py-2">
+                    <div class="m-1" *ngFor="let subject of staff.assignedSubject; let li = index;">
+                        <span class="py-1 px-2 bg-light rounded-left shadow-sm">{{subject}}</span>
+                        <span class="py-1 px-2 bg-delete rounded-right shadow-sm" (click)="delete(i, li)"><i class="fas fa-times"></i></span>
+                    </div>
+                </div>
+                <div class="col bg-card-head py-2 rounded-bottom shadow-sm text-white">
+                    <select #selectedSubject class="form-control form-control-sm" (change)="subjectSelection(selectedSubject.value, i)">
+                        <option value="null">Select subject</option>
+                        <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

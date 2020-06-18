@@ -1,0 +1,47 @@
+.btn-primary {
+    color: #fff;
+    background-color: #4a4963 !important;
+    border-color: #4a4963 !important;
+}
+.btn-primary:hover{
+    background-color: transparent !important;
+    color: #4a4963;
+    border-color: #4a4963 !important;
+}
+.card{
+    height: 150px;
+    padding: 0;
+    border: 3px solid #057ac5;
+    border-radius: 10px;
+    z-index: 1;
+    background: #fff;
+}
+.button-container{
+    position: absolute;
+    bottom: -80px;
+    margin-left: -3px;
+    width: calc(100% + 6px);
+    padding: 20px 5px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 0px;
+    transition: 0;
+    z-index: -10;
+    border: 3px solid #057ac5;
+    transition: height 1s;
+}
+
+.button-placeholder{
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    background: #057ac5;
+    padding: 10px 5px;
+    cursor: pointer;
+    z-index: 9;
+}
+.button-container button{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+}
