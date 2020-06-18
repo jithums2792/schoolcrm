@@ -1,5 +1,6 @@
 .caption{
     bottom: 0;
+<<<<<<< HEAD
     width: calc(100% - 30px);
     background-color: #057ac5;
     overflow: hidden;
@@ -7,6 +8,17 @@
     height: 35px;
     transform: translateX(-50%);
     left: 50%;
+=======
+    left: 0;
+    width: 120px;
+    background-color: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    display: none;
+    font-size: 10px;
+}
+.img-item:hover  .caption {
+    display: block;
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
 }
 
 a{
@@ -14,9 +26,14 @@ a{
     font-size: 12px;
 }
 .fa-download:hover{
+<<<<<<< HEAD
     color: #17a2b8;
     font-size: 12px;
     cursor: pointer;
+=======
+    color: white;
+    font-size: 12px;
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
 }
 .pdf{
     width: 100px;
@@ -39,6 +56,7 @@ a{
 }
 .fa-trash-alt:hover {
     color: red;
+<<<<<<< HEAD
     cursor: pointer;
 }
 .fa-edit:hover {
@@ -140,3 +158,9 @@ figure.img-item{
         font-size: 14px;
         cursor: pointer;
     }
+=======
+}
+.fa-edit:hover {
+    color: white;
+}
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SchoolFront</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="styles.755e4a7593d54a457f20.css"></head>
+<body>
+  <app-root></app-root>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/962db0ee26.js" crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    gapi.load("client:auth2", function() {
+      gapi.auth2.init({client_id: "291458128144-h3g9751gllmctvv5av2ev4to34k9q07q.apps.googleusercontent.com" });
+    });
+    // sidebar at mobile device
+    
+      
+  
+
+    function openNav() {
+      if(document.getElementById("side-nav").style.width == "0px"){
+        document.getElementById("side-nav").style.width = "100px";
+      }else{
+        document.getElementById("side-nav").style.width = "0";
+      }
+    }
+    
+    // function closeNav() {
+    //   document.getElementById("side-nav").style.width = "0";
+    // }
+  </script>
+<script src="runtime-es2015.92f8f406bf73d7d577dc.js" type="module"></script><script src="runtime-es5.92f8f406bf73d7d577dc.js" nomodule defer></script><script src="polyfills-es5.436ff1ed67b840b7d2c1.js" nomodule defer></script><script src="polyfills-es2015.352893e19d12bea089af.js" type="module"></script><script src="scripts.b352521dfe0622feeaf1.js" defer></script><script src="main-es2015.90901710af8367a1075d.js" type="module"></script><script src="main-es5.90901710af8367a1075d.js" nomodule defer></script></body>
+</html>

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1d8c923a71a4c457eb16f361e47f453c65296927
 @Component({
   selector: 'app-attendexam',
   templateUrl: './attendexam.component.html',
