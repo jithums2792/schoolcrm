@@ -5,8 +5,8 @@
         <div class="d-flex align-items-center mb-5">
             <h4 class="m-0">Create new exam</h4>
             <button class="btn custom-btn ml-auto mx-1" (click)="save()" *ngIf="mainSaveFlag">Save</button>
-            <button class="btn custom-btn ml-auto mx-1" (click)="mainUpdate()" *ngIf="!mainSaveFlag">Update</button>
-            <button class="btn custom-btn ml-auto mx-1" (click)="cancel()" *ngIf="!mainSaveFlag">Cancel</button>
+            <button class="btn custom-btn ml-auto mx-1"  *ngIf="!mainSaveFlag">Update</button>
+            <button class="btn custom-btn mx-1" *ngIf="!mainSaveFlag">Cancel</button>
         </div>
         <div class="row m-0">
 
@@ -43,7 +43,7 @@
                 <input [(ngModel)]="endTime" type="datetime-local" name="enddate" id="enddate" class="form-control" placeholder="End date">
             </div>
             <div class="col-12 px-0 mb-3 mb-md-0 mx-0 row">
-                <h6 class="mb-3 col-12 p-0">Exam question</h6>
+                <h6 class="mt-3 mb-4 col-12 p-0">Exam question</h6>
                 <div class="col-md-4 col-lg-3 pl-0 mb-3">
                     <input [(ngModel)]="numberofOptions" type="number" name="name" id="name" class="form-control" placeholder="Enter no of option">
                 </div>

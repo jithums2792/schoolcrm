@@ -220,6 +220,9 @@ mat-sidenav{
     z-index: 9;
     padding: 0;
     flex:inherit;
+  }
+  #side-nav ul{
+    margin-top: 100px;
   } 
   .top-nav{
     position: relative;
