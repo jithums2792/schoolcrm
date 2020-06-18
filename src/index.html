@@ -29,7 +29,15 @@
     // sidebar at mobile device
     
       
-  
+    function displayFlex(){
+      if(document.getElementById("button-container").style.display == "none"){
+        document.getElementById("button-container").style.display = "flex";
+        document.getElementById("button-container").style.height = "90px";
+      }else{
+        document.getElementById("button-container").style.display = "none";
+        document.getElementById("button-container").style.height = "0px";
+      }
+    }
 
     function openNav() {
       if(document.getElementById("side-nav").style.width == "0px"){
@@ -42,6 +50,9 @@
     // function closeNav() {
     //   document.getElementById("side-nav").style.width = "0";
     // }
+    $(function () {
+      $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+    });
   </script>
 </body>
 </html>
