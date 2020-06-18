@@ -102,11 +102,11 @@ export class StudymaterialComponent implements OnInit {
               this.studymaterial.content = null;
               this.studymaterial.name = '';
               this.studymaterial.note = '';
-              this.studymaterial.room = '';
-              this.studymaterial.section ='';
-              this.studymaterial.subject = '';
+              this.studymaterial.room = 'null';
+              this.studymaterial.section ='null';
+              this.studymaterial.subject = 'null';
               this.studymaterial.teacher = '';
-              this.studymaterial.type = '';
+              this.studymaterial.type = 'null';
             } else {
               this.toastservice.success('something went wrong', 'Error')
             }
