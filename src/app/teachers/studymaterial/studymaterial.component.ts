@@ -77,7 +77,6 @@ export class StudymaterialComponent implements OnInit {
   }
 
   async uploadClassSelection() {
-    console.log(this.studymaterial.room)
       const room = this.classList.find(element => element.name === this.studymaterial.room)
       this.sectionListUpload = room.section;
   }
@@ -107,6 +106,7 @@ export class StudymaterialComponent implements OnInit {
               this.studymaterial.subject = 'null';
               this.studymaterial.teacher = '';
               this.studymaterial.type = 'null';
+              this.studymaterial.content = null;
             } else {
               this.toastservice.success('something went wrong', 'Error')
             }
@@ -137,23 +137,22 @@ export class StudymaterialComponent implements OnInit {
           this.linkList.push(element)
         }
       })
-      console.log(this.pdfList)
     })
   }
 
   async delete(data, index) {
     this.fileuploaderservice.deleteFilebyId(data._id).subscribe(data => {
-      if (data.data !== []) {
-        if (data.type === 'image'){
-          this.photoList.splice(index, 1);
+      if (data.status === 'success') {
+        if (data.data.type === 'image'){
+            this.photoList.splice(index, 1);
         }
-        if (data.type === 'pdf'){
+        if (data.data.type === 'pdf'){
           this.pdfList.splice(index, 1);
         }
-        if (data.type === 'doc'){
+        if (data.data.type === 'doc'){
           this.docList.splice(index, 1);
         }
-        if (data.type === 'link'){
+        if (data.data.type === 'link'){
           this.linkList.splice(index, 1);
         }
         this.toastservice.success('media deleted', 'Success');
