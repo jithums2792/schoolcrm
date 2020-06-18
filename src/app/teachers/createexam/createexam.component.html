@@ -5,8 +5,8 @@
         <div class="d-flex align-items-center mb-5">
             <h4 class="m-0">Create new exam</h4>
             <button class="btn custom-btn ml-auto mx-1" (click)="save()" *ngIf="mainSaveFlag">Save</button>
-            <button class="btn custom-btn ml-auto mx-1"  *ngIf="!mainSaveFlag">Updare</button>
-            <button class="btn custom-btn ml-auto mx-1" *ngIf="!mainSaveFlag">Cancel</button>
+            <button class="btn custom-btn ml-auto mx-1" (click)="mainUpdate()" *ngIf="!mainSaveFlag">Update</button>
+            <button class="btn custom-btn ml-auto mx-1" (click)="cancel()" *ngIf="!mainSaveFlag">Cancel</button>
         </div>
         <div class="row m-0">
 
@@ -56,14 +56,15 @@
                 <div class="col-md-4 col-lg-3 pl-0 pl-md-3 mb-3 pt-2">
                     <input type="file" placeholder="Enter no of option"  id="exampleFormControlFile1">
                 </div>
+                
+                <div class="col-md-4 col-lg-3 pl-0 mb-3 pt-2" *ngFor="let option of optionList;let a = index;">
+                    <input [(ngModel)]="optionList[a].value" type="text" name="{{option.key}}" id="{{option.key}}" class="form-control" placeholder="add value of {{option.key}}">
+                </div>
                 <div class="col-12 pl-0 mb-3 pt-2">
                     <button class="btn custom-btn mx-1" (click)="optionCreater()" *ngIf="addFlag">Add</button>
                     <button class="btn custom-btn mx-1" (click)="insert()" *ngIf="!addFlag && !updateFlag">Insert</button>
                     <button class="btn custom-btn mx-1" (click)="update()" *ngIf="!addFlag && updateFlag">Update</button>
                     <button class="btn custom-btn mx-1" (click)="cancel()" *ngIf="!addFlag">Cancel</button>
-                </div>
-                <div class="col-md-4 col-lg-3 pl-0 mb-3 pt-2" *ngFor="let option of optionList;let a = index;">
-                    <input [(ngModel)]="optionList[a].value" type="text" name="{{option.key}}" id="{{option.key}}" class="form-control" placeholder="add value of {{option.key}}">
                 </div>
             </div>
             <div class="col-12 px-0 mb-3 mb-md-0 mx-0 row">

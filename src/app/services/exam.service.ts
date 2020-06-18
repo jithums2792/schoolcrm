@@ -23,6 +23,9 @@ export class ExamService {
   getExambyCategory(category): Observable<any> {
     return this.http.post(this.api + 'exam/category',category);
   }
+  updateExam(id,exam):Observable<any> {
+    return this.http.patch(this.api + 'exam/update/' + id, exam);
+  }
   getCurrentTime():Observable<any> {
     return this.http.get(this.time);
   }
