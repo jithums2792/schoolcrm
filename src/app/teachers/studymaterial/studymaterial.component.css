@@ -128,3 +128,8 @@ figure.img-item{
 .fa-edit:hover {
     color: white;
 } 
+
+figure img{
+    width: 100%;
+    height: 100%;
+}
