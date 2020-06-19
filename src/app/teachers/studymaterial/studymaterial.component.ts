@@ -127,8 +127,9 @@ export class StudymaterialComponent implements OnInit {
     this.pdfList = [];
     this.docList = [];
     this.fileuploaderservice.getAllfileByroomAndSection(this.selectedRoom, this.selectedSection).subscribe(data => {
-      this.mediaList = data.data;
-      this.mediaList.forEach(element => {
+      if (data.data.length > 0) {
+        this.mediaList = data.data;
+        this.mediaList.forEach(element => {
         if (element.type === 'image') {
           this.photoList.push(element);
         }
@@ -141,7 +142,10 @@ export class StudymaterialComponent implements OnInit {
         if (element.type === 'link') {
           this.linkList.push(element)
         }
-      })
+        })
+      } else {
+        this.toastservice.warning('No File in that class and section', 'Warning')
+      }
     })
   }
 
