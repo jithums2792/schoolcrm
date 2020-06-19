@@ -8,6 +8,9 @@ mat-sidenav{
   background-color: #4a4963;
 } */
 
+/* width */
+
+
 
 .top-nav {
     width: 100%;
@@ -158,6 +161,28 @@ mat-sidenav{
   /* side nav */
   #side-nav{
     max-width: 130px;
+
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    cursor: pointer;
+    display: none;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: rgb(184, 184, 184);
+    cursor: pointer;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(157, 157, 157);
   }
   .side-nav {
     height: calc(100vh - 76px);
@@ -167,6 +192,7 @@ mat-sidenav{
     padding-top: 30px;
     background-color: #057ac5;
     min-width:70px;
+    overflow-y: scroll;
   }
   .side-nav ul {
     text-align: center;
