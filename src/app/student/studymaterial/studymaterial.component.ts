@@ -3,6 +3,8 @@ import { FileuploadService } from 'src/app/services/fileupload.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DepartmentsService } from 'src/app/services/departments.service';
 import { StudentsService } from 'src/app/services/students.service';
+import { isNull } from 'util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-studymaterial',
@@ -26,6 +28,7 @@ export class StudymaterialComponent implements OnInit {
 
   constructor(private mediaservice: FileuploadService,
               public sanitizer: DomSanitizer,
+              private toastrservice: ToastrService,
               private subjectservice: DepartmentsService,
               private studentservice: StudentsService) { }
 
@@ -35,7 +38,9 @@ export class StudymaterialComponent implements OnInit {
     this.getstudentInfo()
   }
   getstudentInfo() {
-    this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {this.studentInfo = data.data; console.log(this.studentInfo)})
+    this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {this.studentInfo = data.data;
+      this.uploadedFiles = this.studentInfo.content
+       console.log(this.studentInfo)})
   }
   getStudymaterial() {
     this.photoList = [];
@@ -76,18 +81,23 @@ export class StudymaterialComponent implements OnInit {
   }
 
   async upload() {
-    let item = {
-      subject: this.subject,
-      note:this.note,
-      name:this.name,
-      media: this.uploadedFiles,
-      type: this.type,
-      date: new Date().getDate()+'-'+ new Date().getMonth()+'-'+ new Date().getFullYear()
-    }
-    await this.studentInfo.content.push(item)
-    delete this.studentInfo._id;
-    this.uploadedFiles = [];
-    this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => this.studentInfo = data.data)
+    if (this.name !== '' && this.name !== null && this.name !== 'null' &&
+          this.type !== 'null' && this.uploadedFiles.length <= 0 && this.subject !== 'null') {
+          let item = {
+            subject: this.subject,
+            note: this.note,
+            name: this.name,
+            media: this.uploadedFiles,
+            type: this.type,
+            date: new Date().getDate()+'-'+ new Date().getMonth()+'-'+ new Date().getFullYear()
+          }
+          await this.studentInfo.content.push(item)
+          delete this.studentInfo._id;
+          this.uploadedFiles = [];
+          this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => console.log(data))
+        } else {
+          this.toastrservice.warning('Some field missing', 'Warning')
+        }
   }
 
   async delete(index) {
