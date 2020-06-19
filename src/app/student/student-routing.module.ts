@@ -7,15 +7,19 @@ import { LivestreamWebrtcComponent } from './livestream-webrtc/livestream-webrtc
 import { StudymaterialComponent } from './studymaterial/studymaterial.component';
 import { ExamsComponent } from './exams/exams.component';
 import { AttendexamComponent } from './attendexam/attendexam.component';
+import { ProfileComponent } from './profile/profile.component';
+import { HomeworkComponent } from './homework/homework.component';
 import { LoginGuard } from '../Auth/login.guard';
 
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, children: [
+    {path: 'profile', component: ProfileComponent},
     {path: 'class', component: StudentclassComponent},
     {path: 'liveclass', component: LiveclassComponent},
     {path: 'liveclass2', component: LivestreamWebrtcComponent},
     {path: 'studymaterial', component: StudymaterialComponent},
+    {path: 'homework', component: HomeworkComponent},
     {path: 'exams', component: ExamsComponent},
     {path: 'attendexam', component: AttendexamComponent},
     {path: '', redirectTo: 'class', pathMatch: 'full'}

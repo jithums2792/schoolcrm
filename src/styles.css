@@ -86,10 +86,11 @@ body { margin: 0; font-family: 'Poppins', sans-serif; font-size: 14px; }
   background-color: #434258;
 }
 .router-link-active {
-background-color: #27263e !important;
+  background: #0f74b3;
+  color: #ffffff;
 }
 .router-link-active  .fa{
-  color: #b091fb !important;
+  color: #ffffff !important;
 }
 .custom-btn {
   min-width: 100px !important;

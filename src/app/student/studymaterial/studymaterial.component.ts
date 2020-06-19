@@ -19,6 +19,10 @@ export class StudymaterialComponent implements OnInit {
   public studentInfo;
   public uploadedFiles = [];
   public subject = 'null';
+  public name = '';
+  public note ='';
+  public type = 'null';
+  public saveFlag = true;
 
   constructor(private mediaservice: FileuploadService,
               public sanitizer: DomSanitizer,
@@ -74,7 +78,10 @@ export class StudymaterialComponent implements OnInit {
   async upload() {
     let item = {
       subject: this.subject,
+      note:this.note,
+      name:this.name,
       media: this.uploadedFiles,
+      type: this.type,
       date: new Date().getDate()+'-'+ new Date().getMonth()+'-'+ new Date().getFullYear()
     }
     await this.studentInfo.content.push(item)

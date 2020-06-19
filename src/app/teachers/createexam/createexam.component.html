@@ -80,8 +80,8 @@
                         <label class="ml-auto font-weight-bold" for="">Mark : {{question.mark}}</label>
                     </p>
                     
-                    <p class="pl-4 row m-0" *ngFor="let option of question.options">
-                        <label class="col-md-6 pl-0 d-flex"  for="">
+                    <p class="pl-4 row m-0">
+                        <label class="col-md-6 pl-0 d-flex" *ngFor="let option of question.options"  for="">
                             <label class="w-10 mr-3">{{option.key}})</label>
                             {{option.value}}
                         </label>
