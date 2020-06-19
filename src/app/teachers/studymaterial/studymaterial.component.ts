@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ClassesService } from 'src/app/services/classes.service';
-import { DepartmentsService } from 'src/app/services/departments.service';
 import { FacultyService } from 'src/app/services/faculty.service';
 import { FileuploadService } from 'src/app/services/fileupload.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -61,9 +60,7 @@ export class StudymaterialComponent implements OnInit {
   async getallClass() {
     this.classservice.getAllclass().subscribe(data => this.classList = data.data)
   }
-  // async getAllSubject() {
-  //   this.subjectservice.getDepartmentList().subscribe(data => this.subjectList = data.data)
-  // }
+  
 
 
   async classSelection(data) {
