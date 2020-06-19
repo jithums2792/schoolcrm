@@ -19,11 +19,12 @@ export class StudymaterialComponent implements OnInit {
   public mediaList = [];
   public subjectList = [];
   public studentInfo;
-  public uploadedFiles = [];
+  public uploadedFiles = []
   public subject = 'null';
   public name = '';
   public note ='';
   public type = 'null';
+  public content = null
   public saveFlag = true;
 
   constructor(private mediaservice: FileuploadService,
@@ -39,7 +40,8 @@ export class StudymaterialComponent implements OnInit {
   }
   getstudentInfo() {
     this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {this.studentInfo = data.data;
-       console.log(this.studentInfo)})
+        this.uploadedFiles = data.data.content
+      })
   }
   getStudymaterial() {
     this.photoList = [];
@@ -70,13 +72,11 @@ export class StudymaterialComponent implements OnInit {
   }
 
   async studentfileUploader(filesx){
-    for(let file of filesx.target.files) {
-      const reader = new FileReader();
-      reader.onload = async() => {
-        this.uploadedFiles.push(reader.result)
-      }
-      reader.readAsDataURL(file)
+    const reader = new FileReader()
+    reader.onload = () => {
+      this.content = reader.result
     }
+    reader.readAsDataURL(filesx.target.files[0])
   }
 
   async upload() {
@@ -85,17 +85,22 @@ export class StudymaterialComponent implements OnInit {
             subject: this.subject,
             note: this.note,
             name: this.name,
-            media: this.uploadedFiles,
             type: this.type,
+            media: this.content,
             date: new Date().getDate()+'-'+ new Date().getMonth()+'-'+ new Date().getFullYear()
           }
-          await this.studentInfo.content.push(item)
+          this.studentInfo.content.push(item)
           delete this.studentInfo._id;
-          this.uploadedFiles = [];
-          this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => console.log(data))
+          this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => {
+            this.uploadedFiles = data.data.content;
+            this.name = ''
+            this.type = 'null'
+            this.subject = 'null'
+            this.note = ''
+            this.content = null
+          })
         } else {
           this.toastrservice.warning('Some field missing', 'Warning')
-          console.log(this.name,this.subject,this.type)
         }
   }
 
