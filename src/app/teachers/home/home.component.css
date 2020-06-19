@@ -189,10 +189,10 @@ mat-sidenav{
 .side-nav ul li a:hover {
   background: #056dc596;
 }
-.side-nav ul li a:active {
+/* .side-nav ul li a:active {
   background: #fff;
   color: #5e77fc;
-}
+} */
 .side-nav ul li label{
   font-size: 10px;
   margin: 0;
