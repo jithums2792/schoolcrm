@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   
   async getstudentinfo() {
     this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {
+      this.username = data.data.name
       localStorage.setItem('studentname', data.data.name);
       localStorage.setItem('studentclass', data.data.class);
       localStorage.setItem('studentsection', data.data.section)

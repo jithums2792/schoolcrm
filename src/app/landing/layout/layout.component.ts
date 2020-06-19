@@ -27,6 +27,7 @@ export class LayoutComponent implements OnInit {
     this.studentservice.login(data).subscribe(data => {
       if (data.data.length >= 1) {
         localStorage.setItem('student', data.data[0]._id);
+        localStorage.setItem('studentname',data.data[0].firstname)
         this.router.navigate(['/student']);
       }
     });

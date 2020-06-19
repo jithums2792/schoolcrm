@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { Stream } from 'stream';
 
 @Component({
   selector: 'app-livestream-webrtc',
@@ -42,6 +43,7 @@ export class LivestreamWebrtcComponent implements OnInit {
   ] };
   public peerConnection = new RTCPeerConnection(this.configuration);
   public room = 'English';
+  public localStream
 
 
 
@@ -56,6 +58,7 @@ studentid = 'tempstudent' + Date.now();
     console.log(this.room)
 
     const localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+    this.localStream = localStream
     const localhost = document.getElementById('host');
     this.localVideo = document.createElement('video');
     this.localVideo.setAttribute('autoplay', 'true');
@@ -154,5 +157,11 @@ studentid = 'tempstudent' + Date.now();
       }
     });
   }
+  ngOnDestroy() {
+  this.localStream.getTracks().forEach(function(track) {
+    track.stop();
+  });
+  }
+
 
 }
