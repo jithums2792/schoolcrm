@@ -39,7 +39,6 @@ export class StudymaterialComponent implements OnInit {
   }
   getstudentInfo() {
     this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {this.studentInfo = data.data;
-      this.uploadedFiles = this.studentInfo.content
        console.log(this.studentInfo)})
   }
   getStudymaterial() {
@@ -81,8 +80,7 @@ export class StudymaterialComponent implements OnInit {
   }
 
   async upload() {
-    if (this.name !== '' && this.name !== null && this.name !== 'null' &&
-          this.type !== 'null' && this.uploadedFiles.length <= 0 && this.subject !== 'null') {
+    if (this.name !== '' && this.type !== 'null'  && this.subject !== 'null') {
           let item = {
             subject: this.subject,
             note: this.note,
@@ -97,6 +95,7 @@ export class StudymaterialComponent implements OnInit {
           this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => console.log(data))
         } else {
           this.toastrservice.warning('Some field missing', 'Warning')
+          console.log(this.name,this.subject,this.type)
         }
   }
 
