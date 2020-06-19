@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-12 bg-light py-2 d-flex align-items-center ">
             <i class="fas fa-grip-vertical mx-2"></i>
@@ -21,4 +21,23 @@
             </div>
         </div>
     </div> 
-</div>
+</div> -->
+
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4 d-inline-block">Exam list</h4>
+            <div class="d-flex flex-wrap">
+                <div class="student-exam-card" *ngFor="let exam of examList">
+                    <h6>{{exam.name}}</h6>
+                    <label class="label" for=""><label>Subject:</label>{{exam.subject}}</label>
+                    <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>
+                    <label class="label" for=""><label>Start At:</label>{{exam.startdate}}</label>
+                    <label class="label" for=""><label>End At:</label>{{exam.enddate}}</label>
+                    <button class="btn attend-btn">Attent exam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>   
