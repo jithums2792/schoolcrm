@@ -43,6 +43,7 @@
                         <select [(ngModel)]="period.subname" class="form-control form-control-sm">
                             <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
                         </select>
+                        <input [(ngModel)]="period.duration" type="number" name="duration" id="duration" class="form-control form-control-sm col-2 mx-2" placeholder="Period duration(min)">
                     </div>
                 </div>              
             </div>

@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import {  MaterialModule } from '../material/material.module';
+import { SharedModule } from '../shared/shared.module'
+import { ModalModule } from 'ngx-bootstrap/modal'
 
 import { StudentRoutingModule } from './student-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +23,8 @@ import { HomeworkComponent } from './homework/homework.component';
   imports: [
     CommonModule,
     MaterialModule,
+    SharedModule,
+    ModalModule.forRoot(),
     FormsModule,
     StudentRoutingModule
   ]

@@ -34,12 +34,5 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
-  async navigate(){
-    const exam = await this.examservice.getexam();
-    const option: NavigationExtras = {
-      state: {data: exam}
-    };
-    this.router.navigate(['/student/home/attendexam'],option)
-  }
 
 }

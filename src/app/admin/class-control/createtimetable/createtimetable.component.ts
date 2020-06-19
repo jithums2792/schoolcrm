@@ -87,7 +87,7 @@ export class CreatetimetableComponent implements OnInit {
   }
 
   async addPeriod(index){
-    const period = Object({name: 'period ' + (this.dayList[index].subjects.length + 1),subname: 'test'})
+    const period = Object({name: 'period ' + (this.dayList[index].subjects.length + 1),subname: 'test', duration: null})
     this.dayList[index].subjects.push(period)
     this.timetable.timetable = this.dayList
   }

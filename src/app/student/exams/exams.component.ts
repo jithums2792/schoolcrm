@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef  } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { StudentsService } from 'src/app/services/students.service';
 import { ExamService } from 'src/app/services/exam.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-exams',
@@ -16,9 +17,12 @@ export class ExamsComponent implements OnInit {
   public studentInfo
   public examList = []
   public currentTime
+  public modalRef: BsModalRef;
+  public exam
 
   constructor(private router: Router,
               private studentservice: StudentsService,
+              private modalService: BsModalService,
               private examservice: ExamService) { }
 
   ngOnInit() {
@@ -45,12 +49,21 @@ export class ExamsComponent implements OnInit {
     this.examservice.getExambyCategory(this.query).subscribe(data => this.examList = data.data)
   }
 
-  async navigate(exam) {
-    // const option: NavigationExtras = {
-    //   state: {data: exam}
-    // };
-    // this.router.navigate(['/student/home/attendexam'],option)
-    this.examservice.setexam(exam);
+  async navigate(exam, instruction: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(instruction, {class: 'modal-lg'})
+    this.exam = exam
+  }
+
+  confirm(): void {
+    const option: NavigationExtras = {
+      state: {data: this.exam}
+    };
+    this.router.navigate(['/student/home/attendexam'],option)
+    this.modalRef.hide();
+  }
+ 
+  decline(): void {
+    this.modalRef.hide();
   }
 
   

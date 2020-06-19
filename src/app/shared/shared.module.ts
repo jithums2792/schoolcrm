@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SmarttableComponent } from './smarttable/smarttable.component';
+import { TimerComponent } from './timer/timer.component';
 
 
 
 @NgModule({
-  declarations: [SmarttableComponent],
+  declarations: [SmarttableComponent, TimerComponent],
   imports: [
     CommonModule
   ],
-  exports: [SmarttableComponent]
+  exports: [SmarttableComponent, TimerComponent]
 })
 export class SharedModule { }
