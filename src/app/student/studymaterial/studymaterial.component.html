@@ -332,6 +332,8 @@
                             <a href="{{file.media}}" download="{{file.name}}">
                                 <i class="mr-2 fas fa-download"></i>
                             </a>
+                            <i class="mr-2 far fa-trash-alt m-1" (click)="delete(file, i)"></i>
+                            <i class="mr-2 far fa-edit m-1" (click)="edit(file)"></i>
                         </div>
                     </figure>
  
