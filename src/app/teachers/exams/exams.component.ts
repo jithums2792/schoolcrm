@@ -100,7 +100,13 @@ export class ExamsComponent implements OnInit {
   }
 
   async search() {
-    this.examservice.getExambyCategory(this.query).subscribe(data => (data.status === 'success')? this.examList = data.data: this.toastservice.error(data.data,data.status))
+    this.examservice.getExambyCategory(this.query).subscribe(data => {
+      if (data.data.length > 0 ) {
+        this.examList = data.data
+      } else {
+        this.toastservice.warning('Nole exam for this class and section', 'Warning')
+      }
+    })
   }
 
   async edit(exam) {
