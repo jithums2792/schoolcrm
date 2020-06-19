@@ -9,6 +9,7 @@ import { ExamService } from 'src/app/services/exam.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  public username
 
   constructor(private studentservice: StudentsService, private router: Router, private examservice: ExamService) { }
 

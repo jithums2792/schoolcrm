@@ -39,6 +39,13 @@
   </mat-sidenav-container>
 </mat-sidenav-container>
  -->
+
+
+<!-- sepration -->
+
+
+
+<!-- 
 <div class="container-fluid">
   <div class="row">
     <div class="col-2 p-0 sidebar">
@@ -108,4 +115,93 @@
       </div>
     </div>
   </div>
+</div> -->
+
+
+
+<div class="container-fluid p-0 bg-main full-screen" >
+  
+  <!-- Top Nav -->
+   <nav class="top-nav bg-white">
+     <img class="brand-logo" src="../../../assets/img/logo.png" alt="logo" srcset="">
+     <div class="header-section">
+         <a onclick="openNavStudent()" class="smart-menu"><i class="fa fa-th" aria-hidden="true"></i></a>
+         <div class="profile">
+             <label class="pr-2" for="">Hi {{username}}</label>
+             <img src="../../../assets/avatar.png" alt="avatar" srcset="">
+         </div>
+     </div>
+   </nav>
+   <!-- Top Nav Ends-->
+
+ <div class="row m-0">
+   
+   <div id="side-nav" class="col-3 px-0 side-navbar">
+     <!-- side Nav -->
+     <nav class="side-nav">
+       <ul class="list-group list-group-flush text-light">
+           <li class="list-group-item">
+               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['profile']" routerLinkActive="router-link-active">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                  <label class="pointer ml-3 pt-1" for="">My profile</label>
+               </a>
+           </li>
+           <li class="list-group-item">
+               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['class']">
+                 <i class="fas fa-podcast"></i>  
+                 <label class="ml-3 pt-1 pointer" for="" >Live class</label>
+               </a>
+           </li>
+           <li class="list-group-item">
+               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['studymaterial']">
+                 <i class="fas fa-atlas"></i>
+                 <label class="ml-3 pt-1 pointer" for="">Materials</label>
+               </a>
+           </li>
+          <li class="list-group-item">
+            <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['homework']">
+              <i class="fas fa-atlas"></i>
+              <label class="ml-3 pt-1 pointer" for="" >HomeWorks</label>
+            </a>
+          </li>
+          <li class="list-group-item">
+              <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
+                <i class="fas fa-atlas"></i>
+                <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">Assignments</label>
+              </a>
+          </li>
+          <li class="list-group-item">
+            <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
+              <i class="fas fa-atlas"></i>
+              <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">My Performance</label>
+            </a>
+          </li>
+          <li class="list-group-item">
+            <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
+              <i class="fas fa-atlas"></i>
+              <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">Attendance</label>
+            </a>
+          </li>
+           <li class="list-group-item">
+               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/exams']">
+                 <i class="fa fa-file-text" ></i>
+                 <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/exams']">Exams</label>
+               </a>
+           </li>
+           <li class="list-group-item">
+               <a class="d-flex pl-2" (click)="logout()">
+                 <i class="fas fa-power-off"></i>
+                 <label class="ml-3 pt-1 pointer" for="">Log Out</label>
+               </a>
+           </li>
+       </ul>
+     </nav>
+   </div>
+   <div class="col px-0 content-container">
+     <router-outlet></router-outlet>
+   </div>
+ </div>
 </div>
+
+
+
