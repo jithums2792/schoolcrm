@@ -178,12 +178,12 @@
                     <a class="dropdown-item text-dark" href="#">Separated link</a>
                 </div>
             </div>
-           <div class="row">
+           <div class="row m-0 w-100">
                <div class="col-md-12 row m-0 p-0">
 
                  <div id="mdb-lightbox-ui"></div>
 
-                 <div class="mdb-lightbox no-margin m-0 row">
+                 <div class="mdb-lightbox no-margin m-0 row w-100">
 
                    <figure class="col-lg-4 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of photoList;let i = index;">
                      <a href="#" data-size="1600x1067">
@@ -316,27 +316,26 @@
                 <a class="dropdown-item text-dark" href="#">Separated link</a>
                 </div>
             </div>
-            <div class="row">
+            <div class="row m-0 w-100">
                 <div class="col-md-12 row m-0 p-0">
  
-                  <div id="mdb-lightbox-ui"></div>
  
-                  <div class="mdb-lightbox no-margin m-0 row">
- 
-                    <figure class="col-lg-4 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of uploadedFiles;let i = index;">
-                      <a href="#" data-size="1600x1067">
-                        <img alt="picture" src="{{file.media}}" class="img-fluid">
-                      </a>
-                        <div class="position-absolute caption text-white p-1 text-right">
-                            <label class="float-left pl-3" for="">{{file.name}}</label>
-                            <a href="{{file.media}}" download="{{file.name}}">
-                                <i class="mr-2 fas fa-download"></i>
+                    <div class="mdb-lightbox no-margin m-0 row w-100">
+
+                        <figure class="col-lg-4 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of uploadedFiles;let i = index;">
+                            <a href="#" data-size="1600x1067">
+                            <img alt="picture" src="{{file.media}}" class="img-fluid">
                             </a>
-                            <i class="mr-2 far fa-trash-alt m-1" (click)="delete(file, i)"></i>
-                        </div>
-                    </figure>
- 
-                  </div>
+                            <div class="position-absolute caption text-white p-1 text-right">
+                                <label class="float-left pl-3" for="">{{file.name}}</label>
+                                <a href="{{file.media}}" download="{{file.name}}">
+                                    <i class="mr-2 fas fa-download"></i>
+                                </a>
+                                <i class="mr-2 far fa-trash-alt m-1" (click)="delete(file, i)"></i>
+                            </div>
+                        </figure>
+
+                    </div>
  
                 </div>
             </div>
