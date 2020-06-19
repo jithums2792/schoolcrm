@@ -162,7 +162,18 @@
 <div class="container-fluid p-3"  *ngIf="photoList.length !== 0">
    <div class="container-fluid p-0 rounded shadow">
        <div class="container-fluid py-3">
-           <h4>Material Photo Gallery</h4>
+           <h4 class="d-inline-block">Material Photo Gallery</h4>
+           <div class="btn-group float-right">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-dark" href="#">Action</a>
+                    <a class="dropdown-item text-dark" href="#">Another action</a>
+                    <a class="dropdown-item text-dark" href="#">Something else here</a>
+                    <a class="dropdown-item text-dark" href="#">Separated link</a>
+                </div>
+            </div>
            <div class="row">
                <div class="col-md-12 row m-0 p-0">
 
@@ -170,7 +181,7 @@
 
                  <div class="mdb-lightbox no-margin m-0 row">
 
-                   <figure class="col-lg-3 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of photoList;let i = index;">
+                   <figure class="col-lg-4 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of photoList;let i = index;">
                      <a href="#" data-size="1600x1067">
                        <img alt="picture" src="{{file.content}}" class="img-fluid">
                      </a>
@@ -195,7 +206,18 @@
 <div class="container-fluid p-3" *ngIf="pdfList.length !== 0">
    <div class="container-fluid p-0 rounded shadow">
        <div class="container-fluid py-3">
-           <h4 class="mb-4">Material PDF Gallery</h4>
+           <h4 class="mb-4 d-inline-block">Material PDF Gallery</h4>
+           <div class="btn-group float-right">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-dark" href="#">Action</a>
+                    <a class="dropdown-item text-dark" href="#">Another action</a>
+                    <a class="dropdown-item text-dark" href="#">Something else here</a>
+                    <a class="dropdown-item text-dark" href="#">Separated link</a>
+                </div>
+            </div>
            <div class="d-flex">
                <div class="pdf-card mr-3 text-center" *ngFor="let item of pdfList;let i = index;">
                    <i class="pdf-icon fas fa-file-pdf"></i>
@@ -213,7 +235,18 @@
 <div class="container-fluid p-3" *ngIf="docList.length !== 0">
    <div class="container-fluid p-0 rounded shadow">
        <div class="container-fluid py-3">
-           <h4 class="mb-4">Material DOC Gallery</h4>
+           <h4 class="mb-4 d-inline-block">Material DOC Gallery</h4>
+           <div class="btn-group float-right">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-dark" href="#">Action</a>
+                    <a class="dropdown-item text-dark" href="#">Another action</a>
+                    <a class="dropdown-item text-dark" href="#">Something else here</a>
+                    <a class="dropdown-item text-dark" href="#">Separated link</a>
+                </div>
+            </div>
            <div class="d-flex">
                <div class="doc-card mr-3" *ngFor="let item of docList;let i = index;">
                    <i class="pdf-icon fas fa-file-pdf"></i>
@@ -232,7 +265,18 @@
 <div class="container-fluid p-3">
    <div class="container-fluid p-0 rounded shadow">
        <div class="container-fluid py-3">
-           <h4 class="mb-4">Shared Links</h4>
+           <h4 class="mb-4 d-inline-block">Shared Links</h4>
+           <div class="btn-group float-right">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item text-dark" href="#">Action</a>
+                    <a class="dropdown-item text-dark" href="#">Another action</a>
+                    <a class="dropdown-item text-dark" href="#">Something else here</a>
+                    <a class="dropdown-item text-dark" href="#">Separated link</a>
+                </div>
+            </div>
            <div class="row m-0">
                <div class="link-container d-flex mr-3 mb-3">
                    <a href=""><label class="mx-2 m-0" for="">Maths chapter 2 link</label></a>
@@ -250,3 +294,48 @@
        </div>
    </div>
 </div>   
+
+
+<div class="container-fluid p-3"  *ngIf="photoList.length !== 0">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="d-inline-block">Student meterial Gallery</h4>
+            <!-- Example single danger button -->
+            <div class="btn-group float-right">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" href="#">Action</a>
+                <a class="dropdown-item text-dark" href="#">Another action</a>
+                <a class="dropdown-item text-dark" href="#">Something else here</a>
+                <a class="dropdown-item text-dark" href="#">Separated link</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 row m-0 p-0">
+ 
+                  <div id="mdb-lightbox-ui"></div>
+ 
+                  <div class="mdb-lightbox no-margin m-0 row">
+ 
+                    <figure class="col-lg-3 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of photoList;let i = index;">
+                      <a href="#" data-size="1600x1067">
+                        <img alt="picture" src="{{file.content}}" class="img-fluid">
+                      </a>
+                        <div class="position-absolute caption text-white p-1 text-right">
+                            <label class="float-left pl-3" for="">{{file.name}}</label>
+                            <a href="{{file.content}}" download="{{file.name}}">
+                                <i class="mr-2 fas fa-download"></i>
+                            </a>
+                        </div>
+                    </figure>
+ 
+                  </div>
+ 
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+ </div>    
