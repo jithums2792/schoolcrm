@@ -67,17 +67,17 @@
 
 
 
-  <div class="container-fluid pt-3 px-0">
+  <div class="container-fluid pt-3 px-0" *ngIf="studentInfo">
     <div class="row m-0 pl-md-3 p-0">
       <div class="col-lg-5 mb-4 p-3 row m-0 rounded p-0 shadow align-self-start">
         <div class="profile col-4 pl-0">
-          <img class="w-100" src="../../../assets/avatar.png" alt="">
+          <img src="{{studentInfo.photo}}" width="100px" height="100px" alt="" *ngIf="studentInfo.photo !== null">
         </div>
         <div class="col-8 pt-2">
-          <h3>ARUN MAKLEN</h3>
-          <label for="">Asst.prof MATHS</label>
-          <p class="mb-0">Staff id : <label for="">3098123</label></p>
-          <label for="">arunmaklen@gmail.com</label>
+          <h3>{{studentInfo.firstname}} {{studentInfo.lastname}}</h3>
+          <label for="">{{studentInfo.designation}}</label>
+          <p class="mb-0">Staff id : <label for="">{{studentInfo.staffid}}</label></p>
+          <label for="">{{studentInfo.email}}</label>
         </div>
       </div>
       <div class="col row m-0 px-lg-3 px-0">
@@ -86,89 +86,30 @@
             <h4>Profile Details</h4>
           </div>
           <div class="col-6">
-            <label for="">Admission Date</label>
+            <label for="">Joining Date</label>
           </div>
           <div class="col-6">
-            <label for="">20/08/2018</label>
-          </div>
-          <div class="col-6">
-            <label for="">Date of Birth </label>
-          </div>
-          <div class="col-6">
-            <label for="">20/08/1978</label>
-          </div>
-          <div class="col-6">
-            <label for="">Mobile Number</label>
-          </div>
-          <div class="col-6">
-            <label for="">+91 9846383554</label>
-          </div>
-          <div class="col-6">
-            <label for="">Blood Group</label>
-          </div>
-          <div class="col-6">
-            <label for="">A+</label>
-          </div>
-          <div class="col-6">
-            <label for="">Address</label>
-          </div>
-          <div class="col-6">
-            <label for="">martin(H), Edavetty(po), Thodupuzha</label>
-          </div>
-          <div class="col-6">
-            <label for="">Blood Group</label>
-          </div>
-          <div class="col-6">
-            <label for="">A+</label>
-          </div>
-          <div class="col-6">
-            <label for="">Address</label>
-          </div>
-          <div class="col-6">
-            <label for="">martin(H), Edavetty(po), Thodupuzha</label>
-          </div>
-          <div class="col-6">
-            <label for="">Admission Date</label>
-          </div>
-          <div class="col-6">
-            <label for="">20/08/2018</label>
+            <label for="">{{studentInfo.doj}}</label>
           </div>
           <div class="col-6">
             <label for="">Date of Birth </label>
           </div>
           <div class="col-6">
-            <label for="">20/08/1978</label>
+            <label for="">{{studentInfo.dob}}</label>
           </div>
           <div class="col-6">
             <label for="">Mobile Number</label>
           </div>
           <div class="col-6">
-            <label for="">+91 9846383554</label>
-          </div>
-          <div class="col-6">
-            <label for="">Blood Group</label>
-          </div>
-          <div class="col-6">
-            <label for="">A+</label>
+            <label for="">{{studentInfo.phone}}</label>
           </div>
           <div class="col-6">
             <label for="">Address</label>
           </div>
           <div class="col-6">
-            <label for="">martin(H), Edavetty(po), Thodupuzha</label>
+            <label for="">{{studentInfo.currentaddress}}</label>
           </div>
-          <div class="col-6">
-            <label for="">Blood Group</label>
-          </div>
-          <div class="col-6">
-            <label for="">A+</label>
-          </div>
-          <div class="col-6">
-            <label for="">Address</label>
-          </div>
-          <div class="col-6">
-            <label for="">martin(H), Edavetty(po), Thodupuzha, PIN:685588</label>
-          </div>
+          
         </div>
       </div>
     </div>
