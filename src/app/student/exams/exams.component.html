@@ -4,11 +4,10 @@
             <i class="fas fa-grip-vertical mx-2"></i>
             <span><strong>Available Exam List</strong></span>
         </div>
-        <div class="col-12 my-2" *ngFor="let exam of examList">
-            <div class="card  shadow-sm">
+        <div class="col-md-3 my-2" *ngFor="let exam of examList">
+            <div class="card shadow">
                 <div class="col bg-card-head py-2 rounded-top text-white d-flex align-items-center justify-content-between">
-                    <span><strong>{{exam.name}}</strong></span>
-                    <span><i class="fas fa-circle text-success">Active</i></span>
+                    <span><strong><i class="fas fa-circle text-success"></i>{{exam.name}}</strong></span>
                 </div>
                 <div class="col py-3 d-flex flex-column">
                     <span class="mb-1"><strong>{{exam.subject}}</strong></span>
