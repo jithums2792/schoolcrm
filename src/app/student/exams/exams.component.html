@@ -29,13 +29,14 @@
         <div class="container-fluid py-3">
             <h4 class="mb-4 d-inline-block">Exam list</h4>
             <div class="d-flex flex-wrap">
-                <div class="student-exam-card" *ngFor="let exam of examList">
+                <div class="student-exam-card col-lg-3 col-12" *ngFor="let exam of examList;let i = index;">
+                    <span class="w-100 d-flex align-items-center justify-content-end"><app-timer [satrtdate]="currentTime" [enddDate]="exam.enddate" (state)="buttonCtrl($event, i)"></app-timer></span>
                     <h6>{{exam.name}}</h6>
                     <label class="label" for=""><label>Subject:</label>{{exam.subject}}</label>
                     <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>
                     <label class="label" for=""><label>Start At:</label>{{exam.startdate}}</label>
                     <label class="label" for=""><label>End At:</label>{{exam.enddate}}</label>
-                    <button class="btn attend-btn">Attent exam</button>
+                    <button class="btn attend-btn" *ngIf="exam.active">Attent exam</button>
                 </div>
             </div>
         </div>

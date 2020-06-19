@@ -105,7 +105,8 @@ export class CreateexamComponent implements OnInit {
           totalmark: this.totalmark,
           starttime: this.sheduledDate,
           endtime: this.endTime,
-          questionlist: this.questionList
+          questionlist: this.questionList,
+          active: true
         })
         this.examservice.addExam(exam).subscribe(data => (data.status === 'success')? this.toastservice.success('saved', 'success'): this.toastservice.error('something wrong', 'Error'))
        } else {
@@ -124,10 +125,12 @@ export class CreateexamComponent implements OnInit {
            subject: this.selectedSubject,
            teacher: this.staffinfo.firstname,
            totalmark: this.totalmark,
-           starttime: this.sheduledDate,
-           endtime: this.endTime,
-           questionlist: this.questionList
+           startdate: this.sheduledDate,
+           enddate: this.endTime,
+           questionlist: this.questionList,
+           active: true
          })
+         console.log(exam)
          this.examservice.updateExam(this.editExam._id,exam).subscribe(data => (data.status === 'success')? this.toastservice.success('updated', 'success'): this.toastservice.error('something wrong', 'Error'))
         } else {
           this.toastservice.warning('some fields are missing', 'Warning')

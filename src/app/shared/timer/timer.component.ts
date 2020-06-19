@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core'
 
 @Component({
   selector: 'app-timer',
@@ -6,42 +6,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./timer.component.css']
 })
 export class TimerComponent implements OnInit {
-  public startData = '2020-06-19T17:45'
-  public stopData = '2020-06-19T18:45'
-  public startYear
-  public startMonth
-  public startDay
-  public startHour
-  public startMin
-  public startsec
+  @Input() satrtdate
+  @Input() enddDate
+  @Output() state = new EventEmitter<any>()
+  // public startData = '2020-06-19T17:45'
+  // public stopData = '2020-06-19T18:45'
 
-  public endYear
-  public endMonth
-  public endDay
-  public endHour
-  public endMin
-  public endsec
+  public day
+  public hour
+  public min
+  public sec
+  public res
 
   constructor() { }
 
-  ngOnInit() {
-    this.test()
-  }
-
-  async manipulate() {
-    this.startYear = this.startData.substr(0,4)
-    this.startMonth = this.startData.substr(5,2)
-    this.startDay = this.startData.substr(8,2)
-    this.startHour = this.startData.substr(11,2)
-    this.startMin = this.startData.substr(14,2)
-    console.log(this.startYear, this.startMonth, this.startDay, this.startHour, this.startMin)
+  async ngOnInit() {
+    setTimeout(() => {
+      this.test()
+    }, 1000);
+    setInterval(() => {
+      if(this.res >= 0) {
+        this.day = Math.floor(this.res / 86400);
+        this.hour = Math.floor(this.res / 3600) % 24;
+        this.min = Math.floor(this.res / 60) % 60;
+        this.sec = this.res % 60;  
+        this.res = this.res - 1
+      } else {
+        this.state.emit(false)
+      }
+      
+    },1000)
   }
   
   async test() {
-    let date1 = +new Date(this.startData)
-    let date2 = +new Date(this.stopData)
-    let res = Math.abs(date1 - date2)/1000
-    console.log(res)
+    let date1 =  +new Date(this.satrtdate)
+    let date2 =  +new Date(this.enddDate)
+    if (date1 < date2) {
+      this.res = Math.abs(date1 - date2)/1000
+    } else {
+      // this.state.emit(false)
+    }
+    
   }
 
 }

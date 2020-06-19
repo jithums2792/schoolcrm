@@ -3,6 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { StudentsService } from 'src/app/services/students.service';
 import { ExamService } from 'src/app/services/exam.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { TIMEOUT } from 'dns';
 
 @Component({
   selector: 'app-exams',
@@ -16,9 +17,10 @@ export class ExamsComponent implements OnInit {
   }
   public studentInfo
   public examList = []
-  public currentTime
+  public currentTime:string
   public modalRef: BsModalRef;
   public exam
+  public buttonFlag = true
 
   constructor(private router: Router,
               private studentservice: StudentsService,
@@ -28,11 +30,14 @@ export class ExamsComponent implements OnInit {
   ngOnInit() {
     this.getStudentinfo()
     this.getCurrentTime()
-  }
+    // setInterval(() => {
+    //    this.getCurrentTime()
+    // },1000)
+ }
 
   async getCurrentTime() {
-    this.examservice.getCurrentTime().subscribe(data => {
-      this.currentTime = data.datetime.substr(0,16)
+    this.examservice.getCurrentTime().subscribe(async data => {
+      this.currentTime = await data.datetime.substr(0,19)
     })
   }
 
@@ -64,6 +69,10 @@ export class ExamsComponent implements OnInit {
  
   decline(): void {
     this.modalRef.hide();
+  }
+
+  buttonCtrl(value, index) {
+    this.examList[index].active = value
   }
 
   
