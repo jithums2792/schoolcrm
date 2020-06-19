@@ -26,6 +26,9 @@ export class ExamService {
   updateExam(id,exam):Observable<any> {
     return this.http.patch(this.api + 'exam/update/' + id, exam);
   }
+  deleteExam(id): Observable<any> {
+    return this.http.delete(this.api + 'exam/delete/' + id);
+  }
   getCurrentTime():Observable<any> {
     return this.http.get(this.time);
   }

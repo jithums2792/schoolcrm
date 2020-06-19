@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-md-4 col-lg-3 pl-0 pl-md-3 mb-3">
-                <select #sectionSelect class="form-control form-control"  (change)="sectionSelection(sectionSelect)">
+                <select [(ngModel)]="selectedSection" class="form-control form-control">
                     <option value="null">Select section</option>
                     <option value="{{x}}" *ngFor="let x of sectionList">{{x}}</option>
                 </select>

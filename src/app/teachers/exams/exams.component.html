@@ -36,7 +36,7 @@
             <h4 class="m-0">Available Exam List</h4>
         </div>
         <div class="row">
-            <div class="col-lg-6 col-md-6 col-xl-4 mb-3" *ngFor="let exam of examList">
+            <div class="col-lg-6 col-md-6 col-xl-4 mb-3" *ngFor="let exam of examList; let i = index;">
                 <div class="exam-info-card border rounded">
                     <div class="exam-info-header d-flex p-3 border-bottom align-items-center">
                         <h6 class="m-0">{{exam.name}}</h6>
@@ -73,7 +73,7 @@
                                 <label class="float-right w-50" for="">{{exam.totalmarks}}</label>
                             </div>
                             <div class="col-12 my-2">
-                                <button type="button" class="btn btn-outline-danger w-100 alert-danger">Cancel Exam</button>
+                                <button type="button" class="btn btn-outline-danger w-100 alert-danger" (click)="openModal(template,exam,i)">Cancel Exam</button>
                             </div>
                         </div>
                     </div>
@@ -82,3 +82,11 @@
         </div>
     </div>
 </div>
+
+<ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+</ng-template>

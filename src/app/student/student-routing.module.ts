@@ -7,6 +7,7 @@ import { LivestreamWebrtcComponent } from './livestream-webrtc/livestream-webrtc
 import { StudymaterialComponent } from './studymaterial/studymaterial.component';
 import { ExamsComponent } from './exams/exams.component';
 import { AttendexamComponent } from './attendexam/attendexam.component';
+import { LoginGuard } from '../Auth/login.guard';
 
 
 const routes: Routes = [
@@ -18,7 +19,7 @@ const routes: Routes = [
     {path: 'exams', component: ExamsComponent},
     {path: 'attendexam', component: AttendexamComponent},
     {path: '', redirectTo: 'class', pathMatch: 'full'}
-  ]},
+  ], canActivate: [LoginGuard]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
 ];
 

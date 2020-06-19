@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { FacultyService } from 'src/app/services/faculty.service';
 import { ToastrService } from 'ngx-toastr';
 import { ExamService } from 'src/app/services/exam.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-exams',
@@ -21,15 +22,42 @@ export class ExamsComponent implements OnInit {
     subject: null,
     teacher: null
   }
+  public modalRef: BsModalRef;
+  public exam
+  public index
 
   constructor(private router: Router,
               private staffservice: FacultyService,
               private toastservice: ToastrService,
+              private modalService: BsModalService,
               private examservice: ExamService) { }
 
   ngOnInit() {
     this.getStaffinfo()
     this.getAllExam()
+  }
+
+  openModal(template: TemplateRef<any>, exam, index) {
+    this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+    this.exam = exam
+    this.index = index
+  }
+ 
+  confirm(): void {
+    this.examservice.deleteExam(this.exam._id).subscribe(data => {
+      if (data.status === 'success') {
+        this.toastservice.success('Deleted', 'Success')
+        this.examList.splice(this.index, 1)
+        this.modalRef.hide();
+      } else {
+        this.toastservice.error('Something wrong', 'Error')
+      }
+    })
+  }
+ 
+  decline(): void {
+    console.log('declined')
+    this.modalRef.hide();
   }
 
   getStaffinfo() {
@@ -81,6 +109,10 @@ export class ExamsComponent implements OnInit {
       state: {data: exam}
     }
     this.router.navigate(['/teacher/home/createexam'], options)
+  }
+
+  async delete(exam) {
+
   }
 
 }

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  socket: 'https://eduschool.live/',
-  api: 'https://eduschool.live/api/'
+  socket: 'https://getclass.live/',
+  api: 'https://getclass.live/api/'
 };

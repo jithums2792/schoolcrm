@@ -73,7 +73,7 @@ export class StudymaterialComponent implements OnInit {
   }
 
   async sectionSelection(data) {
-    this.selectedSection = data;
+    this.selectedSection = data.value;
   }
 
   async uploadClassSelection() {

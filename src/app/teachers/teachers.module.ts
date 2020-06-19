@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material/material.module';
 import { MathJaxModule } from 'ngx-mathjax';
+import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { TeachersRoutingModule } from './teachers-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -21,6 +22,7 @@ import { CreateexamComponent } from './createexam/createexam.component';
     CommonModule,
     FormsModule,
     MaterialModule,
+    ModalModule.forRoot(),
     MathJaxModule.forRoot({
       version: '2.7.5',
       config: 'TeX-AMS_HTML',
