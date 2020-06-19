@@ -1,14 +1,13 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-12 bg-light py-2 d-flex align-items-center ">
             <i class="fas fa-grip-vertical mx-2"></i>
             <span><strong>Available Exam List</strong></span>
         </div>
-        <div class="col-12 my-2" *ngFor="let exam of examList">
-            <div class="card  shadow-sm">
+        <div class="col-md-3 my-2" *ngFor="let exam of examList">
+            <div class="card shadow">
                 <div class="col bg-card-head py-2 rounded-top text-white d-flex align-items-center justify-content-between">
-                    <span><strong>{{exam.name}}</strong></span>
-                    <span><app-timer></app-timer></span>
+                    <span><strong><i class="fas fa-circle text-success"></i>{{exam.name}}</strong></span>
                 </div>
                 <div class="col py-3 d-flex flex-column">
                     <span class="mb-1"><strong>{{exam.subject}}</strong></span>
@@ -22,11 +21,23 @@
             </div>
         </div>
     </div> 
-</div>
-<ng-template #instruction>
-    <div class="modal-body text-center">
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae, enim mollitia consectetur dolore perferendis, explicabo minus est vitae fugiat culpa nemo ipsam sed et aliquam expedita hic adipisci! Rem, alias.</p>
-      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
-      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+</div> -->
+
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4 d-inline-block">Exam list</h4>
+            <div class="d-flex flex-wrap">
+                <div class="student-exam-card" *ngFor="let exam of examList">
+                    <h6>{{exam.name}}</h6>
+                    <label class="label" for=""><label>Subject:</label>{{exam.subject}}</label>
+                    <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>
+                    <label class="label" for=""><label>Start At:</label>{{exam.startdate}}</label>
+                    <label class="label" for=""><label>End At:</label>{{exam.enddate}}</label>
+                    <button class="btn attend-btn">Attent exam</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </ng-template>
+ </div>   
