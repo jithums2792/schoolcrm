@@ -140,58 +140,58 @@
      <!-- side Nav -->
      <nav class="side-nav">
        <ul class="list-group list-group-flush text-light">
-           <li class="list-group-item">
-               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['profile']" routerLinkActive="router-link-active">
+           <li class="list-group-item d-flex">
+               <a class="pl-2 text-center" onclick="openNavStudent()" [routerLink]="['profile']" routerLinkActive="router-link-active">
                   <i class="fa fa-user" aria-hidden="true"></i>
-                  <label class="pointer ml-3 pt-1" for="">My profile</label>
+                  <label class="pointer d-block pt-1" for="">My profile</label>
                </a>
            </li>
-           <li class="list-group-item">
-               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['class']">
+           <li class="list-group-item d-flex">
+               <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['class']">
                  <i class="fas fa-podcast"></i>  
-                 <label class="ml-3 pt-1 pointer" for="" >Live class</label>
+                 <label class="pt-1 pointer d-block" for="" >Live class</label>
                </a>
            </li>
-           <li class="list-group-item">
-               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['studymaterial']">
+           <li class="list-group-item d-flex">
+               <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['studymaterial']">
                  <i class="fas fa-atlas"></i>
-                 <label class="ml-3 pt-1 pointer" for="">Materials</label>
+                 <label class="pt-1 d-block pointer" for="">Materials</label>
                </a>
            </li>
-          <li class="list-group-item">
-            <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['homework']">
+          <li class="list-group-item d-flex">
+            <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['homework']">
               <i class="fas fa-atlas"></i>
-              <label class="ml-3 pt-1 pointer" for="" >HomeWorks</label>
+              <label class="d-block pt-1 pointer" for="" >HomeWorks</label>
             </a>
           </li>
-          <li class="list-group-item">
-              <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
+          <li class="list-group-item d-flex">
+              <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
                 <i class="fas fa-atlas"></i>
-                <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">Assignments</label>
+                <label class="d-block pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">Assignments</label>
               </a>
           </li>
-          <li class="list-group-item">
-            <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
+          <li class="list-group-item d-flex">
+            <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
               <i class="fas fa-atlas"></i>
-              <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">My Performance</label>
+              <label class="d-block pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">My Performance</label>
             </a>
           </li>
-          <li class="list-group-item">
-            <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
+          <li class="list-group-item d-flex">
+            <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/studymaterial']">
               <i class="fas fa-atlas"></i>
-              <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">Attendance</label>
+              <label class="d-block pt-1 pointer" for="" [routerLink]="['/teacher/home/studymaterial']">Attendance</label>
             </a>
           </li>
-           <li class="list-group-item">
-               <a class="d-flex pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/exams']">
+           <li class="list-group-item f-flex">
+               <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['/teacher/home/exams']">
                  <i class="fa fa-file-text" ></i>
-                 <label class="ml-3 pt-1 pointer" for="" [routerLink]="['/teacher/home/exams']">Exams</label>
+                 <label class="d-block pt-1 pointer" for="" [routerLink]="['/teacher/home/exams']">Exams</label>
                </a>
            </li>
-           <li class="list-group-item">
-               <a class="d-flex pl-2" (click)="logout()">
+           <li class="list-group-item d-flex">
+               <a class="text-center pl-2" (click)="logout()">
                  <i class="fas fa-power-off"></i>
-                 <label class="ml-3 pt-1 pointer" for="">Log Out</label>
+                 <label class="d-block pt-1 pointer" for="">Log Out</label>
                </a>
            </li>
        </ul>

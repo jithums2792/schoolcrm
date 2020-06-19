@@ -157,7 +157,7 @@ mat-sidenav{
   
   /* side nav */
   #side-nav{
-    max-width: 210px;
+    max-width: 130px;
   }
   .side-nav {
     height: calc(100vh - 76px);
@@ -181,7 +181,7 @@ mat-sidenav{
   }
   .side-nav ul li a {
     min-width: 40px;
-    width: 150px;
+    width: 100px;
     padding: 10px;
     color: #fff;
     border-radius: 5px;
