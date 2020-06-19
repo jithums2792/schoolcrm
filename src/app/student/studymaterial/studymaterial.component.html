@@ -146,7 +146,14 @@
                        <option value="link">Link</option>
                    </select>
                </div>
-               <div class="col-md-8 pt-1 pl-0 pl-md-3 mb-3">
+
+               <div class="col-md-4 pb-3 pl-md-3 pl-0 mb-3">
+                    <select [(ngModel)]="subject" id="roomselection" class="form-control form-control">
+                        <option value="null">Select Subject</option>
+                        <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
+                    </select>
+                </div>
+               <div class="col-md-8 pt-1 pl-0 pl-md-0 mb-3">
                    <label class="mr-3" for="">Upload material</label>
                    <input (change)="studentfileUploader($event)" type="file" name="" id="exampleFormControlFile1">
                </div>
