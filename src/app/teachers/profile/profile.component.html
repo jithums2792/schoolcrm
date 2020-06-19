@@ -67,12 +67,11 @@
 
 
 
-  <div class="container-fluid pt-3 px-0">
+  <div class="container-fluid pt-3 px-0" *ngIf="studentInfo">
     <div class="row m-0 pl-md-3 p-0">
       <div class="col-lg-5 mb-4 p-3 row m-0 rounded p-0 shadow align-self-start">
         <div class="profile col-4 pl-0">
-          <img class="w-100" src="../../../assets/avatar.png" alt="" *ngIf="!studentInfo.photo">
-          <img src="{{studentInfo.photo}}" width="100px" height="100px" alt="">
+          <img src="{{studentInfo.photo}}" width="100px" height="100px" alt="" *ngIf="studentInfo.photo !== null">
         </div>
         <div class="col-8 pt-2">
           <h3>{{studentInfo.firstname}} {{studentInfo.lastname}}</h3>

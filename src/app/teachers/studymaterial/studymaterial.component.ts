@@ -51,9 +51,9 @@ export class StudymaterialComponent implements OnInit {
 
   async getstaffinfo() {
     this.facultyservice.getFacultyinfoByid(localStorage.getItem('teacher')).subscribe(data => {
+      this.staffInfo = data.data
       this.studymaterial.teacher = data.data.firstname;
       this.subjectList = data.data.assignedSubject
-      console.log(this.subjectList)
     });
   }
 
@@ -64,13 +64,21 @@ export class StudymaterialComponent implements OnInit {
 
 
   async classSelection(data) {
-    this.selectedRoom = data;
-    const room = this.classList.find(element => element.name === data);
-    this.sectionList = room.section;
+    if (data !== 'null') {
+      this.selectedRoom = data;
+      const room = this.classList.find(element => element.name === data);
+      this.sectionList = room.section;
+    }else {
+      this.toastservice.warning('Select valid class', 'Warning')
+    }
   }
 
   async sectionSelection(data) {
-    this.selectedSection = data.value;
+    if (data !== 'null') {
+      this.selectedSection = data;
+    } else {
+      this.toastservice.warning('Select valid section', 'Warning')
+    }
   }
 
   async uploadClassSelection() {
@@ -93,7 +101,7 @@ export class StudymaterialComponent implements OnInit {
         this.studymaterial.room !== 'null' && this.studymaterial.section !== 'null' &&
         this.studymaterial.subject !== 'null' && this.studymaterial.type !== 'null') {
           this.fileuploaderservice.addFile(this.studymaterial).subscribe(data => {
-            if (data.data !== []) {
+            if (data.status === 'success') {
               this.toastservice.success('media added', 'Success');
               this.studymaterial.content = null;
               this.studymaterial.name = '';
@@ -101,11 +109,11 @@ export class StudymaterialComponent implements OnInit {
               this.studymaterial.room = 'null';
               this.studymaterial.section ='null';
               this.studymaterial.subject = 'null';
-              this.studymaterial.teacher = '';
+              this.studymaterial.teacher = this.staffInfo.firstname;
               this.studymaterial.type = 'null';
               this.studymaterial.content = null;
             } else {
-              this.toastservice.success('something went wrong', 'Error')
+              this.toastservice.error('something went wrong', 'Error')
             }
           })
         } else {
