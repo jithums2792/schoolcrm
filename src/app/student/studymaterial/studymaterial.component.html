@@ -141,9 +141,6 @@
                    <select [(ngModel)]="type" id="roomselection" class="form-control form-control">
                        <option value="null">Select type of file</option>
                        <option value="image">Image</option>
-                       <option value="pdf">Pdf</option>
-                       <option value="doc">Doc</option>
-                       <option value="link">Link</option>
                    </select>
                </div>
 
@@ -303,7 +300,7 @@
 </div>   
 
 
-<div class="container-fluid p-3"  *ngIf="photoList.length !== 0">
+<div class="container-fluid p-3"  *ngIf="uploadedFiles.length !== 0">
     <div class="container-fluid p-0 rounded shadow">
         <div class="container-fluid py-3">
             <h4 class="d-inline-block">Student meterial Gallery</h4>
@@ -326,13 +323,13 @@
  
                   <div class="mdb-lightbox no-margin m-0 row">
  
-                    <figure class="col-lg-3 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of photoList;let i = index;">
+                    <figure class="col-lg-4 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of uploadedFiles;let i = index;">
                       <a href="#" data-size="1600x1067">
-                        <img alt="picture" src="{{file.content}}" class="img-fluid">
+                        <img alt="picture" src="{{file.media}}" class="img-fluid">
                       </a>
                         <div class="position-absolute caption text-white p-1 text-right">
                             <label class="float-left pl-3" for="">{{file.name}}</label>
-                            <a href="{{file.content}}" download="{{file.name}}">
+                            <a href="{{file.media}}" download="{{file.name}}">
                                 <i class="mr-2 fas fa-download"></i>
                             </a>
                         </div>

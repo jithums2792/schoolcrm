@@ -3,6 +3,8 @@ import { FileuploadService } from 'src/app/services/fileupload.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DepartmentsService } from 'src/app/services/departments.service';
 import { StudentsService } from 'src/app/services/students.service';
+import { isNull } from 'util';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-studymaterial',
@@ -17,15 +19,17 @@ export class StudymaterialComponent implements OnInit {
   public mediaList = [];
   public subjectList = [];
   public studentInfo;
-  public uploadedFiles = [];
+  public uploadedFiles = []
   public subject = 'null';
   public name = '';
   public note ='';
   public type = 'null';
+  public content = null
   public saveFlag = true;
 
   constructor(private mediaservice: FileuploadService,
               public sanitizer: DomSanitizer,
+              private toastrservice: ToastrService,
               private subjectservice: DepartmentsService,
               private studentservice: StudentsService) { }
 
@@ -35,7 +39,9 @@ export class StudymaterialComponent implements OnInit {
     this.getstudentInfo()
   }
   getstudentInfo() {
-    this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {this.studentInfo = data.data; console.log(this.studentInfo)})
+    this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {this.studentInfo = data.data;
+        this.uploadedFiles = data.data.content
+      })
   }
   getStudymaterial() {
     this.photoList = [];
@@ -66,28 +72,36 @@ export class StudymaterialComponent implements OnInit {
   }
 
   async studentfileUploader(filesx){
-    for(let file of filesx.target.files) {
-      const reader = new FileReader();
-      reader.onload = async() => {
-        this.uploadedFiles.push(reader.result)
-      }
-      reader.readAsDataURL(file)
+    const reader = new FileReader()
+    reader.onload = () => {
+      this.content = reader.result
     }
+    reader.readAsDataURL(filesx.target.files[0])
   }
 
   async upload() {
-    let item = {
-      subject: this.subject,
-      note:this.note,
-      name:this.name,
-      media: this.uploadedFiles,
-      type: this.type,
-      date: new Date().getDate()+'-'+ new Date().getMonth()+'-'+ new Date().getFullYear()
-    }
-    await this.studentInfo.content.push(item)
-    delete this.studentInfo._id;
-    this.uploadedFiles = [];
-    this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => this.studentInfo = data.data)
+    if (this.name !== '' && this.type !== 'null'  && this.subject !== 'null') {
+          let item = {
+            subject: this.subject,
+            note: this.note,
+            name: this.name,
+            type: this.type,
+            media: this.content,
+            date: new Date().getDate()+'-'+ new Date().getMonth()+'-'+ new Date().getFullYear()
+          }
+          this.studentInfo.content.push(item)
+          delete this.studentInfo._id;
+          this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => {
+            this.uploadedFiles = data.data.content;
+            this.name = ''
+            this.type = 'null'
+            this.subject = 'null'
+            this.note = ''
+            this.content = null
+          })
+        } else {
+          this.toastrservice.warning('Some field missing', 'Warning')
+        }
   }
 
   async delete(index) {
