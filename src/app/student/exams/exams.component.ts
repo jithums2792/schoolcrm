@@ -3,7 +3,6 @@ import { Router, NavigationExtras } from '@angular/router';
 import { StudentsService } from 'src/app/services/students.service';
 import { ExamService } from 'src/app/services/exam.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { TIMEOUT } from 'dns';
 
 @Component({
   selector: 'app-exams',

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { LayoutComponent } from './layout/layout.component';
@@ -36,6 +37,7 @@ import { CreatetimetableComponent } from './class-control/createtimetable/create
   imports: [
     CommonModule,
     FormsModule,
+    TimepickerModule.forRoot(),
     MaterialModule,
     SharedModule,
     AdminRoutingModule

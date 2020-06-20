@@ -3,7 +3,6 @@ import { FileuploadService } from 'src/app/services/fileupload.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { DepartmentsService } from 'src/app/services/departments.service';
 import { StudentsService } from 'src/app/services/students.service';
-import { isNull } from 'util';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

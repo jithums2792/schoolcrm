@@ -87,7 +87,12 @@ export class CreatetimetableComponent implements OnInit {
   }
 
   async addPeriod(index){
-    const period = Object({name: 'period ' + (this.dayList[index].subjects.length + 1),subname: 'test', duration: null})
+    const period = Object(
+      {name: 'period ' + (this.dayList[index].subjects.length + 1),
+      subname: 'test', 
+      startduration: null,
+      endduration: null}
+      )
     this.dayList[index].subjects.push(period)
     this.timetable.timetable = this.dayList
   }
@@ -98,13 +103,14 @@ export class CreatetimetableComponent implements OnInit {
   }
 
   async save() {
-    this.timetableservice.addtimetable(this.timetable).subscribe(data => {
-      if(data.status === 'success') {
-        this.toastservice.success('Successfully added', 'Success')
-      } else {
-        this.toastservice.error('something wrong', 'Error')
-      }
-    })
+    console.log(this.timetable)
+    // this.timetableservice.addtimetable(this.timetable).subscribe(data => {
+    //   if(data.status === 'success') {
+    //     this.toastservice.success('Successfully added', 'Success')
+    //   } else {
+    //     this.toastservice.error('something wrong', 'Error')
+    //   }
+    // })
   }
 
   async update() {
@@ -117,6 +123,8 @@ export class CreatetimetableComponent implements OnInit {
       }
     })
   }
+
+ 
 
 
 

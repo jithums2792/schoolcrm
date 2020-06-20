@@ -155,8 +155,8 @@
                    <input (change)="studentfileUploader($event)" type="file" name="" id="exampleFormControlFile1">
                </div>
                <div class="col-12 text-md-right pl-0 pl-md-3">
-                   <button class="btn btn custom-btn mx-1" (click)="cancel()" *ngIf="! saveFlag">Cancel</button>
-                   <button class="btn btn custom-btn" (click)="update()" *ngIf="! saveFlag">Update</button>
+                   <button class="btn btn custom-btn mx-1"  *ngIf="! saveFlag">Cancel</button>
+                   <button class="btn btn custom-btn"  *ngIf="! saveFlag">Update</button>
                    <button class="btn btn custom-btn" (click)="upload()" *ngIf="saveFlag">Upload</button>
                </div>
            </div>
@@ -256,7 +256,7 @@
                    <i class="pdf-icon fas fa-file-pdf"></i>
 
                    <label class="file-name" for="">{{item.name}}</label>
-                   <a class="download-icon" [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{file.name}}.doc">
+                   <a class="download-icon" [href]="this.sanitizer.bypassSecurityTrustResourceUrl(item.content)" download="{{item.name}}.doc">
                        <i class="mr-2 fas fa-download"></i>
                    </a>
                </div>
@@ -331,7 +331,7 @@
                                 <a href="{{file.media}}" download="{{file.name}}">
                                     <i class="mr-2 fas fa-download"></i>
                                 </a>
-                                <i class="mr-2 far fa-trash-alt m-1" (click)="delete(file, i)"></i>
+                                <i class="mr-2 far fa-trash-alt m-1" (click)="delete(i)"></i>
                             </div>
                         </figure>
 
