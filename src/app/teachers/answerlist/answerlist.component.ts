@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnswerService } from 'src/app/services/answer.service';
-import { data } from 'jquery';
-import { timeStamp } from 'console';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
