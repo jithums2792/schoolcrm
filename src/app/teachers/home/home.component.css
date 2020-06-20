@@ -173,13 +173,14 @@ mat-sidenav{
   border: none;
   background: initial;
   padding: 0;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
   width: auto;
   height: auto;
 }
 .side-nav ul li a {
+  padding-top:10px;
   min-width: 40px;
-  height: 40px;
+  height: 60px;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
