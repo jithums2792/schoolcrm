@@ -1,11 +1,11 @@
-<div class="container-fluid">
-    <div class="row bg-white" id="exam">
-        <div class="col-12 my-2 px-5" *ngFor="let question of exam.questionlist; let il = index">
+<div class="container-fluid vh-100">
+    <div class="row bg-white exam-body p-4" id="exam">
+        <div class="col-12 my-2" *ngFor="let question of exam.questionlist; let il = index">
             <span> <strong>{{il + 1}}) </strong>  {{question.que}}</span>
             <div class="my-1 d-flex" *ngFor="let option of question.options; let i = index">
                 <span class="mx-1">{{option.key}}</span>
                 <div class="custom-control custom-radio">
-                    <input type="radio" (change)="answersheet[il].vlaue = option.value" id="{{option.key + il + i}}" name="{{il}}" class="custom-control-input">
+                    <input type="radio" (change)="answersheet[il].ans = option.value" id="{{option.key + il + i}}" name="{{il}}" class="custom-control-input">
                     <label class="custom-control-label" for="{{option.key + il + i}}">{{option.value}}</label>
                   </div>
             </div>

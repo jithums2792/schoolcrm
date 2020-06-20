@@ -36,9 +36,16 @@
                     <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>
                     <label class="label" for=""><label>Start At:</label>{{exam.startdate}}</label>
                     <label class="label" for=""><label>End At:</label>{{exam.enddate}}</label>
-                    <button class="btn attend-btn" *ngIf="exam.active">Attent exam</button>
+                    <button class="btn attend-btn" *ngIf="exam.active" (click)="navigate(exam,instruction)">Attent exam</button>
                 </div>
             </div>
         </div>
     </div>
  </div>   
+ <ng-template #instruction>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>

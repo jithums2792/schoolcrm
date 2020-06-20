@@ -8,6 +8,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ExamsComponent } from './exams/exams.component';
 import { CreateexamComponent } from './createexam/createexam.component';
 import { TeacherloginGuard } from '../Auth/teacherlogin.guard';
+import { AnswerlistComponent } from './answerlist/answerlist.component';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
     {path: 'myprofile', component: ProfileComponent},
     {path: 'exams', component: ExamsComponent},
     {path: 'createexam', component: CreateexamComponent},
+    {path: 'answerlist', component: AnswerlistComponent},
     {path: '', redirectTo: 'myprofile', pathMatch: 'full'}
   ], canActivate: [TeacherloginGuard]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}

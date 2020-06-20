@@ -58,6 +58,8 @@ export class ExamsComponent implements OnInit {
     this.exam = exam
   }
 
+
+
   confirm(): void {
     const option: NavigationExtras = {
       state: {data: this.exam}

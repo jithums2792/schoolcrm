@@ -121,4 +121,11 @@ export class ExamsComponent implements OnInit {
 
   }
 
+  async resultList(exam) {
+    const options: NavigationExtras = {
+      state: {data: exam}
+    }
+    this.router.navigate(['/teacher/home/answerlist'], options)
+  }
+
 }

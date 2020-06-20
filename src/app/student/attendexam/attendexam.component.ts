@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AnswerService } from 'src/app/services/answer.service';
 
 @Component({
   selector: 'app-attendexam',
@@ -10,11 +11,28 @@ import { Router } from '@angular/router';
 export class AttendexamComponent implements OnInit {
   public exam
   public answersheet = []
+  public sheet = {
+    name: localStorage.getItem('studentname'),
+    room: localStorage.getItem('studentclass'),
+    section: localStorage.getItem('studentsection'),
+    examname: '',
+    subject: '',
+    teacher: '',
+    mark: null,
+    correct: null,
+    wrong: null,
+    answersheet: []
+  }
 
-  constructor(private toastservice: ToastrService, private router: Router) { 
+  constructor(private toastservice: ToastrService, 
+              private router: Router,
+              private answerservice: AnswerService) { 
     try {
       this.exam = router.getCurrentNavigation().extras.state.data
-      this,this.createAnswerFields(this.exam.questionlist)
+      this.sheet.examname = this.exam.name
+      this.sheet.subject = this.exam.subject
+      this.sheet.teacher = this.exam.teacher
+      this.createAnswerFields(this.exam.questionlist)
     } catch (error) {
       router.navigate(['/student/home/exams'])
     }
@@ -40,11 +58,18 @@ export class AttendexamComponent implements OnInit {
       const field = Object({que: item.que, ans: null})
       this.answersheet.push(field)
     }
-    console.log(this.answersheet)
   }
 
   async finish() {
-    console.log(this.answersheet)
+    this.sheet.answersheet = await this.answersheet
+    this.answerservice.addanswer(this.sheet).subscribe(data => {
+      if (data.status === 'success') {
+        this.toastservice.success('Exam answers submited', 'Succes')
+        this.router.navigate(['/student/home/exams'])
+      } else {
+        this.toastservice.error('something wrong', 'Error')
+      }  
+    })
   }
 
 
