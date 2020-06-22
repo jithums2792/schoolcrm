@@ -46,3 +46,8 @@
     width: 50px;
     border-radius: 50%;
 } 
+@media(max-width:768px){
+    .card{
+        margin-bottom: 100px;
+    }
+}
