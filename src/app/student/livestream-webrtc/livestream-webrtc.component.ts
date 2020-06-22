@@ -160,6 +160,7 @@ studentid = 'tempstudent' + Date.now();
   this.localStream.getTracks().forEach(function(track) {
     track.stop();
   });
+  this.socket.disconnect()
   }
 
 
