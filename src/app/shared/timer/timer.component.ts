@@ -41,10 +41,13 @@ export class TimerComponent implements OnInit {
   async test() {
     let date1 =  +new Date(this.satrtdate)
     let date2 =  +new Date(this.enddDate)
+    console.log(date1,date2)
     if (date1 < date2) {
+      console.log(date2)
       this.res = Math.abs(date1 - date2)/1000
     } else {
-      // this.state.emit(false)
+      this.state.emit(false)
+      console.log(date1)
     }
     
   }
