@@ -39,7 +39,9 @@ export class StudymaterialComponent implements OnInit {
   }
   getstudentInfo() {
     this.studentservice.getStudentbyid(localStorage.getItem('student')).subscribe(data => {this.studentInfo = data.data;
+        console.log(data.data)
         this.uploadedFiles = data.data.content
+        console.log(this.uploadedFiles)
       })
   }
   getStudymaterial() {
@@ -106,6 +108,7 @@ export class StudymaterialComponent implements OnInit {
   async delete(index) {
     await this.studentInfo.content.splice(index, 1)
     delete this.studentInfo._id
-    this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => this.studentInfo = data.data)
+    console.log(this.studentInfo)
+    this.studentservice.updateStudent(localStorage.getItem('student'), this.studentInfo).subscribe(data => this.uploadedFiles = data.data.content)
   }
 }
