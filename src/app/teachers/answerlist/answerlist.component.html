@@ -1,7 +1,38 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12" *ngFor="let sheet of answersheetList">
-            {{sheet.name}}
+    <div class="row py-2">
+        <div class="col-12 py-1" *ngFor="let sheet of answersheetList">
+            <div class="card p-2">
+                <div class="col d-flex align-items-center justify-content-between">
+                    <span>{{sheet.name}}</span>
+                    <span>
+                    <i class="fas fa-eye mx-1 pointer"(click)="openModal(template, sheet)"></i>
+                    <i class="fas fa-trash-alt mx-1 pointer"></i>
+                    </span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<ng-template #template>
+    <div class="modal-header bg-card-head">
+      <h4 class="modal-title pull-left text-white">Exam Answer paper</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="col d-flex flex-column my-1 p-2" *ngFor="let answers of answerSheet.answersheet; let i = index;">
+        <span><strong>Que {{i+1}})</strong> {{answers.que}}</span>
+        <span>Ans : {{answers.ans}}</span>
+      </div>
+    </div>
+    <div class="col bg-card-head py-2 d-flex">
+        <div class="col-8">
+            <input [(ngModel)]="answerSheet.mark" type="number" name="totalmark" id="totalmark" class="form-control form-control-sm">
+        </div>
+        <div class="col-4">
+            <button class="btn btn-sm custom-btn border-white" (click)="submit()">Submit Score</button>
+        </div>
+    </div>
+  </ng-template>

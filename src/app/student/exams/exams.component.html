@@ -41,7 +41,26 @@
             </div>
         </div>
     </div>
- </div>   
+</div>  
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4 d-inline-block">Exam Result</h4>
+            <div class="d-flex flex-wrap">
+                <div class=""  *ngFor="let answer of answerList;let i = index;">
+                    <div class="student-answer-card col-lg-3 col-12" *ngIf="answer.mark !== null">
+                        <h6>{{answer.examname}}</h6>
+                        <label class="label" for=""><label>Subject:</label>{{answer.subject}}</label>
+                        <label class="label" for=""><label>Teacher:</label>{{answer.teacher}}</label>
+                        <label class="label" for=""><label>Obtained mark:</label>{{answer.mark}}</label>
+                        
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </div>
+</div>
  <ng-template #instruction>
     <div class="modal-body text-center">
       <p>Do you want to confirm?</p>
