@@ -185,8 +185,8 @@ mat-sidenav{
     background: rgb(157, 157, 157);
   }
   .side-nav {
-    height: calc(100vh - 76px);
-    box-shadow: 0px 78px 15px #45414E29;
+    height: 100vh;
+    box-shadow: 0px 0px 15px #45414E29;
     z-index: 3;
     padding: 15px;
     padding-top: 30px;
@@ -239,9 +239,9 @@ mat-sidenav{
       width: 0;
       min-width: 0;
       z-index: 1;
-      top: 0;
+      bottom: 0;
       left: 0;
-      position: absolute;
+      position: fixed;
       background-color: #057ac5;
       overflow-x: hidden;
       transition: 0.5s;

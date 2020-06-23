@@ -1,0 +1,12 @@
+.icon-hover{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.icon-hover:hover{
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+}

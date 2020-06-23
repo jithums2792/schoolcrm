@@ -26,6 +26,7 @@ export class TimerComponent implements OnInit {
     }, 1000);
     setInterval(() => {
       if(this.res >= 0) {
+        this.state.emit(true)
         this.day = Math.floor(this.res / 86400);
         this.hour = Math.floor(this.res / 3600) % 24;
         this.min = Math.floor(this.res / 60) % 60;
@@ -41,13 +42,10 @@ export class TimerComponent implements OnInit {
   async test() {
     let date1 =  +new Date(this.satrtdate)
     let date2 =  +new Date(this.enddDate)
-    console.log(date1,date2)
     if (date1 < date2) {
-      console.log(date2)
       this.res = Math.abs(date1 - date2)/1000
     } else {
       this.state.emit(false)
-      console.log(date1)
     }
     
   }

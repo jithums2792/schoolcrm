@@ -21,7 +21,6 @@ export class ClassesService {
   }
 
   updateClass(id, data): Observable<any> {
-    console.log(id)
     return this.http.patch(this.api + 'class/update/' + id, data);
   }
 

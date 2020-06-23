@@ -10,6 +10,8 @@ import { AttendexamComponent } from './attendexam/attendexam.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { LoginGuard } from '../Auth/login.guard';
+import { LeavelistComponent } from './leavelist/leavelist.component';
+import { CreateleaveComponent } from './createleave/createleave.component';
 
 
 const routes: Routes = [
@@ -22,6 +24,8 @@ const routes: Routes = [
     {path: 'homework', component: HomeworkComponent},
     {path: 'exams', component: ExamsComponent},
     {path: 'attendexam', component: AttendexamComponent},
+    {path: 'leavelist', component: LeavelistComponent},
+    {path: 'createleave', component: CreateleaveComponent},
     {path: '', redirectTo: 'class', pathMatch: 'full'}
   ], canActivate: [LoginGuard]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}

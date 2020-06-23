@@ -12,6 +12,7 @@ import { ClasstimetableComponent } from './class-control/classtimetable/classtim
 import { SubjectallocationComponent } from './faculty-control/subjectallocation/subjectallocation.component';
 import { ClassallocationComponent } from './faculty-control/classallocation/classallocation.component'
 import { CreatetimetableComponent } from './class-control/createtimetable/createtimetable.component';
+import { ClasstutorsComponent } from './class-control/classtutors/classtutors.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     {path: 'classtimetable', component: ClasstimetableComponent},
     {path: 'createtimetable', component: CreatetimetableComponent},
     {path: 'subjectallocation', component: SubjectallocationComponent},
-    {path: 'classsetup', component: ClassallocationComponent}
+    {path: 'classsetup', component: ClassallocationComponent},
+    {path: 'classtutor', component: ClasstutorsComponent}
   ]}
 ];
 

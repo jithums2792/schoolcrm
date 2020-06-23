@@ -106,7 +106,7 @@ export class CreateexamComponent implements OnInit {
           starttime: this.sheduledDate,
           endtime: this.endTime,
           questionlist: this.questionList,
-          active: true
+          active: false
         })
         this.examservice.addExam(exam).subscribe(data => (data.status === 'success')? this.toastservice.success('saved', 'success'): this.toastservice.error('something wrong', 'Error'))
        } else {
@@ -128,7 +128,7 @@ export class CreateexamComponent implements OnInit {
            startdate: this.sheduledDate,
            enddate: this.endTime,
            questionlist: this.questionList,
-           active: true
+           active: false
          })
          console.log(exam)
          this.examservice.updateExam(this.editExam._id,exam).subscribe(data => (data.status === 'success')? this.toastservice.success('updated', 'success'): this.toastservice.error('something wrong', 'Error'))

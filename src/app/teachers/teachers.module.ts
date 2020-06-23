@@ -15,10 +15,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { ExamsComponent } from './exams/exams.component';
 import { CreateexamComponent } from './createexam/createexam.component';
 import { AnswerlistComponent } from './answerlist/answerlist.component';
+import { LeaveapprovelComponent } from './leaveapprovel/leaveapprovel.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent],
+  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent],
   imports: [
     CommonModule,
     FormsModule,

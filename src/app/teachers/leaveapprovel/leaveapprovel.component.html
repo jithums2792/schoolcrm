@@ -1,0 +1,30 @@
+<div class="container-fluid">
+    <div class="row py-2">
+        <div class="col-lg-3 col-12">
+            <select #leaveSelect class="form-control form-control-sm" (change)="leaveSelection(leaveSelect)">
+                <option value="null">Select Leave type</option>
+                <option value="pending">Pending</option>
+                <option value="approved">Approved</option>
+                <option value="declined">Declined</option>
+            </select>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-12 my-1" *ngFor="let leave of leaveList">
+            <div class="card">
+                <div class="col py-2 bg-card-head text-white d-flex align-items-center justify-content-between">
+                    <span>{{leave.name}} ({{leave.type}})</span>
+                    <span *ngIf="leave.status !== 'approved' && leave.status !== 'declined'">
+                        <button class="btn-sm btn btn-success mx-1" (click)="approve(leave)"><i class="fas fa-check mx-2"></i>Approve</button>
+                        <button class="btn-sm btn btn-danger mx-1" (click)="decline(leave)"><i class="fas fa-times mx-2"></i>Decline</button>
+                    </span>
+                </div>
+                <div class="col-12 py-2 bg-light d-flex flex-column">
+                    <span>From : {{leave.durationstart}}</span>
+                    <span>To : {{leave.durationend}}</span>
+                    <span>Reason : {{leave.reason}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

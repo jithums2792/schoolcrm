@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row py-2">
+        <div class="col-12">
+            <button class="btn btn-sm custom-btn float-right" [routerLink]="['/student/home/createleave']">Apply new leave</button>
+        </div>
+    </div>
+    <div class="row py-1">
+        <div class="col-12">
+            <div class="card my-1" *ngFor="let leave of leaveList">
+                <div class="col bg-card-head py-2 d-flex align-items-center justify-content-between">
+                    <span class="text-white">{{leave.type}}</span>
+                    <span *ngIf="leave.status === 'pending'" class="text-warning">{{leave.status}}</span>
+                    <span *ngIf="leave.status === 'approved'" class="text-success">{{leave.status}}</span>
+                    <span *ngIf="leave.status === 'declined'" class="text-danger">{{leave.status}}</span>
+                </div>
+                <div class="col py-2 d-flex flex-column">
+                    <span>Reason: {{leave.reason}}</span>
+                    <span>From: {{leave.durationstart}}</span>
+                    <span>To: {{leave.durationend}}</span>
+                </div>
+                <div class="col bg-card-head py-2 d-flex align-items-center justify-content-end text-white">
+                    <i class="fas fa-edit mx-1 pointer" (click)="editLeave(leave)"></i>
+                    <i class="fas fa-trash-alt mx-1 pointer" (click)="deleteLeave(leave)"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -104,13 +104,13 @@ export class CreatetimetableComponent implements OnInit {
 
   async save() {
     console.log(this.timetable)
-    // this.timetableservice.addtimetable(this.timetable).subscribe(data => {
-    //   if(data.status === 'success') {
-    //     this.toastservice.success('Successfully added', 'Success')
-    //   } else {
-    //     this.toastservice.error('something wrong', 'Error')
-    //   }
-    // })
+    this.timetableservice.addtimetable(this.timetable).subscribe(data => {
+      if(data.status === 'success') {
+        this.toastservice.success('Successfully added', 'Success')
+      } else {
+        this.toastservice.error('something wrong', 'Error')
+      }
+    })
   }
 
   async update() {

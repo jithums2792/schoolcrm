@@ -16,10 +16,12 @@ import { ExamsComponent } from './exams/exams.component';
 import { AttendexamComponent } from './attendexam/attendexam.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeworkComponent } from './homework/homework.component';
+import { LeavelistComponent } from './leavelist/leavelist.component';
+import { CreateleaveComponent } from './createleave/createleave.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent, ExamsComponent, AttendexamComponent,ProfileComponent,HomeworkComponent,],
+  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent, ExamsComponent, AttendexamComponent,ProfileComponent,HomeworkComponent, LeavelistComponent, CreateleaveComponent,],
   imports: [
     CommonModule,
     MaterialModule,

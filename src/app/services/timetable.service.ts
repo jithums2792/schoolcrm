@@ -16,6 +16,10 @@ export class TimetableService {
     return this.http.get(this.api + 'timetable/all');
   }
 
+  gettimetableByQuery(query):Observable<any> {
+    return this.http.post(this.api + 'timetable/query', query);
+  }
+
   addtimetable(data): Observable<any> {
     return this.http.post(this.api + 'timetable/create', data);
   }

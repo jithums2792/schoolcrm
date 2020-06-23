@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <div class="row" *ngFor="let room of classList; let classi = index;">
+        <div class="col-lg-4 col-md-4 col-12 my-1" *ngFor="let section of room.section; let sectioni = index;">
+            <div class="card">
+                <div class="col bg-card-head py-2 text-white d-flex align-items-center justify-content-between">
+                    <span>class: {{room.name}}, section: {{section}}</span>
+                    <span><i class="fas fa-save  pointer icon-hover" (click)="save(room)"></i></span>
+                </div>
+                <div class="col py-2 bg-white">
+                    <span *ngIf="room.classteacher[sectioni]">Class tutor : {{room.classteacher[sectioni]}}</span>
+                </div>
+                <div class="col bg-card-head py-2 text-white">
+                    <select #selectedStaff  class="form-control form-control-sm" (change)="staffSelection(selectedStaff,classi,sectioni)">
+                        <option value="null">Select class tutors</option>
+                        <option value="{{staff.firstname}} {{staff.lastname}}" *ngFor="let staff of staffList">{{staff.firstname}} {{staff.lastname}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -19,6 +19,7 @@ import { ClasstimetableComponent } from './class-control/classtimetable/classtim
 import { SubjectallocationComponent } from './faculty-control/subjectallocation/subjectallocation.component';
 import { ClassallocationComponent } from './faculty-control/classallocation/classallocation.component';
 import { CreatetimetableComponent } from './class-control/createtimetable/createtimetable.component';
+import { ClasstutorsComponent } from './class-control/classtutors/classtutors.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { CreatetimetableComponent } from './class-control/createtimetable/create
     ClasstimetableComponent, 
     SubjectallocationComponent,
     ClassallocationComponent,
-    CreatetimetableComponent],
+    CreatetimetableComponent,
+    ClasstutorsComponent],
   imports: [
     CommonModule,
     FormsModule,
