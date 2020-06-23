@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class ExamService {
   public api = environment.api
-  public time = 'http://worldtimeapi.org/api/timezone/Asia/Kolkata'
+  public time = 'https://worldtimeapi.org/api/timezone/Asia/Kolkata'
   public exam;
 
 

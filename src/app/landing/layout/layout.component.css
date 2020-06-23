@@ -11,11 +11,7 @@
 .card{
   overflow: hidden !important;
 }
-.fire {
-  z-index: 1000 !important;
-  background-image: url(../../../assets/img/selective-focus-photography-of-bookshelf-with-books-1370296.jpg);
-  background-size: cover;
-}
+
 .bg-img {
  background-color: #372f54;
 }

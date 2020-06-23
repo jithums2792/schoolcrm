@@ -201,8 +201,11 @@ mat-sidenav{
 
 
 .content-container{
-  height: calc(100vh - 76px);
+  height: 100vh;
   overflow-y: scroll;
+}
+.content-container::-webkit-scrollbar{
+  display: none;
 }
 
 @media(max-width:768px){

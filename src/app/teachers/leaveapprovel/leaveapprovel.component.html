@@ -9,6 +9,11 @@
             </select>
         </div>
     </div>
+    <div class="row py-2" *ngIf="leaveList.length === 0">
+        <div class="col-12 d-flex justify-content-center">
+            <img src="../../../assets/img/undraw_tasks_av87.svg" class="img-fluid" alt="leave">
+        </div>
+    </div>
     <div class="row py-2">
         <div class="col-12 my-1" *ngFor="let leave of leaveList">
             <div class="card">
