@@ -212,3 +212,10 @@
       z-index: 10;
     }
   }
+  .content-container{
+    height: calc(100vh - 76px);
+    overflow-y: scroll;
+  }
+  .content-container::-webkit-scrollbar{
+    display: none;
+  }
