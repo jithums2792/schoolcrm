@@ -10,3 +10,16 @@
     color: black;
     border-radius: 50%;
 }
+.btn-primary {
+    color: #fff;
+    background-color: #057ac5 !important;
+    border-color: #057ac5 !important;
+  }
+  .btn-primary:hover{
+    background-color: transparent !important;
+    color: #057ac5;
+    border-color: #057ac5 !important;
+  }
+  .card{
+    min-height: 160px;
+  }
