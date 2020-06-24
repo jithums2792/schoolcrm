@@ -1,6 +1,6 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
-      <div class="col-2 p-0 sidebar">
+      <div class="col-2 sidebar accordion" id="accordionExample">
         <div class="side-header text-white text-center p-1">
           Mini school crm
         </div>
@@ -8,7 +8,7 @@
          <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Faculty Controls</span></span>
           <i class="fas fa-chevron-right text-white"></i>
         </div>
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" data-parent="#accordionExample" id="collapseExample">
             <div class="col sub-menu" [routerLink]="['/sadmin/faculty']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Staff Directory</div>
             <div class="col sub-menu" [routerLink]="['/sadmin/department']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Department</div>
             <div class="col sub-menu" [routerLink]="['/sadmin/designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
@@ -19,7 +19,7 @@
           <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Class Controls</span></span>
            <i class="fas fa-chevron-right text-white"></i>
          </div>
-         <div class="collapse" id="calsscontrol">
+         <div class="collapse" data-parent="#accordionExample" id="calsscontrol">
           <div class="col sub-menu" [routerLink]="['/sadmin/classlist']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class List</div>
           <div class="col sub-menu" [routerLink]="['/sadmin/classtimetable']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Timetable</div>
           <div class="col sub-menu" [routerLink]="['/sadmin/classtutor']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Tutors</div>
@@ -28,13 +28,13 @@
           <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Student Controls</span></span>
            <i class="fas fa-chevron-right text-white"></i>
          </div>
-         <div class="collapse" id="stusentcontrol">
+         <div class="collapse" data-parent="#accordionExample" id="stusentcontrol">
           <div class="col sub-menu" [routerLink]="['/sadmin/studentlist']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>student List</div>
           <div class="col sub-menu" [routerLink]="['/sadmin/admision']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Student Admision</div>
           <div class="col sub-menu" [routerLink]="['/sadmin/designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
         </div>
       </div>
-      <div class="col-10 px-0">
+      <div class="col px-0">
   
         <div class="container-fluid">
           <div class="row appbar">
@@ -47,4 +47,66 @@
         </div>
       </div>
     </div>
+  </div> -->
+
+
+
+
+  <div class="container-fluid p-0 bg-main full-screen" >
+  
+    <!-- Top Nav -->
+     <nav class="top-nav bg-white">
+       <img class="brand-logo" src="../../../assets/img/logo.png" alt="logo" srcset="">
+       <div class="header-section">
+           <a onclick="openNavadmin()" class="smart-menu"><i class="fa fa-th" aria-hidden="true"></i></a>
+           <div class="profile">
+               <label class="pr-2" for="">Hi {{username}}</label>
+               <img src="../../../assets/avatar.png" alt="avatar" srcset="">
+           </div>
+       </div>
+     </nav>
+     <!-- Top Nav Ends-->
+  
+   <div class="row m-0">
+     
+     <div id="side-nav" class="col-3 sidebar">
+
+        <div class="container-fluid  accordion p-0" id="accordionExample">
+          <div class="col custom-link " data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+            <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Faculty Controls</span></span>
+            <i class="fas fa-chevron-right text-white"></i>
+          </div>
+          <div class="collapse" data-parent="#accordionExample" id="collapseExample">
+              <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/faculty']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Staff Directory</div>
+              <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/department']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Department</div>
+              <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
+              <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/subjectallocation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Subject Allocation</div>
+              <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/classsetup']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Allocation</div>
+          </div>
+          <div class="col custom-link" data-toggle="collapse" data-target="#calsscontrol" aria-expanded="false" aria-controls="collapseExample">
+            <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Class Controls</span></span>
+              <i class="fas fa-chevron-right text-white"></i>
+            </div>
+            <div class="collapse" data-parent="#accordionExample" id="calsscontrol">
+            <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/classlist']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class List</div>
+            <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/classtimetable']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Timetable</div>
+            <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/classtutor']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Tutors</div>
+          </div>
+          <div class="col custom-link" data-toggle="collapse" data-target="#stusentcontrol" aria-expanded="false" aria-controls="collapseExample">
+            <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Student Controls</span></span>
+              <i class="fas fa-chevron-right text-white"></i>
+            </div>
+            <div class="collapse" data-parent="#accordionExample" id="stusentcontrol">
+            <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/studentlist']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>student List</div>
+            <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/admision']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Student Admision</div>
+            <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['/sadmin/designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
+          </div>
+        </div>
+
+     </div>
+     <div class="col px-0 content-container">
+       <router-outlet></router-outlet>
+     </div>
+   </div>
   </div>
+  
