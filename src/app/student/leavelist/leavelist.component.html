@@ -8,9 +8,6 @@
                     <div class="card my-1 rounded">
                         <div class="col bg-card-head py-2 d-flex align-items-center justify-content-between">
                             <span class="text-white">{{leave.type}}</span>
-                            <!-- <span *ngIf="leave.status === 'pending'" class="text-warning">{{leave.status}}</span>
-                            <span *ngIf="leave.status === 'approved'" class="text-success">{{leave.status}}</span>
-                            <span *ngIf="leave.status === 'declined'" class="text-danger">{{leave.status}}</span> -->
                         </div>
                         <div class="col py-2 d-flex flex-column">
                             <span *ngIf="leave.status === 'pending'" >Status <span class="text-warning">{{leave.status}}..</span></span>
@@ -30,7 +27,6 @@
                 </div>
             </div>
         </div>
- 
     </div>
  </div>    
 
