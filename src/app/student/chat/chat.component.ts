@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FacultyService } from 'src/app/services/faculty.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { ToastrService } from 'ngx-toastr';
+import * as _ from 'lodash'
 
 @Component({
   selector: 'app-chat',
@@ -18,9 +19,13 @@ export class ChatComponent implements OnInit {
     to: this.to,
     msg: ''
   }
-  query = {
+  sendquery = {
     from: localStorage.getItem('studentname'),
     to: this.to,
+  }
+  receivequery = {
+    to: localStorage.getItem('studentname'),
+    from: this.to,
   }
 
   constructor(private staffservice: FacultyService,
@@ -45,12 +50,21 @@ export class ChatComponent implements OnInit {
   }
 
   async getAllchat() {
-    this.chatservice.getchatbyCategory(this.query).subscribe(data => {
-      console.log(data)
+    let sendList
+    let receiveList
+    await this.chatservice.getchatbyCategory(this.sendquery).subscribe(data => {
       if (data.status === 'success') {
-        this.msgList = data.data
+        sendList = data.data
       }
     })
+    await this.chatservice.getchatbyCategory(this.receivequery).subscribe(data => {
+      if (data.status === 'success') {
+        receiveList = data.data
+      }
+    })
+
+    let tempMsg = _.concat(sendList,receiveList)
+    console.log(tempMsg)
   }
 
   async send() {
@@ -64,7 +78,8 @@ export class ChatComponent implements OnInit {
   }
 
   async selectStaff(staff) {
-    this.query.to = staff.firstname + ' ' + staff.lastname
+    this.sendquery.to = staff.firstname + ' ' + staff.lastname
+    this.receivequery.from = staff.firstname + ' ' + staff.lastname
     this.chat.to = staff.firstname + ' ' + staff.lastname
     this.getAllchat()
   }

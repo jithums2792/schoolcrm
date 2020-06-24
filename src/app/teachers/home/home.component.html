@@ -20,32 +20,44 @@
       <nav class="side-nav">
         <ul class="list-group list-group-flush text-light">
             <li class="list-group-item d-flex">
-                <a class="w-100" onclick="openNav()" [routerLink]="['/teacher/home/myprofile']">
+                <a class="w-100" onclick="openNav()" [routerLink]="['myprofile']" routerLinkActive="router-link-active">
                   <i class="fa fa-user" aria-hidden="true"></i>
                   <label class="d-block pointer" for="" >Profile</label>
                 </a>
                 
             </li>
             <li class="list-group-item d-flex">
-                <a class="w-100" onclick="openNav()" [routerLink]="['/teacher/home/class']">
+                <a class="w-100" onclick="openNav()" [routerLink]="['class']" routerLinkActive="router-link-active">
                   <i class="fas fa-podcast"></i>  
                   <label class="d-block pointer" for="" >Class</label>
                 </a>
             </li>
             <li class="list-group-item d-flex">
-              <a class="w-100" onclick="openNav()" [routerLink]="['/teacher/home/leaveapprove']">
+              <a class="w-100" onclick="openNav()" [routerLink]="['homework']" routerLinkActive="router-link-active">
+                <i class="fas fa-pen-alt"></i>
+                <label class="d-block pointer" for="" >Homeworks</label>
+              </a>
+          </li>
+            <li class="list-group-item d-flex">
+              <a class="w-100" onclick="openNav()" [routerLink]="['leaveapprove']" routerLinkActive="router-link-active">
                 <i class="fas fa-person-booth"></i> 
                 <label class="d-block pointer" for="" >Leave</label>
               </a>
           </li>
             <li class="list-group-item d-flex">
-                <a class="w-100" onclick="openNav()" [routerLink]="['/teacher/home/studymaterial']">
+                <a class="w-100" onclick="openNav()" [routerLink]="['studymaterial']" routerLinkActive="router-link-active">
                   <i class="fas fa-atlas"></i>
                   <label class="d-block pointer" for="" >Materials</label>
                 </a>
             </li>
             <li class="list-group-item d-flex">
-                <a class="w-100" onclick="openNav()" [routerLink]="['/teacher/home/exams']">
+              <a class="w-100" onclick="openNav()" [routerLink]="['chat']" routerLinkActive="router-link-active">
+                <i class="fa fa-comments" aria-hidden="true"></i>
+                <label class="d-block pointer" for="" >Chat</label>
+              </a>
+          </li>
+            <li class="list-group-item d-flex">
+                <a class="w-100" onclick="openNav()" [routerLink]="['exams']" routerLinkActive="router-link-active">
                   <i class="fa fa-file-text" ></i>
                   <label class="d-block pointer" for="" >Exams</label>
                 </a>

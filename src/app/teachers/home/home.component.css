@@ -207,7 +207,11 @@ mat-sidenav{
 @media(min-width:767px){
   .side-nav{
     height: calc(100vh - 76px);
+    overflow-y: scroll;
   }
+}
+.side-nav::-webkit-scrollbar{
+  display: none;
 }
 .content-container::-webkit-scrollbar{
   display: none;

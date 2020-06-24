@@ -16,10 +16,13 @@ import { ExamsComponent } from './exams/exams.component';
 import { CreateexamComponent } from './createexam/createexam.component';
 import { AnswerlistComponent } from './answerlist/answerlist.component';
 import { LeaveapprovelComponent } from './leaveapprovel/leaveapprovel.component';
+import { ChatComponent } from './chat/chat.component';
+import { HomeworkComponent } from './homework/homework.component';
+import { ViewComponent } from './view/view.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent],
+  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent, ChatComponent, HomeworkComponent, ViewComponent],
   imports: [
     CommonModule,
     FormsModule,
