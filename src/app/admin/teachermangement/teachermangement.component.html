@@ -41,7 +41,8 @@
             <div class="row m-0 w-100">
                 <div class="col py-3 px-0" *ngFor="let faculty of facultyList">
  
-                    <div class="teacher-profile text-center">
+                    <div class="teacher-profile text-center"(click)="edit(faculty)">
+                        <div class="bg-profile"></div>
                         <img src="../../../assets/avatar.png" alt="">
                         <h3>{{faculty.firstname}} {{faculty.lastname}}</h3>
                         <h6>{{faculty.designation}}</h6>
