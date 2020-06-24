@@ -7,3 +7,37 @@
     transform: rotate(90deg);
     transition: 0.5s;
 }
+.alocation-card label{
+    font-weight: 400;
+    text-transform: capitalize;
+    font-size: 18px;
+    color: #3c3c3c;
+}
+.alocation-card label{
+    min-width: 180px;
+}
+.alocation-card .form-control{
+    max-width: 200px;
+}
+.subject-alocated{
+    display: inline-block;
+    margin-right: 15px;
+}
+.subject-label{
+    background-color: #ffffff !important;
+    color: #8a8a8a;
+    padding: 6px 15px !important;
+    border:1px solid #c5c5c5;
+    border-right:0px;
+}
+.close-subject-label{
+    color: #fff;
+    cursor: pointer;
+    padding: 6px 12px !important;
+    border:1px solid #c5c5c5;
+    border-left:0px;
+}
+.close-subject-label:hover .fa-times{
+    transform: rotate(90deg);
+    transition: 0.5s;
+}
