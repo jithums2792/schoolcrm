@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-lg-4 col-12">
             <div class="card border-0 bg-default">
@@ -41,4 +41,41 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="d-inline-block">Class</h4>
+            <div class="row">
+                <div class="col-md-6 px-2">
+                    <div class="form-group p-2">
+                        <input [(ngModel)]="className" type="text" class="form-control mb-2" id="department" placeholder="Class name">
+                        <input [(ngModel)]="sectionCount" type="number" class="form-control" id="department" placeholder="Number of sections">
+                    </div>
+                    <div class="col px-2 d-flex align-items-center justify-content-end">
+                        <button class="btn custom-btn btn-sm" (click)="save()" *ngIf="saveFlag">Add</button>
+                        <button class="btn custom-btn btn-sm mx-2" (click)="cancel()" *ngIf="!saveFlag">Cancel</button>
+                        <button class="btn custom-btn btn-sm" (click)="update()" *ngIf="!saveFlag">Update</button>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-4 mb-3">
+                    <div class="card border border-bottom-0">
+                        <div class="col py-2 border-bottom">
+                            <h5 class="mb-0">Class List</h5>
+                        </div>
+                        <div class="col py-2 border-bottom" *ngFor="let class of classList">
+                            <span class="mr-3">class: {{class.name}}</span><span class="class-section">sections: <span  *ngFor="let section of class.section" class="mx-2">{{section}}</span></span>
+                            <div class="my-2 my-md-0">
+                                <div class="float-right">
+                                    <i class="fas fa-edit mx-2" (click)="edit(department)"></i>
+                                    <i class="fas fa-trash mx-2" (click)="delete(department)"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>   
