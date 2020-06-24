@@ -12,6 +12,7 @@ import { HomeworkComponent } from './homework/homework.component';
 import { LoginGuard } from '../Auth/login.guard';
 import { LeavelistComponent } from './leavelist/leavelist.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
+import { ChatComponent } from './chat/chat.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
     {path: 'liveclass2', component: LivestreamWebrtcComponent},
     {path: 'studymaterial', component: StudymaterialComponent},
     {path: 'homework', component: HomeworkComponent},
+    {path: 'chat', component: ChatComponent},
     {path: 'exams', component: ExamsComponent},
     {path: 'attendexam', component: AttendexamComponent},
     {path: 'leavelist', component: LeavelistComponent},

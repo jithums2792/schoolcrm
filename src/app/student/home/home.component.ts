@@ -10,6 +10,15 @@ import { ExamService } from 'src/app/services/exam.service';
 })
 export class HomeComponent implements OnInit {
   public username
+  public subjectList = [];
+  public studentInfo;
+  public uploadedFiles = []
+  public subject = 'null';
+  public name = '';
+  public note ='';
+  public type = 'null';
+  public content = null
+  public saveFlag = true;
 
   constructor(private studentservice: StudentsService, private router: Router, private examservice: ExamService) { }
 

@@ -23,6 +23,13 @@
   border-radius: 10px;
   z-index: 1;
   background: #fff;
+  overflow: hidden;
+}
+.card .border-bottom{
+  border-bottom: dotted 1px #bbbbbb !important;
+}
+.card .border-right{
+  border-right: dotted 1px #bbbbbb !important;
 }
 .button-container{
   position: absolute;

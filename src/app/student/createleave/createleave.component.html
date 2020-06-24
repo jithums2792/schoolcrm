@@ -1,47 +1,47 @@
-<div class="container-fluid">
-    <div class="row py-2">
-        <div class="col-12">
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4 d-inline-block">Leave Application Form</h4>
             <button class="btn btn-sm custom-btn float-right mx-1" *ngIf="saveFlag" (click)= "addLeave()">Apply</button>
             <button class="btn btn-sm custom-btn float-right mx-1" *ngIf="!saveFlag" (click)= "update()">Update</button>
             <button class="btn btn-sm custom-btn float-right mx-1" *ngIf="!saveFlag" (click)= "cancel()">Cancel</button>
+            <div class="row">
+                <div class="col-lg-4 col-12 my-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Leave type<span class="text-danger">*</span></label>
+                        <select [(ngModel)]="leaveForm.type" class="form-control form-control-sm" (change)="validate()">
+                            <option value='null'>Select leave type</option>
+                            <option value="Casula Leave">Casula Leave</option>
+                            <option value="Sick Leave">Sick Leave</option>
+                            <option value="Others">Others</option>
+                        </select> 
+                    </div> 
+                </div>
+                <div class=" col-lg-4 col-12 my-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Leave duration(Start)<span class="text-danger">*</span></label>
+                        <input [(ngModel)]="leaveForm.durationstart" type="date" name="durationstart" id="durationstart" class="form-control form-control-sm">
+                    </div> 
+                </div>
+                <div class=" col-lg-4 col-12 my-1">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Leave duration(End)<span class="text-danger">*</span></label>
+                        <input  [(ngModel)]="leaveForm.durationend" type="date" name="durationend" id="durationend" class="form-control form-control-sm">
+                    </div> 
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Leave Reason<span class="text-danger">*</span></label>
+                        <textarea [(ngModel)]="leaveForm.reason" name="leavereason" id="leavereason" cols="" rows="4" class="form-control form-control-sm"></textarea>
+                    </div> 
+                </div>
+                <div class="col-12">
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Leave attachment</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="fileuploader($event)">
+                    </div>  
+                </div> 
+            </div>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-lg-4 col-12 my-1">
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Leave type<span class="text-danger">*</span></label>
-                <select [(ngModel)]="leaveForm.type" class="form-control form-control-sm" (change)="validate()">
-                    <option value='null'>Select leave type</option>
-                    <option value="Casula Leave">Casula Leave</option>
-                    <option value="Sick Leave">Sick Leave</option>
-                    <option value="Others">Others</option>
-                </select> 
-            </div> 
-        </div>
-        <div class=" col-lg-4 col-12 my-1">
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Leave duration(Start)<span class="text-danger">*</span></label>
-                <input [(ngModel)]="leaveForm.durationstart" type="date" name="durationstart" id="durationstart" class="form-control form-control-sm">
-            </div> 
-        </div>
-        <div class=" col-lg-4 col-12 my-1">
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Leave duration(End)<span class="text-danger">*</span></label>
-                <input  [(ngModel)]="leaveForm.durationend" type="date" name="durationend" id="durationend" class="form-control form-control-sm">
-            </div> 
-        </div>
-        <div class="col-12">
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Leave Reason<span class="text-danger">*</span></label>
-                <textarea [(ngModel)]="leaveForm.reason" name="leavereason" id="leavereason" cols="" rows="4" class="form-control form-control-sm"></textarea>
-            </div> 
-        </div>
-        <div class="col-12">
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Leave attachment</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1" (change)="fileuploader($event)">
-            </div>  
-        </div> 
-    </div>
-</div>
+ </div>    
