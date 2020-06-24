@@ -15,9 +15,10 @@
     position: absolute;
     bottom: 0px;
     border: 1px solid #dee2e6;
-    border-left:none;
-    border-bottom:none;
-    border-right:none;
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    background: white;
 }
 .message-box .form-control{
     width: calc( 100% - 80px);
@@ -42,8 +43,13 @@
 .message-body{
     width: 100%;
     height: calc(100% - 70px);
+    overflow-y: scroll;
     background: #057ac505;
     position: relative;
+    padding-bottom: 20px;
+}
+.message-body::-webkit-scrollbar{
+    display: none;
 }
 .message-body .message{
     max-width: 60%;

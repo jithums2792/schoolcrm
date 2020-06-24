@@ -1,0 +1,160 @@
+.caption{
+    bottom: 0;
+    width: calc(100% - 30px);
+    background-color: #057ac5;
+    overflow: hidden;
+    font-size: 15px;
+    height: 35px;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+a{
+    color: white;
+    font-size: 12px;
+}
+.fa-download:hover{
+    color: #17a2b8;
+    font-size: 12px;
+    cursor: pointer;
+}
+.pdf{
+    width: 100px;
+}
+.fa-trash-alt:hover {
+    color: red;
+    cursor: pointer;
+}
+.fa-edit:hover {
+    color: #28a745;
+    cursor: pointer;
+}
+
+figure.img-item{
+    height: 200px;
+    overflow: hidden;
+}
+
+.gallery {
+    -webkit-column-count: 3;
+    -moz-column-count: 3;
+    column-count: 3;
+    -webkit-column-width: 33%;
+    -moz-column-width: 33%;
+    column-width: 33%; }
+    .gallery .pics {
+    -webkit-transition: all 350ms ease;
+    transition: all 350ms ease; }
+    .gallery .animation {
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    transform: scale(1); }
+
+    @media (max-width: 450px) {
+    .gallery {
+    -webkit-column-count: 1;
+    -moz-column-count: 1;
+    column-count: 1;
+    -webkit-column-width: 100%;
+    -moz-column-width: 100%;
+    column-width: 100%;
+    }
+    }
+
+    @media (max-width: 400px) {
+    .btn.filter {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    }
+    }
+
+    .doc-card{
+        position: relative;
+        background: #057ac5;
+        width: 150px;
+        height: 150px;
+        text-align: center;
+    }
+    .pdf-card{
+        position: relative;
+        background: #e74545;
+        width: 150px;
+        height: 150px;
+        text-align: center;
+    }
+    
+    .delete-icon,.edit-icon,.download-icon,.pdf-icon,.file-name{
+        color: #fff;
+    }
+    .file-name{
+        position: absolute;
+        bottom: 35px;
+        width: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .delete-icon{
+        position: absolute;
+        left: 5px;
+        top:5px;
+    }
+    .edit-icon{
+        position: absolute;
+        right: 5px;
+        top:5px;
+    }
+    .download-icon{
+        position: absolute;
+        right: 5px;
+        bottom:5px;
+    }
+    .pdf-icon{
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 30px;
+    }
+
+    .link-container{
+        padding: 10px;
+        border: 1px solid #057ac596;
+        border-radius: 5px;
+        background: #057ac526;
+        color: #057ac5;
+        max-width: 300px;
+        height: 50px;
+    }
+    .link-container a{
+        color: #057ac5;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .link-container a label{
+        width: 200px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-top: 3px;
+        padding-right: 10px;
+    }
+    .link-container .fa-edit:hover{
+        color: #28a745;
+    }
+
+.fa-edit:hover {
+    color: white;
+} 
+
+figure img{
+    width: 100%;
+    height: 100%;
+}
+@media(max-width:768px){
+    h4{
+        font-size: 18px;
+    }
+    button{
+        font-size: 15px;
+    }
+}
