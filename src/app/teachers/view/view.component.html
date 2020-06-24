@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="container-fluid p-3">
+        <div class="container-fluid p-0 rounded shadow">
+            <div class="container-fluid py-3">
+                <h4 class="d-inline-block">Student meterial Gallery</h4>
+                
+                <div class="row m-0 w-100">
+                    <div class="col-md-12 row m-0 p-0">
+     
+     
+                        <div class="mdb-lightbox no-margin m-0 row w-100">
+    
+                            <figure class="col-lg-4 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of contentList;let i = index;">
+                                <a href="#" data-size="1600x1067">
+                                <img alt="picture" src="{{file.media}}" class="img-fluid">
+                                </a>
+                                <div class="position-absolute caption text-white p-1 text-right">
+                                    <label class="float-left pl-3" for="">{{file.name}}</label>
+                                    <a href="{{file.media}}" download="{{file.name}}">
+                                        <i class="mr-2 fas fa-download"></i>
+                                    </a>
+                                </div>
+                            </figure>
+    
+                        </div>
+     
+                    </div>
+                </div>
+                <div class="row" *ngIf="contentList.length === 0">
+                    <div class="col-12 d-flex align-items-center justify-content-center">
+                        <img src="../../../assets/img/undraw_no_data_qbuo.svg" class="img-fluid" alt="nodaat">
+                    </div>
+                </div>
+
+            </div>
+     
+        </div>
+     </div>
+</div>

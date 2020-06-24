@@ -10,6 +10,9 @@ import { CreateexamComponent } from './createexam/createexam.component';
 import { TeacherloginGuard } from '../Auth/teacherlogin.guard';
 import { AnswerlistComponent } from './answerlist/answerlist.component';
 import { LeaveapprovelComponent } from './leaveapprovel/leaveapprovel.component';
+import { ChatComponent } from './chat/chat.component';
+import { HomeworkComponent } from './homework/homework.component';
+import { ViewComponent } from './view/view.component';
 
 
 const routes: Routes = [
@@ -22,9 +25,14 @@ const routes: Routes = [
     {path: 'createexam', component: CreateexamComponent},
     {path: 'answerlist', component: AnswerlistComponent},
     {path: 'leaveapprove', component: LeaveapprovelComponent},
-    {path: '', redirectTo: 'myprofile', pathMatch: 'full'}
+    {path: 'chat', component: ChatComponent},
+    {path: 'homework', component: HomeworkComponent},
+    {path: 'view', component: ViewComponent},
+    {path: '', redirectTo: 'myprofile', pathMatch: 'full'},
+    {path: '**', redirectTo: 'myprofile', pathMatch: 'full'},
   ], canActivate: [TeacherloginGuard]},
-  {path: '', redirectTo: 'home', pathMatch: 'full'}
+  {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {path: '**', redirectTo: 'home', pathMatch: 'full'}
 ];
 
 @NgModule({
