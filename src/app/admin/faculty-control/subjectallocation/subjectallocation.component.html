@@ -34,7 +34,7 @@
                         <option value="null">Select subject</option>
                         <option value="{{subject.name}}" *ngFor="let subject of subjectList">{{subject.name}}</option>
                     </select>
-                    <div class="my-4">
+                    <div class="mt-4">
                         <div class="subject-alocated" *ngFor="let subject of staff.assignedSubject; let li = index;">
                             <span class="subject-label rounded-left shadow-sm">{{subject}}</span>
                             <span class="close-subject-label bg-danger rounded-right shadow-sm" (click)="delete(i, li)"><i class="fas fa-times"></i></span>

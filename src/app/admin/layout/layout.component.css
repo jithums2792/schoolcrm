@@ -25,6 +25,7 @@
     background: none;
     margin-top: 14px;
     cursor: pointer;
+    min-width: 200px;
 }
 .sub-menu:hover{
     margin-left: 4px;
