@@ -11,8 +11,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class StudentlistComponent implements OnInit {
   public classList = [];
-  public selectedClass;
-  public selectedSection;
+  public selectedClass = 'null';
+  public selectedSection = 'null';
   public sectionList = [];
   public studentList = [];
   public studentId;
