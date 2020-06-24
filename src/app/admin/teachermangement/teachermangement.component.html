@@ -38,9 +38,8 @@
         <div class="container-fluid py-3">
             <h4 class="d-inline-block">Staff Directory</h4>
             <button class="btn btn-sm custom-btn shadow-sm float-right" [routerLink]="['/sadmin/createfaculty']" routerLinkActive="router-link-active" >Create Teacher</button>
-            <div class="row m-0 w-100">
-                <div class="col py-3 px-0" *ngFor="let faculty of facultyList">
- 
+            <div class="row m-0 w-100 pt-3">
+                <div class="py-3 mx-md-0 mx-auto" *ngFor="let faculty of facultyList">
                     <div class="teacher-profile text-center"(click)="edit(faculty)">
                         <div class="bg-profile"></div>
                         <img src="../../../assets/avatar.png" alt="">
@@ -48,10 +47,8 @@
                         <h6>{{faculty.designation}}</h6>
                         <label for="">{{faculty.department}}</label>
                     </div>
- 
                 </div>
             </div>
         </div>
- 
     </div>
  </div>    

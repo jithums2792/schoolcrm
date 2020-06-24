@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row">
         <div class="col-12 py-2 bg-light">
             <i class="fas fa-grip-vertical mx-2"></i><span><strong>Allocate teachers</strong></span>
@@ -29,4 +29,35 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
+
+
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid pt-3">
+            <h4 class="d-inline-block">Class Allocation</h4>
+            <div class="row">
+                <div class="col-12 px-4 mt-4 alocation-card border-bottom pb-3" *ngFor="let staff of staffList; let i = index;">
+                    <label class="m-0 mb-2">{{staff.firstname}} {{staff.lastname}}</label>
+                    <select #classSelect class="form-control form-control-sm d-inline-block mr-2 mb-2" (change)="classSelection(classSelect)">
+                        <option value="null">Select class</option>
+                        <option value="{{room.name}}" *ngFor="let room of roomList">{{room.name}}</option>
+                    </select>
+                    <select #sectionSelect class="form-control form-control-sm d-inline-block mr-2" (change)="sectionSelection(sectionSelect)">
+                        <option value="null">Select section</option>
+                        <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                    </select>
+                    <div class="my-4">
+                        <div class="subject-alocated" *ngFor="let item of staff.assignedClass; let i=index;">
+                            <span class="subject-label rounded-left shadow-sm">{{item.room}} <span class="mx-1" *ngFor="let xx of item.section">{{xx}}</span></span>
+                            <span class="close-subject-label bg-danger rounded-right shadow-sm" (click)="delete(i, staff)"><i class="fas fa-times"></i></span>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm custom-btn float-right ml-2" (click)="update(staff)">Update</button>
+                    <button class="btn btn-sm custom-btn float-right ml-2" (click)="add(staff)">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>    

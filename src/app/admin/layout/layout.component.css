@@ -25,6 +25,7 @@
     background: none;
     margin-top: 14px;
     cursor: pointer;
+    min-width: 200px;
 }
 .sub-menu:hover{
     margin-left: 4px;
@@ -211,4 +212,11 @@
       position: relative;
       z-index: 10;
     }
+  }
+  .content-container{
+    height: calc(100vh - 76px);
+    overflow-y: scroll;
+  }
+  .content-container::-webkit-scrollbar{
+    display: none;
   }
