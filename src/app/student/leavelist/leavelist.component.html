@@ -24,7 +24,7 @@
                         </div>
                         <div class="col py-2 d-flex align-items-center justify-content-end">
                             <i class="fas fa-edit mx-1 pointer" (click)="editLeave(leave)"></i>
-                            <i class="fas fa-trash-alt mx-1 pointer" (click)="deleteLeave(leave)"></i>
+                            <i class="fas fa-trash-alt mx-1 pointer" (click)="openModal(template, leave)"></i>
                         </div>
                     </div>
                 </div>
@@ -33,4 +33,10 @@
  
     </div>
  </div>    
-
+ <ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="deleteLeave()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>

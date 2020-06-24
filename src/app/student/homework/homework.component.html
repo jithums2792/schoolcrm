@@ -21,7 +21,10 @@
                    <label class="mr-3" for="">Upload material</label>
                    <input (change)="studentfileUploader($event)" type="file" name="" id="exampleFormControlFile1">
                </div>
-               <div class="col-12 text-md-right pl-0 pl-md-3">
+               <div class="col-12 text-md-right pl-0 pl-md-3 d-flex align-items-center justify-content-end">
+                    <div class="spinner-border text-primary" role="status" *ngIf="loader">
+                        <span class="sr-only">Loading...</span>
+                    </div>
                    <button class="btn btn custom-btn mx-1"  *ngIf="! saveFlag">Cancel</button>
                    <button class="btn btn custom-btn"  *ngIf="! saveFlag">Update</button>
                    <button class="btn btn custom-btn" (click)="upload()" *ngIf="saveFlag">Upload</button>
@@ -29,4 +32,55 @@
            </div>
        </div>
     </div>
+
+    <div class="container-fluid p-3"  *ngIf="uploadedFiles.length !== 0">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="d-inline-block">Student meterial Gallery</h4>
+            
+            <div class="btn-group float-right">
+                <button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Filter
+                </button>
+                <div class="dropdown-menu">
+                <a class="dropdown-item text-dark" href="#">Action</a>
+                <a class="dropdown-item text-dark" href="#">Another action</a>
+                <a class="dropdown-item text-dark" href="#">Something else here</a>
+                <a class="dropdown-item text-dark" href="#">Separated link</a>
+                </div>
+            </div>
+            <div class="row m-0 w-100">
+                <div class="col-md-12 row m-0 p-0">
+ 
+ 
+                    <div class="mdb-lightbox no-margin m-0 row w-100">
+
+                        <figure class="col-lg-4 col-md-4 col-sm-6 img-item position-relative pointer mt-3" *ngFor="let file of uploadedFiles;let i = index;">
+                            <a href="#" data-size="1600x1067">
+                            <img alt="picture" src="{{file.media}}" class="img-fluid">
+                            </a>
+                            <div class="position-absolute caption text-white p-1 text-right">
+                                <label class="float-left pl-3" for="">{{file.name}}</label>
+                                <a href="{{file.media}}" download="{{file.name}}">
+                                    <i class="mr-2 fas fa-download"></i>
+                                </a>
+                                <i class="fas fa-trash-alt mr-2 m-1" (click)="openModal(template, i)"></i>
+                            </div>
+                        </figure>
+
+                    </div>
+ 
+                </div>
+            </div>
+        </div>
+ 
+    </div>
+ </div> 
 </div>
+<ng-template #template>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button mx-2" class="btn btn-default" (click)="delete()" >Yes</button>
+      <button type="button mx-2" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
