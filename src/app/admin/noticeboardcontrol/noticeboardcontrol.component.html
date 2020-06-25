@@ -1,20 +1,20 @@
-<div class="container-fluid">
+<!-- <div class="container-fluid">
     <div class="row py-2">
-            <div class="col-lg-3 col-12">
+            <div class="col-lg-3 col-12 my-1">
                 <select [(ngModel)]="query.room" #selectedClass class="form-control form-control-sm" (change)="sectionSelection(selectedClass.value)">
                     <option value="null">Select class</option>
                     <option value="All">All</option>
                     <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
                 </select>
             </div>
-            <div  class="col-lg-3 col-12">
+            <div  class="col-lg-3 col-12 my-1">
                 <select [(ngModel)]="query.section" class="form-control form-control-sm">
                     <option value="null">Select Section</option>
                     <option value="All">All</option>
                     <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
                 </select>
             </div>
-            <div class="col-lg-3 col-12">
+            <div class="col-lg-3 col-12 my-1">
                 <select [(ngModel)]="query.type" class="form-control form-control-sm">
                     <option value="null">Select type</option>
                     <option value="All">All</option>
@@ -23,13 +23,13 @@
                     <option value="Regular">Regular</option>
                 </select>
             </div>
-            <div class="col-lg-3 col-12 d-flex align-items-center justify-content-between">
+            <div class="col-lg-3 col-12 d-flex align-items-center justify-content-between my-1">
                 <button class="btn btn-sm custom-btn" (click)="search()">Search</button>
                 <button class="btn btn-sm custom-btn" (click)="openModal(createnotice)">New notice</button>
             </div>
     </div>
     <div class="row">
-        <div class="col-lg-3 col-md-4 col-12" *ngFor="let notice of noticeList">
+        <div class="col-lg-3 col-md-4 col-12 my-1" *ngFor="let notice of noticeList">
             <div class="card">
                 <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between rounded-top">
                     <div class="">
@@ -44,9 +44,15 @@
                     <h6><strong>{{notice.title}}</strong></h6>
                     <p>{{notice.note}}</p>
                     <p class="d-flex flex-column">
+                        <span>Class: {{notice.room}}</span>
+                        <span>Section: {{notice.section}}</span>
                         <span>Date: {{notice.date}}</span>
                         <span>Author: Admin</span>
                     </p>
+                </div>
+                <div class="col py-2 d-flex align-items-center justify-content-end border-top">
+                    <i class="fas fa-edit mx-2 pointer" (click)="edit(notice, createnotice)"></i>
+                    <i class="fas fa-trash-alt pointer" (click)="delete(notice, confirmx)"></i>
                 </div>
             </div>
         </div>
@@ -92,49 +98,136 @@
                   <textarea [(ngModel)]="notice.note" name="note" id="note" cols="" rows="3" class="form-control form-control-sm" placeholder="Enter notres here"></textarea>
               </div>
               <div class="col-12 my-1">
-                  <button class="btn btn-sm custom-btn mx-1 float-right" (click)="save()">Save</button>
-                  <button class="btn btn-sm custom-btn mx-1 float-right">Cancel</button>
-                  <button class="btn btn-sm custom-btn mx-1 float-right">Update</button>
+                  <button class="btn btn-sm custom-btn mx-1 float-right" (click)="save()" *ngIf="saveFlag">Save</button>
+                  <button class="btn btn-sm custom-btn mx-1 float-right" *ngIf="!saveFlag">Cancel</button>
+                  <button class="btn btn-sm custom-btn mx-1 float-right" *ngIf="!saveFlag">Update</button>
               </div>
           </div>
       </div>
     </div>
-  </ng-template>
+  </ng-template> -->
 
 
-  <!-- <div class="container-fluid p-3">
+  <div class="container-fluid p-3">
     <div class="container-fluid p-0 rounded shadow">
        <div class="container-fluid py-3">
            <h4 class="mb-4 d-inline-block">Notice Board</h4>
            <button class="btn btn-sm custom-btn float-right" (click)="openModal(createnotice)">New notice</button>
            <div class="row">
-            <div class="col-lg-3 col-12">
-                <select [(ngModel)]="query.room" #selectedClass class="form-control form-control-sm" (change)="sectionSelection(selectedClass.value)">
+                <div class="col-lg-3 col-12 mb-3">
+                    <select [(ngModel)]="query.room" #selectedClass class="form-control form-control-sm" (change)="sectionSelection(selectedClass.value)">
+                        <option value="null">Select class</option>
+                        <option value="All">All</option>
+                        <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                    </select>
+                </div>
+                <div  class="col-lg-3 col-12 mb-3">
+                    <select [(ngModel)]="query.section" class="form-control form-control-sm">
+                        <option value="null">Select Section</option>
+                        <option value="All">All</option>
+                        <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-3 col-12 mb-3">
+                    <select [(ngModel)]="query.type" class="form-control form-control-sm">
+                        <option value="null">Select type</option>
+                        <option value="All">All</option>
+                        <option value="Important">Important</option>
+                        <option value="Attention">Attention</option>
+                        <option value="Regular">Regular</option>
+                    </select>
+                </div>
+                <div class="col-md-3 pl-md-3">
+                    <button class="btn btn-sm custom-btn" (click)="search()">Search</button>
+                </div>
+           </div>
+           <div class="row">
+            <div class="col-lg-12 col-md-4 col-12 mt-3" *ngFor="let notice of noticeList">
+                <div class="card">
+                    <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between rounded-top">
+                        <div class="">
+                            <i class="fas fa-bullhorn mx-2"></i>
+                            <span>Notice</span>
+                        </div>
+                    </div>
+                    <div class="col py-2">
+                        <i class="mb-3 fas fa-bookmark" *ngIf="notice.type === 'Regular'"><span class="ml-2">Regular</span></i>
+                        <i class="mb-3 fas fa-bookmark text-warning" *ngIf="notice.type === 'Attention'"> <span class="ml-2">Attention</span></i>
+                        <i class="mb-3 fas fa-bookmark text-danger" *ngIf="notice.type === 'Important'"><span class="ml-2">Important</span></i>
+                        <h6><strong>{{notice.title}}</strong></h6>
+                        <p>{{notice.note}}</p>
+                        <p class="d-flex flex-column">
+                            <span>Class: {{notice.room}}</span>
+                            <span>Section: {{notice.section}}</span>
+                            <span>Date: {{notice.date}}</span>
+                            <span>Author: Admin</span>
+                        </p>
+                    </div>
+                    <div class="col py-2 d-flex align-items-center justify-content-end">
+                        <i class="fas fa-edit mx-2 pointer" (click)="edit(notice, createnotice)"></i>
+                        <i class="fas fa-trash-alt pointer" (click)="delete(notice, confirmx)"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>
+
+
+<ng-template #createnotice>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Notice</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-12 mb-3">
+                <select [(ngModel)]="notice.room" #selectedClass class="form-control form-control-sm" (change)="sectionSelection(selectedClass.value)">
                     <option value="null">Select class</option>
                     <option value="All">All</option>
                     <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
                 </select>
-            </div>
-            <div  class="col-lg-3 col-12">
-                <select [(ngModel)]="query.section" class="form-control form-control-sm">
-                    <option value="null">Select Section</option>
+                </div>
+                <div class="col-lg-4 col-12 mb-3">
+                <select [(ngModel)]="notice.section" class="form-control form-control-sm">
+                    <option value="null">Select section</option>
                     <option value="All">All</option>
                     <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
                 </select>
-            </div>
-            <div class="col-lg-3 col-12">
-                <select [(ngModel)]="query.type" class="form-control form-control-sm">
+                </div>
+                <div class="col-lg-4 col-12 mb-3">
+                <select [(ngModel)]="notice.type" class="form-control form-control-sm">
                     <option value="null">Select type</option>
-                    <option value="All">All</option>
                     <option value="Important">Important</option>
                     <option value="Attention">Attention</option>
                     <option value="Regular">Regular</option>
                 </select>
+                </div>
+                <div class="col-12 mb-3">
+                    <input [(ngModel)]="notice.title" type="text" name="title" id="title" class="form-control form-control-sm" placeholder="Title">
+                </div>
+                <div class="col-12 mb-3">
+                    <textarea [(ngModel)]="notice.note" name="note" id="note" cols="" rows="3" class="form-control form-control-sm" placeholder="Enter notres here"></textarea>
+                </div>
+                <div class="col-12 mb-2">
+                    <button class="btn btn-sm custom-btn mx-1 float-right" (click)="save()" *ngIf="saveFlag">Save</button>
+                    <button class="btn btn-sm custom-btn mx-1 float-right" *ngIf="!saveFlag">Cancel</button>
+                    <button class="btn btn-sm custom-btn mx-1 float-right" *ngIf="!saveFlag">Update</button>
+                </div>
             </div>
-               <div class="col-md-3 pl-0 pl-md-3">
-                   <button class="btn btn-sm custom-btn" (click)="search()">Search</button>
-               </div>
-           </div>
-       </div>
+        </div>
     </div>
-</div> -->
+</ng-template>
+
+
+<ng-template #confirmx>
+    <div class="modal-body text-center">
+        <p>Do you want to confirm?</p>
+        <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+        <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+</ng-template>
