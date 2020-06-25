@@ -70,8 +70,10 @@
    <div class="row m-0">
      
      <div id="side-nav" class="col-3 sidebar">
-
         <div class="container-fluid  accordion p-0" id="accordionExample">
+          <div class="custom-link" [routerLink]="['/sadmin/home']">
+            <span><i class="fa fa-home text-white"></i><span class="menuLabel">Dashboard</span></span>
+          </div>
           <div class="col custom-link " data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
             <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Faculty Controls</span></span>
             <i class="fas fa-chevron-right text-white"></i>

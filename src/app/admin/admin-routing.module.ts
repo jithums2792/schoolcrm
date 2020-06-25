@@ -14,10 +14,12 @@ import { ClassallocationComponent } from './faculty-control/classallocation/clas
 import { CreatetimetableComponent } from './class-control/createtimetable/createtimetable.component';
 import { ClasstutorsComponent } from './class-control/classtutors/classtutors.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
   {path: '', component: AdminLoginComponent},
     {path: 'home', component: LayoutComponent, children: [
+      {path: '', component: DashboardComponent},
       {path: 'faculty', component: TeachermangementComponent},
       {path: 'createfaculty', component: FacultycreateComponent},
       {path: 'department', component: DepartmentcontrolComponent},
