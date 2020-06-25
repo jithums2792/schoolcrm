@@ -100,3 +100,41 @@
       </div>
     </div>
   </ng-template>
+
+
+  <!-- <div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+       <div class="container-fluid py-3">
+           <h4 class="mb-4 d-inline-block">Notice Board</h4>
+           <button class="btn btn-sm custom-btn float-right" (click)="openModal(createnotice)">New notice</button>
+           <div class="row">
+            <div class="col-lg-3 col-12">
+                <select [(ngModel)]="query.room" #selectedClass class="form-control form-control-sm" (change)="sectionSelection(selectedClass.value)">
+                    <option value="null">Select class</option>
+                    <option value="All">All</option>
+                    <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                </select>
+            </div>
+            <div  class="col-lg-3 col-12">
+                <select [(ngModel)]="query.section" class="form-control form-control-sm">
+                    <option value="null">Select Section</option>
+                    <option value="All">All</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-12">
+                <select [(ngModel)]="query.type" class="form-control form-control-sm">
+                    <option value="null">Select type</option>
+                    <option value="All">All</option>
+                    <option value="Important">Important</option>
+                    <option value="Attention">Attention</option>
+                    <option value="Regular">Regular</option>
+                </select>
+            </div>
+               <div class="col-md-3 pl-0 pl-md-3">
+                   <button class="btn btn-sm custom-btn" (click)="search()">Search</button>
+               </div>
+           </div>
+       </div>
+    </div>
+</div> -->
