@@ -3,6 +3,8 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { ToastrService } from 'ngx-toastr';
 import { NoticeboardService } from 'src/app/services/noticeboard.service';
 import { ClassesService } from 'src/app/services/classes.service';
+import { data } from 'jquery';
+import { template } from 'lodash';
 
 @Component({
   selector: 'app-noticeboardcontrol',
@@ -11,9 +13,11 @@ import { ClassesService } from 'src/app/services/classes.service';
 })
 export class NoticeboardcontrolComponent implements OnInit {
   modalRef: BsModalRef;
+  saveFlag = true
   noticeList = []
   classList = []
   sectionList = []
+  selectedNotice
   query = {
     room: 'null',
     section: 'null',
@@ -63,7 +67,13 @@ export class NoticeboardcontrolComponent implements OnInit {
   }
 
   async search() {
-    console.log(this.query)
+    this.noticeservice.getAllnoticeboardByQuery(this.query).subscribe(data => {
+      if (data.data.length > 0 ) {
+        this.noticeList = data.data
+      } else {
+        this.toastrservice.warning('No notice found', 'Warning')
+      }
+    })
   }
 
   async save() {
@@ -82,6 +92,32 @@ export class NoticeboardcontrolComponent implements OnInit {
     }
   }
 
+  async edit(notice, template: TemplateRef<any>) {
+    this.notice = notice
+    this.saveFlag = false
+    this.modalRef = this.modalService.show(template);
+  }
+
+  async delete(notice, template: TemplateRef<any>) {
+    this.selectedNotice = notice
+    this.modalRef = this.modalService.show(template);
+  }
+
+  async confirm() {
+    this.noticeservice.deletenoticeboard(this.selectedNotice._id).subscribe(data => {
+      if (data.status === 'success') {
+        this.toastrservice.success('Deleted successfully', 'Success')
+        this.getallNoticeboard()
+        this.modalRef.hide()
+      } else {
+        this.toastrservice.error('Something wrong', 'Error')
+      }
+    })
+  }
+
+  async decline() {
+    this.modalRef.hide()
+  }
 
 
   openModal(template: TemplateRef<any>) {
