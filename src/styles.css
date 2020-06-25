@@ -11,6 +11,12 @@ body { margin: 0; font-family: 'Poppins', sans-serif; font-size: 14px; }
 .fa-chevron-right {
   font-size: 10px;
 }
+.fas.fa-edit{
+  color:#65BD13;
+}
+.fas.fa-trash-alt{
+  color: #FB0D16;
+}
 .pr-3 {
   padding-right: 12px;
 }
