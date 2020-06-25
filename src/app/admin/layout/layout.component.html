@@ -86,7 +86,7 @@
               <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['classsetup']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Allocation</div>
           </div>
           <div class="col custom-link" data-toggle="collapse" data-target="#calsscontrol" aria-expanded="false" aria-controls="collapseExample">
-            <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Class Controls</span></span>
+            <span><i class="fa fa-podcast text-white"></i><span class="menuLabel">Class Controls</span></span>
               <i class="fas fa-chevron-right text-white"></i>
             </div>
             <div class="collapse" data-parent="#accordionExample" id="calsscontrol">
@@ -95,13 +95,16 @@
             <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['classtutor']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Class Tutors</div>
           </div>
           <div class="col custom-link" data-toggle="collapse" data-target="#stusentcontrol" aria-expanded="false" aria-controls="collapseExample">
-            <span><i class="fa fa-address-card text-white"></i><span class="menuLabel">Student Controls</span></span>
+            <span><i class="fa fa-user-circle text-white"></i><span class="menuLabel">Student Controls</span></span>
               <i class="fas fa-chevron-right text-white"></i>
             </div>
             <div class="collapse" data-parent="#accordionExample" id="stusentcontrol">
             <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['studentlist']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>student List</div>
             <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['admision']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Student Admision</div>
             <div class="col sub-menu" onclick="openNavadmin()" [routerLink]="['designation']" routerLinkActive="router-link-active" ><i class="fas fa-angle-double-right mx-2"></i>Designation</div>
+          </div>
+          <div class="custom-link" [routerLink]="['/sadmin/home/noticeboard']">
+            <span><i class="fa fa-calendar text-white"></i><span class="menuLabel">Notice Board</span></span>
           </div>
         </div>
 

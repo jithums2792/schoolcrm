@@ -44,7 +44,7 @@ export class TeachermangementComponent implements OnInit {
     const extras: NavigationExtras = {
       state: {data: faculty}
     };
-    this.router.navigate(['createfaculty'], extras);
+    this.router.navigate(['/sadmin/home/createfaculty'], extras);
   }
 
 }

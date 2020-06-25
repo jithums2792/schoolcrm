@@ -15,6 +15,7 @@ import { CreatetimetableComponent } from './class-control/createtimetable/create
 import { ClasstutorsComponent } from './class-control/classtutors/classtutors.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { NoticeboardcontrolComponent } from './noticeboardcontrol/noticeboardcontrol.component';
 
 const routes: Routes = [
   {path: '', component: AdminLoginComponent},
@@ -31,7 +32,8 @@ const routes: Routes = [
       {path: 'createtimetable', component: CreatetimetableComponent},
       {path: 'subjectallocation', component: SubjectallocationComponent},
       {path: 'classsetup', component: ClassallocationComponent},
-      {path: 'classtutor', component: ClasstutorsComponent}
+      {path: 'classtutor', component: ClasstutorsComponent},
+      {path: 'noticeboard', component: NoticeboardcontrolComponent}
     ]}
 ];
 

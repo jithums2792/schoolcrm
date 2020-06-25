@@ -30,7 +30,7 @@ export class ClasstimetableComponent implements OnInit {
     const options: NavigationExtras = {
       state: {data: timetable}
     }
-    this.router.navigate(['createtimetable'],options)
+    this.router.navigate(['/sadmin/home/createtimetable'],options)
   }
 
   async delete(item,index) {

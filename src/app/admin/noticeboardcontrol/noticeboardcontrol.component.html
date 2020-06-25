@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <div class="row py-2">
+            <div class="col-lg-3 col-12">
+                <select [(ngModel)]="query.room" #selectedClass class="form-control form-control-sm" (change)="sectionSelection(selectedClass.value)">
+                    <option value="null">Select class</option>
+                    <option value="All">All</option>
+                    <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                </select>
+            </div>
+            <div  class="col-lg-3 col-12">
+                <select [(ngModel)]="query.section" class="form-control form-control-sm">
+                    <option value="null">Select Section</option>
+                    <option value="All">All</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-12">
+                <select [(ngModel)]="query.type" class="form-control form-control-sm">
+                    <option value="null">Select type</option>
+                    <option value="All">All</option>
+                    <option value="Important">Important</option>
+                    <option value="Attention">Attention</option>
+                    <option value="Regular">Regular</option>
+                </select>
+            </div>
+            <div class="col-lg-3 col-12 d-flex align-items-center justify-content-between">
+                <button class="btn btn-sm custom-btn" (click)="search()">Search</button>
+                <button class="btn btn-sm custom-btn" (click)="openModal(createnotice)">New notice</button>
+            </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-12" *ngFor="let notice of noticeList">
+            <div class="card">
+                <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between rounded-top">
+                    <div class="">
+                        <i class="fas fa-bullhorn mx-2"></i>
+                        <span><strong>Notice</strong></span>
+                    </div>
+                    <i class="fas fa-bookmark" *ngIf="notice.type === 'Regular'"></i>
+                    <i class="fas fa-bookmark text-warning" *ngIf="notice.type === 'Attention'"></i>
+                    <i class="fas fa-bookmark text-danger" *ngIf="notice.type === 'Important'"></i>
+                </div>
+                <div class="col py-2">
+                    <h6><strong>{{notice.title}}</strong></h6>
+                    <p>{{notice.note}}</p>
+                    <p class="d-flex flex-column">
+                        <span>Date: {{notice.date}}</span>
+                        <span>Author: Admin</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #createnotice>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Notice</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="col-lg-4 col-12">
+                <select [(ngModel)]="notice.room" #selectedClass class="form-control form-control-sm" (change)="sectionSelection(selectedClass.value)">
+                    <option value="null">Select class</option>
+                    <option value="All">All</option>
+                    <option value="{{room.name}}" *ngFor="let room of classList">{{room.name}}</option>
+                </select>
+              </div>
+              <div class="col-lg-4 col-12">
+                <select [(ngModel)]="notice.section" class="form-control form-control-sm">
+                    <option value="null">Select section</option>
+                    <option value="All">All</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList">{{section}}</option>
+                </select>
+              </div>
+              <div class="col-lg-4 col-12">
+                <select [(ngModel)]="notice.type" class="form-control form-control-sm">
+                    <option value="null">Select type</option>
+                    <option value="Important">Important</option>
+                    <option value="Attention">Attention</option>
+                    <option value="Regular">Regular</option>
+                </select>
+              </div>
+              <div class="col-12 my-1">
+                  <input [(ngModel)]="notice.title" type="text" name="title" id="title" class="form-control form-control-sm" placeholder="Title">
+              </div>
+              <div class="col-12 my-1">
+                  <textarea [(ngModel)]="notice.note" name="note" id="note" cols="" rows="3" class="form-control form-control-sm" placeholder="Enter notres here"></textarea>
+              </div>
+              <div class="col-12 my-1">
+                  <button class="btn btn-sm custom-btn mx-1 float-right" (click)="save()">Save</button>
+                  <button class="btn btn-sm custom-btn mx-1 float-right">Cancel</button>
+                  <button class="btn btn-sm custom-btn mx-1 float-right">Update</button>
+              </div>
+          </div>
+      </div>
+    </div>
+  </ng-template>

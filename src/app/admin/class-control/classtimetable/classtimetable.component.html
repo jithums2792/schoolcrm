@@ -37,14 +37,14 @@
     <div class="container-fluid p-0 rounded shadow">
         <div class="container-fluid pt-3">
             <h4 class="d-inline-block">Time Table</h4>
-            <button class="btn btn-sm custom-btn float-right" [routerLink]="['createtimetable']">Create timetable</button>
+            <button class="btn btn-sm custom-btn float-right" [routerLink]="['/sadmin/home/createtimetable']">Create timetable</button>
             <div class="row" *ngFor="let item of timetableList; let i = index">
                 <div class="col-12 mt-3 px-0">
                     <h5 class="pl-3 d-inline-block">
                         Time Table Of class {{item.name}} Section {{item.section}}
                     </h5>
-                    <button class="btn btn-sm btn-danger px-3 ml-3" [routerLink]="['createtimetable']">Delete</button>
-                    <button class="btn btn-sm btn-success px-3 ml-3" [routerLink]="['createtimetable']">Edit</button>
+                    <button class="btn btn-sm btn-danger px-3 ml-3" (click)="delete(item,i)">Delete</button>
+                    <button class="btn btn-sm btn-success px-3 ml-3" (click)="edit(item)">Edit</button>
                 </div>
                 <div class="container-fluid p-0 pl-3 mt-3">
                     <div class="row m-0">

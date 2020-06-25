@@ -37,12 +37,13 @@
     <div class="container-fluid p-0 rounded shadow">
         <div class="container-fluid py-3">
             <h4 class="d-inline-block">Staff Directory</h4>
-            <button class="btn btn-sm custom-btn shadow-sm float-right" [routerLink]="['createfaculty']" routerLinkActive="router-link-active" >Create Teacher</button>
+            <button class="btn btn-sm custom-btn shadow-sm float-right" [routerLink]="['/sadmin/home/createfaculty']" routerLinkActive="router-link-active" >Create Teacher</button>
             <div class="row m-0 w-100 pt-3">
                 <div class="py-3 mx-md-0 mx-auto" *ngFor="let faculty of facultyList">
                     <div class="teacher-profile text-center"(click)="edit(faculty)">
                         <div class="bg-profile"></div>
-                        <img src="../../../assets/avatar.png" alt="">
+                        <img src="{{faculty.photo}}" width="110px" height="110px" alt="" *ngIf="faculty.photo !== ''">
+                        <img src="../../../assets/avatar.png" alt="" *ngIf="faculty.photo === ''">
                         <h3>{{faculty.firstname}} {{faculty.lastname}}</h3>
                         <h6>{{faculty.designation}}</h6>
                         <label for="">{{faculty.department}}</label>

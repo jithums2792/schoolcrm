@@ -19,10 +19,11 @@ import { LeaveapprovelComponent } from './leaveapprovel/leaveapprovel.component'
 import { ChatComponent } from './chat/chat.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { ViewComponent } from './view/view.component';
+import { NoticeboardComponent } from './noticeboard/noticeboard.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent, ChatComponent, HomeworkComponent, ViewComponent],
+  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent, ChatComponent, HomeworkComponent, ViewComponent, NoticeboardComponent],
   imports: [
     CommonModule,
     FormsModule,
