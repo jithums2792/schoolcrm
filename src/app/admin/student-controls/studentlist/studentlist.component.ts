@@ -43,7 +43,7 @@ export class StudentlistComponent implements OnInit {
     const extras: NavigationExtras = {
       state: {data: student}
     };
-    this.router.navigate(['/sadmin/admision'], extras);
+    this.router.navigate(['admision'], extras);
 
   }
 

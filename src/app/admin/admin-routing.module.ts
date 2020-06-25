@@ -13,23 +13,24 @@ import { SubjectallocationComponent } from './faculty-control/subjectallocation/
 import { ClassallocationComponent } from './faculty-control/classallocation/classallocation.component'
 import { CreatetimetableComponent } from './class-control/createtimetable/createtimetable.component';
 import { ClasstutorsComponent } from './class-control/classtutors/classtutors.component';
-
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 const routes: Routes = [
-  {path: '', component: LayoutComponent, children: [
-    {path: 'faculty', component: TeachermangementComponent},
-    {path: 'createfaculty', component: FacultycreateComponent},
-    {path: 'department', component: DepartmentcontrolComponent},
-    {path: 'designation', component: DesignationcontrolComponent},
-    {path: 'classlist', component: ClasslistComponent},
-    {path: 'studentlist', component: StudentlistComponent},
-    {path: 'admision', component: StudentadmisionComponent},
-    {path: 'classtimetable', component: ClasstimetableComponent},
-    {path: 'createtimetable', component: CreatetimetableComponent},
-    {path: 'subjectallocation', component: SubjectallocationComponent},
-    {path: 'classsetup', component: ClassallocationComponent},
-    {path: 'classtutor', component: ClasstutorsComponent}
-  ]}
+  {path: '', component: AdminLoginComponent},
+    {path: 'home', component: LayoutComponent, children: [
+      {path: 'faculty', component: TeachermangementComponent},
+      {path: 'createfaculty', component: FacultycreateComponent},
+      {path: 'department', component: DepartmentcontrolComponent},
+      {path: 'designation', component: DesignationcontrolComponent},
+      {path: 'classlist', component: ClasslistComponent},
+      {path: 'studentlist', component: StudentlistComponent},
+      {path: 'admision', component: StudentadmisionComponent},
+      {path: 'classtimetable', component: ClasstimetableComponent},
+      {path: 'createtimetable', component: CreatetimetableComponent},
+      {path: 'subjectallocation', component: SubjectallocationComponent},
+      {path: 'classsetup', component: ClassallocationComponent},
+      {path: 'classtutor', component: ClasstutorsComponent}
+    ]}
 ];
 
 @NgModule({

@@ -20,10 +20,11 @@ import { SubjectallocationComponent } from './faculty-control/subjectallocation/
 import { ClassallocationComponent } from './faculty-control/classallocation/classallocation.component';
 import { CreatetimetableComponent } from './class-control/createtimetable/createtimetable.component';
 import { ClasstutorsComponent } from './class-control/classtutors/classtutors.component';
-
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
-  declarations: [LayoutComponent, 
+  declarations: [AdminLoginComponent,
+    LayoutComponent, 
     TeachermangementComponent, 
     FacultycreateComponent, 
     DepartmentcontrolComponent, 

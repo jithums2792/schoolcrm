@@ -54,7 +54,7 @@
         <div class="col-12 my-2">
             <button class="btn btn-sm custom-btn float-right mx-1" (click)="save()" *ngIf="saveFlag">Save</button>
             <button class="btn btn-sm custom-btn float-right" (click)="update()" *ngIf="!saveFlag">Update</button>
-            <button class="btn btn-sm custom-btn float-right mx-1" [routerLink]="['/sadmin/classtimetable']" *ngIf="!saveFlag">Cancel</button>
+            <button class="btn btn-sm custom-btn float-right mx-1" [routerLink]="['classtimetable']" *ngIf="!saveFlag">Cancel</button>
         </div>
     </div>
 </div>

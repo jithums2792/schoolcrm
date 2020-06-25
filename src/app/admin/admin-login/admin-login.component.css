@@ -1,0 +1,159 @@
+.btn-custom{
+    min-width: 100px !important;
+    border-radius: 2px !important;
+    font-weight: 800;
+  }
+  .btn-custom:hover{
+    background-color: white;
+    color: black;
+    border:2px solid #463e63;
+  }
+  .card{
+    overflow: hidden !important;
+  }
+  
+  .bg-img {
+   background-color: #372f54;
+  }
+  .layer-inner{
+    clip-path: circle(50% at 0 0);
+    background-color: #5c5671;
+    position: absolute;
+    z-index: 5;
+  }
+  .layer-outer{
+    clip-path: circle(75.7% at 0 0);
+    background-color: #413863;
+    position: absolute;
+    z-index: 1;
+  }
+  .index-5 {
+    z-index: 10;
+  }
+  .bg-default{
+    background-color: transparent !important;
+  }
+  .btn-success{
+    background-color: #0f033c !important;
+    border-color: transparent !important;
+    
+  }
+  .btn-success.focus, .btn-success:focus {
+    box-shadow: none !important;
+  }
+  
+  /*  */
+  .logo-container{
+    POSITION: absolute;
+    top: 45%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    color: #1b53a0;
+    width: 350px;
+  }
+  
+  .pattern-1{
+    min-height: 100vh;
+    clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+    background-color: #1B53A0;
+    color:#fff;
+  }
+  .pattern-2{
+    min-height: 100vh;
+  }
+  .access-control,.login-form{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  button{
+    box-shadow:none !important;
+    outline:none;
+  }
+  .btn-primary{
+    min-width: 250px;
+    height:50px;
+    border:1px solid #ffffff;
+    background: #1b53a0;
+    transition: 200ms;
+  }
+  .btn-primary:hover{
+    background: #fff;
+    border:1px solid #ffffff;
+    color:#1b53a0;
+  }
+  .btn-primary:active{
+    background: #fff !important;
+    border:1px solid #ffffff;
+    color:#1b53a0 !important;
+  }
+  .btn-main{
+    min-width:200px;
+    height: 50px;
+    border: 1px solid #1B53A0;
+    background: #fff;
+    color: #1B53A0;
+    transition: 200ms;
+  }
+  .btn-main:hover{
+    border: 1px solid #fff;
+    background: #fff0;
+    color: #fff;
+  }
+  button i{
+    margin-right: 13px;
+  }
+  .form-control{
+    border: none;
+    outline: none;
+    box-shadow: none;
+    min-width:250px;
+    height: 45px;
+  }
+  @media(max-width:992px){
+    .logo-container h1{
+      font-size: 24px;
+      text-align: center;
+    }
+  }
+  @media(max-width:767px){
+    .pattern-1{
+      min-height: 60vh;
+      clip-path:inherit;
+      position: relative;
+    }
+    .pattern-2{
+      min-height: 40vh;
+      position: relative;
+    }
+    .logo-container{
+      right: inherit;
+      left:50%;
+      transform: translate(-50%,-50%);
+      text-align: center;
+      width: 90%;
+    }
+    .logo-container h1{
+      font-size: 20px;
+    }
+  }
+  @media(max-height:567px){
+    .pattern-2{
+      min-height: 200px;
+    }
+    .pattern-1{
+      min-height: calc(100vh - 200px);
+      height: auto;
+      padding: 20px;
+    }
+    .access-control, .login-form{
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
+    .btn-main{
+      margin: auto;
+    }
+  }

@@ -117,7 +117,7 @@ export class CreatetimetableComponent implements OnInit {
     this.timetableservice.updatetimetable(this.timetableId,this.timetable).subscribe(data => {
       if (data.status === 'success') {
         this.toastservice.success('Updated successfully', 'Success')
-        this.router.navigate(['/sadmin/classtimetable'])
+        this.router.navigate(['classtimetable'])
       } else {
         this.toastservice.error('Something wrong', 'Error')
       }
