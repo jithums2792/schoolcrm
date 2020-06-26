@@ -139,9 +139,12 @@ studentid = 'tempstudent' + Date.now();
       const remotehost = document.getElementById('remote');
       this.remoteVideo = document.createElement('video');
       this.remoteVideo.setAttribute('autoplay', 'true');
+      this.remoteVideo.classList.add('remote-video')
       this.remoteVideo.style.position = 'absolute';
+      this.remoteVideo.style.width = '100vw';
+      this.remoteVideo.style.top = '35%';
+      this.remoteVideo.style.transform = 'translateY(-50%)';
       this.remoteVideo.srcObject = remotestream;
-      this.remoteVideo.height = 600;
       remotehost.appendChild(this.remoteVideo);
       i++;
     };
