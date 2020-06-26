@@ -56,7 +56,7 @@ studentid = 'tempstudent' + Date.now();
   async ngOnInit() {
     console.log(this.room)
 
-    const localStream = await navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+    const localStream = await navigator.mediaDevices.getUserMedia({audio: false,video: true });
     this.localStream = localStream
     const localhost = document.getElementById('host');
     this.localVideo = document.createElement('video');

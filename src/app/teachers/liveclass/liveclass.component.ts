@@ -86,8 +86,22 @@ export class LiveclassComponent implements OnInit {
 
     this.socket.on('newestudentjoined', async (studentid, socketId) => {
 
+      // this.peerConnection[studentid].onnegotiationneeded = async (event) => {
+      //   const offer = await this.peerConnection[studentid].createOffer();
+      //   this.peerConnection[studentid].setLocalDescription(offer);
+
+      //   const offerObject = {
+      //     studentid:studentid,
+      //     offer:offer,
+      //     room: this.room
+      //   };
+      //   this.socket.emit('newoffer', offerObject);
+      // }
+
       if (this.localStream != null) {
         this.peerConnection[studentid] = new RTCPeerConnection(this.configuration);
+
+        
 
         this.localStream.getTracks().forEach(track => {
           this.peerConnection[studentid].addTrack(track, this.localStream);
