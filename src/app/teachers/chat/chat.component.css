@@ -4,7 +4,7 @@
     max-width: 80px;
 }
 .chat-box{
-    min-height: 50vh;
+    height: 100vh;
 }
 .contact{
     max-height:115px
@@ -69,4 +69,32 @@
     margin-right: 10px;
     float: right;
     margin-left: calc(60% - 10px);
+}
+.chat-container{
+    height: calc(100vh - 180px);
+}
+
+/* width */
+.contact-list::-webkit-scrollbar {
+    width: 3px;
+  }
+  
+  /* Track */
+.contact-list::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+.contact-list::-webkit-scrollbar-thumb {
+    background: #057AC5; 
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+.contact-list::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+.contact-list{
+    height: calc(100vh - 180px);
+    overflow-y: scroll;
 }

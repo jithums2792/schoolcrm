@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FacultyService } from 'src/app/services/faculty.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { ToastrService } from 'ngx-toastr';
+import * as io from 'socket.io-client'
 import * as _ from 'lodash'
+import { environment } from 'src/environments/environment';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-chat',
@@ -12,6 +15,9 @@ import * as _ from 'lodash'
 export class ChatComponent implements OnInit {
   staffList: Array<any>
   msgList: Array<any>
+  socket_api = environment.socket
+  socket
+  togleFlag = true
   to = 'jithu ms'
   from = localStorage.getItem('studentname')
   chat = {
@@ -52,24 +58,22 @@ export class ChatComponent implements OnInit {
   async getAllchat() {
     let sendList
     let receiveList
-    await this.chatservice.getchatbyCategory(this.sendquery).subscribe(data => {
+    this.chatservice.getchatbyCategory(this.sendquery).subscribe(data => {
       if (data.status === 'success') {
         sendList = data.data
       }
+      this.chatservice.getchatbyCategory(this.receivequery).subscribe(data => {
+        if (data.status === 'success') {
+          receiveList = data.data
+          this.msgList = _.concat(sendList,receiveList)
+          this.msgList.sort((a,b) => +new Date(a.date) - +new Date(b.date))
+        }
+      })
     })
-    await this.chatservice.getchatbyCategory(this.receivequery).subscribe(data => {
-      if (data.status === 'success') {
-        receiveList = data.data
-      }
-    })
-
-    let tempMsg = _.concat(sendList,receiveList)
-    console.log(tempMsg)
   }
 
   async send() {
     this.chatservice.addchat(this.chat).subscribe(data => {
-      console.log(data)
       if (data.status === 'success') {
         this.chat.msg = ''
         this.getAllchat()
@@ -78,10 +82,15 @@ export class ChatComponent implements OnInit {
   }
 
   async selectStaff(staff) {
+    this.togleFlag = !this.togleFlag
     this.sendquery.to = staff.firstname + ' ' + staff.lastname
     this.receivequery.from = staff.firstname + ' ' + staff.lastname
     this.chat.to = staff.firstname + ' ' + staff.lastname
     this.getAllchat()
+  }
+
+  async togle() {
+    this.togleFlag = ! this.togleFlag
   }
 
 

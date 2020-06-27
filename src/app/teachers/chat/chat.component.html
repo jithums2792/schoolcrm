@@ -1,40 +1,48 @@
 <div class="container-fluid p-3">
     <div class="container-fluid p-0 rounded shadow">
        
-       <div class="container-fluid pt-3">
-           <h4 class="mb-4">Chat</h4>
-           <div class="row border-top">
-               <div class="col-md-4 row m-0 px-0 d-flex">
-                    <div class="col-12 contact  align-self-start row m-0 pb-3 px-0 pt-3 border-bottom">
-                        <div class="col-3 profile-pic">
-                            <img src="../../../assets/avatar.png" alt="">
-                        </div>
-                        <div class="col">
-                            <label class="d-block mt-3" for="">gdhfgdhfg</label>
-                            <span ><label class="mr-1" for="">hhhhh</label></span>
-                        </div>
-                    </div>     
+       <div class="container-fluid pt-3 ">
+           <h4 class="mb-4 d-inline-block">
+               Chat
+            </h4>
+            <i class="fas fa-user-circle float-right mt-1 fa-2x pointer" (click)="togle()"></i>
+           <div class="row border-top chat-container position-relative" *ngIf="studentList.length > 0">
+               <div class="col-md-4 m-0 px-0 contact-list" *ngIf="togleFlag">
+                   <div class="col px-0 pointer" *ngFor="let student of studentList" (click)="selectStudentf(student)">
+                       <div class="border-bottom p-2 d-flex align-items-center">
+                           <span class="mr-3">
+                               <img src="../../../assets/avatar.png" width="70px" height="70px" class="rounded-circle" alt="">
+                           </span>
+                           <div class="d-flex flex-column align-items-center">
+                               <span>{{student}}</span>
+                           </div>
+                       </div>
+                   </div>  
+                   
+                      
                </div>
-               <div class="col d-flex border-left align-items-start p-0">
-                   <div class="message-body">
-                        <div class="">
-                            <div class="message left">
-                                dffffdfd
+               <div class="col d-flex border-left align-items-start p-0" *ngIf="!togleFlag">
+                   <div class="message-body p-2">
+                        <div class=".col-12 my-1" *ngFor="let msg of msgList">
+                            <div class="card">
+                                <div class="col py-2 text-white" [ngClass]="{'bg-card-head' : msg.from === from, 'bg-warning': msg.from !== from}">
+                                    {{msg.from}}
+                                </div>
+                                <div class="col p-2">
+                                    {{msg.msg}}
+                                </div>
                             </div>
-                            <div class="message right">
-                            ddddd
-                            </div>
+                            
                         </div>
                    </div>
                        
                     <div class="message-box">
-                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your text here....">
-                        <a><img src="../../../assets/Sent-button.svg" class="pointer" alt="send" ></a>
+                        <input [(ngModel)]="chat.msg" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your text here....">
+                        <a><img src="../../../assets/Sent-button.svg" class="pointer" alt="send" (click)="send()"></a>
                     </div>
                </div>
            </div>
        </div>
     </div>
 </div>
-
 
