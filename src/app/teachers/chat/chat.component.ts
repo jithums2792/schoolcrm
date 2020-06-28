@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ChatService } from 'src/app/services/chat.service';
 import * as _ from 'lodash'
-import { data } from 'jquery';
+import * as io from 'socket.io-client'
+import { environment } from 'src/environments/environment';
+
 
 @Component({
   selector: 'app-chat',
@@ -9,10 +11,13 @@ import { data } from 'jquery';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
+
   public togleFlag = true
   public studentList = []
   public msgList = []
   public from = localStorage.getItem('teachername')
+  public socket
+  public socket_api = environment.socket
   public sendQuery = {
     from: this.from,
     to: '',
@@ -33,7 +38,12 @@ export class ChatComponent implements OnInit {
   constructor(private chatservice: ChatService) { }
 
   ngOnInit() {
+    
+    this.socket = io(this.socket_api + '/chat')
     this.getStudentList()
+    this.socket.emit('join', {room: 'chatroom'})
+    this.socket.on('join', data => console.log(data))
+    this.socket.on('msg', data => this.getallchats())
   }
 
   async getStudentList() {
@@ -79,10 +89,18 @@ export class ChatComponent implements OnInit {
   }
 
   async togle() {
+    try {
+    const msgBody = document.getElementById('msgBody')
+    console.log(msgBody.scrollHeight)
+    } catch (error) {
+      console.log(error)
+    }
     this.togleFlag = ! this.togleFlag
   }
 
   async send() {
+    this.socket.emit('msg', {room: 'chatroom'})
+    this.msgList = []
     this.chatservice.addchat(this.chat).subscribe(data => {
       if (data.status === 'success') {
         this.chat.msg = ''

@@ -39,6 +39,11 @@ export class ChatComponent implements OnInit {
               private toastrservice: ToastrService) { }
 
   ngOnInit() {
+
+    this.socket = io(this.socket_api + '/chat')
+    this.socket.emit('join', {room: 'chatroom'})
+    this.socket.on('join', data => console.log(data))
+    this.socket.on('msg', data => this.getAllchat())
     this.getAllstaff()
     this.getAllchat()
   }
@@ -73,6 +78,7 @@ export class ChatComponent implements OnInit {
   }
 
   async send() {
+    this.socket.emit('msg', {room: 'chatroom'})
     this.chatservice.addchat(this.chat).subscribe(data => {
       if (data.status === 'success') {
         this.chat.msg = ''
