@@ -16,6 +16,8 @@ export class LiveclassComponent implements OnInit {
   public playFlag = true;
   public VideobuttonFlag = true;
   public audiobuttonFlag = true;
+  public acceptFlag = true
+  public raiseFlag = true
   public studentId;
   public socket = io(environment.socket, {query: {
     usertype: 'teacher',
@@ -46,11 +48,6 @@ export class LiveclassComponent implements OnInit {
       credential: 'homeo',
       username: 'homeo'
    },
-   {
-      urls: 'turn:turn.anyfirewall.com:443?transport=tcp',
-      credential: 'webrtc',
-      username: 'webrtc'
-  }
   ] };
 
 
@@ -67,6 +64,7 @@ export class LiveclassComponent implements OnInit {
   public mediaRecoder;
   public  recordedBlobs = [];
   public room = 'English';
+  public requser
 
   constructor(private router: Router, private toastservice: ToastrService) {
     try {
@@ -77,6 +75,7 @@ export class LiveclassComponent implements OnInit {
    }
 
   async ngOnInit() {
+    this.raiseFlag = false
     this.socket.on('connection', (data) =>{
     })
     this.socket.emit('join', this.room);
@@ -86,18 +85,7 @@ export class LiveclassComponent implements OnInit {
 
     this.socket.on('newestudentjoined', async (studentid, socketId) => {
 
-      // this.peerConnection[studentid].onnegotiationneeded = async (event) => {
-      //   const offer = await this.peerConnection[studentid].createOffer();
-      //   this.peerConnection[studentid].setLocalDescription(offer);
-
-      //   const offerObject = {
-      //     studentid:studentid,
-      //     offer:offer,
-      //     room: this.room
-      //   };
-      //   this.socket.emit('newoffer', offerObject);
-      // }
-
+      
       if (this.localStream != null) {
         this.peerConnection[studentid] = new RTCPeerConnection(this.configuration);
 
@@ -124,9 +112,6 @@ export class LiveclassComponent implements OnInit {
 
     });
 
-    this.peerConnection.forEach(pc => {
-
-    });
 
     this.socket.on('answer', async (answerObject) => {
       this.peerConnection[answerObject.studentid].setRemoteDescription(new RTCSessionDescription(answerObject.answer));
@@ -140,6 +125,23 @@ export class LiveclassComponent implements OnInit {
       this.peerConnection[iceCandidateobject.studentid].addIceCandidate(new RTCIceCandidate(iceCandidateobject.candidate));
     });
 
+    this.socket.on('raise', data => {
+      this.requser = data
+      this.raiseFlag = true
+      console.log(this.raiseFlag)
+    })
+
+  }
+
+  async accept() {
+    const user = (<HTMLVideoElement>document.getElementById(this.requser))
+    user.volume = 1
+    this.raiseFlag = false
+  }
+  async reject() {
+    const user = (<HTMLVideoElement>document.getElementById(this.requser))
+    user.volume = 0
+    this.raiseFlag = false
   }
 
 
@@ -148,7 +150,10 @@ export class LiveclassComponent implements OnInit {
     const remotehost = document.getElementById('remote');
     this.remoteVideo = document.createElement('video');
     this.remoteVideo.setAttribute('autoplay', 'true'); 
-    this.remoteVideo.setAttribute('id', socketId); 
+    this.remoteVideo.setAttribute('id', socketId);
+    this.remoteVideo.classList.add('students')
+    this.remoteVideo.setAttribute('controls','true') 
+    this.remoteVideo.volume = 0
     this.remoteVideo.srcObject = remotestream;
     this.remoteVideo.width = 200;
     this.remoteVideo.height = 250;
@@ -180,6 +185,7 @@ export class LiveclassComponent implements OnInit {
     this.localVideo.setAttribute('autoplay', 'true');
     this.localVideo.volume = 0;
     this.localVideo.setAttribute('id', 'localstream');
+    this.localVideo.setAttribute('controls', 'true');
     await navigator.mediaDevices.getUserMedia(this.constrains).then( async stream  => {
       stream.getAudioTracks()[0].enabled = this.audiobuttonFlag;
       stream.getVideoTracks()[0].enabled = this.VideobuttonFlag;
@@ -189,17 +195,11 @@ export class LiveclassComponent implements OnInit {
       
       this.mediaRecoder = await new MediaRecorder(this.localStream);
       this.mediaRecoder.onstop = (event) => {
-        const reader = new FileReader();
         let blob = new Blob(this.recordedBlobs, {type: 'video/webm'})
         link.href =  URL.createObjectURL(blob);
         link.download = 'sample.webm';
         link.innerText = 'download';
         recvideoList.appendChild(link);
-        // reader.onload = () => {
-        //   link.setAttribute('download', 'sample.webm');
-          
-        // };
-        // reader.readAsDataURL(blob)
       };
       this.mediaRecoder.ondataavailable = (event) => {
         this.recordedBlobs.push(event.data);
@@ -211,6 +211,30 @@ export class LiveclassComponent implements OnInit {
 
     
   }
+
+  async stophand() {
+    let user = (<HTMLVideoElement>document.getElementById(this.requser))
+    user.volume = 0
+  }
+
+  async acceptall() {
+    this.acceptFlag = false
+    let allusers :any = document.getElementsByClassName('students')
+   console.log(allusers)
+   for (let item of allusers) {
+     item.volume = 1
+   }  
+  }
+
+  async rejectall() {
+    let allusers :any = document.getElementsByClassName('students')
+   console.log(allusers)
+   for (let item of allusers) {
+     item.volume = 0
+   } 
+   this.acceptFlag = true
+  }
+  
 
   async startStream() {
     this.playFlag = false;
@@ -250,6 +274,11 @@ export class LiveclassComponent implements OnInit {
     localHost.replaceChild(this.localVideo, localHost.childNodes[1]);
     }).catch(err => {
       this.toastservice.error('your device not support sharing now..!', 'error');
+    });
+  }
+  ngOnDestroy() {
+    this.localStream.getTracks().forEach(function(track) {
+      track.stop();
     });
   }
 

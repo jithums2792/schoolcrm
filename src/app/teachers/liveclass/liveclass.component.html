@@ -4,6 +4,9 @@
      <div class="hostvideo position-relative d-flex justify-content-center" id="hostvideo">
 
       <div class="video-controls d-flex flex-column position-absolute align-items-center justify-content-center px-2">
+        <i class="fas fa-hands text-white" (click)="acceptall()" *ngIf="acceptFlag"></i>
+        <i class="fas fa-hands text-danger" (click)="rejectall()" *ngIf="!acceptFlag"></i>
+        <i class="fas fa-hand-rock text-white my-2" (click)="stophand()"></i>
         <i class="fas fa-play text-white my-2" (click)="startStream()" *ngIf="playFlag"></i>
         <i class="fas fa-stop-circle text-danger" (click)="stopStream()" *ngIf="! playFlag"></i>
         <i class="fas fa-microphone my-2 text-white" *ngIf="audiobuttonFlag" (click)="audioControl(false)"></i>
@@ -13,12 +16,17 @@
         <i class="fas fa-retweet text-white my-2" (click)="screenShare()"></i>
 
       </div>
+      
 
       <video src=""></video>
      </div>
+     <div class="raise-hand my-2 float-right" *ngIf="raiseFlag">
+      <span (click)="accept()" class="mr-3 pointer">Accept</span>
+      <span (click)="reject()" class="pointer">Reject</span>
+    </div>
      <div class="remote d-flex justify-content-between py-2">
-      <div class="remote-container d-flex align-items-center" id="remote">
-
+      <div class="remote-container d-flex align-items-center " id="remote">
+        
       </div>
     </div>
     </div>

@@ -1,0 +1,39 @@
+<div class="container-fluid">
+    <div class="row p-2">
+        <div class="col-12 hostvideo position-relative">
+            <video #hostvideo autoplay="true" class="localvideo" controls></video>
+            <div class="position-absolute controller p-2 d-flex flex-column">
+                <i class="fas fa-play fax2 text-white pointer my-1" (click)="startVideo()" *ngIf="flags.start"></i>
+                <i class="fas fa-stop fax2 text-white pointer my-1" (click)="stop()" *ngIf="flags.stop"></i>
+                <i class="fas fa-microphone fax2 text-white pointer my-1" (click)="mute()" *ngIf="flags.mic && flags.stop"></i>
+                <i class="fas fa-microphone-slash fax2 text-white pointer my-1" (click)="unmute()" *ngIf="flags.nomic"></i>
+                <i class="fas fa-share-square fax2 text-white pointer my-1" (click)="screenshare(template)"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">screen share option</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="form-group form-check">
+            <input [(ngModel)]="screenshareConfig" type="radio" class="form-check-input" id="deviceaudio" name="screenshareaudio" value="device">
+            <label class="form-check-label" for="deviceaudio">Share device audio</label>
+        </div>
+        <div class="form-group form-check">
+            <input [(ngModel)]="screenshareConfig" type="radio" class="form-check-input" id="audio" name="screenshareaudio" value="user">
+            <label class="form-check-label" for="audio">Share audio</label>
+        </div>
+        <div class="form-group form-check">
+            <input [(ngModel)]="screenshareConfig" type="radio" class="form-check-input" id="audioall" name="screenshareaudio" value="all">
+            <label class="form-check-label" for="audioall">Share Both</label>
+        </div>
+    </div>
+    <div class="col py-2 bg-card-head rounded-bottom">
+        <button class="btn btn-sm custom-btn border-white float-right" (click)="setConfig()">Confirm</button>
+    </div>
+  </ng-template>

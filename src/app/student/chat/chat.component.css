@@ -42,7 +42,7 @@
 }
 .message-body{
     width: 100%;
-    height: calc(100% - 70px);
+    max-height: 400px;
     overflow-y: scroll;
     background: #057ac505;
     position: relative;
@@ -68,7 +68,7 @@
 .message-body .message.right{
     margin-right: 10px;
     float: right;
-    margin-left: calc(60% - 10px);
+    margin-left: auto;
 }
 .chat-container{
     height: calc(100vh - 180px);

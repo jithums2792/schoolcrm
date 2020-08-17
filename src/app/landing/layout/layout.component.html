@@ -1,40 +1,88 @@
-<!-- <section class="w-100 vh-100 d-flex align-items-center  bg-img">
-  <div class="layer-inner w-100 vh-100"></div>
-  <div class="layer-outer w-100 vh-100"></div>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-6 col-12 mx-auto">
-        <div class="card bg-default border-0 shadow-sm index-5">
-          <div class="container-fluid">
-            <div class="row">
-              <div class="col-lg-12 col-12 fire d-flex align-items-center justify-content-center py-5 bg-img text-white shadow-sm position-relative">
-                <i class="fas fa-book-reader fa-3x mx-2"></i> <span><strong>Read | Write | Learn</strong></span>
-              </div>
-
-              <div class="col-lg-12 col-12 d-flex flex-column align-items-center ">
-                <div class="col  d-flex flex-column align-items-center py-2 animate__animated animate__slideInLeft" *ngIf="!login">
-                  <button class="btn w-100 btn-success btn-sm my-2" (click)="login = !login; tile = 2"><i class="fas fa-chalkboard-teacher"></i>&nbsp;&nbsp; Teachers</button>
-                  <button class="btn w-100  btn-success btn-sm my-2" (click)="login = !login; tile = 1"><i class="fas fa-user-graduate"></i>&nbsp;&nbsp; student</button>
-                  <button class="btn w-100 btn-success btn-sm my-2" (click)="login = !login; tile = 3"> <i class="fas fa-users"></i>&nbsp;&nbsp; parent</button>
-                </div>
-                <div class="col p-2 animate__animated animate__slideInRight d-flex flex-column" *ngIf="login">
-                  <div class="col px-0"><i class="fas fa-arrow-left bg-light py-2 px-2 rounded-circle shadow-sm" (click)="login = !login"></i></div>
-                  <input [(ngModel)]="username" type="text" name="username" id="username" class="form-control my-2" placeholder="Username">
-                  <input [(ngModel)]="password" type="text" name="password" id="password" class="form-control my-2" placeholder="Password">
-                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 1" (click)="studentlogin()">Student Login</button>
-                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 2" (click)="teacherlogin()">Teacher Login</button>
-                  <button class="btn btn-custom btn-success btn-sm" *ngIf="tile === 3">Parents Login</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+<div class="container-fluid bg-slider" *ngIf="tile === 1">
+  <div class="row">
+      <div class="col-12 pt-5 pb-sm-5 pb-4">
+          <img class="image pl-sm-5" src="../../../assets/img/logo3.png" alt="">
       </div>
-    </div>
+      <div class="col-12 mt-sm-5">
+          <label for="" class="slider__title pl-sm-5">Title Lorem</label>
+          <label for="" class="slider__details pl-sm-5 mb-4">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos in ratione aliquam.
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sit a consequatur quis dignissimos fugit. Porro, inventore! Hic id soluta omnis quidem totam distinctio sint aspernatur fugit ipsum magni adipisci est eos,
+          </label>
+          <button (click)="tile = 2" class="pink-btn btn badge-pill px-4 py-2 ml-sm-5">GET STARTED</button>
+      </div>
+      <img src="../../../assets/img/slider-bg.png" class="bg-slider-bottom d-none mt-5" alt="">
   </div>
-</section> -->
-<div class="container-fluid p-0">
+</div>
+<div class="container-fluid " *ngIf="tile === 2">
+  <div class="row">
+      <div class="col-12 pt-5 pb-sm-5 pb-4">
+          <img class="image pl-sm-5" src="../../../assets/img/logo3.png" alt="">
+      </div>
+      <div class="col-12 col-md-6 text-center py-sm-5 py-3 mt-lg-5">
+          <img src="../../../assets/img/teacher.png" alt="" class="access-image d-block mx-auto mb-4">
+          <a ><button class="pink-btn btn badge-pill px-4 py-2  m-auto" (click)="tile = 3">TEACHER</button></a>
+      </div>
+      <div class="col-12 col-md-6 text-center py-sm-5 py-3 mt-lg-5">
+          <img src="../../../assets/img/student.png" alt="" class="access-image d-block mx-auto mb-4">
+          <a ><button class="pink-btn btn badge-pill px-4 py-2 m-auto" (click)="tile = 4">STUDENT</button></a>
+      </div>
+  </div>
+</div>
+<div class="container-fluid" *ngIf="tile === 3">
+  <div class="row">
+      <div class="col-12 pt-5 pb-sm-5 pb-4">
+          <img class="image pl-sm-5" src="../../../assets/img/logo3.png" alt="">
+      </div>
+      <div class="col-12 mt-sm-3">
+          <div class="box">
+              <label for="" class="box__title">Login</label>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input [(ngModel)]="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">remember password</label>
+                  </div>
+                  <button class="pink-btn btn badge-pill px-5 pb-2 mx-auto d-block mt-4" (click)="teacherlogin(template)">Login</button>
+                  <a [routerLink]="['/home/forget']" class="forgot-password" href="">Forgot password</a>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="container-fluid" *ngIf="tile === 4">
+  <div class="row">
+      <div class="col-12 pt-5 pb-sm-5 pb-4">
+          <img class="image pl-sm-5" src="../../../assets/img/logo3.png" alt="">
+      </div>
+      <div class="col-12 mt-sm-3">
+          <div class="box">
+              <label for="" class="box__title">Login</label>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input [(ngModel)]="username" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input [(ngModel)]="password" type="password" class="form-control" id="exampleInputPassword1">
+                  </div>
+                  <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">remember password</label>
+                  </div>
+                  <button class="pink-btn btn badge-pill px-5 pb-2 mx-auto d-block mt-4" (click)="studentlogin(template)">Login</button>
+                  <a [routerLink]="['/home/forget']" class="forgot-password" href="">Forgot password</a>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- <div class="container-fluid p-0 d-none">
   <div class="row m-0">
     <div class="col-md-5 pattern-2">
       <div class="logo-container text-center">
@@ -61,13 +109,25 @@
           <a class="text-light" href="">Forget password?</a>
         </div>
         <div class="d-block text-center" *ngIf="tile === 1">
-          <button class="btn btn-primary" (click)="studentlogin()">Login</button>
+          <button class="btn btn-primary" (click)="studentlogin(template)">Login</button>
         </div>
         <div class="d-block text-center" *ngIf="tile === 2"> 
-          <button class="btn btn-primary" (click)="teacherlogin()">Login</button>
+          <button class="btn btn-primary" (click)="teacherlogin(template)">Login</button>
         </div>
         
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<ng-template #template>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Login</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    please wait...!
+  </div>
+</ng-template>

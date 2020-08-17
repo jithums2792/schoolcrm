@@ -37,7 +37,7 @@ export class FacultycreateComponent implements OnInit {
     medicalleave:'',
     casualleave: '',
     maternityleave: '',
-    username: 'teacher123',
+    userId: 'teacher123',
     password: 'teacher@123',
 
   }
@@ -76,7 +76,7 @@ export class FacultycreateComponent implements OnInit {
                   this.faculty.medicalleave = editData.medicalleave;
                   this.faculty.casualleave = editData.casualleave;
                   this.faculty.maternityleave = editData.maternityleave;
-                  this.faculty.username = editData.userId;
+                  this.faculty.userId = editData.userId;
                   this.faculty.password = editData.password;
                   this.saveFlag = false;
                 } catch (error) {

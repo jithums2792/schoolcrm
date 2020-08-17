@@ -25,26 +25,26 @@
                    
                       
                </div>
-               <div class="col d-flex border-left align-items-start p-0" *ngIf="!togleFlag">
-                   <div class="message-body p-2">
-                        <div class=".col-12 my-1" *ngFor="let msg of msgList">
-                            <div class="card">
-                                <div class="col py-2 text-white" [ngClass]="{'bg-card-head' : msg.from === from, 'bg-warning' : msg.from !== from}">
-                                    {{msg.from}}
-                                </div>
-                                <div class="col p-2">
-                                    {{msg.msg}}
-                                </div>
-                            </div>
-                            
-                        </div>
-                   </div>
-                       
-                    <div class="message-box">
-                        <input [(ngModel)]="chat.msg" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your text here....">
-                        <a><img src="../../../assets/Sent-button.svg" class="pointer" alt="send" (click)="send()"></a>
-                    </div>
-               </div>
+               <div class="col row m-0 border-left align-items-start p-0" *ngIf="!togleFlag">
+                <div  class="message-body col-12 row m-0 p-2" >
+                     <div class="col-12 row m-0 my-1" *ngFor="let msg of msgList">
+                         <div class="message col-8" [ngClass]="{'left': msg.from === from, 'right': msg.from !== from}">
+                             <div class="d-block py-2" >
+                                 {{msg.from}}
+                             </div>
+                             <div class="col p-2">
+                                 {{msg.msg}}
+                             </div>
+                         </div>
+                         
+                     </div>
+                </div>
+                    
+                 <div class="message-box">
+                     <input [(ngModel)]="chat.msg" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter your text here....">
+                     <a><img src="../../../assets/Sent-button.svg" class="pointer" alt="send" (click)="send()"></a>
+                 </div>
+            </div>
            </div>
        </div>
     </div>

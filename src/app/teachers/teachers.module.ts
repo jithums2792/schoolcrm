@@ -20,10 +20,11 @@ import { ChatComponent } from './chat/chat.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { ViewComponent } from './view/view.component';
 import { NoticeboardComponent } from './noticeboard/noticeboard.component';
+import { LivestreamComponent } from './livestream/livestream.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent, ChatComponent, HomeworkComponent, ViewComponent, NoticeboardComponent],
+  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent, ChatComponent, HomeworkComponent, ViewComponent, NoticeboardComponent, LivestreamComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -13,6 +13,7 @@ import { LoginGuard } from '../Auth/login.guard';
 import { LeavelistComponent } from './leavelist/leavelist.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
 import { ChatComponent } from './chat/chat.component';
+import { NoticeboardComponent } from './noticeboard/noticeboard.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
     {path: 'attendexam', component: AttendexamComponent},
     {path: 'leavelist', component: LeavelistComponent},
     {path: 'createleave', component: CreateleaveComponent},
+    {path: 'noticeboard', component: NoticeboardComponent},
     {path: '', redirectTo: 'class', pathMatch: 'full'}
   ], canActivate: [LoginGuard]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}

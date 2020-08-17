@@ -1,8 +1,8 @@
 <div class="container-fluid p-3">
     <div class="container-fluid p-0 rounded shadow">
        
-       <div class="container-fluid pt-3 ">
-           <h4 class="mb-4 d-inline-block">
+       <div class="container-fluid pt-3 scroll-y ">
+           <h4 class="mb-4 d-inline-block" id="msgBody">
                Chat
             </h4>
             <i class="fas fa-user-circle float-right mt-1 fa-2x pointer" (click)="togle()"></i>
@@ -21,11 +21,11 @@
                    
                       
                </div>
-               <div class="col d-flex border-left align-items-start p-0" *ngIf="!togleFlag">
-                   <div  class="message-body p-2" id="msgBody">
-                        <div class=".col-12 my-1" *ngFor="let msg of msgList">
-                            <div class="card">
-                                <div class="col py-2 text-white" [ngClass]="{'bg-card-head' : msg.from === from, 'bg-warning': msg.from !== from}">
+               <div class="col row m-0 border-left align-items-start p-0" *ngIf="!togleFlag">
+                   <div  class="message-body col-12 row m-0 p-2" >
+                        <div class="col-12 row m-0 my-1" *ngFor="let msg of msgList">
+                            <div class="message col-8" [ngClass]="{'left': msg.from === from, 'right': msg.from !== from}">
+                                <div class="d-block py-2" >
                                     {{msg.from}}
                                 </div>
                                 <div class="col p-2">

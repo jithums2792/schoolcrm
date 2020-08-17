@@ -19,9 +19,10 @@ import { HomeworkComponent } from './homework/homework.component';
 import { LeavelistComponent } from './leavelist/leavelist.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
 import { ChatComponent } from './chat/chat.component';
+import { NoticeboardComponent } from './noticeboard/noticeboard.component';
 
 @NgModule({
-  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent,ChatComponent, ExamsComponent, AttendexamComponent,ProfileComponent,HomeworkComponent, LeavelistComponent, CreateleaveComponent,],
+  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent,ChatComponent, ExamsComponent, AttendexamComponent,ProfileComponent,HomeworkComponent, LeavelistComponent, CreateleaveComponent, NoticeboardComponent,],
   imports: [
     CommonModule,
     MaterialModule,

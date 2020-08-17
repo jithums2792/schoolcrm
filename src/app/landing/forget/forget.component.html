@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 pt-5 pb-sm-5 pb-4">
+            <img class="image pl-sm-5" src="../../../assets/img/logo3.png" alt="">
+        </div>
+        <div class="col-12 mt-sm-2">
+            <div class="box">
+                <label for="" class="box__title">Forgot Password</label>
+                    <div class="form-group" *ngIf="tile === 1">
+                      <label for="exampleInputEmail1">Enter phone number</label>
+                      <input [(ngModel)]="mobile" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                      <button (click)="tile = 2" class="pink-btn btn badge-pill px-5 pb-2 mx-auto d-block mt-4">Confirm</button>
+                    </div>
+                    
+                    <div *ngIf="tile === 2">
+                        <label for="" class="box__subtitle">Please enter the 4-digit code sent to you at {{mobile}}</label>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="type 4-digit number">
+                        </div>
+                        <button class="pink-btn btn badge-pill px-5 pb-2 mx-auto d-block mt-4">Confirm</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -48,6 +48,9 @@
                         <h6>{{faculty.designation}}</h6>
                         <label for="">{{faculty.department}}</label>
                     </div>
+                    <div class="col py-2">
+                        <i class="fas fa-trash float-right pointer text-danger" (click)="delete(faculty)"></i>
+                    </div>
                 </div>
             </div>
         </div>

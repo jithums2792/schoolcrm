@@ -40,9 +40,9 @@ export class ChatComponent implements OnInit {
 
   ngOnInit() {
 
-    this.socket = io(this.socket_api + '/chat')
-    this.socket.emit('join', {room: 'chatroom'})
-    this.socket.on('join', data => console.log(data))
+    this.socket = io(this.socket_api)
+    this.socket.emit('chat', {room: 'chatroom'})
+    this.socket.on('chat', data => console.log(data))
     this.socket.on('msg', data => this.getAllchat())
     this.getAllstaff()
     this.getAllchat()

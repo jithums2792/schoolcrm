@@ -5,6 +5,10 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Poppins', sans-serif; font-size: 14px; }
 
+.scroll-y{
+  overflow-y: scroll;
+}
+
 .pointer {
   cursor: pointer;
 }

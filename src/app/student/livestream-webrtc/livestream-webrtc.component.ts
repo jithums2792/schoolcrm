@@ -56,7 +56,7 @@ studentid = 'tempstudent' + Date.now();
   async ngOnInit() {
     console.log(this.room)
 
-    const localStream = await navigator.mediaDevices.getUserMedia({audio: false,video: true });
+    const localStream = await navigator.mediaDevices.getUserMedia({audio: true,video: true });
     this.localStream = localStream
     const localhost = document.getElementById('host');
     this.localVideo = document.createElement('video');
@@ -158,12 +158,21 @@ studentid = 'tempstudent' + Date.now();
 
       }
     });
+
+    
   }
+
+
   ngOnDestroy() {
   this.localStream.getTracks().forEach(function(track) {
     track.stop();
   });
   this.socket.disconnect()
+  }
+
+  raiseahand() {
+    console.log('clicked')
+    this.socket.emit('raise',({room: this.room, id: this.studentid}))  
   }
 
 

@@ -34,7 +34,6 @@ export class ExamsComponent implements OnInit {
 
   ngOnInit() {
     this.getStaffinfo()
-    this.getAllExam()
   }
 
   openModal(template: TemplateRef<any>, exam, index) {
@@ -69,9 +68,7 @@ export class ExamsComponent implements OnInit {
     })
   }
   
-  async getAllExam() {
-    this.examservice.getAllExam().subscribe(data => console.log(data))
-  }
+
 
   async classSelection(room) {
     if (room.value !== 'null') {
@@ -110,7 +107,6 @@ export class ExamsComponent implements OnInit {
   }
 
   async edit(exam) {
-    console.log('exam', exam)
     const options : NavigationExtras = {
       state: {data: exam}
     }

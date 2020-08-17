@@ -11,7 +11,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-
+  @ViewChild('msgBody', {static: true}) msgbody: ElementRef
   public togleFlag = true
   public studentList = []
   public msgList = []
@@ -37,12 +37,15 @@ export class ChatComponent implements OnInit {
 
   constructor(private chatservice: ChatService) { }
 
-  ngOnInit() {
-    
-    this.socket = io(this.socket_api + '/chat')
+  ngAfterViewInit() {
+    console.log(this.msgbody)
+  }
+
+  async ngOnInit() {
+    this.socket = io(this.socket_api)
     this.getStudentList()
-    this.socket.emit('join', {room: 'chatroom'})
-    this.socket.on('join', data => console.log(data))
+    this.socket.emit('chat', {room: 'chatroom'})
+    this.socket.on('chat', data => console.log(data))
     this.socket.on('msg', data => this.getallchats())
   }
 
@@ -59,13 +62,13 @@ export class ChatComponent implements OnInit {
   }
 
   async getallchats() {
+    this.msgList = []
     await this.chatservice.getchatbyCategory(this.sendQuery).subscribe(data => {
       if(data.status === 'success') {
         this.combain(data.data)
       }
     }) 
     await this.chatservice.getchatbyCategory(this.receiveQuery).subscribe(data => {
-      console.log(data)
       if(data.status === 'success') {
         this.combain(data.data)
       }
@@ -75,7 +78,6 @@ export class ChatComponent implements OnInit {
   async combain(data) {
     this.msgList = await this.msgList.concat(data)
     this.msgList.sort((a,b) => +new Date(a.date) - +new Date(b.date))
-    console.log(this.msgList)
   }
 
   async selectStudentf(student) {
@@ -84,17 +86,10 @@ export class ChatComponent implements OnInit {
     this.chat.to = await student
     this.sendQuery.to = await student
     this.receiveQuery.from = await student
-    console.log(this.receiveQuery)
     this.getallchats()
   }
 
   async togle() {
-    try {
-    const msgBody = document.getElementById('msgBody')
-    console.log(msgBody.scrollHeight)
-    } catch (error) {
-      console.log(error)
-    }
     this.togleFlag = ! this.togleFlag
   }
 

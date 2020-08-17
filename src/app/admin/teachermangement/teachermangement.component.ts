@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationExtras } from '@angular/router';
 import { DesignationService } from 'src/app/services/designation.service';
 import { FacultyService } from 'src/app/services/faculty.service';
+import { data } from 'jquery';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-teachermangement',
@@ -14,7 +16,10 @@ export class TeachermangementComponent implements OnInit {
   public designationList = [];
   public designation;
   
-  constructor(private router: Router, private desigantiondervice: DesignationService, private facultyservice: FacultyService) { }
+  constructor(private router: Router,
+              private toastservice: ToastrService, 
+              private desigantiondervice: DesignationService, 
+              private facultyservice: FacultyService) { }
 
   ngOnInit() {
     this.getAllfaculty();
@@ -45,6 +50,17 @@ export class TeachermangementComponent implements OnInit {
       state: {data: faculty}
     };
     this.router.navigate(['/sadmin/home/createfaculty'], extras);
+  }
+
+  async delete(faculty) {
+    this.facultyservice.deleteFaculty(faculty._id).subscribe(data => {
+      if(data.status === 'success') {
+        this.toastservice.success('deleted', 'Success')
+        this.getAllfaculty()
+      } else {
+        this.toastservice.error('something wrong', 'Error')
+      }
+    })
   }
 
 }

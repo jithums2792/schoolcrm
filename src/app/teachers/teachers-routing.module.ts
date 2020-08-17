@@ -14,6 +14,7 @@ import { ChatComponent } from './chat/chat.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { ViewComponent } from './view/view.component';
 import { NoticeboardComponent } from './noticeboard/noticeboard.component';
+import { LivestreamComponent } from './livestream/livestream.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
     {path: 'homework', component: HomeworkComponent},
     {path: 'view', component: ViewComponent},
     {path: 'noticeboard', component: NoticeboardComponent},
+    {path: 'livestream', component: LivestreamComponent},
     {path: '', redirectTo: 'myprofile', pathMatch: 'full'},
     {path: '**', redirectTo: 'myprofile', pathMatch: 'full'},
   ], canActivate: [TeacherloginGuard]},

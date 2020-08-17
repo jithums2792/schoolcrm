@@ -18,3 +18,8 @@ video{
     position: absolute;
     max-width: 100vw;
 }
+.fa-hand-paper{
+    left: 5px;
+    top: 5px;
+    z-index: 100;
+}
