@@ -1,36 +1,30 @@
-<!-- <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 bg-light py-2 d-flex align-items-center ">
-            <i class="fas fa-grip-vertical mx-2"></i>
-            <span><strong>Available Exam List</strong></span>
-        </div>
-        <div class="col-md-3 my-2" *ngFor="let exam of examList">
-            <div class="card shadow">
-                <div class="col bg-card-head py-2 rounded-top text-white d-flex align-items-center justify-content-between">
-                    <span><strong><i class="fas fa-circle text-success"></i>{{exam.name}}</strong></span>
-                </div>
-                <div class="col py-3 d-flex flex-column">
-                    <span class="mb-1"><strong>{{exam.subject}}</strong></span>
-                    <span>Marks: {{exam.totalmarks}}</span>
-                    <span class="mb-1"><strong>Start At: {{exam.startdate}}</strong></span>
-                    <span class="mb-1"><strong>End At: {{exam.enddate}}</strong></span>
-                </div>
-                <div class="col py-2 border-top">
-                    <button class="btn btn-sm custom-btn float-right" (click)="navigate(exam,instruction)" *ngIf="currentTime !== exam.startdate">Attand</button>
-                </div>
-            </div>
-        </div>
-    </div> 
-</div> -->
-
 
 <div class="container-fluid p-3">
     <div class="container-fluid p-0 rounded shadow">
         <div class="container-fluid py-3">
-            <h4 class="mb-4 d-inline-block">Exam list</h4>
+            <h4 class="mb-4 d-inline-block">Objective Exam list</h4>
             <div class="d-flex flex-wrap">
                 <div class="student-exam-card col-lg-3 col-12" *ngFor="let exam of examList;let i = index;">
                     <span class="w-100 d-flex align-items-center justify-content-end"><app-timer [satrtdate]="currentTime" [enddDate]="exam.enddate" (state)="buttonCtrl($event, i)"></app-timer></span>
+                    <h6>{{exam.name}}</h6>
+                    <label class="label" for=""><label>Subject:</label>{{exam.subject}}</label>
+                    <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>
+                    <label class="label" for=""><label>Start At:</label>{{exam.startdate}}</label>
+                    <label class="label" for=""><label>End At:</label>{{exam.enddate}}</label>
+                    <button class="btn attend-btn" *ngIf="exam.active" (click)="navigate(exam,instruction)">Attent exam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div class="container-fluid p-3">
+    <div class="container-fluid p-0 rounded shadow">
+        <div class="container-fluid py-3">
+            <h4 class="mb-4 d-inline-block">Subjective Exam list</h4>
+            <div class="d-flex flex-wrap">
+                <div class="student-exam-card col-lg-3 col-12" *ngFor="let exam of examList2;let i = index;">
+                    <span class="w-100 d-flex align-items-center justify-content-end"><app-timer [satrtdate]="currentTime" [enddDate]="exam.enddate" (state)="buttonCtrl2($event, i)"></app-timer></span>
                     <h6>{{exam.name}}</h6>
                     <label class="label" for=""><label>Subject:</label>{{exam.subject}}</label>
                     <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>

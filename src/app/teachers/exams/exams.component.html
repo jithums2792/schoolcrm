@@ -1,9 +1,11 @@
 
 <div class="container-fluid p-3">
     <div class="container-fluid p-3 shadow rounded">
-        <div class="d-flex align-items-center mb-5">
-            <h4 class="m-0">Exam Control Board</h4>
-            <button class="btn custom-btn ml-auto" [routerLink]="['/teacher/home/createexam']" >create exam</button>
+        <div class="d-flex align-items-center justify-content-between mb-5">
+            <h4 class="m-0">Objective Exam Control Board</h4>
+            <div class="">
+                <button class="btn custom-btn ml-auto mr-2" [routerLink]="['/teacher/home/createexam']" >create exam (Objective)</button>
+            </div>
         </div>
         <div class="row m-0">
             <div class="col-md-3 pl-0 mb-3 mb-md-0">
@@ -29,8 +31,39 @@
             </div>
         </div>
     </div>
+    <div class="container-fluid p-3 shadow rounded my-2">
+        <div class="d-flex align-items-center justify-content-between mb-5">
+            <h4 class="m-0">Subjective Exam Control Board</h4>
+            <div class="">
+                <button class="btn custom-btn ml-auto" [routerLink]="['/teacher/home/subjectiveexam']" >create exam (Subjective)</button>
+            </div>
+        </div>
+        <div class="row m-0">
+            <div class="col-md-3 pl-0 mb-3 mb-md-0">
+                <select #classSelect2 class="form-control form-control" (change)="classSelection2(classSelect2)">
+                    <option value="null">Select class</option>
+                    <option value="{{room.room}}" *ngFor="let room of classList2">{{room.room}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3 mb-md-0">
+                <select #sectionSelect2 class="form-control form-control"  (change)="sectionSelection2(sectionSelect2)">
+                    <option value="null">Select section</option>
+                    <option value="{{section}}" *ngFor="let section of sectionList2">{{section}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3 mb-3 mb-md-0">
+                <select #subjectSelect2 class="form-control form-control" (change)="subjectSelection2(subjectSelect2)">
+                    <option value="null">Select section</option>
+                    <option value="{{subject}}" *ngFor="let subject of subjectList2">{{subject}}</option>
+                </select>
+            </div>
+            <div class="col-md-3 pl-0 pl-md-3">
+                <button class="btn btn custom-btn" (click)="search2()">Search</button>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="container-fluid"  *ngIf="examList.length === 0">
+<div class="container-fluid"  *ngIf="examList.length === 0 && examList2.length === 0">
     <div class="row">
         <div class="col-12 d-flex align-items-center justify-content-center">
             <img src="../../../assets/img/undraw_online_test_gba7 (1).svg" class="img-fluid default-img" alt="">
@@ -90,11 +123,71 @@
         </div>
     </div>
 </div>
+<div class="container-fluid p-3" *ngIf="examList2.length !== 0">
+    <div class="container-fluid p-3 shadow rounded">
+        <div class="d-flex align-items-center mb-5">
+            <h4 class="m-0">Available Exam List</h4>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-xl-4 mb-3" *ngFor="let exam of examList2; let i = index;">
+                <div class="exam-info-card border rounded">
+                    <div class="exam-info-header d-flex p-3 border-bottom align-items-center">
+                        <h6 class="m-0">{{exam.name}}</h6>
+                        <button class="btn btn-outline-primary ml-auto alert-primary" (click)="edit2(exam)">Edit</button>
+                    </div>
+                    <div class="exam-info-body p-3">
+                        <div class="row">
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Class :</label>
+                                <label class="float-right w-50" for="">{{exam.class}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Section :</label>
+                                <label class="float-right w-50" for="">{{exam.section}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Subject :</label>
+                                <label class="float-right w-50" for="">{{exam.subject}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">No of qustions :</label>
+                                <label class="float-right w-50" for="">{{exam.questionlist.length}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Start date :</label>
+                                <label class="float-right w-50" for="">{{exam.startdate}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">End date :</label>
+                                <label class="float-right w-50" for="">{{exam.enddate}}</label>
+                            </div>
+                            <div class="col-12 mb-2">
+                                <label class="w-50" for="">Total score :</label>
+                                <label class="float-right w-50" for="">{{exam.totalmarks}}</label>
+                            </div>
+                            <div class="col-12 my-2">
+                                <button type="button" class="btn btn-outline-danger w-100 alert-danger mb-3" (click)="openModal(template2,exam,i)">Cancel Exam</button>
+                                <button type="button" class="btn btn-outline-success w-100 alert-success" (click)="resultList2(exam)">Answer Sheets</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <ng-template #template>
     <div class="modal-body text-center">
       <p>Do you want to confirm?</p>
       <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+</ng-template>
+<ng-template #template2>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm2()" >Yes</button>
       <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
     </div>
 </ng-template>

@@ -1,0 +1,138 @@
+<div class="container-fluid">
+    <div class="row py-2">
+        <form class="col-12 row" [formGroup]="upload">
+            <div class="col-lg-3 col-6 my-2">
+                <div class="formgroup">
+                    <label for="">Class</label>
+                    <select formControlName="class" class="form-control" (change)="sectionControl()">
+                        <option value="null">Select class</option>
+                        <option value="{{item.room}}" *ngFor="let item of classList">{{item.room}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 my-2">
+                <div class="formgroup">
+                    <label for="">Section</label>
+                    <select formControlName="section" class="form-control">
+                        <option value="null">Select section</option>
+                        <option value="{{item}}" *ngFor="let item of sectionList">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 my-2">
+                <div class="formgroup">
+                    <label for="">Subject</label>
+                    <select formControlName="subject" class="form-control">
+                        <option value="null">Select subect</option>
+                        <option value="{{item}}" *ngFor="let item of subjectList">{{item}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-6 my-2">
+                <div class="formgroup">
+                    <label for="">Title</label>
+                    <input formControlName="title" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-6 col-12 my-2">
+                <div class="formgroup">
+                    <label for="">Description</label>
+                    <textarea formControlName="description" cols="" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="col-lg-6 col-12 my-2">
+                <div class="formgroup">
+                    <label for="">Image</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                          <input type="file" class="custom-file-input" id="inputGroupFile01" (change)="imageupload($event)">
+                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 my-2">
+                <div class="formgroup">
+                    <label for="">Media</label>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        </div>
+                        <div class="custom-file">
+                          <input (change)="fileupload($event)" type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="row py-1">
+        <div class="col-12 px-4">
+            <button class="btn custom-btn float-right" (click)="save()">Save</button>
+        </div>
+    </div>
+   <div class="row">
+    <div class="col-lg-3 col-6">
+        <div class="formgroup">
+            <label for="">Class</label>
+            <select [(ngModel)]="query.query.class" class="form-control" (change)="sectionControl2()">
+                <option value="null">Select class</option>
+                <option value="{{item.room}}" *ngFor="let item of classList2">{{item.room}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="formgroup">
+            <label for="">Section</label>
+            <select [(ngModel)]="query.query.section" class="form-control">
+                <option value="null">Select section</option>
+                <option value="{{item}}" *ngFor="let item of sectionList2">{{item}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="formgroup">
+            <label for="">Subect</label>
+            <select [(ngModel)]="query.query.subject" class="form-control">
+                <option value="null">Select subect</option>
+                <option value="{{item}}" *ngFor="let item of subjectList2">{{item}}</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6 d-flex align-items-end justify-content-start">
+        <button class="btn custom-btn" (click)='search()'>Search</button>
+    </div>
+   </div>
+   <div class="row py-2">
+       <div class="col-3" *ngFor="let item of mediaList">
+            <div class="col d-flex justify-content-center">
+                <img [src]="item.image" class="img-fluid" alt="">
+            </div>
+            <div class="col d-flex flex-column">
+                <span>Title: {{item.title}}</span>
+                <span>Description: {{item.description}}</span>
+                <button class="btn btn-sm btn-success" (click)="openModal(template,item.media)">Watch</button>
+            </div>
+            <div class="col py-2 d-flex align-items-center justify-content-end">
+                <i class="fas fa-trash text-danger pointer mx-2" (click)="delete(item._id)"></i>
+                <i class="fas fa-edit text-primary pointer mx-2"></i>
+            </div>
+        </div>
+   </div>
+</div>
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <video class="img-fluid video-fluid" controls [src]="mediaUrl" autoplay="true"></video>
+    </div>
+  </ng-template>

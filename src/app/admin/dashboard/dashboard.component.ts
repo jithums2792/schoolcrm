@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
 
   async getcardData() {
     this.dashboardservice.getstatusCard().subscribe(data => {
+      console.log(data)
      this.statuscardData = data.data
     })
   }

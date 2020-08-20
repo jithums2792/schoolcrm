@@ -81,16 +81,8 @@ studentid = 'tempstudent' + Date.now();
     });
 
 
-    this.socket.emit('join', this.room);
-    this.socket.on('join', data => {
-      console.log(data)
-    })
+    this.socket.emit('join', this.room)
     this.socket.on('newoffer', async (offerObject) => {
-      // console.log(msg.data)
-
-      console.log("offerObject")
-      console.log(offerObject)
-
       if (offerObject.studentid == this.studentid) {
         if (this.offer == null) {
           this.offer = offerObject.offer;

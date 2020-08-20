@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-   socket: 'http://localhost:3000',
-  // socket: 'https://eduschool.live/'
+  socket: 'http://localhost:3000/',
   api: 'http://localhost:3000/api/'
+  // socket: 'https://wmhmcclass.com/',
+  // api: 'https://wmhmcclass.com/api/'
 };
 
 /*

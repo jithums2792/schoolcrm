@@ -1,0 +1,100 @@
+<div class="container-fluid">
+    <div class="row py-2">
+        <div class="col-12 d-flex align-items-center justify-content-between">
+            <h4><strong>Create new subjective exam</strong></h4>
+            <div class="">
+                <button class="btn custom-btn mx-2" (click)="save()" *ngIf="saveFlag">Save</button>
+                <button class="btn custom-btn mx-2" *ngIf="!saveFlag" (click)="update()">Update</button>
+                <button class="btn custom-btn mx-2" *ngIf="!saveFlag" (click)="cancel()">Cancel</button>
+            </div>
+        </div>
+        <form [formGroup]="examForm" class="col-12 row my-2">
+            <div class="col-3">
+                <div class="formgroup">
+                    <label for="">Class</label>
+                    <select formControlName="class" class="form-control" (change)="sectionControl()">
+                        <option value="null">select class</option>
+                        <option value="{{item.room}}" *ngFor="let item of classList">{{item.room}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-3">
+                <div class="formgroup">
+                    <label for="">Section</label>
+                    <select formControlName="section" class="form-control">
+                        <option value="null">select section</option>
+                        <option value="{{item}}" *ngFor="let item of sectionList">{{item}}</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="col-3">
+                <div class="formgroup">
+                    <label for="">Subject</label>
+                    <select formControlName="subject" class="form-control">
+                        <option value="null">select subject</option>
+                        <option value="{{item}}" *ngFor="let item of subjectList">{{item}}</option>
+                    </select>
+                </div>
+            </div> 
+            <div class="col-3">
+                <div class="formgroup">
+                    <label for="">Start date</label>
+                    <input formControlName="startdate" type="datetime-local" class="form-control">
+                </div>
+            </div> 
+            <div class="col-3">
+                <div class="formgroup">
+                    <label for="">End date</label>
+                    <input formControlName="enddate" type="datetime-local" class="form-control">
+                </div>
+            </div> 
+            <div class="col-3">
+                <div class="formgroup">
+                    <label for="">Name of Exam</label>
+                    <input formControlName="name" type="text" class="form-control" placeholder="Eg:- internal Exam">
+                </div>
+            </div> 
+            <div class="col-3">
+                <div class="formgroup">
+                    <label for="">Total Marks</label>
+                    <input formControlName="totalmarks" type="number" class="form-control" placeholder="Eg:- 80">
+                </div>
+            </div> 
+        </form>
+        <div class="col-12 my-2">
+            <div class="formgroup">
+                <label for="question">Question</label>
+                <textarea [(ngModel)]="question.que" cols="" rows="3" class="form-control"></textarea>
+            </div>
+            <div class="fomgroup my-2">
+                <label for="marks">Mark</label>
+                <input [(ngModel)]="question.mark" type="number" class="form-control" placeholder="Eg. 12">
+            </div>
+            <div class="fomgroup">
+                <label for="marks">Attachment(if any)</label>
+                <input type="file" class="form-control" (change)="upload($event)">
+            </div>
+            <div class="col-12 py-2 d-flex align-items-center justify-content-center" *ngIf="question.image !== null">
+                <img [src]="question.image" class="img-fluid" alt="">
+            </div>
+            <button class=" btn custom-btn float-right my-2" (click)="add()" *ngIf="queEditFlag">Add</button>
+            <button class=" btn custom-btn float-right my-2 mr-2" (click)="new()" *ngIf="!queEditFlag">Update</button>
+        </div>
+        <div class="col-12 my-2" *ngFor="let question of questionList;let i=index;">
+            <div class="card bg-light p-2">
+                <div class="col">
+                    {{i+1}}) {{question.que}}
+                </div>
+                <div class="col py-2 d-flex align-items-center justify-content-center">
+                    <img [src]="question.image" class="img-fluid" alt="">
+                </div>
+                <div class="col d-flex align-items-center justify-content-end">
+                    <i class="fas fa-edit mx-2 pointer" (click)="edit(i)"></i>
+                    <i class="fas fa-trash text-danger mx-2 pointer" (click)="delete(i)"></i>
+                    <span class="badge-pill badge-primary mark">{{question.mark}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

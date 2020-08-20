@@ -15,6 +15,8 @@ import { HomeworkComponent } from './homework/homework.component';
 import { ViewComponent } from './view/view.component';
 import { NoticeboardComponent } from './noticeboard/noticeboard.component';
 import { LivestreamComponent } from './livestream/livestream.component';
+import { CreatesubjectiveexamComponent } from './createsubjectiveexam/createsubjectiveexam.component';
+import { FileuploadsComponent } from './fileuploads/fileuploads.component';
 
 
 const routes: Routes = [
@@ -32,6 +34,8 @@ const routes: Routes = [
     {path: 'view', component: ViewComponent},
     {path: 'noticeboard', component: NoticeboardComponent},
     {path: 'livestream', component: LivestreamComponent},
+    {path: 'subjectiveexam', component: CreatesubjectiveexamComponent},
+    {path: 'fileuploads', component: FileuploadsComponent},
     {path: '', redirectTo: 'myprofile', pathMatch: 'full'},
     {path: '**', redirectTo: 'myprofile', pathMatch: 'full'},
   ], canActivate: [TeacherloginGuard]},

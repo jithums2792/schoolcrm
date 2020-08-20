@@ -16,8 +16,8 @@ export class StudentadmisionComponent implements OnInit {
     admissiondate: '',
     name: '',
     dob: '',
-    class: '1',
-    section: 'A1',
+    class: 'null',
+    section: 'null',
     gender: '',
     category: '',
     relegion: '',
@@ -110,8 +110,12 @@ export class StudentadmisionComponent implements OnInit {
   }
 
   async sectionFilter() {
-    const sections = this.classList.find(element => element.name === this.student.class);
-    this.sectionList = sections.section;
+    if(this.student.class !== 'null') {
+      const sections = this.classList.find(element => element.name === this.student.class);
+      this.sectionList = sections.section;
+    } else {
+      this.toastservice.warning('select a valid option')
+    }
   }
 
   async save() {

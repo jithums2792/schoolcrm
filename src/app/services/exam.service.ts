@@ -39,4 +39,21 @@ export class ExamService {
   getexam() {
     return this.exam
   }
+
+
+  getAllSubExam(): Observable<any> {
+    return this.http.get(this.api + 'subexam/all');
+  }
+  addSubExam(exam): Observable<any> {
+    return this.http.post(this.api + 'subexam/create' ,exam);
+  }
+  getSubExambyCategory(category): Observable<any> {
+    return this.http.post(this.api + 'subexam/category',category);
+  }
+  updateSubExam(id,exam):Observable<any> {
+    return this.http.patch(this.api + 'subexam/update/' + id, exam);
+  }
+  deleteSubExam(id): Observable<any> {
+    return this.http.delete(this.api + 'subexam/delete/' + id);
+  }
 }

@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  socket: 'https://getclass.live/',
-  api: 'https://getclass.live/api/'
+  socket: 'https://wmhmcclass.com/',
+  api: 'https://wmhmcclass.com/api/'
 };

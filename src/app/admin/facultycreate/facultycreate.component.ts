@@ -37,7 +37,7 @@ export class FacultycreateComponent implements OnInit {
     medicalleave:'',
     casualleave: '',
     maternityleave: '',
-    userId: 'teacher123',
+    username: 'teacher123',
     password: 'teacher@123',
 
   }
@@ -76,7 +76,7 @@ export class FacultycreateComponent implements OnInit {
                   this.faculty.medicalleave = editData.medicalleave;
                   this.faculty.casualleave = editData.casualleave;
                   this.faculty.maternityleave = editData.maternityleave;
-                  this.faculty.userId = editData.userId;
+                  this.faculty.username = editData.userId;
                   this.faculty.password = editData.password;
                   this.saveFlag = false;
                 } catch (error) {
@@ -111,7 +111,9 @@ export class FacultycreateComponent implements OnInit {
         }
         else {
           console.log(this.faculty);
-          this.facultyservice.addFaculty(this.faculty).subscribe(data => (data.status === "success")?this.toastservice.success('saved successfully', 'Success'):this.toastservice.error('error occured', 'Error'));
+          this.facultyservice.addFaculty(this.faculty).subscribe(data => {
+            (data.status === "success")?this.toastservice.success('saved successfully'):this.toastservice.error(data.data.message)
+          });
         }
     
   }

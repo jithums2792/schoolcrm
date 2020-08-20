@@ -22,6 +22,7 @@ export class ExamsComponent implements OnInit {
   }
   public studentInfo
   public examList = []
+  public examList2 = []
   public answerList = []
   public currentTime:string
   public modalRef: BsModalRef;
@@ -57,6 +58,7 @@ export class ExamsComponent implements OnInit {
 
   async getExamList() {
     this.examservice.getExambyCategory(this.query).subscribe(data => this.examList = data.data)
+    this.examservice.getSubExambyCategory(this.query).subscribe(data => this.examList2 = data.data)
   }
 
   async getAnswerlist() {
@@ -88,6 +90,9 @@ export class ExamsComponent implements OnInit {
 
   buttonCtrl(value, index) {
     this.examList[index].active = value
+  }
+  buttonCtrl2(value, index) {
+    this.examList2[index].active = value
   }
 
   

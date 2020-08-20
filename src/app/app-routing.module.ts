@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TeachersModule } from './teachers/teachers.module';
-import { StudentModule } from './student/student.module';
-import { LandingModule } from './landing/landing.module';
 import { LoginGuard } from './Auth/login.guard';
 import { TeacherloginGuard } from './Auth/teacherlogin.guard';
+import { SadminGuard } from './Auth/sadmin.guard'
 
 
 const routes: Routes = [

@@ -40,7 +40,6 @@ export class CreateexamComponent implements OnInit {
                 try {
                   this.editExam = router.getCurrentNavigation().extras.state.data
                   if(this.editExam !== undefined){
-                    console.log(this.editExam)
                     this.mainSaveFlag = false
                     this.selectedClass = this.editExam.class
                     this.selectedSection = this.editExam.section

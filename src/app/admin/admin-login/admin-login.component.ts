@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import   * as bcrypt from 'bcryptjs'
 
 @Component({
   selector: 'app-admin-login',
@@ -14,11 +15,10 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {
 
   }
-  login(){
-    if(this.username === 'sadmin'){
-      if(this.password === 'sadmin'){
-        this.route.navigate(['/sadmin/home']);
-      }
+  async login(){
+    if(this.username === 'sadmin' && this.password === 'sadmin'){
+      localStorage.setItem('admin', this.password)
+      this.route.navigate(['/sadmin/home']);
     }
   }
   
