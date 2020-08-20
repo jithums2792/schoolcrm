@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <div class="row py-2">
+        <div class="col-12">
+            <video [src]="url" controls autoplay="true" class="vdo-fluid"></video>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+            <div class="fomgroup">
+                <label for="">Subject</label>
+                <select [(ngModel)]="query.query.subject" class="form-control">
+                    <option value="null">Select Subect</option>
+                    <option value="{{item.name}}" *ngFor="let item of subjectList">{{item.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3 d-flex align-items-end justify-content-start">
+            <button class="btn custom-btn" (click)="getallmedia()">Search</button>
+        </div>
+    </div>
+    <div class="row py-2">
+        <div class="col-3 my-2" *ngFor="let item of mediaList">
+            <div class="card">
+                <div class="col d-flex align-items-center justify-content-center">
+                    <img [src]="item.image" class="img-fluid" alt="">
+                </div>
+                <div class="col p-2">
+                    <span>title: {{item.title}}</span>
+                    <p>Description: {{item.description}}</p>
+                </div>
+                <div class="col p-2">
+                    <button class="btn btn-primary w-100" (click)="setUrl(item.media)">Watch</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

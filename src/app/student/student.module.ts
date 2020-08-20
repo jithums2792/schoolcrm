@@ -5,6 +5,10 @@ import { FormsModule } from '@angular/forms';
 import {  MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module'
 import { ModalModule } from 'ngx-bootstrap/modal'
+import {NgxEventCalendarModule} from 'ngx-event-calendar';
+
+import { MatFormFieldModule, MatInputModule, MatSelectModule, MatIconModule, MatDividerModule, MatNativeDateModule, MatButtonModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { StudentRoutingModule } from './student-routing.module';
 import { HomeComponent } from './home/home.component';
@@ -20,13 +24,24 @@ import { LeavelistComponent } from './leavelist/leavelist.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
 import { ChatComponent } from './chat/chat.component';
 import { NoticeboardComponent } from './noticeboard/noticeboard.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { LibraryComponent } from './library/library.component';
 
 @NgModule({
-  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent,ChatComponent, ExamsComponent, AttendexamComponent,ProfileComponent,HomeworkComponent, LeavelistComponent, CreateleaveComponent, NoticeboardComponent,],
+  declarations: [HomeComponent, StudentclassComponent, LiveclassComponent, LivestreamWebrtcComponent, StudymaterialComponent,ChatComponent, ExamsComponent, AttendexamComponent,ProfileComponent,HomeworkComponent, LeavelistComponent, CreateleaveComponent, NoticeboardComponent, AttendanceComponent, LibraryComponent,],
   imports: [
     CommonModule,
     MaterialModule,
     SharedModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
+    MatIconModule,
+    MatDividerModule,
+    MatButtonModule,
+    FlexLayoutModule,
+    NgxEventCalendarModule,
     ModalModule.forRoot(),
     FormsModule,
     StudentRoutingModule

@@ -130,3 +130,5 @@ i:focus {
 .bg-card-head {
   background-color: #057AC5;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -180,18 +180,35 @@ export class ExamsComponent implements OnInit {
   }
 
   async delete(exam) {
-
+    this.examservice.deleteExam(exam._id).subscribe(data => {
+      if(data.status === 'success') {
+        this.toastservice.success('deleted')
+      } else {
+        this.toastservice.error(data.data.message)
+      }
+    })
+    this.search()
+  }
+  async delete2(exam) {
+    this.examservice.deleteSubExam(exam._id).subscribe(data => {
+      if(data.status === 'success') {
+        this.toastservice.success('deleted')
+      } else {
+        this.toastservice.error(data.data.message)
+      }
+    })
+    this.search2()
   }
 
   async resultList(exam) {
     const options: NavigationExtras = {
-      state: {data: exam}
+      state: {data: exam, type: 'objective'}
     }
     this.router.navigate(['/teacher/home/answerlist'], options)
   }
   async resultList2(exam) {
     const options: NavigationExtras = {
-      state: {data: exam}
+      state: {data: exam, type: 'subjective'}
     }
     this.router.navigate(['/teacher/home/answerlist'], options)
   }

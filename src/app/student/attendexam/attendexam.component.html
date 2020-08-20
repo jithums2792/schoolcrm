@@ -1,4 +1,4 @@
-<div class="container-fluid vh-100">
+<div class="container-fluid vh-100" *ngIf="examFlag">
     <div class="row bg-white exam-body p-4" id="exam">
         <div class="col-12 my-2" *ngFor="let question of exam.questionlist; let il = index">
             <span> <strong>{{il + 1}}) </strong>  {{question.que}}</span>
@@ -12,6 +12,17 @@
         </div>
         <div class="col-12">
             <button class="btn-sm btn custom-btn" (click)="finish()">Finish</button>
+        </div>
+    </div>
+</div>
+<div class="container-fluid vh-100" *ngIf="!examFlag">
+    <div class="row bg-white exam-body p-4" id="exam">
+        <div class="col-12 my-2" *ngFor="let question of exam.questionlist; let il = index">
+            <span> <strong>{{il + 1}}) </strong>  {{question.que}}</span>
+            <textarea [(ngModel)]="answersheet[il].ans" class="form-control" cols="" rows="3"></textarea>
+        </div>
+        <div class="col-12">
+            <button class="btn-sm btn custom-btn" (click)="finish2()">Finish</button>
         </div>
     </div>
 </div>

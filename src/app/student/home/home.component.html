@@ -36,6 +36,12 @@
                </a>
            </li>
            <li class="list-group-item d-flex">
+            <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['attendance']" routerLinkActive="router-link-active">
+              <i class="fas fa-concierge-bell text-white" aria-hidden="true"></i>
+              <label class="pt-1 pointer d-block" for="" >Attendance</label>
+            </a>
+          </li>
+           <li class="list-group-item d-flex">
             <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['noticeboard']" routerLinkActive="router-link-active">
               <i class="fa fa-calendar text-white" aria-hidden="true"></i>
               <label class="pt-1 pointer d-block" for="" >Noticeboard</label>
@@ -45,6 +51,12 @@
             <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['leavelist']" routerLinkActive="router-link-active">
               <i class="fas fa-person-booth"></i> 
               <label class="pt-1 pointer d-block" for="" >Leave</label>
+            </a>
+          </li>
+          <li class="list-group-item d-flex">
+            <a class="text-center pl-2" onclick="openNavStudent()" [routerLink]="['library']" routerLinkActive="router-link-active">
+              <i class="fas fa-photo-video text-white"></i>
+              <label class="pt-1 pointer d-block" for="" >Library</label>
             </a>
           </li>
           <li class="list-group-item d-flex">

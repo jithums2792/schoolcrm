@@ -23,22 +23,32 @@ export class AttendexamComponent implements OnInit {
     wrong: null,
     answersheet: []
   }
+  public examFlag = false
 
   constructor(private toastservice: ToastrService, 
               private router: Router,
               private answerservice: AnswerService) { 
     try {
       this.exam = router.getCurrentNavigation().extras.state.data
+      if( router.getCurrentNavigation().extras.state.type === 'objective') {
+        this.examFlag = true
+      } else {
+        this.examFlag = false
+      }
       this.sheet.examname = this.exam.name
       this.sheet.subject = this.exam.subject
       this.sheet.teacher = this.exam.teacher
       this.createAnswerFields(this.exam.questionlist)
     } catch (error) {
+      console.log('err')
       router.navigate(['/student/home/exams'])
     }
   }
 
   ngOnInit() {
+    
+  }
+  ngAfterViewInit() {
     let counter = false
     const exam = document.getElementById('exam')
     exam.requestFullscreen().catch(err => this.toastservice.error('Cant opend in fullwidth', 'Error'))
@@ -63,6 +73,18 @@ export class AttendexamComponent implements OnInit {
   async finish() {
     this.sheet.answersheet = await this.answersheet
     this.answerservice.addanswer(this.sheet).subscribe(data => {
+      if (data.status === 'success') {
+        this.toastservice.success('Exam answers submited', 'Succes')
+        this.router.navigate(['/student/home/exams'])
+      } else {
+        this.toastservice.error('something wrong', 'Error')
+      }  
+    })
+  }
+  async finish2() {
+    this.sheet.answersheet = await this.answersheet
+    console.log(this.sheet)
+    this.answerservice.addsubanswer(this.sheet).subscribe(data => {
       if (data.status === 'success') {
         this.toastservice.success('Exam answers submited', 'Succes')
         this.router.navigate(['/student/home/exams'])

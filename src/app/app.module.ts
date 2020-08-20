@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { SocketioService } from './services/socketio.service';
 import { ToastrModule } from 'ngx-toastr';
+import { DatepipePipe } from './pipes/datepipe.pipe';
+
+
 
 
 
@@ -22,13 +25,16 @@ import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
+    DatepipePipe,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
+   
     AppRoutingModule,
     MaterialModule,
+    
     BrowserAnimationsModule,
     ToastrModule.forRoot()
   ],

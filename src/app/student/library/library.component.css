@@ -1,0 +1,7 @@
+.vdo-fluid{
+    width: 100%;
+    max-height: 350px;
+}
+.img-fluid {
+    max-height: 250px !important;
+}

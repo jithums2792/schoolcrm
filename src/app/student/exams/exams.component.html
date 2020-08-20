@@ -9,8 +9,8 @@
                     <h6>{{exam.name}}</h6>
                     <label class="label" for=""><label>Subject:</label>{{exam.subject}}</label>
                     <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>
-                    <label class="label" for=""><label>Start At:</label>{{exam.startdate}}</label>
-                    <label class="label" for=""><label>End At:</label>{{exam.enddate}}</label>
+                    <label class="label" for=""><label>Start At:</label>{{exam.startdate | date:'short'}}</label>
+                    <label class="label" for=""><label>End At:</label>{{exam.enddate | date:'short'}}</label>
                     <button class="btn attend-btn" *ngIf="exam.active" (click)="navigate(exam,instruction)">Attent exam</button>
                 </div>
             </div>
@@ -28,9 +28,9 @@
                     <h6>{{exam.name}}</h6>
                     <label class="label" for=""><label>Subject:</label>{{exam.subject}}</label>
                     <label class="label" for=""><label>Marks:</label>{{exam.totalmarks}}</label>
-                    <label class="label" for=""><label>Start At:</label>{{exam.startdate}}</label>
-                    <label class="label" for=""><label>End At:</label>{{exam.enddate}}</label>
-                    <button class="btn attend-btn" *ngIf="exam.active" (click)="navigate(exam,instruction)">Attent exam</button>
+                    <label class="label" for=""><label>Start At:</label>{{exam.startdate | date:'short'}}</label>
+                    <label class="label" for=""><label>End At:</label>{{exam.enddate | date:'short'}}</label>
+                    <button class="btn attend-btn" *ngIf="exam.active" (click)="navigate(exam,instruction2)">Attent exam</button>
                 </div>
             </div>
         </div>
@@ -56,6 +56,13 @@
     <div class="modal-body text-center">
       <p>Do you want to confirm?</p>
       <button type="button" class="btn btn-default" (click)="confirm()" >Yes</button>
+      <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
+    </div>
+  </ng-template>
+  <ng-template #instruction2>
+    <div class="modal-body text-center">
+      <p>Do you want to confirm?</p>
+      <button type="button" class="btn btn-default" (click)="confirm2()" >Yes</button>
       <button type="button" class="btn btn-primary" (click)="decline()" >No</button>
     </div>
   </ng-template>

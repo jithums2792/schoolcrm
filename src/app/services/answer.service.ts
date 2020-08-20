@@ -27,5 +27,21 @@ export class AnswerService {
   deleteanswer(id): Observable<any> {
     return this.http.delete(this.api + 'answer/delete/' + id);
   }
+
+  getAllsubanswer(): Observable<any> {
+    return this.http.get(this.api + 'subanswer/all');
+  }
+  addsubanswer(answer): Observable<any> {
+    return this.http.post(this.api + 'subanswer/create' ,answer);
+  }
+  getsubanswerbyCategory(category): Observable<any> {
+    return this.http.post(this.api + 'subanswer/category',category);
+  }
+  updatesubanswer(id,answer):Observable<any> {
+    return this.http.patch(this.api + 'subanswer/update/' + id, answer);
+  }
+  deletesubanswer(id): Observable<any> {
+    return this.http.delete(this.api + 'subanswer/delete/' + id);
+  }
  
 }

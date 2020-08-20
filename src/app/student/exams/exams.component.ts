@@ -78,7 +78,14 @@ export class ExamsComponent implements OnInit {
 
   confirm(): void {
     const option: NavigationExtras = {
-      state: {data: this.exam}
+      state: {data: this.exam, type: 'objective'}
+    };
+    this.router.navigate(['/student/home/attendexam'],option)
+    this.modalRef.hide();
+  }
+  confirm2(): void {
+    const option: NavigationExtras = {
+      state: {data: this.exam, type: 'subective'}
     };
     this.router.navigate(['/student/home/attendexam'],option)
     this.modalRef.hide();

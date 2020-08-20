@@ -19,6 +19,7 @@ export class AnswerlistComponent implements OnInit {
     subject: null,
     teacher: null
   }
+  public type
   public modalRef: BsModalRef;
   public answersheetList = []
   constructor(private router: Router,
@@ -27,6 +28,7 @@ export class AnswerlistComponent implements OnInit {
               private toastservice: ToastrService) { 
     try {
       this.exam = router.getCurrentNavigation().extras.state.data
+      this.type = router.getCurrentNavigation().extras.state.type
       this.query.examname = this.exam.name
       this.query.room = this.exam.class
       this.query.section = this.exam.section
@@ -40,11 +42,25 @@ export class AnswerlistComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAnswersheetList()
+    if(this.type === 'objective') {
+      this.getAnswersheetList()
+    } else {
+      this.getAnswersheetList2()
+    }
   }
 
   getAnswersheetList() {
     this.answerservice.getanswerbyCategory(this.query).subscribe(data => {
+      if (data.data.length > 0) {
+        this.answersheetList = data.data
+      } else {
+        this.toastservice.warning('No answerSheets')
+        this.router.navigate(['/teacher/home/exams'])
+      }
+    })
+  }
+  getAnswersheetList2() {
+    this.answerservice.getsubanswerbyCategory(this.query).subscribe(data => {
       if (data.data.length > 0) {
         this.answersheetList = data.data
       } else {
@@ -60,11 +76,21 @@ export class AnswerlistComponent implements OnInit {
   }
 
   submit() {
-    this.answerservice.updateanswer(this.answerSheet._id, this.answerSheet).subscribe(data => {
-      if (data.status === 'success') {
-        this.toastservice.success('mark added', 'success')
-      }
-    })
+    if(this.type === 'objective') {
+        this.answerservice.updateanswer(this.answerSheet._id, this.answerSheet).subscribe(data => {
+        if (data.status === 'success') {
+          this.toastservice.success('mark added', 'success')
+          this.modalRef.hide()
+        }
+      })
+    } else {
+      this.answerservice.updatesubanswer(this.answerSheet._id, this.answerSheet).subscribe(data => {
+        if (data.status === 'success') {
+          this.toastservice.success('mark added', 'success')
+          this.modalRef.hide()
+        }
+      })
+    }
   }
 
 }

@@ -14,6 +14,8 @@ import { LeavelistComponent } from './leavelist/leavelist.component';
 import { CreateleaveComponent } from './createleave/createleave.component';
 import { ChatComponent } from './chat/chat.component';
 import { NoticeboardComponent } from './noticeboard/noticeboard.component';
+import { AttendanceComponent } from './attendance/attendance.component';
+import { LibraryComponent } from './library/library.component';
 
 
 const routes: Routes = [
@@ -30,6 +32,8 @@ const routes: Routes = [
     {path: 'leavelist', component: LeavelistComponent},
     {path: 'createleave', component: CreateleaveComponent},
     {path: 'noticeboard', component: NoticeboardComponent},
+    {path: 'attendance', component: AttendanceComponent},
+    {path: 'library', component: LibraryComponent},
     {path: '', redirectTo: 'class', pathMatch: 'full'}
   ], canActivate: [LoginGuard]},
   {path: '', redirectTo: 'home', pathMatch: 'full'}
