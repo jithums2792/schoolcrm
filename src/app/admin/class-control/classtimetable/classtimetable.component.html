@@ -1,37 +1,4 @@
 
-<!-- <div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <button class="btn btn-sm custom-btn float-right" [routerLink]="['/sadmin/createtimetable']">Create timetable</button>
-        </div>
-        <div class="col-12 my-2">
-            <div class="card" *ngFor="let item of timetableList; let i = index">
-                <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between">
-                    <div class="">
-                        <span class="mr-3"><strong>class: {{item.name}}</strong></span>
-                        <span><strong>Section: {{item.section}}</strong></span>
-                    </div>
-                    <div class="text-white">
-                        <span><i class="fas fa-edit mx-2 pointer" (click)="edit(item)"></i></span>
-                        <span><i class="fas fa-trash-alt pointer" (click)="delete(item,i)"></i></span>
-                    </div>
-                </div>
-                <div class="col bg-white py-2 d-flex align-items-center justify-content-between" *ngFor="let period of item.timetable">
-                    <div class="col d-flex flex-column align-items-center justify-content-center">
-                        <span class="bg-warning w-100">Day</span>
-                        <span>{{period.day}}</span>
-                        <span>Duration</span>
-                    </div>
-                    <div class="col d-flex flex-column align-items-center justify-content-center mx-1 border-left" *ngFor="let subject of period.subjects">
-                        <span>{{subject.name}}</span>
-                        <span>{{subject.subname}}</span>
-                        <span>{{subject.startduration}} to {{subject.endduration}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
 <div class="container-fluid p-3">
     <div class="container-fluid p-0 rounded shadow">

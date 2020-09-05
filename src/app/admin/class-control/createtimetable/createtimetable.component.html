@@ -32,7 +32,7 @@
     </div>
     <div class="row">
         <div class="col-12 my-1" *ngFor="let dayx of dayList; let i = index">
-            <div class="card">
+            <div class="">
                 <div class="col bg-card-head text-white py-2 d-flex align-items-center justify-content-between">
                    <span>{{dayx.day}} <span class="pointer" (click)="delete(i)"><i class="fas fa-times px-2 border rounded-lg mx-2"></i></span></span>
                    <button class="btn btn-sm custom-btn border-white" (click)="addPeriod(i)">Add period</button>

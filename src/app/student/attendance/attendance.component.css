@@ -1,0 +1,14 @@
+.punch-head{
+    background: #057ac5;
+    color: white;
+    font-weight: 500;
+}
+.punch-body{
+    text-align: center;
+    font-weight: 500; 
+}
+.punch-footer{
+    font-size: 33px;
+    font-weight: 600;
+    text-align: center;
+}

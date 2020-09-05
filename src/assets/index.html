@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>SchoolFront</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://kit.fontawesome.com/962db0ee26.js" crossorigin="anonymous"></script>
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+    $(function () {
+      $('[data-toggle="popover"]').popover()
+    })
+    gapi.load("client:auth2", function() {
+      gapi.auth2.init({client_id: "291458128144-h3g9751gllmctvv5av2ev4to34k9q07q.apps.googleusercontent.com" });
+    });
+    // sidebar at mobile device
+    
+      
+    function displayFlex(){
+      if(document.getElementById("button-container").style.display == "none"){
+        document.getElementById("button-container").style.display = "flex";
+        document.getElementById("button-container").style.height = "90px";
+      }else{
+        document.getElementById("button-container").style.display = "none";
+        document.getElementById("button-container").style.height = "0px";
+      }
+    }
+
+    function openNav() {
+      if(document.getElementById("side-nav").style.width == "0px"){
+        document.getElementById("side-nav").style.width = "100px";
+      }else{
+        document.getElementById("side-nav").style.width = "0";
+      }
+    }
+    function openNavStudent() {
+      if(document.getElementById("side-nav").style.width == "0px"){
+        document.getElementById("side-nav").style.width = "130px";
+      }else{
+        document.getElementById("side-nav").style.width = "0";
+      }
+    }
+    function openNavadmin() {
+      if(document.getElementById("side-nav").style.width == "0px"){
+        document.getElementById("side-nav").style.width = "230px";
+      }else{
+        document.getElementById("side-nav").style.width = "0";
+      }
+    }
+    // function closeNav() {
+    //   document.getElementById("side-nav").style.width = "0";
+    // }
+    $(function () {
+      $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
+    });
+  </script>
+</body>
+</html>

@@ -5,9 +5,11 @@
 export const environment = {
   production: false,
   socket: 'http://localhost:3000/',
-  api: 'http://localhost:3000/api/'
+  api: 'http://localhost:3000/api/',
   // socket: 'https://wmhmcclass.com/',
-  // api: 'https://wmhmcclass.com/api/'
+  // api: 'https://wmhmcclass.com/api/',
+  secret: 'SjFpyqXBlw3wWg2eoXEv8E6WjJU3iBhXc9KaFDo',
+  host: 'https://getclass.live/bigbluebutton/api/'
 };
 
 /*

@@ -1,8 +1,22 @@
 <div class="container-fluid">
     <div class="row py-2">
-        <div class="col-12">
-            <ngx-event-calendar [dataSource]="dataArray"> 
-            </ngx-event-calendar>
+        <div class="col-8 row px-0 mx-0">
+            <div class="col-4" *ngFor="let item of punchList;let i=index;">
+                <div class="card">
+                   <div class="p-2 punch-head">Punch {{i + 1}}</div>
+                   <div class="punch-body p-2">You are punched at</div>
+                   <div class="punch-footer p-3">{{item.time}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4 d-flex align-items-start justify-content-end">
+            <div class="pr-3 pb-3">
+                <bs-datepicker-inline 
+                [bsValue]="bsInlineValue"
+                (bsValueChange)="check($event)"
+                [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }"
+                ></bs-datepicker-inline>
+            </div>
         </div>
     </div>
 </div>

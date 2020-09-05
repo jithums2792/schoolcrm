@@ -193,7 +193,7 @@
                 <div class="col-lg-6 col-12">
                     <div class="form-group">
                         <label for="department">Department<span class="text-danger">*</span></label>
-                        <select [(ngModel)]="faculty.Department" class="form-control form-control-sm" id="department">
+                        <select [(ngModel)]="faculty.department" class="form-control form-control-sm" id="department">
                             <option value="{{department.name}}" *ngFor="let department of departmentList">{{department.name}}</option>
                         </select>
                     </div>
@@ -302,7 +302,7 @@
                 <div class="col-6">
                     <div class="form-group">
                         <label for="username">username</label>
-                        <input type="text" [(ngModel)]="faculty.username" class="form-control form-control-sm" id="username">
+                        <input type="text" [(ngModel)]="faculty.userId" class="form-control form-control-sm" id="username">
                     </div>
                 </div>
                 <div class="col-6">

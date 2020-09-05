@@ -5,6 +5,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router, NavigationExtras } from '@angular/router';
 import { StudentsService } from 'src/app/services/students.service';
 import { TimetableService } from 'src/app/services/timetable.service';
+import { ExamService } from 'src/app/services/exam.service';
+import { AttendanceService } from 'src/app/services/attendance.service';
+import { ToastrService } from 'ngx-toastr';
+import { LivestreamService } from 'src/app/services/livestream.service';
 
 declare var gapi: any;
 @Component({
@@ -25,11 +29,23 @@ export class StudentclassComponent implements OnInit {
     section: localStorage.getItem('studentsection')
   }
   public timetable = []
-  
+  public socket
+  public subject = null
+  public liveFlag = false
+  public student = {
+    usertype: 'student',
+    room: localStorage.getItem('studentclass').replace(/\s/g, "")
+
+  }
+  public meeting
 
   
   constructor(private sanitizer: DomSanitizer, 
-              private router: Router, 
+              private router: Router,
+              private toast: ToastrService,
+              private attendanceservice: AttendanceService,
+              private liveservice: LivestreamService, 
+              private examservice: ExamService,
               private timetableservice: TimetableService,
               private studentservice: StudentsService) { }
 
@@ -38,6 +54,24 @@ export class StudentclassComponent implements OnInit {
   async ngOnInit() {
     this.getstudentinfo();
     this.getTimetable()
+    this.socket = io.connect(environment.socket)
+    this.socket.on('connection', data => {
+      this.socket.emit('join', this.student)
+    })
+    
+    this.socket.on('joined', data => {
+      if(data.status) {
+        this.liveFlag = data.status
+        this.meeting = data.data
+        this.subject = data.data.room
+      }
+    })
+    this.socket.on('live', data => {
+      (data.status)? this.liveFlag = true: this.liveFlag = false
+      this.meeting = data.data
+      this.subject = data.data.room
+    })
+    
   }
 
   async getstudentinfo() {
@@ -50,47 +84,37 @@ export class StudentclassComponent implements OnInit {
       console.log(this.timetable)
     })
   }
-
-  // authenticate() {
-  //   return gapi.auth2.getAuthInstance().signIn({scope: "https://www.googleapis.com/auth/youtube.readonly"}).
-  //   then(function() { console.log("Sign-in successful"); },
-  //             function(err) { console.error("Error signing in", err); });
-  // }
-  // async load() {
-  //   await gapi.client.setApiKey("AIzaSyCgvnKQ-ekScmDrSTpPkdneNmX77m4-en4");
-  //   return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-  //       .then(function() { console.log("GAPI client loaded for API");},
-  //             function(err) { console.error("Error loading GAPI client for API", err); });
-  // }
-
-  
-  
-// async navigate() {
-//  await this.authenticate().then(this.load());
-//  await gapi.client.youtube.playlistItems.list({
-//   "part": [
-//     "snippet,contentDetails"
-//   ],
-//   "playlistId": "PLNigsc54Y10S1GCv46if9UjOFooAoDJFd",
-//   "maxResults": 25
-// }).then(async data => {
-//   const videoList = await  data.result.items;
-//   videoList.forEach(async item => {
-//     this.playListId = await item.snippet.playlistId;
-//     this.videoId = await item.contentDetails.videoId;
-//     this.url = `https://www.youtube.com/embed/${this.videoId}?list=${this.playListId}`;
-//     this.trustedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(this.url);
-//   });
-// }, err => console.log(err))
-  
-//   const options: NavigationExtras = {
-//     state: {data: this.trustedUrl}
-//   };
-//   this.router.navigate(['/student/home/liveclass'], options);
-// }
-
 navigate2() {
-  this.router.navigate(['/student/home/liveclass2']);
+  this.liveservice.joinmeeting({
+    name: localStorage.getItem('studentname'),
+    meetingID: this.meeting.meetingID,
+    password: this.meeting.password
+  }).then(data => {
+    const option:NavigationExtras = {
+      state: {value: data}
+    }
+    this.router.navigate(['/student/home/bbb'], option)
+  })
+}
+
+async punch() {
+  this.examservice.getCurrentTime().subscribe(async data =>{
+    let attendance = {
+        date: data.datetime.substring(0,10),
+        time: data.datetime.substring(11,16),
+        userId: localStorage.getItem('student'),
+        class: localStorage.getItem('studentclass'),
+        section: localStorage.getItem('studentsection'),
+        username: localStorage.getItem('studentname'),
+    }
+    this.attendanceservice.addAttendance(attendance).subscribe(data => {
+      if (data.status === 'success') {
+        this.toast.success('puched successfully')
+      } else {
+        this.toast.error(data.data.message)
+      }
+    })
+  })
 }
    
 }

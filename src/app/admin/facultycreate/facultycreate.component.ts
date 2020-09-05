@@ -21,7 +21,7 @@ export class FacultycreateComponent implements OnInit {
     mothername: '',
     email: '',
     designation: '',
-    Department: '',
+    department: '',
     gender: '',
     dob: '',
     doj: '',
@@ -37,7 +37,7 @@ export class FacultycreateComponent implements OnInit {
     medicalleave:'',
     casualleave: '',
     maternityleave: '',
-    username: 'teacher123',
+    userId: 'teacher123',
     password: 'teacher@123',
 
   }
@@ -60,7 +60,7 @@ export class FacultycreateComponent implements OnInit {
                   this.faculty.mothername = editData.mothername;
                   this.faculty.email = editData.email;
                   this.faculty.designation = editData.designation;
-                  this.faculty.Department = editData.department;
+                  this.faculty.department = editData.department;
                   this.faculty.gender = editData.gender;
                   this.faculty.dob = editData.dob;
                   this.faculty.doj = editData.doj;
@@ -76,7 +76,7 @@ export class FacultycreateComponent implements OnInit {
                   this.faculty.medicalleave = editData.medicalleave;
                   this.faculty.casualleave = editData.casualleave;
                   this.faculty.maternityleave = editData.maternityleave;
-                  this.faculty.username = editData.userId;
+                  this.faculty.userId = editData.userId;
                   this.faculty.password = editData.password;
                   this.saveFlag = false;
                 } catch (error) {
@@ -104,15 +104,14 @@ export class FacultycreateComponent implements OnInit {
         this.faculty.designation === '' || this.faculty.designation === null ||
         this.faculty.firstname === '' || this.faculty.firstname === null ||
         this.faculty.lastname === '' || this.faculty.lastname === null ||
-        this.faculty.Department === '' || this.faculty.Department === null ||
+        this.faculty.department === '' || this.faculty.department === null ||
         this.faculty.email === '' || this.faculty.dob === '' ||
         this.faculty.doj === '' || this.faculty.phone === '') {
           this.toastservice.warning('some fields are missing', 'Warning')
         }
         else {
-          console.log(this.faculty);
           this.facultyservice.addFaculty(this.faculty).subscribe(data => {
-            (data.status === "success")?this.toastservice.success('saved successfully'):this.toastservice.error(data.data.message)
+            (data.status === 'success')? this.toastservice.success('saved successfully'): this.toastservice.error(data.data.message)
           });
         }
     
@@ -123,14 +122,15 @@ export class FacultycreateComponent implements OnInit {
         this.faculty.designation === '' || this.faculty.designation === null ||
         this.faculty.firstname === '' || this.faculty.firstname === null ||
         this.faculty.lastname === '' || this.faculty.lastname === null ||
-        this.faculty.Department === '' || this.faculty.Department === null ||
+        this.faculty.department === '' || this.faculty.department === null ||
         this.faculty.email === '' || this.faculty.dob === '' ||
         this.faculty.doj === '' || this.faculty.phone === '') {
           this.toastservice.warning('some fields are missing', 'Warning')
         }
         else {
-          console.log(this.faculty);
-          this.facultyservice.updateFaculty(this.facultyuid,this.faculty).subscribe(data => (data.status === "success")?this.toastservice.success('saved successfully', 'Success'):this.toastservice.error('error occured', 'Error'));
+          this.facultyservice.updateFaculty(this.facultyuid,this.faculty).subscribe(data =>{
+            (data.status === 'success')? this.toastservice.success('updated successfully'): this.toastservice.error(data.data.message)
+          });
         }
   }
   async uploader(event) {

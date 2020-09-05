@@ -1,35 +1,22 @@
 
 <div class="container-fluid w-100 p-0">
-  
-  <!-- <div class="row m-0">
-    <div class="col-12 p-3">
-      <div class="card" *ngFor="let item of timetable; let i = index">
-        <div class="col py-2 d-flex align-items-center justify-content-between">
-            <div class="">
-                <h6>Time table of class {{item.name}} {{item.section}}</h6>
-            </div>
-        </div>
-        <div class="col-lg bg-white px-0 d-lg-flex justify-content-between" *ngFor="let period of item.timetable">
-            <div class="col-lg col-12 bg-card-head px-0 d-flex flex-column align-items-center justify-content-center">
-                <span class="w-100 text-white text-center">{{period.day}}</span>
-            </div>
-            <div class="col-lg col-12 d-flex flex-column align-items-center justify-content-center px-0 " *ngFor="let subject of period.subjects">
-                <span class=" w-100 text-center bg-light">{{subject.name}}</span>
-                <span>{{subject.subname}}</span>
-                <span>{{subject.startduration}} to {{subject.endduration}}</span>
-            </div>
+<div class="row m-0">
+    <div class="col-lg-3 col-md-4 col-sm-6 p-3">
+      <div class="card" *ngIf="studentInfo">
+        <i class="fas fa-circle text-success m-2 " *ngIf="liveFlag"></i>
+        <i class="fas fa-circle text-danger m-2 " *ngIf="!liveFlag"></i>
+        <h2 class="pt-2 text-center">Class {{studentInfo.class}} {{studentInfo.section}}</h2>
+        <div id="button-placeholder" class="button-placeholder" *ngIf="liveFlag">
+          <h6 class="text-light text-center pointer" (click)="navigate2()">GET IN TO {{subject}}</h6>
         </div>
       </div>
     </div>
-  </div> -->
-  
-  <div class="row m-0">
     <div class="col-lg-3 col-md-4 col-sm-6 p-3">
       <div class="card" *ngIf="studentInfo">
         <i class="fas fa-circle text-success m-2 "></i>
-        <h2 class="pt-2 text-center">Class {{studentInfo.class}} {{studentInfo.section}}</h2>
+        <h2 class=" text-center">Attendance</h2>
         <div id="button-placeholder" class="button-placeholder">
-          <h6 class="text-light text-center" (click)="navigate2()">GET IN TO LIVE</h6>
+          <h6 class="text-light text-center pointer" (click)="punch()">Punch</h6>
         </div>
       </div>
     </div>

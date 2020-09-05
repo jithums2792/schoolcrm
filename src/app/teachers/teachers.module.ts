@@ -10,7 +10,6 @@ import { DateTimePickerModule} from 'ngx-datetime-picker';
 import { TeachersRoutingModule } from './teachers-routing.module';
 import { HomeComponent } from './home/home.component';
 import { ClassComponent } from './class/class.component';
-import { LiveclassComponent } from './liveclass/liveclass.component';
 import { StudymaterialComponent } from './studymaterial/studymaterial.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ExamsComponent } from './exams/exams.component';
@@ -21,13 +20,13 @@ import { ChatComponent } from './chat/chat.component';
 import { HomeworkComponent } from './homework/homework.component';
 import { ViewComponent } from './view/view.component';
 import { NoticeboardComponent } from './noticeboard/noticeboard.component';
-import { LivestreamComponent } from './livestream/livestream.component';
 import { CreatesubjectiveexamComponent } from './createsubjectiveexam/createsubjectiveexam.component';
 import { FileuploadsComponent } from './fileuploads/fileuploads.component';
+import { BbbComponent } from './bbb/bbb.component';
 
 
 @NgModule({
-  declarations: [HomeComponent, ClassComponent, LiveclassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent, ChatComponent, HomeworkComponent, ViewComponent, NoticeboardComponent, LivestreamComponent, CreatesubjectiveexamComponent, FileuploadsComponent],
+  declarations: [HomeComponent, ClassComponent, StudymaterialComponent, ProfileComponent, ExamsComponent, CreateexamComponent, AnswerlistComponent, LeaveapprovelComponent, ChatComponent, HomeworkComponent, ViewComponent, NoticeboardComponent, CreatesubjectiveexamComponent, FileuploadsComponent, BbbComponent],
   imports: [
     CommonModule,
     FormsModule,

@@ -28,6 +28,7 @@ export class NoticeboardcontrolComponent implements OnInit {
     note: '',
     room: 'null',
     section: 'null',
+    image: null,
     type: 'null'
   }
 
@@ -122,6 +123,12 @@ export class NoticeboardcontrolComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  async fileupload(event) {
+    const reader = new FileReader()
+    reader.onload = () => this.notice.image = reader.result
+    reader.readAsDataURL(event.target.files[0])
   }
 
 }
